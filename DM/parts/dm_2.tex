@@ -1,0 +1,119 @@
+
+\section{Линейные рекуррентые последовательности. Регулярные производящие функции}
+
+
+\begin{definition}
+[Линейные рекуррентные последовательности]
+
+    Пусть даны первые $k$ членов последовательности $a_0, a_1, \dots, a_k$.
+    А все следующае члены определяются, как линейная комбинации $k$ предыдущих.
+
+    \[a_n = a_{n-1} \cdot c_1 + a_{n-2} \cdot c_2 + \dots + a_{n-k} \cdot c_k. \]
+
+    Такаяя последовательность называется \textbf{линейной рекурентной последовательностью}.
+\end{definition}
+
+\begin{example}
+    Числа Фибоначч. $F_0 = 1, ~ F_1= 1, \forall ~ n \geqslant 2 ~:~ F_n = F_{n 1 1} + F_{n - 2}$
+
+    \[
+        \dfrac{1}{1 - t - t^2} = \sum_{i=0}^{\infty} F_i t^i.
+    \]
+\end{example}
+
+Обозначим $F(t) = \sum\limits_{i=0}^\infty F_i t^i = F_0 t^0 + F_1 t^1 + \sum_{i=2}^\infty F_i t^i = $\\
+$ = 1 + t + \sum_{i=2}^\infty F_{i-1} t^i + \sum_{i=2}^\infty F_{i-2} t^i = 1 + t + t \cdot \sum_{i=1}^\infty F_i t^i + t^2 \sum_{i = 0}^\infty F_i t^i = $\\
+$ = 1 + t + t \cdot ( F(t) - 1 ) + t^2 \cdot F(t) \implies$
+$F = 1 + t \cdot F + t^2 F \implies$\\
+$F(t) = \dfrac{1}{1 - t  - t^2}$.
+
+\begin{theorem}
+    Пусть есть линейная рекуррентная последовательность порядка $k$:\\
+     $a_0, a_1, \dots, a_{k-1}, \dots$.
+    
+    Даны $a_0, \dots, a_{k-1}, ~ \forall n \geqslant k~:~ a_n \sum_{i = 1}^k a_{n-i} \cdot c_i$.
+
+    Тогда $A(t) = \sum_{i=0}^\infty a_i t^i = \dfrac{P(t)}{Q(t)}$ --- рациональная функция, где \\
+    $Q(t) = 1 - c_1 t - c_2 t^2 - \dots - c_{k} t^k$, а $P(t) = \dots$.
+\end{theorem}
+
+\begin{proof}
+    Обозначим
+    \[
+        A(t ) = \sum_{i=0}^\infty a_i t^i = \sum_{i=0}^{k-1} a_i t^i + \sum_{n = k} ^ \infty a_i t^n. 
+    \]\\
+    Сразу заменим последнюю сумму предположеним из теоремы, получим
+    \[ 
+        A(t ) = \sum_{i=0}^{k-1} a_i t^i + \sum_{n = k} ^ \infty t^n \sum_{i=1}^k a_{n-i} \cdot c_i
+    = S + \sum_{i=1}^k c_i \sum_{n=k}^\infty a_{n-i} t^n
+    = S + \sum_{i=1}^k c_i \cdot t^i \cdot \sum_{n = k - 1} ^\infty a_n t^n = \]
+    \[
+        = S + \sum_{i=1}^k c_i \cdot t^i \cdot \left( A(t) - A_{k-1} (t) \right) = X.
+    \]
+
+    Пусть $C(t) = \sum_{k=1}^k c_i t^i$, тогда $Q(t) = q - C(t)$.~~~
+    $X = S + C(t) \cdot A(t) - \sum_{k=1}^k c_i t^i A_{k-i}(t) = Y$.
+
+    Пусть $F(t)\, \% \,t ^ k = \sum_{i=0}^{k-1} f_i t^i$, тогда $A _{k-i} (t) = A(t) \,\%\, t^{k-1}$.
+
+    \[
+        \sum_{k=1}^k c_i t^i A_{k-i}(t) \cdot A{k-i} (t) = A(t) \,\%\, t^{k-i} = \left( C(t) \cdot A(t) \right) \,\%\, t^k \implies
+    \]
+    \[
+        A(t) = \sum_{i=0}^{k-1} a_i t^i + C(t) \cdot A(t) - (C(t) \cdot A(t) ) \,\%\, t^k \implies
+        A(t)(1 - C(t)) = \left( (1 - C(t) ) \cdot A(t) \right) \,\%\, t^k
+    \]
+    \[
+        \implies A(t ) = \dfrac{P(t)}{Q(t)}, ~~~\text{где} ~~Q(t) = 1 - C(t) = 1 - c_1 t - c_2 t^2 - \dots - c_k t^k,
+    \]
+    \[
+        P(t) = \left( \left( \sum_{i=0}^{k-1} a_i t^i \right) \cdot Q(t) \right) \mod t^k.
+    \]
+\end{proof}
+
+\begin{example}
+    Для чисел фибоначчи:
+    $a_0 = a_1 = 1, ~ c_1 = c_2 = 1 \implies$
+    \[
+    A(t) = \dfrac{(1 + t) \cdot (1 - t - t^2) \mod t^2}{1 - t - t^2}.
+    \]
+
+    \[ a_0 = 6, ~a_1 = -3, ~ c_1 = c_2 = 1~~ \implies~~
+    A(t) = \dfrac{(6 - 3 t) \cdot (1 - t) \mod t^2}{1 - t - t^2} = \dfrac{6 - 9t}{1-t-t^2}.
+    \]
+\end{example}
+
+
+
+\begin{proof}[Доказательство в обратном направлении]
+    Частный случай:
+    \[\dfrac{1}{1-C(t)} = A(t),~ A(t) \cdot (1 - C(t)) = 1, \]
+    \[ t^ 0 = a_0 = 1, ~ t^1: a_1 \cdot 1 - a_0 c_1 = 0, ~ t^2: a_2 \cdot 1 - a_1 \cdot c_1 - a_0 c_2 = 0. \]
+
+    Посмотрим на некоторую производящую функцию, например
+    $\dfrac{1 - 3t +6t^3}{1-t-t^2 - t^4}$.
+    Понимаем, что $a_n = a_{n-1} + a_{n-2} + a_{n-4}$. 
+    \[ a_0 = 1,~ a_1 = 1 - 3 = -2,~ a_2 = 1 - 2 = -1,~ = -1 -2+6 = 3 \]
+
+    \[ A(t) \cdot Q(t) = P(t).~~~
+    \sum_{i = 0}^{n} q_i \cdot a_{n-i} = p_n~~~
+    a_n = p_n - \sum_{i=1}^k q_i \cdot a_{n-i}. \]
+\end{proof}
+
+Пусть $a_0, a_1, \dots, a_{k-1}, ~ \forall n\geqslant k ~:$ 
+$a_n \sum_{i=1}^{k} a_{n-i}\cdot c_i$.
+
+Задача: посчитать $a_n$.\\
+Можно явно за $\mathcal{O}(n \cdot k)$.\\
+Можно через возведение матрицы в степень за $\mathcal{O}(k^3 \log_2 n)$.\\
+Потом мы научимся делать это за $\mathcal{O}(k^2 \log_2 n)$.
+
+На самом деле, для одной и той же числовой последовательности можно получить несколько производящих функций.
+
+    \[ A(t) = \dfrac{P(t)}{Q(t)} \cdot \dfrac{Q(-t)}{Q(-t)} = \dfrac{P(t) \cdot Q(-t)}{Q(t) \cdot Q(-t)}. \]
+
+Например, для чисел Фибоначчи: 
+\[ \dfrac{1}{1 - t - t^2} \cdot \dfrac{1 + t + t^2}{1 + t + t^2} = \dfrac{1 + t - t^2}{1 -3 t^2 + t ^4}. ~~~
+F_n = F_{n-2} \cdot 3 - F_{n-4}. \]
+
+\endinput
