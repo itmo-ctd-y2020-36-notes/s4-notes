@@ -25,14 +25,18 @@
             \item База: $n=1$ --- без комментариев.
             \item Если $\delta_1,\ldots, \gamma_n$ можно перестроить в доказательство $\alpha \to \gamma_n$, то $\gamma_1 \ldots \gamma_{n+1}$ тоже можно перестроить.
             Разберём случаи:
-            \begin{itemize}
-                \item $\delta_i$ --- гипотеза из $\Gamma$. Тогда 
-                \begin{itemize}
-                    \item[$(i-0.1)$] $\delta_i$ (аксиома или гипотеза)
-                    \item[$(i-0.2)$] $\delta_i \to \alpha \to \delta_i$ (схема 1)
-                    \item[$(i)$] $\alpha \to \delta_i$ (MP )
-                \end{itemize}
-            \end{itemize}
+            \begin{enumerate}
+                \item $\delta_i$ --- аксиома или гипотиза из $\Gamma$. \\
+                ($i - 0.6$) $\delta_{i}$ \\
+                ($i - 0.3$) $\delta_i \to \alpha \to \delta_i$\\
+                ($i$) $\alpha \to \delta_i$
+                \item $\alpha_i \to \delta$\\
+                ($i - 0.8, i-0.6, i-0.4, i-0.2$) (доказательство $\alpha \to \alpha$) \\
+                $(i)$ $\alpha\to\alpha$
+                \item $\delta_i$ получено из $\delta_j$ и $\delta_k$\\
+                ($j$) $\alpha \to $
+                \dots
+            \end{enumerate}
             ДОПОЛНИТЬ
         \end{enumerate}
     \end{itemize}
@@ -80,19 +84,25 @@
 \end{definition}
 
 \begin{definition}
-    $\Gamma \vDash \alpha$, $\alpha$ следует из $\Gamma = \{ \gamma_1, \ldots, \gamma_n\}$, если $\llbracket \alpha \rrbracket = T$ всегда при $\llbracket \gamma_i \rrbracket = T$ при любых $i$.  
+    $\Gamma \vDash \alpha$ означает, что $\alpha$ следует из $\Gamma = \{ \gamma_1, \ldots, \gamma_n\}$, если $\llbracket \alpha \rrbracket = T$ всегда при $\llbracket \gamma_i \rrbracket = T$ при любых $i$.  
 \end{definition}
 
 \begin{theorem}
     Исчисление высказываний корректно
-    \[ \vdash \alpha\ \text{влечёт}\ \vDash \alpha \]
+    \[ \vdash \alpha\ \text{влечёт}\ \vDash \alpha. \]
 \end{theorem}
-Мы даём доказательство на метаязыке, не пускаясь в отчаянный формализм.
-Такая строгость нас устраевает.
 \begin{proof}
     Индукция по длине доказательства. 
-    Не очень сложно.
+    
+    Разбор случаев:
+    \begin{enumerate}
+        \item $\gamma_n$ аксиома $\implies$ построить таблицу истинности
+        \item $\gamma_n$ --- м.п. $\gamma_j$, $\gamma_k$
+    \end{enumerate}
 \end{proof}
+
+Мы даём доказательство на метаязыке, не пускаясь в отчаянный формализм.
+Такая строгость нас устраевает.
 
 В матлогике бесмысленно формализовывать русский язык.
 Она нужна, чтобы дать ответы на сложные вопросы в математике, где здравого смысла недостаточно и нужна формализация.
