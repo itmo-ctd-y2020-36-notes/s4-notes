@@ -1,0 +1,183 @@
+\begin{theorem}
+    [Критерий плотности]
+
+    $\sqsupset (X, \mathscr{A})$ -- измеримое пространство, $\mu, \nu$ -- опр. (?) $\mathscr{A}$
+
+    $h\in S_+(X)$. Тогда следующие утверждения равносильны:
+    \begin{enumerate}
+        \item $h$ -- плотность меры $\nu$ относительно $\mu$ ($\forall E\in \mathscr A\quad \nu(E) = \int_E hd\mu$)
+        \item $\forall E \in\mathscr{A}$
+        \[\inf_E h \cdot \mu(E) \leqslant d(E) \leqslant \sup_E h \cdot \mu(E) \]
+    \end{enumerate}
+
+    Если $(X, \mathscr{A}, \mu) = (\R^n, \mathcal{A}, \lambda_n)$, тогда $1 \iff 3$:
+    \begin{enumerate}
+        \item [3] \[\forall P\in \mathcal P_n\quad \inf_P h\cdot \mu(P) \leqslant \nu(P) \leqslant \sup_P h\cdot \mu(P)\]
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    План: $1 \implies 2\implies 3$
+
+    \begin{itemize}
+        \item [$2\implies 1$?] $\sphericalangle E\in \mathscr{A} \quad \nu(E) \overset ? = \int_E hd\mu$
+
+        \[E = E\left\{ h = 0 \right\} \coprod E\left\{ h = +\infty \right\} \coprod E \left\{ 0<h<+\infty  \right\} \]
+
+        \begin{align*}
+            \nu(E) &= \nu(E\left\{ h = 0 \right\}) + \nu(E\left\{ h = + \infty  \right\} ) + \nu(E\left\{ 0<h<+\infty  \right\} )\\
+            \nu(E\left\{ h = 0 \right\}) &\leqslant  \sup_{E\left\{ h = 0 \right\} } = 0 = \int_{E\{h = 0\}} hd\mu\\
+            \nu(E\left\{ h = + \infty  \right\} ) &\leqslant h\cdot \mu(E) + \infty \cdot \mu(E) = \int_{E\{h = +\infty \}hd\mu} 
+        .\end{align*}
+    \end{itemize}
+
+    $\sphericalangle \dfrac{1}{q} \in (0, 1), ~ q >1~~~ (0, +\infty) = \bigvee\limits{k\in \Z} [q^k, q ^{k+1})$
+
+    $E\{ h \in (0, +\infty)\} = \bigvee E \{ q^k \leqslant h < q^{k+1} \}$
+
+    $q^k \mu(E_k) \leqslant \nu(E_k)\leqslant q^{k+1} \cdot \mu(E_k)$
+
+    $q^k \mu(E_k) \leqslant \int h d\mu \leqslant q^{k+1} \cdot \mu(E_k)$
+
+    $\dfrac{\nu(E_k)}{q} \leqslant q^k \cdot \mu(E_k) \leqslant \int_{E_k} h d\mu = 
+    q \cdot q^{k} \mu(E_k) \leqslant q \cdot \nu(E_k)$
+
+    Просуммируем это по всем $k$.
+    
+    $\dfrac{1}{q} \nu(E) = \int_E h d\mu \leqslant q \cdot \nu(E)$,~~$q \to 1 \implies$
+    $\nu(E) \leqslant \int_E h d\mu \leqslant\nu(E) \implies \nu(E) = \int_E hd\mu$
+    
+    $\sphericalangle \tl \nu$ -- стандартное продолжение <...> (нужно дополнить)
+\end{proof}
+
+\begin{theorem}
+    $\sqsupset \Phi$ -- диффеоморфизм множеств $G, O\subseteq \R^n\quad G \underset \Phi \rightarrow O$
+
+    Тогда $\forall E\in \mathscr A_n\quad E\subseteq O$
+    
+    \[\lambda_n (E) = \int_{\Phi^{-1}(E)} \bigg| \det \p \Phi \bigg| d \lambda_n
+    \]
+
+    \[\lambda_n(O) = \int_G \left|\det \p \Phi  \right|d\lambda_n \]
+    
+    Если $O\sim \tl O\quad G\sim \tl G\quad \left( \lambda_n(O \setminus \tl O) = \O \ldots \right) $, то
+    \[\lambda_n(\tl O) = \int_{\tl G} \left|\det \p \Phi  \right|d\lambda_n \]
+\end{theorem}
+\begin{note} % я добавлю добавил :thumbup:
+    \begin{align*}
+        \nu(P) \leqslant \sup_P hd\mu(P)\text{ -- от противного}\\
+        \implies \exists \text{ ячейки } P_0:\quad \nu(P) > M\cdot \mu(P) = \sup_{P_0} h \cdot \mu(P)\\
+        \Phi(x) = \Phi(x_0) + d_{x_0}\Phi(x - x_0) + o(x - x_0)\\
+        x \approx x_0\qquad \Phi(x) \approx \Phi(x_0) + d_{x_0}\Phi(x - x_0)\\
+    .\end{align*}
+
+    Если $Q$ -- малая ячейка, то \[\lambda_n(\Phi(Q)) \approx \lambda_n d_{x_0}\Phi(Q) = \left| \det \p \Phi_{x_0} \right| \lambda_n(Q)\]
+\end{note}
+
+\begin{corollary}
+    Если $\Phi: G \to O$ -- диффеоморфизм, $G, O \subseteq \R^n\quad \tl G \sim G, \tl O\sim O\quad f\in S(O)$, то 
+    \[\int_{\tl O} f(x)d\lambda_n(x) = \int_{\tl G} f(\Phi(u)) \left| \det \p \Phi(u) d\lambda_n(u) \right| \]
+\end{corollary}
+
+\begin{example}
+    Полярные координаты.
+    
+    $x = r \cos \varphi,~ y = r \sin \varphi$.
+    
+    $\Phi: (r, \varphi) \to (x, y)$,\\
+    $([0, +\infty) \times [-\pi, \pi])) \to \R^n$,\\
+    $(0, +\infty] \times (-\pi, \pi))) \to \R^n \setminus(-\infty, 0])$.
+
+    $\det \p \Phi =r; ~~~E = \R^2: $
+    \[
+        \iint_E f(x, y) dx dy = \iint_{\Phi^{-1}} f(r\cos \varphi , r \sin\varphi) r dr d\varphi 
+    \] 
+ \end{example}
+
+\begin{example}
+    [интеграл Эйлера-Пуассона]
+
+    \begin{align*}
+        I &= \int_0^{+\infty }e^{-x^2}dx\\
+        I\cdot I &= \int_0^{+\infty }e^{-x ^2}dx \cdot \int_0^{+\infty }e^{-ys} &= \iint _{\{x \geqslant 0, y\geqslant 0\}} e^{-x^2 + y^2}dxdy\\
+        &= \iint_{\left\{ 0\leqslant \varphi \leqslant \frac{\pi}{2}\quad r >=0 \right\} } e^{-r^2}rdrd\varphi\\ 
+        &=\int_0^{\frac{\pi}{2}}d\varphi \int_0^{+\infty }re^{-r^2}dr  \\% тут нет лишенего амперсанта? & ->  ^
+        &= \frac{\pi}{2} \cdot \frac{e^{-r^2}}{-2} \mid_0^{+\infty } = \frac{\pi}{4}\\
+        I = \int_0^{+\infty } r^{-x^2}dx = \frac{\sqrt \pi}{2}\\
+    .\end{align*}
+\end{example}
+
+\begin{example}
+    Цилиницрические координаты
+
+    \begin{align*}
+        r\cos \varphi = x\\
+        r\sin \varphi = y\\
+        h = z\\
+    .\end{align*}
+
+    $\Phi: (r, \varphi, h) \to (x, y, z)\quad \Phi: (0, +\infty )\times (-pi, pi)\times \R \to \R^3 \setminus \{(x, 0, z)|\mid x \leqslant 0\}\}$
+
+    $\left| \det \p \Phi \right| = r  $
+
+    $\iiint _E f(x, y, z)dxdydz = \iiint _{\Phi^{_1}(E)} f(r\cos\varphi, r\sin\varphi,h)\cdot rdrd\varphi dh$
+\end{example}
+
+\begin{example}
+    Сферические координаты
+
+    $r = \sqrt{x^2 + y ^2 + z^2}$
+    \begin{align*}
+        r\cos \varphi \cos \psi = x \\
+        r\sin \varphi \cos \psi = y \\
+        r\sin \psi \varphi \sin \psi = y
+    \end{align*}
+
+    $\det \p \Phi = r^2\cos\varphi$    
+    
+    Можно обобщить на $\R^n$
+
+    \begin{align*}
+        r = \|x\|\\
+        x_1 = r\cos\varphi_{n-1}\cos\varphi_{n-2} \ldots \cos\varphi_{1}\\
+        \ldots\\
+        x_{n-2} = r\cos\varphi_{n-1}\cos\varphi_{n-2}\sin\varphi_{n-3}\\
+        x_{n-1} = r\cos\varphi_{n-1}\sin \varphi_{n-2}\\
+        x_n = r\sin\varphi_{n-1}\\
+    .\end{align*}
+
+\end{example}
+
+\begin{example}
+        \[\iiint\limits_{\substack{x^2+y^2+z^2 \leqslant \R^2\\ x^2 + y \leqslant z^2\\ z\geqslant 0}} f(x, y, z ) \,dx \,dy \,dz\]
+
+        Преобразовать используя:
+        \begin{itemize}
+            \item Цилиндрические координаты
+
+            Перепишем множество интегрирования в новых координатах:
+            $\begin{cases}
+                r^2+h^2 \leqslant R^2\\
+                r^2\leqslant h^2 \implies r\leqslant h\\
+                h\geqslant 0, r\geqslant 0
+            \end{cases}$
+
+            \begin{align*}
+                I &= \iiint\limits_{\substack{r^2 + h^2 \leqslant R^2\\ r\leqslant h\\ h\geqslant 0, r\geqslant 0}} f\left( r\cos\varphi, r\sin\varphi, h \right) rdrd\varphi dh\\ 
+                &= \iint\limits_{\substack{\pi \leqslant \varphi \leqslant  \pi\\ 0\leqslant r\leqslant \frac{R}{\sqrt 2}}} r \int_{r}^{\sqrt{R^2 - r^2} } f\left( r\cos\varphi, r\sin\varphi, h \right) dr \\
+                &= \int_{-\pi}^{\pi}d\varphi \int_0^{\frac{R}{\sqrt 2}} rdr \int_r^{\sqrt{R^2 - r^2}} f\left( r\cos\varphi, r\sin\varphi, h \right) dh \\
+            .\end{align*}
+
+            \item Цилиндрические координаты (второй вариант)
+
+             \begin{align*}
+                 \int_0^{\frac{R}{\sqrt 2}} dh \int_{-\pi}^{\pi}d\varphi \int_0^h r fdr + \int_{\frac{R}{\sqrt 2}} dh \int_{-\pi}^{\pi}d\varphi \int_0^{\sqrt{R^2 - h^2}} rfdr\\
+             .\end{align*}
+            \item Сферические координаты
+
+            
+        \end{itemize}
+
+
+\end{example}
+
+\endinput

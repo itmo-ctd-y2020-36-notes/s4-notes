@@ -7,6 +7,53 @@
 \usepackage{preference}
 % \DeclareMathOperator{\Re}{Re}
 
+\newcommand{\p}[1]{#1^{\prime}}
+\newcommand{\pp}[1]{#1^{\prime\prime}}
+\newcommand\N{\ensuremath{\mathbb{N}}}
+\newcommand\R{\ensuremath{\mathbb{R}}}
+\newcommand\Z{\ensuremath{\mathbb{Z}}}
+\renewcommand\O{\ensuremath{\emptyset}}
+\newcommand\Q{\ensuremath{\mathbb{Q}}}
+\renewcommand\C{\ensuremath{\mathbb{C}}}
+\newcommand{\tl}[1]{\widetilde{#1}}
+\newcommand{\tll}[1]{\widetilde{\widetilde{#1}}}
+\newcommand{\ov}[1]{\overline{#1}}
+\let\svlim\lim\def\lim{\svlim\limits}
+\let\svsum\sum\def\sum{\svsum\limits}
+\usepackage{mdframed}
+\mdfsetup{skipabove=1em,skipbelow=0em}
+\theoremstyle{definition}
+% \newmdtheoremenv[nobreak=true]{definition}{Определение}
+% \newmdtheoremenv[nobreak=true]{theorem}{Теорема}
+% \newmdtheoremenv[nobreak=true]{lemma}{Лемма}
+% \newmdtheoremenv[nobreak=true]{problem}{Задача}
+% \newmdtheoremenv[nobreak=true]{property}{Свойство}
+% \newmdtheoremenv[nobreak=true]{statement}{Утверждение}
+% \newmdtheoremenv[nobreak=true]{corollary}{Следствие}
+\newtheorem*{note}{Замечание}
+% \newtheorem*{example}{Пример}
+\renewcommand\qedsymbol{$\blacksquare$}
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{\columnwidth}
+    \import{./figures/}{#1.pdf_tex}
+}
+\usepackage{tikz}
+\newcommand{\declare}[1]{
+    \expandafter\DeclareMathOperator\csname #1\endcsname{#1}
+}
+\declare{Int}
+\declare{rang}
+\declare{Cl}
+\declare{Tq}
+\declare{Tp}
+\declare{Lp}
+\declare{diam}
+\declare{diag}
+\undef\Re
+\declare{Re}
+\undef\Im
+\declare{Im}
+
 \begin{document}
 
 \def\chap#1#2{\ \\ {\large\bf#1 \ | \ \tt\scshape#2} \par}
@@ -19,4 +66,5 @@
 }\normalsize
 
 \input{parts/lection1.tex}
+\input{parts/lection2.tex}
 \end{document}
