@@ -1,0 +1,244 @@
+\begin{definition}
+    Алгебра Гейтинга~--- импликативная решетка с 0.
+
+    Введем операцию $\sim a \equiv a \to 0$~--- дополнение до 0.
+\end{definition}
+
+\begin{definition}
+    Булева алегбра~--- Алгебра Гейтинга, где $a + \sim a = 1$.
+\end{definition}
+
+\begin{example}
+    Булева Алгебра
+
+    \includegraphics[scale=0.8]{img/bool_algebra}
+    
+    \begin{itemize}
+        \item $\cdot$ соответствует $\&$,
+        \item $+$ соответствует $\vee$,
+        \item $\to$ соответствует $\to$,
+        \item $\sim$ соответствует $\neg$.
+    \end{itemize}
+\end{example}
+
+Далее $\alpha, \beta$~--- выссказывания в ИИВ.
+
+\begin{definition}
+    $\alpha \leqslant \beta$, если $\alpha \vdash \beta$
+\end{definition}
+
+\begin{definition}
+    $\alpha \approx \beta$, если $\alpha \leqslant \beta$ и $\beta \leqslant \alpha$
+\end{definition}
+
+\begin{definition}
+    Пусть $\xi$~--- множест во всех высказываний ИИВ.
+    
+    Тогда $[ \xi ]$~--- называется алгеброй Линденбаума $\mathcal{L}$.
+\end{definition}
+
+\begin{theorem}
+    $\mathcal{L}$ --- Алгебра Гейтинга.
+\end{theorem}
+
+\begin{lemma}
+    $1 = [A \to A]$
+\end{lemma}
+
+\begin{proof}
+    $\alpha \vdash A \to A$, верно (очевидно), то есть $[\alpha] \leqslant [A \to A]$, то есть $[A \to A] = 1$.
+\end{proof}
+
+\begin{theorem}
+    $\mathcal{L}$~--- корректная модель ИИВ.
+\end{theorem}
+
+\begin{theorem}
+    $\mathcal{L}$~--- полная модель ИИВ.
+
+\end{theorem}
+
+\begin{theorem}
+    $\vDash \alpha$, то есть $[\alpha] = 1$.
+
+    $1 = [A \to A]$, то есть $[\alpha] =1$, то есть $\beta \leqslant [\alpha]$ при всех $\beta$.
+    
+    Возьмем $\beta = A \to A$, $A \to A \vdash \alpha$, то есть $A \to A$, $(A \to A) \to \alpha$.
+
+\end{theorem}
+
+\begin{theorem}
+    Алгебра Гейтинга --- полная и корректная модель ИВ.
+\end{theorem}
+
+\begin{definition}
+    Исчисление дизъюнктно, если для любых $\alpha, \beta\quad \vdash \alpha \lor \beta$ влечёт $\vdash \alpha$ или $\vdash \beta$.
+\end{definition}
+
+\begin{theorem}
+    ИИВ дизъюнктно.
+\end{theorem}
+
+\begin{definition}
+    Пусть существует $f: A \to B, \quad A, B$ -- алгебры Гейтинга.    
+
+    $f$ -- гомоморфизм, если $f(0_A) = 0_B\quad f(1_A) = 1_B$ и $f(\alpha \star_A \beta) = f(\alpha) \star_B f(\beta)$
+\end{definition}
+
+\begin{definition}   [Геделева Алгебра]
+    Это такая алгебра, где $a + b = 1$ влечет $a = 1$ или $b = 1$.
+\end{definition}
+
+\begin{definition}
+    [$\Gamma (A)$]    
+    Пусть $A$~--- алгебра Гейтинга.
+
+    Определим $\gamma: A \to \Gamma(A)$ так:
+    $\gamma(x) = \begin{cases}
+        \omega, &x = 1_A\\
+        x, & x < 1_A\\
+    \end{cases}$
+    и добавим $1_{\Gamma(A)}$: $t \leqslant 1_\Gamma(A)$, если $t \in \Gamma(A)$.    
+
+    \begin{center}
+        \includegraphics[scale=0.5]{img/gedelerisation.png}    
+    \end{center}
+\end{definition}
+
+\begin{remark}
+    $\Gamma (A)$ неофициально называется Геделеризацией.
+\end{remark}
+
+\begin{theorem}
+  $\Gamma(A)$ -- Гёделева алгебра.  
+\end{theorem}
+\begin{proof}
+    Пусть $a+b = 1_{\Gamma(A)}$, посмотрим на картинку.
+\end{proof}
+
+\begin{statement}
+    $\Gamma(\mathcal L)$~--- Гёделева алгебра.
+\end{statement}
+\begin{proof}
+    Определим каноническое отображение $g(x): \Gamma(\mathcal L) \to \mathcal L$\\ 
+    $g(x) = \begin{cases}
+        1&, x = 1 \text{ или } \omega\\
+        x&, \text{ иначе}\\
+    \end{cases} $
+    \begin{statement}
+        $g(x)$ -- гомоморфизм
+    \end{statement}
+    
+\end{proof}
+
+\begin{theorem}
+    Рассмотрим ИИВ и алгебры Гейтинга $\mathcal L, \Gamma (\mathcal{L})$
+\end{theorem}
+
+\begin{statement}
+    Если $g: A \to B$ и $\llbracket\alpha\rrbracket_A = 1_A$, то
+    $\llbracket \alpha \rrbracket_B = g(1_A)$.
+\end{statement}
+
+
+\begin{proof}[Доказательство теоремы]
+
+    Рассмотрим $\vdash \alpha \vee \beta$.
+
+    $\Gamma (\mathcal L)$~--- Геделва алгеба, то есть алгебра Гейтинга.
+    
+    $\llbracket \alpha \lor \beta \rrbracket_{\Gamma(\mathcal L)} = 1_{\Gamma(\mathcal L)}$, 
+    т.е. либо $\llbracket \alpha \rrbracket =1_\gamma{\mathcal L}$ либо $\llbracket \beta \rrbracket _{\Gamma(\mathcal L)} = 1_{\Gamma(\mathcal L)}$
+
+    Рассмотрим $g : \Gamma(\mathcal{L}) \to \mathcal{L}$
+
+    $\llbracket \alpha \rrbracket _{\Gamma(\mathcal L )} = 1_{\Gamma(\mathcal L)}$, тогда $\llbracket \alpha \rrbracket _{\mathcal L} = g(1_{\Gamma(\mathcal L)}) = 1_{\mathcal L}$
+
+    т.е. $\vdash \alpha$.
+\end{proof}
+
+\begin{definition}
+    Модель ИИВ называется табличной, если\begin{itemize}
+        \item $\mathbb{V} = \mathcal{S}$;
+        \item $\llbracket \alpha \star \beta \rrbracket = f_\star \left( \llbracket \alpha \rrbracket, \llbracket \alpha, \beta \rrbracket \right)$,
+        \item  Существует $\true \in \mathcal{S}$ -- выделенная истина $\llbracket \alpha \rrbracket = \true$ тогда и только тогда, когда $\vDash \alpha$
+    \end{itemize}
+\end{definition}
+    \begin{definition}[Модель Крипки]
+        Некоторые факты, появившиеся на оси времени в истинном или ложном виде и больше не меняется
+        
+        \includegraphics[scale=0.7]{img/kripke_model_greate_ferma_theorem}
+    \end{definition}
+    
+    \begin{note}
+        $W$ -- частично упорядоченное множество миров.
+    \end{note}
+
+    \begin{definition}
+        $\Vdash$
+
+\includegraphics[]{img/forced_variable_worlds}
+
+        \begin{enumerate}
+            \item Вынужденность переменной A определяется моделью. При этом, если $W_x \leqslant W_y$, $ W_x\Vdash A$, то $W_y \vDash A$. 
+            \item Доопределим $\Vdash$ на все выражения:
+            \begin{enumerate}
+                \item $W \Vdash A\land B$, если $W \Vdash A$ и $W \Vdash B$
+                \item $W \Vdash A\lor B$, если $W \Vdash A$ или $W \Vdash B$
+                \item $W \Vdash \neg A$, если нет $W \leqslant W_x$, что $W \Vdash A$
+                \item $W \Vdash A \to B$, если во всех $W \leqslant W_x $ из $W_x \Vdash A$ следует $W_x \Vdash B$
+            \end{enumerate}
+        \end{enumerate}
+    \end{definition}
+
+    \begin{theorem}
+        У ИИВ нет полной конечной табличной модели.
+    \end{theorem}
+    \begin{proof}
+        $\varphi(u)\bigvee\limits_{i\neq j}^n A_i \to A_{j}$ 
+
+        Пусть $T$~--- модель, $|\mathbb{V}| = n$.
+
+        Рассмотрим $\varphi(n+1)$.  По принципу Дирихле. Есть $A_j$ и $A_i$: $\llbracket A_j \rrbracket = \llbracket A_i \rrbracket$.
+
+        Несложно показать $\llbracket A_i \to A_j = \true$. $\llbracket \varphi(n + 1) \rrbracket = \true$. 
+    \end{proof}
+
+\begin{theorem}
+    Модель Крипке~--- корректная модель ИИВ.
+\end{theorem}
+
+\subsection{Изоморфизм К---Х}
+
+\begin{statement}
+    $\tau, \sigma$~-- типы. 
+    
+    $\tau \to \sigma$
+    \begin{lstlisting}[mathescape=true]
+    f(x : $\tau$): $\sigma$ {
+        return g(x);
+    }\end{lstlisting}
+
+    $\tau \& \sigma$
+    \begin{lstlisting}[mathescape=true]
+    f(x: $\tau$, y: $\sigma$)\end{lstlisting}
+
+    $\tau \vee \sigma$
+    \begin{lstlisting}[mathescape=true]
+    f(x: std:variant<$\tau$, $\sigma$>)\end{lstlisting}
+
+\end{statement}
+
+\begin{definition}
+    [Изоморфизм Кари-Ховарда]
+
+    Программа соответствует доказательству. Тип соответствует утверждению. ...
+
+    (всё в интуиционисткой логике)
+\end{definition}
+
+\begin{note}
+    $f: \neg\neg \alpha \to \alpha $ -- потом подумаем как это интерпретировать.
+\end{note}
+
+\endinput
