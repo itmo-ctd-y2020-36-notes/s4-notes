@@ -1,0 +1,216 @@
+
+
+
+\begin{theorem}
+    [Фубини]
+
+    \begin{align*}
+        x = \left( x_1, \ldots, x_k \right) \\
+        y = \left( y_1, \ldots, y_m \right) \\
+        f(x, y) \in \mathscr L\left( E, \lambda_{k+m} \right) \\
+        E\in \mathscr A_{k+m}\\
+    .\end{align*}
+
+    то:
+    \begin{enumerate}
+        \item Для почти всех $x\in \R^k \quad g\left( \cdot  \right)  = f\left( x, \cdot  \right) \in \mathscr L\left( E\left( x, \cdot  \right)  \right) $
+        \item $I(x) = \int_{E\left( x, \cdot  \right) } f\left( x, y \right) d\lambda_m(y) \in \mathscr L\left( \R^k \right)   $\\
+        \item 
+            \begin{align*}
+                \int_E f\left( x, y \right) d\lambda_{k+m}\left( x, y \right)  = \int_{\R^k} \left( \int_{E\left( x, \cdot  \right) } f\left( x, y \right) d\lambda_m(y) \right) d\lambda_k(x)\\
+            .\end{align*}
+    \end{enumerate}         
+\end{theorem}
+
+\begin{example}
+    $E = A \times \{0\} \subseteq \R^{k + m} \quad_0\in \R^n$
+
+    $A$ -- неизмеримое в  $\R^k$
+
+    $E$ -- измеримо в  $\R^{k+m}$
+
+    $Pr_x(E) = A$ -- неизмеримое
+
+    Если  $Pr_x(E)$ измеримо, то вместо интеграла по $\R^k$ можно написать интеграл по проекции
+\end{example}
+
+\begin{figure}[!ht]
+    \centering
+    \incfig{proection}
+    \caption{Переход в интегралу по проекции}
+    \label{fig:proection}
+\end{figure}
+
+\begin{note}
+    Если $E$ -- компактное или открытое, то  $Pr_x(E)$ измеримо.
+
+    $Pr_x(E) = \Phi(E)$, где  $\Phi(x,y)\equiv x$ -- отображение проектирования
+
+    Если  $E$ -- компактное, то  $\Phi(E)$ -- компактное. Если открытое, то открытое.
+\end{note}
+
+\begin{example}
+    \begin{enumerate}
+        \item 
+            \begin{align*}
+                \int_0^1dx\int_0^1 \frac{x^2-y^2}{\left( x^2+y^2 \right) ^2}dy = I_1\\
+                \int_0^1dy\int_0^1 \frac{x^2-y^2}{\left( x^2+y^2 \right) ^2}dx = I_2\\
+            .\end{align*}
+            Если интегралы существуют, то они антиравны.
+
+             \begin{align*}
+                 I_1 = \int_0^1 \frac{y}{\left( x^2+y^2 \right) }_{y = 0}^{y = 1}dx = \int_0^1 \frac{1}{x^2+1} - 0dx = \arctg x |_0^1 = \frac{\pi}{4}
+            .\end{align*}
+
+            Вывод: функция $f(x,y) \not\in \mathscr L\left( [0,1]^2, \lambda_2 \right) $
+        \item 
+            \begin{align*}
+                \int _{-1}^1 dx\int_{-1}^1 \frac{xy}{\left( x^2+y^2 \right) ^2}dy\\
+                \int _{-1}^1 dy\int_{-1}^1 \frac{xy}{\left( x^2+y^2 \right) ^2}dx\\
+            \end{align*}
+            \begin{align*}
+                    f\in \mathscr {L}^2\left( [-1,1]^2 \right)  \iff |f|\in \mathscr{L} \left( [-1,1]^2 \right)  \implies |f|\in \mathscr{L} \left( [-1,1]^2 \right) 
+            \end{align*}
+            \begin{align*}
+                    \iint _{[0,1]^2} f\left( x,y \right) dy = \int _0^1 dx \int _0^1 \frac{xy}{\left( x^2+y^2 \right) ^2}dx
+            \end{align*}
+    \end{enumerate}
+\end{example}
+
+<.....>
+
+\begin{statement}
+    Семейство называется суммируемым, если функция суммируема 
+\end{statement}
+
+\begin{statement}
+    Если семейство $\left( a_x \right)_{x\in X} $ суммируемо, то $\{x: a_x \neq 0\}$ -- не более чем счётное.
+\end{statement}
+\begin{proof}
+    Не умаляя общности $a_x \geqslant 0$
+
+    $+\infty  > \int_X a_xdv = \int _{X_0}a_xdv > \int a_x dv \geqslant \frac{1}{j}\nu\left( x_j \right) \implies \nu(x_j) <+\infty  $ 
+
+    $X_0 = \bigcup\limits_{j=1}^{\infty }X_j $ -- не более, чем счётное
+\end{proof}
+
+\begin{statement}
+    $\sqsupset X$ -- н.б.ч.с, $Y$ -- числовое множество,  $\left( a_x \right) _{x\in X}\subseteq Y\quad \varphi: \N  \to X$
+
+    Тогда $\left( a_x \right) $ суммируемы $\iff \sum_{k=1}^{\infty } a_{\varphi(k)}$ сходится абсолютно.
+\end{statement}
+
+\section{Замена переменной в интеграле по мере}
+
+\subsection{``Пересадка'' меры}
+
+$\Phi: X \to Y$ . $\sqsupset \left( X, \mathscr A, \mu \right) $ -- пространство с мерой.
+
+$\mathscr D = \left\{ B\subseteq Y | \Phi^{-1}(B)\in \mathscr A \right\} $
+
+$\Phi^{-1}\left( \bigcap\limits_{k=1}^{\infty }B_k  \right) = \bigcap\limits_{k=1}^{\infty }\Phi^{-1}\left( B_k \right) \in \mathscr A $ 
+
+$\nu\left( B \right)  = \mu\left( \Phi^{-1}\left( B \right)  \right) $ 
+
+\begin{example}
+    $X = [0,2\pi )\quad \mathscr A = \mathscr A_1 \cap [0, 2\pi )$
+
+    $\Phi(t\in X) = \left( \cos t, \sin t \right) $
+\end{example}
+
+\begin{theorem}
+    [Общая схема замены переменных]
+
+    $\sqsupset \left( X, \mathscr A, \mu \right) \quad \left( Y, \mathscr{D}, \nu \right) $
+
+    $\Phi: X \to Y$ -- не портит измеримость.
+
+    $\sqsupset h\in S_+(X): \forall B\in \mathscr D$
+
+    \[\nu(B) = \int_{\Phi^{-1}(B)}hd\mu\]
+
+    Тогда $\forall f\in f\in S\left( Y, \nu \right)$
+    \[\int_Y fd\nu = \int_X f\left( \Phi(x) \right) h(x) d\mu(x) \]
+\end{theorem}
+\begin{proof}
+    $f\circ \Phi$ -- измерима?
+
+    $X \left\{ f\circ \Phi < a \right\}  = \Phi^{-1}\left( Y\left\{ f<a \right\}  \right) $. $Y\left\{ f<a \right\} \in \mathscr L$, т.к. $f$ измеримо. А тогда  $\Phi^{-1}\left( \ldots \right) \in\mathscr A$ 
+
+    Совпадение интегралов:
+    \begin{enumerate}
+        \item $f$ -- ступенчатая,  $f = \sum_{k=1}^{K} C_k\chi_{D_k}\quad \left\{ D_k \right\} $ -- разбиение $X$
+
+             \begin{align*}
+                 \int_Y fd\nu = \sum_{k=1}^{K} C_k \nu\left( D_k \right)  = \sum_{k=1}^{K} C_k\int_{\Phi^{-1}\left( D_k \right)} h d\mu &=  \\
+                 &= \int_X \left( \sum_{k=1}^{K} C_k\chi_{\Phi^{-1}\left( D_k \right)} <?>  \right)  \\
+                 &= \int_X f\circ \Phi(x)h(x)d\mu(x) \\
+                 f\circ \Phi(x) = C_k\quad x\in \Phi^{-1}(D_k)\\
+                 \sum_{k=1}^{K} C_k\chi_{\Phi^{-1}(D_k)}(x) = C_k
+             .\end{align*}
+         \item $f\in S_+(Y)\quad \exists \left\{ g_{j} \right\} $ -- ступенчатая небобратимая $g_i\uparrow f$
+
+              \begin{align*}
+                  \int_Y fd\nu = \lim_{j \to \infty} \int_Yg_jd\nu = \lim_{j \to \infty} \int_X g_j\left( \Phi(x) \right) h(x)d\mu\\
+                  &= \int_X f\left( \Phi(x) \right) h(x)dmu(x) \\
+             .\end{align*}
+
+         \item Общий случай:
+
+             $f = f_+ + f_-$
+
+              \begin{align*}
+                  \int_Y fd\nu = \int_Y f_+ - \int_Y f_-d\mu = \int_X f_+\left( \Phi(x) \right) h(x)d\mu(x) - \int_Y f_-\left( \Phi(x) \right) h(x)d\mu(x)\\
+                  &= \int f\left( \Phi(x) \right) h(x)d\mu(x) \\
+                  \left( f\left( \Phi \right) h \right) _+ = f_+\left( \Phi \right) h
+             .\end{align*}
+    \end{enumerate}
+\end{proof}
+
+\begin{corollary}
+    $\sqsupset \left( X, \mathscr A, \mu \right) \quad \left( Y, \mathscr D, \nu \right) $
+
+    $h\in S_+(X);\quad \Phi:X \to Y\quad \Phi^{-1}(\mathscr D)\subseteq \mathscr A$ 
+
+    и выполняется условие теоремы общей замены переменной. Тогда $\forall E\subseteq \mathscr D\quad f\in S\left( E, \nu \right) $:
+    \[\int_E f(y)d\nu(y) = \int_{\Phi^{-1}(E) f\left( \Phi(x) \right) h(x)d\mu(x)}\]
+
+    Рассмотрим продолжение нулём $f$ с  $E$ на  $Y$
+
+    \[\int_E fd\nu = \int_Y (y)\chi_E(y)d\nu(y) = \int_X f\left( \Phi(x) \right) \underbrace{\chi_E\left( \Phi(x) \right)}){\chi_{\Phi^{-1}(E)}} h(x)d\mu(x) = \int_{\Phi^{-1}(E)} f\left( \Phi(x)h(x)d\mu(x) \right) \]
+\end{corollary}
+
+\begin{corollary}
+    [частный случай 1]
+
+    Если $h \equiv 1$ в условии теоремы.
+
+    ($\forall E|in \mathscr D\quad \nu(E) = \int_{\Phi^{-1}(E)}d\mu = \mu\left( \Phi^{-1}\left( E \right)  \right) $) 
+
+    мера $\nu$ при этом называется образом меры  $\mu$
+
+    \[\forall  f\in S(E)\quad \int_E f d\nu  = \int_{\Phi^{-1}(E)} f\circ \Phi(x)d\mu(x)\]
+\end{corollary}
+
+\begin{corollary}
+    [Частный случай 2]
+
+    $X = Y\quad \Phi = id\quad \nu(E) = \int_E h(x)d\mu(x)$
+\end{corollary}
+
+<..>
+
+\begin{theorem}
+    $\sqsupset \left( X, \mathscr A, \mu \right) $ -- пространство с мерой, $\Phi:X \to Y\quad h\in S_+(X)$ 
+
+    Следующие утверждения равносильны: 
+    \begin{enumerate}
+        \item $h$ плотность  $\nu$ относительно  $\mu$
+        \item $\forall E\in \mathscr A$ \[\inf_E h \mu E \leqslant \nu(E) \leqslant  \sup_D h\mu(E)\]
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    $I \iff \forall E\in \mathscr A\quad \nu(E) = \int_E h d\mu$
+
+    Т.о. $I \implies II$
+\end{proof}
