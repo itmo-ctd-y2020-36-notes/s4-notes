@@ -1,0 +1,155 @@
+
+\begin{theorem}
+    [воспоминание]
+
+    \[\mu(E) = \int_{\Phi^{-1}} h d\mu \iff \forall E\in \mathscr{A} \quad \inf_E h \mu(E) \leqslant \nu(E) \leqslant \sup_E h \mu(E)\]
+\end{theorem}
+
+\begin{note}
+    \[g(x) = \sum_{k=1}^{\infty } h_k \left( \Theta(x - a_k) - \Theta(x_0 - a_k) \right) \]
+
+    Для этой меру нужно было фиксировать открытый интервал $\Delta$, что \[ \forall [a,b] \subseteq \Delta\quad \sum_{k: a_k\in [a,b]}h_k < +\infty  \]
+
+    \begin{align*}
+       g(a_k + 0) - g(a_k - 0) &= h_k\left( \Theta(a_k - a_k + 0) - \Theta(x_0 - a_k + 0) - \Theta(a_k-a_k - 0) + \Theta(x_0 -a_k - 0) \right)  \\ 
+       &= h_k \\ %?
+    .\end{align*}
+\end{note}
+
+\begin{statement}    
+Если $\nu = \sum\limits_k h_k \delta_{a_k}$, то $\nu$ совпадает с $\mu_g$ на $\mathscr{A}_{\mu_g}$ при условии (*).
+\end{statement}
+\begin{proof}
+
+    Если хочется скорее сослаться на теорему об единственности, то можно сделать так:    
+    Рассмотрим $[a, b)$. $\nu([a, b)) = \sum\limits_{k \,:\, a_k \in [a, b)} h_k.$
+
+    \[ \mu_g([a, b)) = g(b) - g(a) = \sum_{k\in\N} h_k \left(\Theta(b - a_k) - \Theta(a - a_k)\right) = \sum_{k \,:\, a_k \in [a, b)} h_k.\]
+
+    Если $\{ a_k\}_k$ --- конечное множество, то вопросов с суммируемостью не веознкает.
+
+    \[g(x) = \sum_k h_k \cdot \Theta(x - a_k) + C   \]
+\end{proof}
+
+\begin{note}
+    Локально суммируемая функция -- это такая, что она будет на любом шаре суммируемой по Лебегу
+\end{note}
+
+\begin{theorem}
+    $g(x)$ -- абслолютно непрерывная $\iff \exists h\in \mathscr L_{loc}\left( \R, \lambda \right) \exists x_0\in \R, c\in \R$ 
+    \[(x) = \int_{x_0}^x h(x) d\lambda + C\]
+\end{theorem}  
+
+По теореме Барроу $g(x)$:
+\begin{itemize}
+    \item $g(x)\in C(\R)$,
+    \item $g(x)$ дифференцируема в точках ... функции $h(x)$. 
+\end{itemize}
+
+\begin{proof}
+\begin{itemize}
+    \item  Если $x_1\in \R$ \[g(x) - g(x_1) = \int_{x_1}^x h(x)dx\]
+
+$\exists \delta_0 >0, x\in V_{\delta_0}(x_1), \quad h\in \mathscr L\left( V_{\delta_0} \right) $
+
+$\forall \varepsilon >0 \exists \delta (\leqslant \delta_0 ) >0 : \int_E h(x)d\lambda  < \varepsilon \forall E\subseteq V_{\delta_0}(x_1):\, \lambda_1(E) <\delta$
+
+$\implies $ Если  $\left| x_1 - x \right| <\delta\quad \left| \int_{x_1}^x h(x)dx \right| \leqslant \varepsilon$
+
+\item Пусть $x_1$ --- точка непрерывности для $h(x)$. $h(x) = h(x_1) + \underbrace{ \alpha (x - x_1)}_{o(1) \text{ при } x\to x_1 }$
+
+\[ \dfrac{g(x) - g(x_1)}{x - x_1} = \frac{1}{x - x_1} \int_{x_1}^x h(x_1) + \alpha(x-x_1)dx = h(x_1) + \frac{1}{x - x_1} \int_{x_1}^x \alpha(x - x_1)dx \leqslant \varepsilon(x - x_1)\]
+
+Если ``$x$ остаточно близок к $x_1$''
+\end{itemize}
+\end{proof}
+
+\begin{note}
+    В частности, если $h(x) \in C(\R) \implies g\in C^1(\R)$ и $\p g(x)\equiv h(x)$    
+\end{note}
+
+\begin{note}
+    \[\int_E fd\nu = \sum_{k\,:\,a_k\in E} h_k f(a_k) = \sum_{k\,:\,a_k\in E} f(a_k) \cdot \text{ скачок } g(a_k)\]  
+\end{note}
+
+\begin{statement}
+    $\sqsupset g(x) = \int_{x_0}^x h(x)d\lambda_1(x) +C\quad h(x) \geqslant 0\quad h\in \mathscr{L}_{loc}\left(  \R, \lambda\right) $     абсолютно непрерывная возрастающая функция.
+  
+    Тогда $\int_E f d \mu_g = \int_E f(x) h(x) d \lambda (x)$.
+
+    В частности, $\forall$~возрастающей $g(x) \in C^{1} (\R)$.
+    \[\int_E f d\mu_g = \int_E f \cdot \p g (x) d \lambda(x) \left( = \int_E f \cdot dg \right). \]
+\end{statement}
+
+\begin{proof}
+    $\sphericalangle \nu (E) = \int_E h d \lambda_1$. 
+    \[\mu_g (\langle a, b \rangle )= \mu_g ([a, b)) = g(b) - g(a) = \int_a^b h(x) d \lambda_1 = \nu([a, b)) = \nu(\langle a, b \rangle ). \]
+
+    $\mu_g$ и $\nu$ совпадают на открытых. Если $K$ -- компакт, $K = B \setminus \left( B \setminus K  \right) $
+
+    $\nu(K) + + \nu(B \setminus K) = \nu(B)\qquad \mu_g(K) = \nu(K) = \nu(B) - \nu(B \setminus K)$
+
+    $\sqsupset E$ -- $\lambda_1$-мера $O$
+
+    $ \implies \exists \delta >0 \exists $ открытое $G: E\subseteq G$ и $:\lambda_1(G) <\delta$
+    
+    
+    $\implies \int\mid_{G_0}$ -- абсолютно непрерывное $\implies \forall \varepsilon>0 \exists \delta>0: \lambda_1(\tl E)<\delta\quad \tl E \subseteq G$
+    
+    $\int_{\tl E}h < \varepsilon\quad \tl E = G \implies \nu(G) <\varepsilon \implies \mu_g(G) <\varepsilon\,\varepsilon\text{ --- } \forall  \implies \nu(E) = \mu_g(E) = 0$   
+
+    Если $E$~--- неограничено $\lambda_1$--меры 0 $\implies \exists~$ ограниченное $E_j\,:\,E=\bigcup E_j$.
+    $\forall i \in \N ~ \lambda_1 (E_j) = 0 \implies \nu(E_j) =\mu_g (E_j) = 0$ $\implies \nu(E) = \mu_g (E).$
+
+    Дальше можно применить теорему о плотности меры. Применяю общую мхему замены переменной все доказывается. 
+\end{proof}
+\begin{problem}
+    \begin{enumerate}
+        \item $g(x) = \arctg x$. Найти:
+        \begin{enumerate}
+            \item $\sup \Bigg\{ \mu_g(I)~:~ I = \langle a, b \rangle,~ \lambda_1 (I) \leqslant \delta \Bigg\},~ \delta > 0$.
+            \item $\sup \Bigg\{ \lambda_1(I)~:~ I = \langle a, b \rangle,~ \mu_g (I) \leqslant \delta \Bigg\},~ \delta > 0$.
+        \end{enumerate}
+        \item $g(x) = \arctg x + \Theta(x - 1)$
+        \begin{enumerate}
+            \item Для $\delta = 1$
+        \end{enumerate}  
+    \end{enumerate}
+\end{problem}
+\begin{proof}
+    [Решение]
+
+    $\mu_g(I) = g(b) -g(a) = \int_I \p g(t)dt = \int_{[a,b]}\frac{dt}{1 + t^2}$
+
+    \begin{enumerate}
+        \item 
+        \begin{enumerate}
+            \item \begin{align*}    
+                \sup \{\mu_g(I)\} &= 2 \int_0^{\frac{\pi}{2}} \frac{dt}{1 + t ^2}\\
+            .\end{align*}
+        \end{enumerate}
+    \end{enumerate}
+\end{proof}
+
+\begin{example}
+    Пример меры Лебега--Стилтьеса 
+    не евклидовой, не дискретной, не абсолютно непрерывной:
+
+    \begin{align*}
+        C_0 &= \left[0,1\right]\\
+        C_1 &= \left[0, \frac{1}{3}\right] \cup \left[\frac{2}{3}, 1\right] \\
+        C_2 &= \left[0, \frac{1}{9}\right] \cup \left[\frac{2}{9}, \frac{1}{3}\right] \cup \left[\frac{2}{3}, \frac{7}{9}\right] \cup \left[\frac{8}{9}, 1\right]  \\
+        C_{k+1} &\subseteq C_k\quad C_k \text{ -- компакт}\\
+        C &= \bigcap\limits_{k=1}^{\infty}C_k \text{ -- компакт}  \\
+        \lambda_1(C) &= \lambda_1([0,1]) - \frac{1}{3} - \frac{2}{9}  - \ldots - \frac{2^{k-1}}{3^k} = 0\\
+    .\end{align*}  
+
+    $\psi(x) = \frac{1}{3}x\quad \Theta(x) = 1-x$
+    
+    \[\Phi = \left\{ [0,1] \cap C, \psi(C), \Theta\psi(C), \psi \psi(C), \psi\Theta(C), \Theta\psi\psi(C) , \Theta\psi\Theta\psi(C), \ldots \right\} \] 
+    -- полукольцо
+
+    $\mu(C) = 1\quad \mu(P) = \frac{1}{2^k}$ -- если $P$ есть результат применения $k$ штук $\psi$ и $\Theta$
+
+    $\sphericalangle \mu$ -- стандартное продолжение
+\end{example}
