@@ -56,9 +56,9 @@ $B \in \Omega$, \underline{если} $a \in B$, $x \leqslant a$ влечет $x 
     Множество нижних граней $a, b$ --- $a \sqcup b$ --- множество $\{ x \in X ~|~ a \geqslant x, b \geqslant x\}$.\\
     $A$, наименьший элемент $A$ --- такой $a \in A$, что нет $b \in A$, $b \leqslant a$.\\
     $a+b$ = наименьший элемент множества верхних граний.\\
-    $a*b$ = наибольший элемент множества нижних граний.
+    $a \cdot b$ = наибольший элемент множества нижних граний.
 
-    Решетка --- частично упорядоченное множество, где для каждых двух элементов существуют $a+b$ и $a*b$.
+    Решетка --- частично упорядоченное множество, где для каждых двух элементов существуют $a+b$ и $a \cdot b$.
 \end{definition}
 
 \begin{example}
@@ -95,17 +95,17 @@ $B \in \Omega$, \underline{если} $a \in B$, $x \leqslant a$ влечет $x 
     Решетка с псевдодополнением для всех элементов называется импликативной.
 \end{definition}
 
-\begin{definition}[0 и 1] .
+\begin{definition} Определим 0 и 1 следующим образом:
     \begin{itemize}
-        \item $0$ --- элемент, что $0 \leqslant x $ при всех $x$.
+        \item $0$ --- элемент, что $0 \leqslant x $ при всех $x$;
         \item $1$ --- элемент, что $x \leqslant 1 $ при всех $x$.
     \end{itemize}
 \end{definition}
 
 \begin{theorem}
-    [В импликативной решетке 1 есть всегда] $X, \leqslant$ --- импликативная решетка.
+    [В импликативной решетке 1 есть всегда] $\langle X, \leqslant \rangle$ --- импликативная решетка.
     
-    Рассмотрим $a \to a= \text{наиб} \{ c ~|~ q \cdot c \leqslant a\} = \text{наиб} X = 1$.
+    Рассмотрим $a \to a= \text{наиб} \{ c ~|~ q \cdot c \leqslant a\} = \text{наиб} \{ X \} = 1$.
 \end{theorem}
 
 \begin{theorem}
