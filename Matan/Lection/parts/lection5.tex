@@ -153,3 +153,145 @@ $\implies $ Если  $\left| x_1 - x \right| <\delta\quad \left| \int_{x_1}^x h
 
     $\sphericalangle \mu$ -- стандартное продолжение
 \end{example}
+
+\section{Интегралы, зависящие от параметра}
+\begin{example}
+    \[\Gamma(p) = \int_0^{+\infty} x^{p-1} e ^{-x} dx, ~~~
+    p > 0, p \in \R;~~~
+    \int_a^b f(x, y) dx,~~~
+    \int_\alpha(y)^\beta(y) f(x, y) dx. \]
+\end{example}
+
+Пока что мы будем рассматривать интегралы, зависящие от параметра $y$ 
+по фиксированному промежутку: $I(y) = \int_X f(x, y) d\mu (x)$.
+
+Пусть у нас есть пространство с мерой $(X, \mathscr{A}, \mu)$, $f(\dot, \mu) \in \mathcal{L}(X, \mu)$.
+$Y \subseteq \overline{Y}$.
+
+Для чего это нужно? Бывает, что просто сформулированные задачи имеют ответ в виде интеграла с параметром. 
+Бывает, что введение параметра упрощает вычисление интеграла.
+
+\begin{statement}
+    $f$ уовлетворяет условию Лебега локально относительно $y_0$, $y_0$~--- параметр,
+    если $\exists \,$ открытое $V(y_0)$ в $\overline{Y}$ и $\Phi_{(x)} \in \mathcal{L}(X, \mu)$
+    $\forall y \in V(y_0)$ для почти всех $x \in X$. 
+\end{statement}
+
+\begin{statement}
+    Пусть у нас есть пространство с мерой $(X, \mathscr{A}, \mu)$, 
+    $\overline{Y}$~--- метрическое пространство, $Y \subseteq \overline{Y}$, 
+    $ y_0$~--- предельная точка для $Y$.
+    Почти везде $f(x,y ) \to g(x)$ при $y \to y_0$, и $f(x, y) $ удовлетворяет локаольно условию Лебега относительно $y_0$. 
+
+    Тогда $g(x) \in \mathscr{L}(X, \mu)$ и
+    \[\lim_{y \to y_0} \int_X f(x, y) d\mu(x) = \int_X g(x) d\mu(x)\]  
+    % \[\lim \to \infty}   \]
+\end{statement}
+\begin{proof}
+    Так как $y_0$ --- предельная, $\exists \{y_k\}\subseteq Y \to y_0$.
+    $f_k(x) = f(x, y_k)$, $y_k \in V(y_0) \implies |f_k(x) | \leqslant \Phi(x)$
+    $\implies$ по теореме Лебега о мажорируемой сходимости,
+    $g(x) = \lim_{k\to\infty} f(x, y_k) \in \mathcal{L}(X, \mu)$ и
+    \[\int_X g(x) d\mu =\int_X \lim_{k\to\infty} f(x, y_k) d\mu = \lim_{k\to\infty} \int_X f(x, y_k) d\mu . \]
+
+    \[I(y) = \int_X f(x, y) d\mu(x);~~ \lim_{k\to\infty} I(y_k) ~\forall ~ \text{последовательности } y_k \to y_o \implies \exists \lim_{y\to y_0} Y(y).\]
+\end{proof}
+% todo example % ~done
+\begin{example}
+    $\sqsupset p_0 >0\quad \sqsupset $
+
+    $\forall p\in V_{\delta}(p)$
+    
+    $x\in \left( 0, 1 \right]\quad x^{p-1}e^{-x} \leqslant x^{p_0 - \delta}e^{-x}$
+
+    $x > 1\quad x^{p-1}e^{-x} \leqslant x^{p_0 + \delta}e^{-x}$ 
+
+    $\Phi(x) = \begin{cases}
+        x^{p_0 - \delta}e^{-x}&, x\in (0,1]\\
+        x^{p_0 + \delta}e^{-x}&, x > 1\\
+    \end{cases}\quad \int_0^{+\infty }x^qe^{-x}dx$ -- сходится для любого 
+\end{example}
+
+\begin{note}
+    Если в условиях предыдущего утверждения $f(x, y)$~--- непрерывна по $y$ в точке $y_0$, 
+    то наш интеграл $I(y)$ тоже будет непрерывен в точке $y_0$. 
+\end{note}
+
+\begin{definition}
+    Пусть имеется пространство с мерой $(X, \mathscr{A}, \mu)$, $y_0$~--- предельная точка для $Y\subseteq \overline{Y}$
+    $f(x,y ) \rightrightarrows g(x)$ на $X$ при $y\to y_0$ если 
+    $\forall \varepsilon > 0 \, \exists $ окрестность $V(y_0)$\,:
+    \[ \forall x \in X~~~ \forall y \in V(y_0) ~~~ |f(x,y) -g (x) | < \varepsilon \iff \sup_{x\in X} |f(x, y) - g(x) | \underset{y\to y_0}{\to} 0. \]
+\end{definition}
+
+\begin{example}
+    \begin{enumerate}
+        \item (хороший) $f(x, y) = \frac{\sin(x^2 + y^2)}{1+ x^2 + y^2}\quad y \to +\infty $
+        
+        \[|f(x, y) | \leqslant \dfrac{1}{1 + y^n}\implies y\to \infty \sup |f(x, y) | = \dfrac{1}{1 + y^n} \underset{y\to\infty} \to 0. \]
+        Сходимость есть и равномерная сходимость тоже есть.
+        
+        \item (плохой) $x y e^{-xy} \underset{y\to 0}{\to} 0$.
+        Сходимость к нулю есть, а
+        \[ \sup{x> 0} x y e^{-xy} \geqslant f(\dfrac{1}{y}, y) = \dfrac{1}{e} \not \to 0 \implies \text{равномерно не сходится}. \]
+    \end{enumerate}
+\end{example}
+
+\begin{statement}
+    Пусть $(X, \mathscr{A}, \mu), ~~ \mu(X) < +\infty$.
+    \[f(x,y ) \underset{y\to y_0} {\rightrightarrows} g(x),~~~ f(x, y) \in \mathcal{L}(X, \mu). \]
+
+    Тогда $g(x)\in \mathscr{L}(X, \mu)$ И 
+    \[\lim_{y \to y_0}\int_X f(x, y)d\mu(x)  = \int_X g(x)d\mu(x)\]    
+\end{statement}
+
+\begin{proof}
+    Для $\varepsilon  = 1 ~~~ \exists $ окрестность $V(y_0)\,:~ $
+    $\forall x \in X, y \in V(y_0)~~ | f(x, y ) - g(x) | \leqslant 1 :$
+    
+    $|g(x)| \leqslant |f(x,y)| + |g(x) - f(x,y)| \leqslant  |f(x,y)| + 1 \implies g\in \mathscr{L}(X, \mu)$
+\end{proof}
+
+\begin{statement}
+    $(X, \mathscr{A}, \mu)$~--- пространство с метрой
+    $y \subseteq \R (\C), ~~~ y_0$~--- предельная точка для $Y$.
+    Пусть $f(x, y),~~~ \p f_y $~--- удовлетворяет условию Липшица локально, $f: X \times Y \to \R (\C)$.
+
+    Тогда $I(y)  = \int_X f(x, y) d\mu (x)$ дифференцируема в точке $y_0$ и
+    \[ \p I (y_0) = \int_X \p f_y (x, y) d\mu (x).\]
+\end{statement}
+
+\begin{proof}
+    \begin{align*}
+        \p I (y_0) &= \lim_{y\to y_0} \dfrac{I(y) - I(y_0)}{y - u_0}\\ 
+        &= \lim_{y \to y_0} \dfrac{1}{y - y_0 } \int _ X \underbrace{\left( f(x, y) - f(x, y_0) \right)}_{\p f _y (x, y_0 + \Theta (y - y_0)), ~ \Theta \in (0, 1)} d\mu(x)\\ 
+        &= \lim \int_X \p f_y(x, \overset{C(y)}{y_0 + \Theta(y - y_0)}) d\mu(x)\\
+        &\underset{\text{Утв}}= \int_X \lim(\ldots)d\mu(x) = \int_X \p f_y(x, y_0)d\mu(x).
+    \end{align*}
+
+    $y\in V_{\delta}(y_0)$ -- из условия Липшица для $\p f_y \implies C(y)\in V_{\delta}(y_0) $
+    
+    $\implies \left| \underbrace{\p f_y(x, C(y))}_{\p f_y(x, y_0)}  \right| \leqslant \Phi(x) $ 
+\end{proof}
+
+\begin{example}
+    $\Gamma(p) \int_0^\infty x^{p - 1} e^{-x} d\mu$.
+
+    \[\p f_p (x, p) = (p - 1) x^{p - 2} e^{-x}, ~p - 2 > -1 \implies  p > 1.\]
+
+    При $p> 1$
+    \[\p \Gamma (p) = (p - 1) \int_{0}^{+\infty} x^{p-2} e^{-x} = (p-1) \cdot \Gamma(p - 1) \implies 
+    \p \Gamma (p) = (p - 1) \cdot \Gamma(p-1).\]
+
+    \[ \Gamma(p) = \int_0^{+\infty} \dfrac{\p (x^p)}{p} = \dfrac{1}{p} \left( x^p e^{-x} \bigg|_o^{\infty} - \int_{o}^{+\infty} x^p \p(e^{-x}) d x \right) = \dfrac{1}{p} \cdot (p + 1). \]
+
+    \begin{align*}
+        \Gamma(1) &= \int_0^{+\infty }e^{-x} = 1\\
+        \Gamma(2) &= 1\\
+        \Gamma(3) &= 2\\ 
+        \Gamma(n) = (n-1)!\quad n \in \N 
+    .\end{align*}
+\end{example}
+% enought? 
+
+
