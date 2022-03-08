@@ -1,4 +1,4 @@
-\subsection{Одномерные методы оптимизации}
+\section{Одномерные методы оптимизации}
 
 Пусть у нас есть функция $f(x)$.
 
@@ -103,11 +103,11 @@ $\varphi(a) E_1 + \varphi (b) E_2 + \varphi^\prime (a) E_3 + \varphi^\prime (b) 
 
 Условия выбора следующей точки для исследования ее на минимум.
 
-\begin{itemize}
-    \item $\varphi (\alpha) = f(x_k + \alpha p_k)$
-    \item $f(x_k + \alpha p_k) \leqslant f(x_k) + c_1 \alpha \triangledown f (x_k) p_k$.\\
-    $0 < c_1 < 1$, $c_1 = 10^{-4}$.
-\end{itemize}
+\begin{enumerate}
+    \item $f(x_k + \alpha p_k) \leqslant f(x_k) + c_1 \alpha \triangledown f (x_k) p_k$,\\
+    где $0 < c_1 < 1$, $c_1 = 10^{-4}$.
+    \item $\triangledown f(x_k + \alpha_k p_k) \cdot p_k \geqslant c_2 \triangledown f(x_k) \cdot p_k$.
+\end{enumerate}
 
 Первое условие накладывает вограничения на выбираемое $\alpha$.
 \begin{center}
@@ -121,4 +121,3 @@ $\varphi(a) E_1 + \varphi (b) E_2 + \varphi^\prime (a) E_3 + \varphi^\prime (b) 
     \includegraphics[scale=0.333]{img/methopt_volfe_conditions_2}
 \end{center}
 
-В целом, есть доказательство корректности условий Вольфа.
