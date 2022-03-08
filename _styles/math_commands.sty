@@ -1,0 +1,39 @@
+% derivatives
+\newcommand{\p}[1]{#1^{\prime}}
+\newcommand{\pp}[1]{#1^{\prime\prime}}
+% numerical sets
+\newcommand\N{\ensuremath{\mathbb{N}}}
+\newcommand\R{\ensuremath{\mathbb{R}}}
+\newcommand\Z{\ensuremath{\mathbb{Z}}}
+\newcommand\Q{\ensuremath{\mathbb{Q}}}
+\renewcommand\C{\ensuremath{\mathbb{C}}}
+\renewcommand\O{\ensuremath{\emptyset}}
+% overlines and tildes
+\newcommand{\tl}[1]{\widetilde{#1}}
+\newcommand{\tll}[1]{\widetilde{\widetilde{#1}}}
+\newcommand{\ov}[1]{\overline{#1}}
+% limits, sum with under and over text 
+\let\svlim\lim\def\lim{\svlim\limits}
+\let\svsum\sum\def\sum{\svsum\limits}
+\let\svprod\prod\def\prod{\svprod\limits}
+\let\svsup\sup\def\sup{\svsup\limits}
+\let\svinf\inf\def\inf{\svinf\limits}
+
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\newcommand{\declare}[1]{
+    \expandafter\DeclareMathOperator\csname #1\endcsname{#1}
+}
+% text 
+\declare{Int}
+\declare{rang}
+\declare{Cl}
+\declare{Tq}
+\declare{Tp}
+\declare{Lp}
+\declare{diam}
+\declare{diag}
+\undef\Re
+\declare{Re}
+\undef\Im
+\declare{Im}

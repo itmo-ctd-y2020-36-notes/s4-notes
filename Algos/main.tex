@@ -1,97 +1,16 @@
-\documentclass[10pt]{book}
-% \usepackage{preference}
-\usepackage{amsmath, amssymb, amsthm, amsfonts, mathrsfs, dsfont, mathtools}
-\pdfminorversion=7
-\pdfsuppresswarningpagegroup=1
-\usepackage[utf8]{inputenc}
-\usepackage[T2A]{fontenc}
-\usepackage[english,russian]{babel}
-\usepackage[dvipsnames]{xcolor}
-\usepackage{listings}
-\definecolor{codegreen}{rgb}{0,0.6,0}
-\definecolor{codegray}{rgb}{0.5,0.5,0.5}
-\definecolor{codepurple}{rgb}{0.58,0,0.82}
-\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\documentclass[10pt]{article}
+\usepackage{../_styles/preference}
+\usepackage{../_styles/psevdocode}
+\usepackage{../_styles/math_commands}
+% \usepackage{listings}
 
-\lstdefinestyle{myStyle}{
-    backgroundcolor=\color{backcolour},   
-    commentstyle=\color{codegreen},
-    keywordstyle=\color{magenta},
-    numberstyle=\tiny\color{codegray},
-    stringstyle=\color{codepurple},
-    basicstyle=\ttfamily\footnotesize,
-    breakatwhitespace=false,         
-    breaklines=true,                 
-    captionpos=b,                    
-    keepspaces=true,                 
-    numbers=left,                    
-    numbersep=5pt,                  
-    showspaces=false,                
-    showstringspaces=false,
-    showtabs=false,                  
-    tabsize=2,
-    extendedchars=\true
-}
+\title{Конспекты по алгоритмам и структурам данных}
+\author{Анатолий Коченюк, Георгий Каданцев, Константин Бац}
+\date{2022 год, семестр 4}
 
-\lstset{style=myStyle}
-\lstset{language=Python}
-
-\newcommand{\p}[1]{#1^{\prime}}
-\newcommand{\pp}[1]{#1^{\prime\prime}}
-\newcommand\N{\ensuremath{\mathbb{N}}}
-\newcommand\R{\ensuremath{\mathbb{R}}}
-\newcommand\Z{\ensuremath{\mathbb{Z}}}
-\renewcommand\O{\ensuremath{\emptyset}}
-\newcommand\Q{\ensuremath{\mathbb{Q}}}
-\renewcommand\C{\ensuremath{\mathbb{C}}}
-\newcommand{\tl}[1]{\widetilde{#1}}
-\newcommand{\tll}[1]{\widetilde{\widetilde{#1}}}
-\newcommand{\ov}[1]{\overline{#1}}
-\let\svlim\lim\def\lim{\svlim\limits}
-\let\svsum\sum\def\sum{\svsum\limits}
-\usepackage{mdframed}
-\mdfsetup{skipabove=1em,skipbelow=0em}
-\theoremstyle{definition}
-\newmdtheoremenv[nobreak=true]{definition}{Определение}
-\newmdtheoremenv[nobreak=true]{theorem}{Теорема}
-\newmdtheoremenv[nobreak=true]{lemma}{Лемма}
-\newmdtheoremenv[nobreak=true]{problem}{Задача}
-\newmdtheoremenv[nobreak=true]{property}{Свойство}
-\newmdtheoremenv[nobreak=true]{statement}{Утверждение}
-\newmdtheoremenv[nobreak=true]{corollary}{Следствие}
-\newtheorem*{note}{Замечание}
-\newtheorem*{example}{Пример}
-\renewcommand\qedsymbol{$\blacksquare$}
-\newcommand{\incfig}[1]{%
-    \def\svgwidth{\columnwidth}
-    \import{./figures/}{#1.pdf_tex}
-}
-\usepackage{tikz}
-\newcommand{\declare}[1]{
-    \expandafter\DeclareMathOperator\csname #1\endcsname{#1}
-}
-\declare{Int}
-\declare{rang}
-\declare{Cl}
-\declare{Tq}
-\declare{Tp}
-\declare{Lp}
-\declare{diam}
-\declare{diag}
-\undef\Re
-\declare{Re}
-\undef\Im
-\declare{Im}
 \begin{document}
 
-\def\chap#1#2{\ \\ {\large\bf#1 \ | \ \tt\scshape#2} \par}
-
-\vspace{-1cm}
-
-{\bf
-\ \\
-\Large\centerline{\scshape Алгоритмы и структуры данных, лекции}
-}\normalsize
+\maketitle
 
 \input{parts/algo_1.tex}
 \input{parts/algo_2.tex}

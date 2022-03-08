@@ -1,48 +1,14 @@
-\documentclass[10pt]{book}
-\usepackage{preference}
-\newcommand\R{\ensuremath{\mathbb{R}}}
-\usepackage{listings}
-\usepackage[dvipsnames]{xcolor}
-\usepackage{hyperref}
-\usepackage{url}
-\definecolor{codegreen}{rgb}{0,0.6,0}
-\definecolor{codegray}{rgb}{0.5,0.5,0.5}
-\definecolor{codepurple}{rgb}{0.58,0,0.82}
-\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\documentclass[10pt]{article}
+\usepackage{../_styles/preference}
+\usepackage{../_styles/psevdocode}
+\usepackage{../_styles/math_commands}
 
-\lstdefinestyle{myStyle}{
-    backgroundcolor=\color{backcolour},   
-    commentstyle=\color{codegreen},
-    keywordstyle=\color{magenta},
-    numberstyle=\tiny\color{codegray},
-    stringstyle=\color{codepurple},
-    basicstyle=\ttfamily\footnotesize,
-    breakatwhitespace=false,         
-    breaklines=true,                 
-    captionpos=b,                    
-    keepspaces=true,                 
-    numbers=left,                    
-    numbersep=5pt,                  
-    showspaces=false,                
-    showstringspaces=false,
-    showtabs=false,                  
-    tabsize=2,
-    extendedchars=\true
-}
-
-\lstset{style=myStyle}
-\lstset{language=Python}
+\title{Конспекты по методам оптимизации}
+\author{Анатолий Коченюк, Георгий Каданцев, Константин Бац}
+\date{2022 год, семестр 4}
 
 \begin{document}
-
-\def\chap#1#2{\ \\ {\large\bf#1 \ | \ \tt\scshape#2} \par}
-
-\ \vspace{-1cm}
-
-{\bf
-\ \\
-\Large\centerline{\scshape Методы оптимизации, лекции}
-}\normalsize
+\maketitle
 
 \input{parts/metopt_1.tex}
 \input{parts/metopt_2.tex}

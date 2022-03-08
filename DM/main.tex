@@ -1,16 +1,15 @@
 \documentclass[10pt]{article}
-\usepackage{preference}
+\usepackage{../_styles/preference}
+\usepackage{../_styles/psevdocode}
+\usepackage{../_styles/math_commands}
+
+\title{Конспекты по дискретной матемтике}
+\author{Анатолий Коченюк, Георгий Каданцев, Константин Бац}
+\date{2022 год, семестр 4}
 
 \begin{document}
 
-\def\chap#1#2{\ \\ {\large\bf#1 \ | \ \tt\scshape#2} \par}
-
-\ \vspace{-1cm}
-
-{\bf
-\ \\
-\Large\centerline{\scshape ДМ, лекции}
-}\normalsize
+\maketitle
 
 \input{parts/dm_1.tex}
 \input{parts/dm_2.tex}

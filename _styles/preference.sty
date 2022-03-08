@@ -1,0 +1,46 @@
+\pagestyle{plain}
+\textwidth=15.5cm
+\textheight=24.0cm
+\oddsidemargin=0.3cm
+\evensidemargin=0.5cm
+
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[T2A]{fontenc}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{amsmath, amssymb, amsthm, amsfonts, mathrsfs, dsfont, mathtools}
+\usepackage{graphicx}
+\usepackage[left=2.5cm,right=2.5cm,top=2cm,bottom=2cm]{geometry}
+% \usepackage[a4paper,bmargin=2.5cm]{geometry}
+\usepackage[mathscr]{eucal}
+
+% новые окружения
+\usepackage{mdframed}
+\mdfsetup{skipabove=1em,skipbelow=1em}
+\theoremstyle{definition}
+\newmdtheoremenv[nobreak=true]{definition}{Определение} % окружение для определений
+\newmdtheoremenv[nobreak=true]{theorem}{Теорема} % окружение для теорем
+\newtheorem{lemma}{Лемма}[theorem] % окружение для лемм
+\newtheorem{property}{Свойство} % окружение для свойств
+\newtheorem{statement}{Утверждение}[theorem] % окружение для утверждений
+\newtheorem{corollary}{Следствие}[theorem] % окружение для следствий
+\newtheorem*{note}{Замечание}
+\newtheorem*{remark}{Замечание}
+\newtheorem*{example}{Пример}
+\newtheorem{problem}{Задача} % окружение для задач
+
+
+\voffset=0pt
+\headheight=0pt
+\headsep=0pt
+
+% pictures
+\usepackage{import}
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{\columnwidth}
+    \import{./figures/}{#1.pdf_tex}
+}
+
+% pictures
+\usepackage{tikz}
