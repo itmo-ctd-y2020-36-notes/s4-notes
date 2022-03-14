@@ -1,6 +1,10 @@
-\section{Комбинаторика и производящие функции.}
+\subsection{Комбинаторика и производящие функции}
 
-Воспоминание о доминошках.
+\begin{example}
+Замещение прямоугольника $2 \times n$ доминошками вида $1 \times 2$.
+
+\[\frac{1}{1 - t - t^2} = 2 + t + t^2 + t^2 + t^3 + t^3 + t^3 + \ldots = 1 + t + 2t^2 6 3t^3 + \ldots + F_n t^n\]
+\end{example}
 
 Комбинаторные обьекты это конструкции, которые состоят из атомов и разных связей атомов между собой. 
 Под атомом мы понимаем некоторую неделимую часть комб. обьекта.
@@ -9,75 +13,192 @@
 В этой сумме заменим каждый атом на $t^{\omega}$, где $\omega$ --- вес данного атома.
 Потом $t^\omega$ атомов одного обьекта перемножим. 
 
-Вес обьекта~--- сумма весов его атомов. 
+Вес обьекта~--- сумма весов его атомов.
 
-\subsection*{Базовые объекты}
-    Все, заданные перечиеслением. 
-    \begin{enumerate}
-        \item $U = \{u\}$, $w(u) = 1$. 
-        Тогда $U(t) = t$.
-        \item $B = \{ a,b\}$, $w(a) = w(b) = 1$.
-        Тогда $B(t) = 2t$.
-        \item $E = \{\epsilon\}$, $w(\epsilon) = 0$. 
-        Тогда $E(t) = 1$.
-        \item $E_k = \{ \epsilon_i\}_{i=1}^k$. $E_k(t) = k$.
-        \item $D= \{a,A\}$, $w(a) = 1$, $w(A) = 2$. $D(t) = t + t^2$. 
-    \end{enumerate}
+\begin{example}
+    $A$ -- множество комбинаторных объектов. Давайте их просуммируем.
 
-\subsection*{Дюзъюнктное объединение}
-$A, B, A\cap B = \emptyset$.
-Пусть у комб. обеьктов $A$ производящая функция $A(t)$, у $B$ --- $B(t)$.
-Тогда производящая функция их дизъюнктного объединения это $A(t)+B(t)$.
+    $\bigtriangleup_1 + \bigtriangleup_2 + \bigtriangleup_3 + \dots$
 
-\subsection*{Упорядоченная пара, прямое произведение}
-У прямого произведения производящая функция --- это произведение производящих функций.
+    атом (неделимое) -- то, что мы считаем.
 
-Вспомним, что вес пары мы определяем как сумму весов компонент.
+    $t^{\omega(\bigtriangleup_1)} + t^{\omega(\bigtriangleup_2)} + t^{\omega(\bigtriangleup_3)} + \ldots
+    = \sum_{n=0}^\infty a_n t^n = A(t)$~--- производящая функция для объектов веса $t$.
+\end{example}
 
-\subsection*{Конечные последовательности}
-Рассмотрим комбинаторные объекты $A$. 
-$Seq A = \{[], [A_1], [A_2], \ldots, [A_1, A_1], [A_1, A_2], \ldots, [A_1,A_2,A_3]\ldots  \}$.
+\subsubsection*{Базовые комбинаторные объеты}
 
-\[ Seq A = [] + A_1([] + [A_1] + \ldots) + A_2([]) + [A_1] + \ldots = 1 + A \times Seq A \]
-Заметим, что при $B = Seq A$ у нас получается $B(t) = 1 + A(t) B(t)$, откуда $B(t) = \frac{1}{1-{A(t)}}$.
-Определение $B$ очень похоже на определение списка в функциональном языке.
+\begin{definition}
+    [Базовые объекты]
 
-Можно подойти с другой стороны, заметив здесь геометрическую прогрессию.
-последовательность длины $k$ можно понимать как упорядоченную $k-$арку. 
-\[ B(t) = 1 + A(t) + A^2(t) + \ldots A^k(t) + \ldots\] 
-Отсюда сразу получится $B(t) = \frac{1}{1-{A(t)}}$.
+    $U = \{ u \}\quad \omega(u) = 1\quad u(t) = t$ -- производящая функция для этих комбинаторных объектов
 
-% \subsection*{Примеры}
-На примерах видно, что всё сходится. ДОПОЛНИТЬ.
-Отметим, что $Seq A$ определен только в том случае, когда $a_0 = 0$, ведь иначе число обьектов веса 0 можно составить бесконечно много.
+    $B = \{a, b\}\quad \omega(a) = \omega(b) = 1\quad B(t) = 2t$
 
-$Seq D = \frac{1}{1-t-t^2}$ --- числа Фиббоначи, привет.
+    $E = \{\varepsilon\}\quad \omega(\varepsilon) = 0\quad E(t) = 1$
 
-\subsection*{Множества}
-$Set, PSet$ --- комбинаторный объект, семейство всех множеств.
-Обозначим $Set A$ за $C$.
-Рассмотрим дополнительные комбинаторные обьекты, которые позволят закодировать, взяли ли мы в множество данный элемент из $A$ или нет.
-\[B_a = \epsilon + a \]
-Тогда $Set A = \prod_{i\in A}B_i$.
-Значит $C(t) = \prod_{a\in A}(1 + t^{w(a)}) = \prod_{n=0}^\infty (1+t^n)^{a_n}$.
+    $E_k = \{\varepsilon_1, \varepsilon_2, \ldots, \varepsilon_k\}\quad E_k(t) = k$
 
-Примеры. 
-$U = \{ u \}$. 
-$Set U = C$, $C(t) = (1+t)^1 = 1+t$.
+    $D = \{a, A\}\quad \omega(a) = 1\quad \omega(A) = 2\quad D(t) = t + t^2$
+\end{definition}
 
-$B = \{ a, A \}$.
-$C = Set B$, $C(t) = \prod (1+t^n)^{b_n} = 1 + t + t^2 + t^3$.
+\subsubsection*{Операции конструирования}
+\begin{definition}
+    [Дизъюнктное объединение]
 
-Заметим, что $\prod_{n=0}^\infty (1+t^n)^{a_n} = 2^{a_0} \prod (1+t^n)^{a_n}$.
-Это обьясняется тем, что обьекты нулевого веса могут быть свободно включены в множество, не поменяв его веса.
+    $A, B$ -- множества комбинаторных объектов и $A\cap B = \O $
 
-\subsection*{Мультимножество}
-$MSet$. 
-Каждый обьект может включаться любое неотрицательное целое число раз.
-\[a\in A \quad \epsilon + a + aa + \ldots  = Seq {a}\]
-\[a_1, a_2\in A \quad Seq{a} \times Seq{a_2} = MSet \{ a_1 , a_2 \} \]
-Итого $MSet A = \prod_{a\in A}Seq{a}$ и  $C(t) = \prod_{a\in A}\frac{1}{1-t^{w(a)}} = \prod_{n=1}^\infty(\frac{1}{1-t^n})^{a_n} = \prod (1-t^n)^{-a_n}.$
+    Пусть $C = A\cup B$. Тогда производящая функция
 
-\subsection*{Циклы}
+    \begin{align*}
+    C(t) &= A_1 + A_2 + \ldots + B_1 + B_2 + \ldots \\
+        &= t^{\omega(A_1)} + t^{\omega(A_2)} + \ldots + t^{\omega(B_1)} + t^{\omega(B_2)} + \ldots \\
+        &= A(t) + B(t) \\
+    .\end{align*}
+\end{definition}
 
-\endinput
+\begin{definition}
+    [Упорядоченная пара (прямое произведение)]
+
+    Пусть $A, B$,~~ $A(t), B(t)$~--- их производящая функция. Определим пару $C$, как $A \times B = C = \{ \langle a, b \rangle \mid a \in A, b\in B \}$.
+
+    $C_n = C \cap \{x \mid \omega(x) = n\}\quad \left<a, b \right> \omega(a) = i\quad \omega(b) = j\quad i + j = n\quad j = n-i$.
+
+    $C_n = \cup A_i \times B_{n-i}$. $c_n = \sum_{i=0}^n a_i \cdot b_{n-i} \implies C(t) = A(t) \cdot B(t)$.
+\end{definition}
+
+\begin{note}[Комбинаторный мысл прямого произведения]
+    Пусть у нас есть объекты $A = A_1 + A_2 + \ldots + A_k + \ldots$,\quad    $B = B_1 + B_2 + \ldots + B_k + \ldots$.
+
+    $\left( A_1 + A_2 + \dots \right) \cdot\left( B_1 +B_2 +\dots  \right) = A_1 \cdot B_1 + A_1 \cdot B_2 + \ldots + A_2 \cdot B_1 + A_2 \cdot B_2 + \ldots $.
+
+    $\langle a, b \rangle ~~~ t^{\omega(a)} t ^{\omega (b)} = t ^{\omega (a) + \omega (b)}$.
+\end{note}
+
+\begin{definition}[Последовательность (sequence)]
+    Определим последовательность из $A$, как $Seq A = \{ [], [A_1], [A_2], \ldots, [A_1, A_2], [A_1, A_3], \ldots\}$.
+
+    $Seq A =  [] \cup A_1 \cdot \left( [] + [A_1] + [A_2] + \dots\right) + A_2 \cdot \left( [] + \dots \right) = $
+    $1 + A \times Seq A$.
+
+    $B = Seq A \implies B(t) = 1 + A(t)B(t) \implies B(t) = \frac{1}{1 - A(t)}$.
+
+\end{definition}
+
+
+\begin{definition}[Последовательность (sequence), второй способ]
+    $Seq A = A^0 \cup A^1 \cup A^2 \cup  \ldots \cup A^k \cup \ldots$
+
+    $A^i$ -- декартова степень, последовательности длины $i$
+
+    \[B(t) = A(t)^0 + A(t)^1 + A(t)^2 + \ldots + A(t)^k + \ldots = \frac{1}{1 - A(t)}\]
+\end{definition}
+
+\begin{example}
+    $Seq U = \{[], [u], [u,u], [u, u, u], \ldots\} = N$. $n_k = 1$,~~$U(t) = 1 \implies Seq U = \dfrac{1}{1 - t}$.
+
+    $Seq B = \{ \varepsilon, a, b, aa, ab, ba, bb, aaa, \dots \} = C$. $c_n = 2^n,\quad B(t) = 2t \implies C(t) = \dfrac{1}{1 - 2t}, ~~~ c_n = 2 \cdot c_{n - 1}$.
+
+    $C_n = 2^n\quad B(t) = 2t\quad C(t) = \frac{1}{1 - 2t}$
+
+    $C_n = 2C_{n-1}$
+
+    $Seq E = \{[], [\varepsilon], [\varepsilon, \varepsilon], \ldots\} = C$
+
+    $E(t) = 1\quad C(t) = \frac{1}{1 - E(t)} = \frac{1}{1 -1} = \frac{1}{0}\quad$ \frownie{}
+
+    $C_0 = +\infty ??$
+\end{example}
+
+\begin{example}
+   $C = Seq D = \{\varepsilon, a, aa, aA, A, Aa, AA, \ldots\}$
+
+   $C(t) = \frac{1}{1 - D(t)} = \frac{1}{1 - t - t^2}$
+
+   $a$ -- одна вертикальная доминошка, вес 1. $A$ -- две горизонтальные доминошки, вес 2.
+
+   $C = aC + AC\quad C(t)  = tC(t) + t^2 C(t)$
+\end{example}
+
+\begin{definition}
+    [Множество]
+
+    Обозначается $Set$ или $PSet$.
+
+    $B = \{a, A\}\quad Set B = \{\O , \{a\}, \{A\}, \{a, A\}\}$.
+
+    $C = Set A$.
+
+    $a\in A\quad B_a = \varepsilon + a$ -- либо берём, либо не берём. $C$ -- дкартово произведение по всем $a$.
+
+    $C(t)  = \prod_{a\in A}\left( 1 + t^{\omega(a)} \right) = \prod_{n = 0}^{\infty } \left( 1 + t^n \right) ^{a_n}$.
+\end{definition}
+
+\begin{example}
+    Возьмем $U = \{u\}$. $Set U =C =\{\O , \{u\}\}$. Найдем $C(t)$.
+    \[C(t) = \prod_{n=0}^{+\infty} (1 + t^n) ^a_n = (1 + t) ^ 1 = 1+ t. \]
+
+    Пусть $B = \{a, A \}, ~~ C = Set B$. Заметим, что $b_1 =1, b_2=1$.
+    \[C(t) = \prod_{n = 0}^{+\infty} (1 + t^n)^{b_n} = (1 + t) (1  + t^2) = \underbrace{1}_{\O}  +  \underbrace{t}_{a} + \underbrace{t^2}_A + \underbrace{t^3}_{a, A}. \]
+
+    $\prod_{n=0}^{\infty }  (1 + t^n)^{a_n} = (a + t_0)^{a_0}\cdot \prod_{n=1}^{\infty }(1 + t^n)^{a_n} = 2^{a_0}\prod_{n=1}^{\infty }(1 + t^n)^{a_n}$.
+\end{example}
+
+\begin{definition}[Мультимножество]
+    Обозначается $MSet A$.
+
+    Мы можем включить каждый объект $0, 1, 2, \ldots$.
+
+    $\varepsilon + a + aa + \ldots = Seq \{a\}$.
+
+    $a_1 \in A,~ a_2 \in A \implies Seq \{a_1\} \times Seq \{a_2\} = MSet \{ a_1, a_2 \}$.
+
+    $MSet A = \prod_{a \in A} Set \{a \}.$
+
+    \[ C(t) = \prod_{a\in A} Seq \{a\} = \prod_{a\in A} \frac{1}{1 - t^{\omega(a)}}
+    = \prod_{n = 1} \left( \frac{1}{1 - t^n}^{a_n} \right)
+    = \prod_{ n =1}^{\infty }(1 - t^n)^{-a_n}
+    .\]
+\end{definition}
+
+\begin{example}
+    $U = \{u\}\quad C = MSet U\quad C(t) = \prod_{n=1}^{\infty } (1 - t^n)^{-u_n} = (1 - t)^{-1} = \frac{1}{1 - t}$.
+
+    $B = \{a, A\}\quad C = MSet B\quad b_1 = 1 = b_2$.
+
+    $C(t) = \prod_{n=1}^{\infty} = (1 - t)^{-1}(1 - t^2)^{-1} = \frac{1}{(1-t)(1- t^2)}$.
+
+    Ассимптотика $C_n$.
+
+    $Q(t) = (1 -t)(1 - t^2) = (1 - t^2)(1+t)$.
+
+    Корни: $t = \pm 1$. Обратные корни $r = \pm 1$ Кратность $r_1 = 1\quad s_1 = 2\qquad r_2 = -1\quad s_2 = 1$.
+
+    $(a_n + b)\cdot 1^n + c \cdot (-1)^n $
+
+    $\frac{1}{2}n + \frac{1}{2}(-1)^n + const$
+\end{example}
+
+\subsubsection{Циклы (cycle)}
+
+$B = \{a, b\}\quad Cyc B = \{\varepsilon, a, b, ab, aa, bb, aaa, aab, abb, bbb, aaaa, aaab, aabb, abab, abbb, bbbb, \ldots\}$
+
+Раньше мы называли такие комбинаторные объекты \textit{ожерельями}.
+
+$C = Cyc B = \bigcup_{k = 1}^\infty \left( Cyc A\right)_k$.
+
+$C(t) = \sum_{k=1}^\infty C_k (t),~~~ C_k (t)$~--- производящая функция длинны $k$.
+
+$C_k(t)$ -- последоватльности длины $k$ с точностью до циклического сдвига.
+
+$S_k$ -- последовательности длины $k\quad = (A(t))^k \quad C_k(t) / G\quad G$ -- группа циклических сдвигов.
+
+$C_{k, n} = \dfrac{1}{k} \cdot \sum_{i=0}^{k - 1} \left| I(i) \right|$.
+
+Количество классов эквивалентности по лемме Бёрнсайда равно $\gcd(i, k)$. Внутри класса одинаковые объекты.
+Размер класса $\dfrac{k}{\gcd(i, k)}$.
+
+n кратно $\dfrac{k}{\gcd(i, k)}$. $S_{\gcd(i, k)} \dfrac{n \cdot \gcd(i, k)}{k}$.
+
+\[ C_{n, k} =  \dfrac{\sum_{j =0  }^ {k - 1} S_{\gcd(i, k), \frac{n \cdot gcd(i,k)}{k}}}{k}
+\]
