@@ -1,0 +1,217 @@
+\section{Исчисление предикатов}
+
+Нам нужен новый язык. В текущем языке всё хорошо, но он имеет малую выразитеьную силу. Косвенным свидетельством этого является то, что в нём всё легко разрешается.
+
+В чём была исходная цель Гильберта: формализовать всю математику и доказывать всё, не боясь того, что будет противоречие где-нибудь.
+
+
+\begin{example}
+    $\frac{\text{Каждый человек смертен}\quad  \text{Сократ человк}}{\text{Сократ смертен}}$    
+
+    $\frac{\text{Каждый объект, если он -- человек, то он -- смертен}\quad  \text{Сократ -- человк}}{\text{Сократ -- смертен}}$    
+
+    Цель: {\color{blue} кванторы} и {\color{red}предикаты}.
+
+    \[
+    \frac{\forall x.H(x) \to S(x)\quad H(\text{Сократ})}{S(\text{Сократ})}
+    .\] 
+\end{example}
+
+Идея: нам нужно построить некоторый язык и затем поверх него построить теорию моделей и теорию доказательств.
+
+\begin{example}
+    ${\color{blue} \forall} {\color{red}x}. {\color{red}\sin x} = {\color{red}0} \lor {\color{red}(\sin^2 x) + 1} > {\color{red}1}$.
+
+    \begin{itemize}
+        \item Предметные (здесь: числовые) выражения
+        \begin{itemize}
+            \item Предметные переменные ${\color{red}x}$.
+            \item Одно-- и двуместные функциональные символы <<синусы>>, <<возведение в квадрат>> и <<сложение>>.
+            \item Нульместные <...>
+        \end{itemize}
+        \item Логическе выражения
+        \begin{itemize}
+            \item Предикатные символы <<равно>> и <<больше>>.
+        \end{itemize}
+    \end{itemize}
+\end{example}
+
+Язык исчисления предикатов:
+\begin{enumerate}
+    \item Два типа: предметные и логические выражения
+    \item Предметные выражения: матепеременная $\Theta$
+    \begin{itemize}
+        \item Предметные переменные: ${\color{blue} a}, {\color{blue} b}, {\color{blue} c}$, \ldots, метапеременне {\color{blue} x}, {\color{blue} y}.
+        \item Функциональные выражения: ${\color{blue} f(\Theta_1, \ldots, \Theta_n)}$, метапеременные ${\color{blue} f, g, \ldots}$
+    \end{itemize}
+    \item Логические выражения: метапеременные ${\color{blue}\alpha}, {\color{blue}\beta}, {\color{blue}\gamma}, \ldots$.
+    \begin{itemize}
+        \item Предикатные выражения: метампеременная, имена
+        \item Связки
+        \item Кванторы
+    \end{itemize}
+\end{enumerate}
+
+Сокращенные записи, метаязык
+\begin{enumerate}
+    \item Метепаременные:
+    \begin{itemize}
+        \item $\psi, \phi, \pi$ -- формулы
+        \item $P, Q$ -- предикатные символы
+        \item $\Theta$ -- функциональные символы
+        \item <...>
+    \end{itemize}
+
+    \item Скобки -- как в И.В.; квантор -- жадный:
+     \[ {\color{blue}(\forall a. \underbrace{A \lor B \lor C \to \exists b. \underbrace{D \& \neg E}}) \& F} \]
+
+    \item Дополнительные обозначения при необходимости:
+    \begin{itemize}
+        \item ${\color{blue} (\Theta_1 = \Theta_2)} $ вместо ${\color{blue} E(\Theta_1, \Theta_2)}$.
+        \item ${\color{blue} (\Theta_1 + \Theta_2)} $ вместо ${\color{blue} p(\Theta_1, \Theta_2)}$.
+        \item ${\color{blue} 0} $ вместо ${\color{blue} z}$.
+    \end{itemize}
+\end{enumerate}
+
+
+
+Оценка формулы\ldots
+
+< todo >
+
+\begin{example}
+    $\llbracket \forall x.\exists y.\negx+1=y \rrbracket $
+
+    Зададим оценку:
+    \begin{itemize}
+        \item $D:=\N $
+        \item $F_1:=1, F_{+}$ -- сложение в $\N $
+        \item 
+    \end{itemize}
+
+    Фиксируем $x\in \N $ Тогда:
+    \[
+    \llbracket x + 1 = y \rrbracket ^{y:=x} = \false
+    .\] 
+    Поэтому при любом $x\in \N $:
+    \[
+...
+    .\] 
+    Итого:
+    \[ \llbracket \forall x. \exists y. \neg x + 1 = y \rrbracket = \true \]
+\end{example}
+
+\begin{example}
+    Странная интерпретация
+
+   \[ \llbracket \forall x. \exists y. \neg x + 1 = y \rrbracket \]
+
+    Зададим интерпретацию:
+    \begin{itemize}
+        \item $D := \{ \square \}$;
+        \item $F_{(1)} := \{ \square \}, ~ F_{(+)} (x, y) = \square$;
+        \item $P_{(=)} (x, y) = \true$
+    \end{itemize}
+
+    Тогда $\llbracket  x + 1 = y \rrbracket^{x\in D, y\in D} = \true$.
+   x
+    Итого $\llbracket \forall x. \exists y.  \neg x + 1 = y \rrbracket^{x\in D, y\in D} = \false$.
+
+    Поэтому формулам оценки предикатов верить нельзя. Никакой интуиции за ними может и не стоять
+\end{example}
+
+\begin{definition}
+    Формула общезначима, если истинна при любой оценке
+\end{definition}
+
+\begin{theorem}
+    \[
+    \llbracket \forall x.Q(f(x))\lor \neg Q(f(x)) \rrbracket 
+    .\] 
+\end{theorem}
+\begin{proof}
+    Перебор случаев
+\end{proof}
+
+\begin{definition}
+    Рассмотрим формулу $\forall x.\psi$ (или $\exists x.\psi$). Здесь переменная $x$ связзана в $\psi$ Все вхождения переменой $x$ в $\psi$ -- связанные
+\end{definition}
+\begin{definition}
+    Переменная $x$ входит свободно в $\psi$ <..аа>
+\end{definition}
+
+
+\begin{definition}
+    Терм $\Theta$ свободен для подстановки вместо $x$ в $\psi$ ($\psi [x:=\Theta]$), если ни одно свободное вхождение переменной в $\Theta$ не станет связным после подстановки.
+\end{definition}
+Свобода есть: $(\forall x. P(y)) [y:=z]$ или $(\forall x. \forall y. P(x))$.
+
+Cвободы нет: $(\forall x.P(y))[y:=x]$ и $(\forall y.\forall x.P(t))[t:=y]$   .
+
+\section{Теория доказательств}
+
+11. $(\forall x . \phi) \to \phi [x := \Theta]$
+
+12 $(\exists x . \phi) \to $ fix me
+
+Добавим еще два правила вывода (здесь везде $x$ не входит свободно в $\varphi$):
+\begin{itemize}
+    \item Введение $\forall$. $\dfrac{2}{2}$.
+\end{itemize}
+
+\begin{definition}
+    Доказыуемость, выводисость, полнота, корректность --- аналогично исчислению высказыаваний.
+\end{definition}
+
+
+\section{Теорема о едукции для исчисления предикатов}
+
+\begin{theorem}
+    Если    $\Gamma \vdash \alpha \to \beta$, то $\Gamma, \alpha \vdash \beta$.
+    Если $\Gamma, \alpha\vdash \beta$ и в доказательстве не применяются правила для кванторов по свободным переменным из $\alpha$, то $\gamma\vdash \alpha \to \beta$
+\end{theorem}
+\begin{proof}
+    \begin{itemize}
+        \item []
+        \item [$\implies $] также как в К.И.В
+        \item [$\impliedby $] та же схема, два новых случая.аксиомы те же, но нужно обработать два новых правила вывода.
+    \end{itemize}
+\end{proof}
+
+валмлдоыауова лдоваы оафлдов флва пло щзвдфыфа ф
+спасите 
+
+хехехе модус понос
+
+короче все докажется
+
+\paragraph{Следование}
+
+\begin{definition}[Следование]
+    $\gamma_1, \gamma_2, \dots, \gamma_n \vDash \alpha$, если выполнено два условия:
+    \begin{enumerate}
+        \item $\alpha$ выполнено всегда, когда выполнено
+    \end{enumerate}
+    ...
+\end{definition}
+
+Влажность второго условия. 
+
+
+Зачем нам это потребовалось?  Мы будем пользоваться, но не злоупотреблять.
+
+
+Мы не хотим заранее сильно ограничивать язык. ПОэтому мы выбираем такой вариант, чтобы он разрешал некоторые.
+
+
+\begin{example}
+    $\vdash \exists x. P(x) \to P(x)$\ldots
+
+    (1) $A \to (A \to A) \to A \implies P()$
+\end{example}
+
+\begin{example}
+    $\vdash x. P(x) \to P(x)$
+\end{example}
+
+% строка переноса
