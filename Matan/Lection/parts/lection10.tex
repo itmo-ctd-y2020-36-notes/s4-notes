@@ -1,0 +1,322 @@
+\begin{theorem}
+    \[
+        \int_{\partial M}\omega = \int_Md\omega
+    .\] 
+
+    $M$ -- компактное (гладкое $C^2$ ), $M\in \mathds M_{q,n}^{(2)}$ -- многообразие с краем $\partial M$, ориентируемое, ориентации на $M$ и $\partial M$ согласованы, $\omega\in \Omega_{q-1. m}^{(1)}$
+\end{theorem}
+\begin{note}
+    $n=2, q=2$
+
+\begin{figure}[!ht]
+    \centering
+    \incfig{stocks22}
+    \caption{stocks22}
+    \label{fig:stocks22}
+\end{figure}
+
+$\omega = Pdx + Qdy\quad P = P(x,y),\quad  Q = Q(x,y)$
+
+ \begin{align*}
+     d\omega &= \p P_ydy\wedge dx + \p Q_xdx\wedge dy = \left( \p Q_x - \p P_y \right) dx\wedge dy\\ 
+     \int_M d\omega &= \iint_{[a,b]\times [c,d]} \p Q_x - \p P_ydxdy\\
+                    &= \int _c^d\int_a^b \p Q_x(x,y)dxdy - \int _a^bdx\left(\int _c^d \p P_ydy  \right)  \\
+                    &= \int _c^d Q(b,y) - Q(a,y)dy - \int _a^b P(x,d) - P(x,c)dx \\
+     \int_{\partial M} &= \int_{\substack{I_1,I_2,I_3,I_4\\ \text{ориентация}}} Pdx + Qdy \\
+                       &=\left( \int _{I_1} + \int _{I_3} \right)Pdx + \left( \int _{I_2} + \int _{I_4} \right) Qdy   \\ 
+ .\end{align*}
+
+ \begin{align*}
+     \int_{\partial M}\omega &= \sum \int_{\partial M_j}\omega\\
+                             &=\sum \int _{M_j}d\omega  \\
+                             &= \int_Md\omega \\
+ .\end{align*}
+\end{note}
+
+\begin{note}
+    При $n=2\,k=2\,q=1$ формула Стокса называется формулой Грина.  $O$ -- кусочно-гладкая область в  $\R^2$, $\partial O$ -- граница, ориентируемая положительно.
+
+    \[
+        \int _{\partial P}Pdx+Qdy = \iint_O \p Q_x - \p P_ydxdy 
+    .\] 
+\end{note}
+\begin{note}
+    $n=3\,k=2\,q=k-1=1$
+
+     $\omega = Pdx+Qdy+Rsz$
+
+%\begin{figure}[!ht]
+%    \centering
+%    \incfig{stocks32}
+%    \caption{stocks32}
+%    \label{fig:stocks32}
+%\end{figure}
+
+ \begin{align*}
+     \int_{\partial M}\omega &= \int_{\Phi^{-1}\left( \partial M \right) } \Phi_*(M)\\ 
+                             &= \int_{\partial \Pi}\Phi_*\left( \omega \right)  \\
+                             &= \int_{\Pi}\underbrace{d\left( \Phi_*(\omega) \right)}_{\Phi_*\left( d\omega \right) } = \int_{\Phi\left( \Pi \right) = M } d\omega\\
+                             \Phi:\Pi \to \left( M\left( \cup \partial M \right)  \right) \\
+     \int_{\partial M}Pdx+Qdy+Rdz &= \int_{M_n} 
+     \begin{vmatrix}
+         dy\wedge dz & dz\wedge dz & dx\wedge dy\\
+         \frac{\partial }{\partial x}&\frac{\partial }{\partial y}&\frac{\partial }{\partial z}\\
+         P&Q&R\\
+     \end{vmatrix}\\
+     &= \int_{M} 
+     \begin{vmatrix}
+         n_1&n_2&n_3\\
+         \frac{\partial }{\partial x}&\frac{\partial }{\partial y}&\frac{\partial }{\partial z}\\
+         P&Q&R\\
+     \end{vmatrix}
+.\end{align*}           
+
+$n$ -- выбранная сторорона, относительно которой обход  $\partial M$ против часовой стрелки.
+
+\begin{align*}
+    \int_{\partial M}Pdx+Qdy+Rdz = \int_M 
+    \begin{vmatrix}
+        \cos \alpha&\cos \beta&\cos \gamma\\
+        \frac{\partial }{\partial x}&\frac{\partial }{\partial y}&\frac{\partial }{\partial z}\\
+        P&Q&R\\
+    \end{vmatrix}ds
+.\end{align*}
+
+-- класическая формула Cтокса. $M$ -- 2-мерная поверхность с краем в $\R^3$, ориентируемая, $n = \left( \cos \alpha, \cos\beta, \cos \gamma \right) $,обход края -- стандартный (против часовой стрелки принаблюдении из $n$)
+\end{note}
+
+\begin{example}
+     \[
+         \int_C \left( y^2+z^2 \right) dx + \left( x^2+z^2 \right) dy + \left( x^2+y^2 \right) dz
+     .\] 
+
+     $C$ -- кривая  $\begin{cases}
+         x^2+y^2+z^2 = 2Rx\\
+         x^2+y^2=2rx,r<R\\
+         z\geqslant 0
+     \end{cases}$, обход кривой положительный относительно внешней стороны, ``меньшей'' части сферы, высекаемой цилиндром.
+
+     $n(x,y,z) = \frac{(x-R,y,z)}{R}$
+
+     \begin{align*}
+         \int_C \left( y^2+z^2 \right) dx + \left( x^2+z^2 \right) dy + \left( x^2+y^2 \right) dz &= \frac{1}{R}\iint 
+         \begin{vmatrix}
+             x-R&y&z\\
+             \frac{\partial }{\partial x}&\frac{\partial }{\partial y}&\frac{\partial }{\partial z}\\
+             y^2+z^2&x^2+z^2&x^2+y^2\\
+         \end{vmatrix}ds\\
+                                                                                                  &= \frac{2}{R} \iint_{x^2+y^2\leqslant 2rx} \frac{R}{\sqrt{2Rx-x^2-y^2} } \left( \left( x-R \right) \left( y-z \right) +y\left( z-x) + z(x-y) \right)  \right) dxdy\\
+                                                                                                  &= -2R \iint_{x^2+y^2\leqslant 2rx} \frac{y}{\sqrt{\ldots} } - 1dxdy \\
+                                                                                                  &= 2R \pi r^2 \\
+    .\end{align*}
+
+    слагаемое с корнем обросилось, потому что это нечётная функция по $y$, а круг обладает симметрией относительноси оси $Ox$
+\end{example}
+
+\begin{note}
+    $n=3\,k=3\,q=k-1=2$
+
+     $\omega = Pdy\wedge dz + Qdz\wedge dx + Rdx\wedge dy$
+
+     $d\omega = dic\left(P,Q,R \right) dx\wedge dy\wedge dz\quad dic = \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial Y} + \frac{\partial R}{\partial z}$
+
+     Формула Гаусса-Отроградского:
+     \[
+         \int_{\partial M}Pdy\wedge dz + Qdz\wedge dx + Rdx\wedge dy = \iiint_M div(P,Q,R)dxdydz
+     .\] 
+     $M$ -- трёхмерное гладкое многообразие.
+
+     $\int_{\partial M}\left<\left( P,Q,R \right),n  \right>ds$
+\end{note}
+
+\begin{example}
+    $\iint x^2\cos\alpha + y\cos\beta + z\cos\gamma ds$
+
+    $S: \begin{cases}
+        x^2+y^2 = z\\
+        0\leqslant z\leqslant h\\
+    \end{cases}$ 
+
+    $n = \left( \cos \alpha, \cos \beta, \cos \gamma \right) $
+
+    Формула ГО не применяется напрямую, т.к. поверхность незамкнута.
+
+    \begin{align*}
+        \int_S f + \int_{S_+} f= \iiint div\left(P,Q,R  \right) dxdydz\\
+        &= 2\iiint z   \\
+        &= 2\int_{-\pi }^{\pi }d\varphi \int _0^hr dr \int _r^hzdz \\
+        &= 2\cdot 2\pi \int_0^hzdz \int_0^zr dr \\
+        &= 2\cdot \frac{\pi h^4}{4} = \frac{\pi h^4}{2} \\
+        \int_{S_+}f = \iint _{S_1}\left<\left( P,Q,R \right) ,\left( 0,0,1 \right)  \right>dS-1  \\
+        &= \iint h^2dS_1 = h^2\pi h^2 = \pi h^4  \\
+    .\end{align*} 
+
+    $I = J - I_1 = \frac{\pi h^4}{2} - ouh^4 = -\frac{\pi h^4}{2}$
+\end{example}
+
+\begin{note}
+    [Случай комплексной переменнной]
+
+    $f:O \to \C$ называется $\C$-дифференцируемой в точке $a\in O$, если  $d_af$ --  $\C$ -линеен. $f(a+h) - f(a) = l(h) + o(h)\quad l$ -- линейное отображение, $o(h)\quad \alpha(h)\cdot h\quad \alpha(h) \to 0, h\to 0$
+
+    линейное отобрание -- можно выносить комплексные множители $L(cz) = cL(z)$
+\end{note}
+
+ \begin{theorem}
+    [теорема об условиях равносильных $\C$-диффренцируемости ]
+
+    $f:O \to \C$. $\sqsupset f$ -- дифференцируемо в вещественном смысле в точке $a\in O$
+    Тогда следующее равносильно:
+     \begin{enumerate}
+        \item $f$ --  $\C$-дифференцируема
+        \item $\exists \p f(a) = \lim_{z \to 0, z\in \C} \frac{f(z) - f(a)}{z-a}$
+        \item $\frac{\partial f}{\partial \ov z}(a) = 0$
+        \item $f = u+iv\quad u = \Re f, v = \Im f$
+
+             $\begin{cases}
+                 \p u_x = \p v_y\\
+                 \p u_y = -\p v_x
+                 \end{cases}$ в точке $a\quad f = \begin{pmatrix} u\\v \end{pmatrix} \quad \p{\begin{pmatrix} u\\v \end{pmatrix} } = \begin{pmatrix} \p u_x &\p u_y\\ \p v_x & \p v_y \end{pmatrix} = \begin{pmatrix} \p u_x & \p u_y \\ -\p u_y & \p u_x \end{pmatrix}  $
+    \end{enumerate}
+\end{theorem}
+
+\begin{note}
+    \begin{align*}
+        \frac{\partial }{\partial z} &= \frac{1}{2}\left( \frac{\partial}{\partial x} - i \frac{\partial }{\partial y} \right)  \\
+        \frac{\partial }{\partial \ov z} &= \frac{1}{2}\left( \frac{\partial}{\partial x} + i \frac{\partial }{\partial y} \right)  \\
+    .\end{align*}
+\end{note}
+\begin{note}
+    $g$ --  $\R$-дифференцируемо в точке $a \implies \exists !A,B\in \C$
+
+    $d_ag = Adz + Bd\ov z\qquad A = \frac{\partial f}{\partial z}(a)\quad B = \frac{\partial f}{\partial \ov z}(a)$
+\end{note}
+
+\begin{note}
+    \[
+        \int _\gamma f(z)dz = \int f\left( \gamma(t) \right) \cdot \p \gamma(t)dt
+    .\] 
+
+    $\gamma$ -- простой кусочно-гладкий путь  $\gamma:[a,b] \to C$, $f$ измерима на  $\Gamma  = \gamma\left( [a,b] \right) $
+
+    \begin{align*}
+        \int_\gamma f(z)dz &= \int\left( u\left( \gamma(t)) + iv\left( \gamma(t) \right)  \right)  \right) \left( \p \gamma_1(t) + i\p \gamma_2(t) \right) dt\\
+                           &= \int_{[a,b]} \left( u\left( \ldots \right) \p \gamma_1 - v\p \gamma_2 \right)  + i\left( v\p \gamma_1 + u\p \gamma_2 \right)dt  \\
+                           &= \int_\gamma udx - vdy + i\int_\gamma vdx + udy\\
+                           &= \iint_O \left( -\p v_x - \p u_y \right) +i\left( \p u_x - \p v_y \right)   \\
+    .\end{align*}
+\end{note}
+
+\begin{theorem}
+    [Коши]
+
+    $\sqsupset f$ -- $\C$-дифференцируема в кусочно-гладкой области $O$ вплоть до границы. Тогда 
+     \[
+         \int_{\partial O}f(z)dz = 0
+     .\] 
+\end{theorem}
+\begin{example}
+    $f(z) = \frac{1}{z}$ 
+
+    \begin{align*}
+        \p f(z)(a) &= \lim_{z \to 0} \frac{f(a+z) - f(a)}{z} = \lim_{z \to 0} \frac{\frac{1}{a+z}-\frac{1}{a}}{z}\\
+                   &= \lim_{z \to 0}  -\frac{1}{a(a+z)} = -\frac{1}{a^2} \\
+    .\end{align*}
+
+    $\p f(z) = -\frac{1}{z^2}\quad \forall z\neq 0$
+
+    \begin{align*}
+        \int_{|z| = R}\frac{dz}{z} &= \int _{-\pi }^{\pi } \frac{Rie^{it}dt}{Re^{ei}}\\
+                                   &= i 2\pi  \neq 0 \\
+    .\end{align*}
+
+    При этом если взять другой контур, который не будет содержать нуля внутри, то интеграл по контуру будет равен нулю.
+
+    $Ln$ -- многозначный логарифм  $E\subseteq C \to 2^\C\quad z \to \ln |z| + i\Arg z$
+\end{example}
+\begin{note}
+    Если в области, по контуру которой берётся интеграл, есть конечное число особых точек, можно окружить эти точки достаточно маленькеми окрестности и посмотреть на интеграл по итоговому контору
+\end{note}
+
+\begin{theorem}
+    [теорема Коши о вычетах]
+
+    \[
+        \int_Cf(z)dz = \sum_{a\in A}\oint_{C(a)}f(z)dz  
+    .\] 
+
+    $C(a)$ -- набор окружностей  $\left\{ B(a) \right\} $, которые не пересекаются
+
+    вычет функции в точке $a$ называется  $\res_a f = \oint _{C(a)}f(z)dz$
+\end{theorem}
+
+
+\begin{note}
+    [частные случаи формула Стокса]
+
+    \[
+        \int_Md\omega = \int_{\partial M}\omega
+    .\] 
+    \begin{enumerate}
+        \item Если $\omega$ замкнута в $O\supset M \implies \int_{\partial M}\omega  =0$
+        \item Если $\partial M = \O $, то $\int_Md\omega = 0$
+    \end{enumerate}
+\end{note}
+
+\begin{definition}
+    $\omega$ называется замкнутой в области  $O$, если  $d\omega = 0$ в любой  $p\in O$
+\end{definition}
+\begin{definition}
+    $\omega$ называется точной в области  $O$, если существует первообразная для  $\omega$  в области  $O$
+
+    $\omega\in \Omega_{q,n}(O)$, перообразная  $\tl \omega \in Q_{q-1,n}(O)$
+\end{definition}
+\begin{note}
+    $\omega$ -- Точная, то  $\omega$ -- замкнута
+
+     $\omega = d\tl \omega\quad d\omega = dd\tl \omega = 0$
+\end{note}
+
+\begin{statement}
+    Если $\omega = \sum_{i=1}^{n} P_idx_i$ точна в области $O\subseteq \R^n$
+
+    $\omega = dF \implies \forall \gamma:[a,b] \to O$
+    \[
+        \int_\gamma\omega = F\mid_A^B
+    .\] , где $A = \gamma(a),  = \gamma(b)$ 
+    
+    \begin{align*}
+        \int_\gamma \sum_{i=1}^{n} P_idx_i &= \int_{[a,b]} \sum_{i=1}^{n} P_i\circ \gamma(t)\cdot \p \gamma_i(t)dt \\
+                                           &= \int_{[a,b]}\left<P\circ \gamma, \p \gamma \right> \\
+                                           &= \int_a^b d\Phi = \Phi(b) - \Phi(a) \\
+                                           &= F\left( \gamma(b) \right)  - F\left( \gamma(a) \right)  \\
+                                           &= F(B) - F(A) \\
+        dF\left( \p \gamma(t) \right)  &= d\left( \overbrace{F\circ \gamma(t)}^{\Phi} \right)  \\
+    .\end{align*}
+
+    Выводы:
+    \begin{enumerate}
+        \item Если $\omega = \sum_{i=1}^{n} P_idx_i$ точна в $O$, то  $\int_\gamma \omega$ не зависит от пути  $\gamma$ с носителем в $O$
+        \item --||--?  $\gamma$ --замкнута, то  $\int_\gamma\omega = 0$
+    \end{enumerate}
+\end{statement}
+
+\begin{example}
+    $\int_\gamma\underbrace{\frac{xdy-ydx}{x^2+y^2}}_{\omega}\quad P = \frac{-y}{x^2+y^2}\quad Q = \frac{x}{x^2+y^2}$
+
+    $\omega$ -- локально точна, значит замкнута всюду в  $C\setminus \{0\}$
+
+    \begin{align*}
+        \omega &= \frac{xdy - ydx}{y^2} \cdot \frac{y^2}{x^2+y^2}\\
+               &= -d\left( \frac{x}{y} \right) \frac{1}{\left( \frac{x}{y}+1 \right) } \\
+               &= -d\left( \arctg \frac{x}{y} \right)\\
+               \omega = d\left( \arctg \left( \frac{y}{x} \right)  \right) 
+    .\end{align*}
+
+    Так мы предъявили первообразные на полуплоскостях.
+
+    \begin{align*}
+        \int_{\|(x,y)\| = R} \frac{xdy - ydx}{x^2+y^2} = R^2 \int_{-\pi }^{\pi } \frac{\cos ^2\varphi + \sin ^2\varphi}{R^2}d\varphi = 2\pi  \neq 0
+    .\end{align*}
+    Значит форма не точна (потому что в противном случае это был бы интеграл по замкнутому контуру, локально точная в $\C\setminus \{0\}$, но не точная.
+\end{example}

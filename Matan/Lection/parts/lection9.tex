@@ -1,0 +1,339 @@
+\begin{note}
+    [Напоминание]
+
+    $\mathcal E_p(X)$ -- набор кососимметрических $p$ форм из $X$ в $\R^n$
+
+    $\omega: O \to \mathcal E_p(\R^n)$
+
+    $\omega(x, h^1, \ldots, h^p)\quad h_i\in \R^n$
+
+    $\omega = \sum_{1\leqslant i_1 < i_2 < \ldots < i_p \leqslant n}\omega_{i_1\ldots i_p}dx_{i_1}(x) \wedge \ldots \wedge dx_{i_p} = \sum_I \omega_I(x)dx^I$
+
+    $\Omega_p^{(r)} = \Omega_{p,n}^{(r)}$ -- набор всех дифференцируемых $p$-форм гладкости $r$ в $O$
+\end{note}
+
+\begin{example}
+    \begin{enumerate}
+        \item $f\in C^k(O),\quad \omega = f\in \Omega_0^{(k)}(O)$
+        \item $f \in C^k(O),\quad d_xf = \sum_{i=1}^n \frac{\partial f}{\partial x_i}(x)dx_i\in \Omega_1^{(k-1)}(O)$
+        \item $\sqsupset F$ -- поле в $\R^3\quad F = (P,Q,R):O \to \R^3$
+        $\omega_F = Pdx + Qdy + Rfz$
+
+        $\omega_F(h\in \R^3) = P(x,y,z) h_1 + Q(x,y,z)h^2 + R(x,y,z)h^3$
+
+        Если $h \approx 0 \implies \omega_F(h)\approx$ элементарная работа поля $F$ на перемещение $h$ 
+
+        $\omega_F^* = Pdy\wedge dz + Qdz\wedge dx + Rdx\wedge dy$
+
+        $dy\wedge dz \ldots$ -- задают базис $\Omega_{2,3}$
+
+        $\Omega_1^n $ изоморфно $\Omega_{n-1}^n$
+        \item $V = (P,Q,R) \in C^r(O)$ 
+        
+        $\omega(x,h^1,h^2) = \begin{vmatrix}
+            v\\h^1\\h^2
+        \end{vmatrix}\in \Omega_{2,3}^{(r)}(O),\quad h61,h^2\in \R^3$ -- смешанное произведение $(h^1,h^2,v)$
+
+        Смысл: Если $V$ -- поле скоростей, а $h^1, h^2\approx 0$, то $\left( h^1,h^2,v \right) $ -- поток поля $V$ через площадку, натянутую на $h^1$ и $h^2$
+        
+        $\omega = p \begin{vmatrix}
+            h_2^1 & h_3^1\\h_2^2 & h_3^2
+        \end{vmatrix} + Q \begin{vmatrix}
+            h_3^1 & h_1^1\\h_3^2 & h_1^2
+        \end{vmatrix} + R \begin{vmatrix}
+            h_1^1 & h_2^1\\
+            h_1^2 & h_2^2
+        \end{vmatrix}$
+
+        $\omega = Pdy\wedge dz + Qdz\wedge dx + Rdx\wedge dy = \omega^*_V$
+    \end{enumerate}
+\end{example}
+
+\section{Внешнее дифференцирование дифференциальных форм}
+
+``$d$'' --- внещний дифференциал
+
+\begin{definition}
+[Внешний дифференцал для форм]
+    $\omega  \in \Omega^{(1)}_{0, n} (O)$,~~~ $d_x \omega = \sum_{i=1}^n \dfrac{\partial \omega}{\partial x_i} (x) d x_i$ 
+
+
+    $\omega \in \Omega_p^(1)(O)\quad \omega = \sum_I \omega_Idx^I, \omega_I\in \Omega_0^{(1)}(O) \implies dw = \sum _I (d\omega_I)\wedge dx^I$
+    
+    $d\omega \in \Omega_{p+1}^{(0)}(O)\quad dw = \sum_{k=1}^{n} \sum_I \frac{\omega_I}{\partial x_i} dx_i\wedge dx^I$
+\end{definition}
+
+\begin{example}
+    \begin{enumerate}
+        \item $\omega  \in \Omega_{n-1, n}^{(r)} (O)$.
+        
+        Для $n = 3$:
+        $\omega = P dy \wedge dz + Q dz \wedge dx + R dx \wedge dy$.
+        
+        $d\omega = dP \wedge dy \wedge dz + Q \wedge dz \wedge dx + R \wedge dx \wedge dy = \p P_x dx \wedge dy \wedge dz + \p Q_y dy \wedge dz \wedge dx + \p R_z dz \wedge dx \wedge dy = $\\
+        $ \left( \p P_x + \p Q_y + \p R_z \right) dx dy dz \implies d\omega = \mathrm{div} (P, Q, R) dx \wedge dy \wedge dz$.
+
+
+    
+        $d\omega = \div(P,Q,R)\cdot dx\wedge dy\wedge dz = d \omega_{(P, Q, R)}^{*}$.
+
+        $\omega = Pdx + Qdy + Rdz$
+
+        $d\omega = \left( \p R_y - \p Q_z \right)dy\wedge dz + \left( \p P_z - \p R_x \right) dz\wedge dx + \left( \p Q_x - \p P_y \right) dx\wedge dy $ 
+
+        $\rot(P,Q,R) = \begin{vmatrix}
+            \vec i & \vec j & \vec k\\
+            \frac{\partial }{\partial x} & \frac{\partial }{\partial y} & \frac{\partial }{\partial z}\\    
+            P&Q&R\\
+        \end{vmatrix}$
+
+        $\omega^*_{\rot(P,Q,R)} = d\omega_{P,Q,R}$
+    \end{enumerate}
+\end{example}
+
+Свойства внешнего дифференциала:
+\begin{enumerate}
+    \item Линейность. $d(C_1 \omega + C_2 \theta ) = C_1 d\omega + C_2 d\theta ~~ \forall C_1, C_2\in \R,~~ \forall \omega, \theta \in \Omega_{p, n}^{(1)} ())$.
+    \item Внешнее дифферецнирование произведения. $\omega = \sum_{I(1\ldots p)} \omega_Idx^I\quad \theta = \sum_{J(1\ldots q)} \theta_Jdx^J$
+    $\omega \wedge \theta = \sum_I\sum_J \omega_I\theta_j \cdot dx^I\wedge dx^J$
+
+    Если $\omega\in \Omega_p^{(1)}(O)\quad \theta\in \Omega_q^q(O)$
+
+    \[
+    d\left( \omega\wedge \theta \right)  = (d\omega)\wedge \theta + (-1)^p\omega \wedge \left( d\theta \right) 
+    .\] 
+
+    Если $\omega, \theta$ -- одночленные функции, $\omega = fdx^I\quad \theta = g \cdot dx^J\quad f, g\in C^1(O) $
+
+    \begin{align*}
+        d\left( fdx^I\wedge gdx^J \right) &= d\left( f\cdot g dx^I\wedge dx^J \right)  \\
+        &= d\left( f\cdot g \right)\wedge dx^I\wedge dx^J =  gdf\wedge dx^I\wedge dx^J + fdg\wedge dx^I\wedge dx^J  \\
+        &= (d\omega)\wedge \theta + (-1)^p\omega \wedge \left( d\theta \right) \\
+    .\end{align*}
+
+    Последнее равенство, потому что нужно перетащить $dg$ через $dx^I$ с помощью $p$ транспозиций.
+
+    \item [$\tl 2.$] $\omega\in \Omega_P^{(1)}(O)\quad f\in C^1(O)$
+    \[
+    d\p{\left( f\cdot \omega \right)} = \left( df \right) \wedge \omega + f\wedge d\omega
+    .\] 
+    \item $d\left( d\omega \right) \equiv 0\quad \omega\in C_p^{(2)}$
+    \begin{enumerate}
+        \item $\omega = f\quad p = 0$
+        \begin{align*}
+        d^2f &=  d\left( \sum_{i=1}^{n} \p f_{x_i}dx_i \right)\\
+        &=  \sum_{i=1}^{n} d\left( \p f_{x_i} \right) \wedge dx_i\\
+        &= \sum_{i,j=1}^{n} \pp f_{x_ix_j}dx_J\wedge dx_i = 0 \\
+        .\end{align*}
+    \end{enumerate}
+\end{enumerate}
+
+\section{Перенос (пересадка) дифферецнивальной формы}
+
+$O$ -- открытое в $\R^n\quad U$ -- открытое в $\R^k$
+
+$\Phi\in C^1\left( U \to O \right) $
+
+$\omega\in \Omega_p$
+
+\begin{align*}
+\Phi_*(\omega)(u, v_1, \ldots, v_p) &= \omega\left( \Phi(u), d_u\Phi(v^1), .\ldots, d_u\Phi(v^p) \right)  \\
+.\end{align*}
+
+\begin{example}
+    \begin{enumerate}
+        \item $\omega\in \Omega_0$
+        
+        $\Phi_*(\omega)(\omega) = \omega \circ \Phi$
+
+        \item $k=1, n\in \N, p = 1$
+        
+        $\omega = \sum_{i=1}^{n} \omega_id(x)x_i$
+
+        $\Phi = \gamma$
+        \begin{align*}
+            \gamma_*(\omega)(u,v) = \sum \omega_i\left( \gamma(u) \right) dx_i\left( \p \gamma(u)\cdot v \right)\\
+            &= \left( \sum_{i=1}^{n} \omega_i\left( \gamma\left( u \right)  \right) \cdot \p \gamma_i(u)  \right)  \\ 
+        .\end{align*}
+    \end{enumerate}
+\end{example}
+
+\begin{statement}
+    [Свойства пересадки дифференциальных форм]
+    \begin{enumerate}
+        \item [Линейность ]
+        \[
+        \Phi_*\left( C_1\omega + C_2\theta \right) = C_1\Phi_*(\omega) + C_2\Phi_*(\theta),~~~
+        \forall C_1, C_2 \in \R,~~ \omega, \theta \in \Omega_p (O).\] 
+        \item $\omega\in \Omega_p(O)\quad f\in C^1(O)$
+        \[
+        (\Phi_*(f \cdot \omega))(u, v^1, \ldots, v^p) = (f\circ\Phi)\cdot \Phi(\omega)
+        .\]  %это общая формула
+        
+        $\Phi_*(f\omega) = f\omega(\Phi(u), d_n \Phi (v^1), \ldots, d_n \Phi(v^1)) 
+        = f\left( \Phi(u) \right)  \cdot \underbrace{\omega\left( \Phi(u), d_n\Phi(v^1),\ldots, d_n\Phi(v^p) \right)}_{\Phi_*(\omega)}$
+        
+        
+        \item $\Phi_* (w\wedge \theta) = \Phi_* (\omega) \wedge \Phi_* (\theta)$, ~~ $\omega\in \Omega_p (O), \theta \in \Omega_q$.
+        
+        По линейности докажем это для одночленных.
+        
+        $\Phi_* (dx^I \wedge dx^J) = \Phi_* (dx^I) \wedge \Phi_* (dx^J)$.
+
+        \begin{align*}
+        \Phi_*(dx^I \wedge dx^J)(v^1, \ldots, v^{p+q}) &= \left( dx^I \wedge dx^J \right) \left( d\Phi(v^1), \ldots, d\Phi(v^{p+q}) \right)  \\
+        &= \begin{vmatrix}
+            h_{i_1}^1& \ldots & h^1_{i_p} & \ldots & h^1_{j_q}\\
+            \ldots&\ldots&\ldots&\ldots&\ldots\\
+            h_{i_1}^{p+q}&\ldots&\ldots&\ldots& h_{j_q}^{p+q}
+        \end{vmatrix} \\
+        &= \Phi_*(dx_{i_1})\wedge \ldots \wedge \Phi_*(dx_{i_p})\wedge \ldots \wedge \Phi_*(dx_{j_q})(h^1, \ldots, h^{p+q}) \\
+        \Phi_*(dx_I)(h) = dx_i \left( \p\Phi \cdot h \right)
+        \omega &= fdx^I\\
+        \theta &= gdx^J\\
+        \Phi_*\left( fdx^I \wedge gdx^J \right) = (f\cdot g)\circ \Phi\ldots\Phi_*\left( dx^I\wedge dx^J \right)\\
+        &= (f\circ \Phi)\circ (g\circ \Phi)\Phi_* dx^I\wedge \Phi_*dx^J = P_*(\omega)\wedge \Phi_*()\theta) \\
+        .\end{align*}
+        \item \[
+        \forall \omega\in \Omega_p^{(1)}(O)\quad d\left( \Phi_*(\omega) \right) = \Phi_*\left( d\omega \right) 
+        .\] 
+        \item $\psi:V \to U, \in C^1\qquad \left( \Phi\psi \right) _*(\omega)  = \psi_*(\Phi_*(\omega))$
+        \item $\omega\in \Omega_p^{(1)}$
+        $\omega = \sum_I \omega_Idx^I$
+
+        \begin{align*}
+            \Phi^*(\omega) &= \sum_{I(1\ldots p)}\sum_{\substack{J(1\ldots p)\\ 1\leqslant j_1 < \ldots < j_p \leqslant k}}\\
+            &= \omega_I(\Phi(u)) \cdot \det \frac{\partial \left( x_{i_1}, \ldots, i_p \right) }{\partial \left( u_{j_1}, \ldots, u_{j_p} \right) }du_{j_1}\wedge \ldots\wedge du_{j_p}\\
+        .\end{align*}
+
+        $\omega = \sum P_idx_i\quad \gamma^*(\omega) = \sum_{i=1}^{n} P_i\left( \gamma(t) \right) \cdot \p gamma_i(t)dt = \left<P\left( \gamma(t),\p gamma(t) \right) \right> dt$
+
+        $\omega = Pdy\wedge dz + Qdz\wedge dx + Rdx\wedge dy\quad \Phi:(u,v) \to (x,y,z)$
+
+        \begin{align*}
+            \Phi^*(\omega) &= P\left( \Phi(u,v) \right) \cdot \begin{vmatrix}
+                y_u&y_v\\ z_u& z_v\\
+            \end{vmatrix} + Q(\Phi(u,v)) \cdot \begin{vmatrix}
+                z_u & z_v\\ x_u + x_v\\
+            \end{vmatrix} + R(\Phi(u,v)) \cdot \begin{vmatrix}
+            x_i&x_v\\ y_u & y_v\\
+            \end{vmatrix}\\
+            &= \begin{vmatrix}
+                P\circ \Phi & Q \circ \Phi & R \circ \Phi\\
+                \p x_u & \p y_u & \p z_u\\ \p x_v & \p y_v & \p z_v\\
+            \end{vmatrix} \\
+            &= \begin{vmatrix}
+                P\circ \Phi & Q \circ \Phi & R \circ \Phi\\
+                & \p Phi_u&\\&\p \Phi_v&
+            \end{vmatrix} = \left( V\circ\Phi, \p \Phi_u, \p \Phi_v \right)  \\
+        .\end{align*}
+    \end{enumerate}
+\end{statement}
+
+\begin{definition}
+    [Интеграл от дифференциальной формы]
+
+    \begin{enumerate}
+        \item Если $\omega \in \Omega_{n, n} (O)$, ~$E \in \mathcal A_n$, ~$E \subseteq O$.
+        $\omega = f\cdot dx_1 \wedge \ldots \wedge dx_n$
+  
+        Тогда $\int_E \omega = \int_E f d\lambda_n  = int_E \dots \int f(x_1, \ldots, x_n) = dx_1, \ldots, dx_n$. 
+        \item $\Phi$ -- регулярное отображение, $U\subseteq \R^k \to O\subseteq \R^n$
+        $E\subseteq \Phi(U)\quad \Phi^{-1}(E)\subseteq \mathcal A_k$
+
+        $\omega\in _{k,n}$
+
+
+        Если $M$ -- $k$-мерное ориентируемое многообразие
+
+        $E$ -- ``малое'' множество (т.е сущетвует стандартная параметризация $\Phi$, которая положительно ориентирует)
+
+        $\Phi: U \to M$ И $E\subseteq \Phi(U)$. Тогда применима формула:
+        \[
+        \int_{\substack{E\\ \text{вдоль} \Phi}} = \int_{\Phi^{-1}(E)} \Phi_*(\omega)
+        .\] 
+    \end{enumerate}
+\end{definition}
+
+\begin{note}
+    [Факт]
+
+    $\int_E \omega$ не зависит от выбора положительной ориентирующей параметризации.
+\end{note}
+
+\begin{note}
+    $E$ называется измеримым в $M \iff E = \bigcup\limits_{j=1}^{\infty}E_j\quad E_j$ -- малые измеримые 
+
+    $E = \coprod_{j=1}^{\infty }E_j \implies \int_E\omega = \sum_{j=1}^{\infty } \int_{E_j}\omega$ -- поверхностный интеграл второго рода
+\end{note}
+
+Частные случаи:
+\begin{enumerate}
+    \item $p = k = 1\quad \Phi = \gamma$ -- простой кусочно-гладкий путь (замкнутый) с заданным напралением обхода (с ориентацией)
+
+    $\omega = \sum_{i=1}^{n} P_idx_i$
+    \begin{align*}
+    \int_E\omega &= \int_{\left<c,d \right>} \left<P(\gamma(t)), \p \gamma(t)) \right>dt\text{ -- криволинейный интеграл}\\
+    &= \int_{\left<c,d \right>} \left<P\left( \gamma(t) \right), \tau  \right> \|\p \gamma\|dt\\
+    &= \int_{\left<c,d \right>} \left<P(\gamma(t)), \tau \right>ds \text{ -- криполинейный интеграл 1-го рода} \\        
+    .\end{align*}
+
+    \item $p = k = 2$
+        $\omega = Pdy\wedge dz + Qdz\wedge dx + Rdx\wedge dy$
+
+        $V = (P, Q, E)$
+
+        \begin{align*}
+            \int_E \omega &= \int_E Pdy\wedge dz + Qdz\wedge dx + Rsx\wedge dy\\
+            &= \int_{\Phi^{-1}} \Phi_*(\omega)\\
+            &= \iint_{\Phi^{-1}(E)} \underbrace{\begin{vmatrix}
+                P\circ \Phi & Q \circ\Phi & R\circ \Phi\\
+                & \p \Phi_u& \\
+                &\p \Phi_v &\\
+            \end{vmatrix}}_{\left<V\circ \Phi, n \|\p \Phi_u \times \p\Phi_v\| \right>}dudv\\
+            &= \iint_{\Phi^{-1}(E)} \left<V\circ \Phi, n \right>\|\p\Phi_u \times \p \Phi_v\|dudv \text{ -- двойной интеграл}\\
+            &= \iint_E \left<V,n \right> d \mu_M \text{ -- поверхностный интеграл первого рода}\\
+        .\end{align*}
+
+        $E = \Phi(U)\quad n = \pm \frac{\p \Phi_u \times \p \Phi_v}{\|\p \Phi_u \times \p \Phi_v\|}$ 
+\end{enumerate}
+
+\begin{example}
+    $\omega = x dy \wedge dz + y dz \wedge dx + z dx \wedge dy$.'
+    
+    $\int_{S\text{ вн }} = \int_S < (x, y, z ), \dfrac{(x, y, z)}{R} d \mu_S = R \cdot \int_S d\mu_S = \Bigg| \begin{array}{l}
+    z = \sqrt{R^2 - x^2 - y^2}\\
+    d\mu_S = \sqrt{1 + \p z_x + \p z_y } dx dy\\
+\end{array} \Bigg| = 2R \int_{\{ x^2 + y^2 \leqslant R^2 \}} \dfrac{R}{\sqrt{R^2 - x ^2 - y^2}} dx dy = $\\
+$= 2R^2 \int_\pi^\pi d\phi \int_0^R \dfrac{r}{\sqrt{R ^2 - r^2}} dr = 2R^2 \cdot 2\pi \left( \sqrt{R^2 - r^2} \right) \bigg|_{r=R}^{r=0}$.
+
+\begin{note}
+    Площадь сферы $S^2 (R) = 4R^2 \pi$. 
+\end{note}
+
+\end{example}
+
+
+\section{Общая формуа Стокса}
+
+\begin{theorem}
+
+    ориентируемое компактное $M \subseteq \mathbb M_{n, k}$. Ориентация $\partial M$ согласована с ориентацией $M$, $\omega\in \Omega_{k-1}^{(1)}(O), M\subseteq O$
+    \[\int_M d\omega = \int_{\partial M}\omega\]
+\end{theorem}
+\begin{note}
+    [Наводящие соображения]
+
+    $k = 1\quad \omega = f$
+
+    $\gamma: [a,b] \to M$ -- биекция
+    \begin{align*}
+        \int_{M} df = \int_{\gamma^{-1}(M)}\gamma_*(df) \\ 
+        &= \int_{[a,b]d\gamma_*(f)} = \gamma_*(f) \mid_{a}^b \\
+        &= f(\gamma(b)) - f(\gamma(a))
+    .\end{align*}
+
+    $\partial M = {a,b}$, интеграл будет разностью произвдений знаков и заначений функции ($-$ для входа, $+$ для выхода)
+\end{note}
+
+% пустая строчка

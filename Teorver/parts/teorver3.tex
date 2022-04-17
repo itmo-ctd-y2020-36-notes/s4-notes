@@ -1,0 +1,157 @@
+\section{Стандартные <> непрерывные распределения}
+
+\begin{definition}
+    Случайная величина $\xi$ равномерно распределена на отрезке $[a,b]$, если $\xi\in U(a,b)$, если её плотность на этом отрезке постоянна.
+
+    \[
+    f_\delta = \begin{cases}
+        0&x<a\\ \frac{1}{b-a}&, a\leqslant x\leqslant b\\ 0&,x>b
+    \end{cases}
+    .\] 
+\end{definition}
+
+\begin{note}
+   \[
+       F_\xi(x) = \int_{-\infty } f_\delta(x)dx
+   .\]
+
+   При $x<a\quad F(x) = 0$
+
+   При  $a\leqslant x\leqslant b\quad F_\xi(x) = \int_a^x \frac{1}{b-a} = \frac{x-a}{b-a}$ 
+
+   При $x>b\quad F_\xi(x) = 1$
+
+    \[
+        F_\xi(x) = \begin{cases}
+            0&,x<a\\ \frac{x-a}{b-a}&, a \leqslant x\leqslant b\\ 1&, x>b
+        \end{cases}
+   .\] 
+
+   \begin{align*}
+       E\xi &= \int_{-\infty }^{\infty}xb_{\delta}(x)dx = \int_a^b x \frac{1}{b-q}dx\\
+            &=  \frac{1}{b-a}\cdot \frac{x^2}{2} \mid_a^b = \frac{b^2-a^2}{2(b-a)} = \frac{a+b}{2}\\
+
+         E\xi^2 &= \int_a^b x^2 \cdot \frac{1}{b-a}dx = \frac{1}{b-a}\cdot \frac{x^3}{3} \\
+                &= \frac{b^3 - a^3}{3(b-a)} = \frac{b^3+ab+a^3}{3} \\
+         D\xi &= E\xi^2 - \left( E\xi \right) ^2 = \ldots = \frac{(b-a)^2}{12}\\
+         \sigma = \sqrt{D\xi} = \frac{b-a}{2\sqrt{3} }\\
+         P\left( \alpha <\xi<\beta \right)  = \frac{\beta - \alpha}{b-a}\quad \alpha, \beta\in[a,b]
+   .\end{align*}
+\end{note}
+
+\begin{definition}
+    [Показательное (экспоненциальное) распределение]
+
+    Случайная величина $\xi$ имеет показательное распредлениес параметром $\alpha>0$, $\xi\in E_\alpha$, если её плотность имеет вид:
+    \[
+        f_\xi(x) = \begin{cases}
+            0&,x<0\\
+            \alpha e^{-\alpha x}&, x\geqslant 0\\
+        \end{cases}
+    .\] 
+
+\begin{figure}[!ht]
+    \centering
+    \incfig{expras}
+    \caption{expras}
+    \label{fig:expras}
+\end{figure}
+\end{definition}
+
+Числовые характеристики:
+\begin{enumerate}
+    \item $F_\xi(x) = \begin{cases}
+            0&,x<0\\ 1-e^{-\alpha x}&,x\geqslant 0
+    \end{cases}$
+\item
+    \begin{align*}
+        E\xi = \int_{-\infty}^{\infty }x f_\xi(x) dx = \int_0^{\infty }x\alpha e^{-\alpha x} = \ldots = \frac{1}{\alpha}\\
+        D\xi = \frac{1}{\alpha^2}\\
+        \sigma = \frac{1}{\alpha}\\
+        P\left( a < \xi < b \right)  = e^{-a\alpha} - e^{-b\alpha}
+
+    .\end{align*}
+\end{enumerate}
+
+\begin{example}
+    \begin{enumerate}
+        \item Время работы надёжной микросхемы до поломки
+        \item Время между появлениями двух соседних редких событий во временном потоке
+    \end{enumerate}
+\end{example}
+
+\begin{theorem}
+    [Свойство нестарения]
+
+    $\sqsupset \xi\in E_\alpha$ Тогда $P\left( \xi > x + y| \xi > x \right) = P\left( \xi > y \right) \quad \forall x,y >0 $
+\end{theorem}
+\begin{proof}
+     \begin{align*}
+         P\left( \xi > x+y | \xi > x \right)  = \frac{P\left( \xi > x + y, \xi > x \right) }{P\left( \xi > x \right) }\\
+         &= \frac{P\left( \xi > x+y \right) }{P\left( \xi > x \right) } = \frac{1 - P\left( \xi < x +y \right) }{1 - P\left( \xi < x \right) } \\
+         &= \frac{1 - F(x+y)}{1  - F(x)}  = \frac{1 - \left( 1 - e^{-\alpha(x+y)} \right) }{1 - \left( 1 - e^{-\alpha x} \right) }\\
+         &= \frac{e^{-\alpha(x+y)}}{e^{-\alpha x}} = e^{-\alpha y} \\
+         &= 1 - \left( 1 - e^{-\alpha y} \right)  = 1 - F(y) = P\left( \xi > y \right)  \\
+    .\end{align*}
+\end{proof}
+
+\begin{definition}
+    [Нормальное (Гауссовское распределение)]
+    Случайная величина $\xi$ имеет нормальное распределение с параметрами  $a$ и  $\sigma^2$, обозначается  $\xi\in N_{a, \sigma^2}$ или $g\in N(a, \sigma^2)$, если её плотность имеет вид:
+     \[
+         f(x) = \frac{1}{\sigma \sqrt{2\pi } }e^{- \frac{\left( x-a \right) ^2}{2\sigma^2}}\quad x\in \left( -\infty , \infty  \right) 
+    .\] 
+
+\begin{figure}[!ht]
+    \centering
+    \incfig{Gauss}
+    \caption{Gauss}
+    \label{fig:gauss}
+\end{figure}
+\end{definition}
+
+\begin{definition}
+    [Стандартное нрормальное распределение]
+
+    Нормальное распределение с параметрами $a = 0\quad \sigma =  1\quad \xi\in N(0,1)$
+
+    Плотность  $\varphi(x) = \frac{1}{\sqrt{2\pi } }e^{-\frac{x^2}{2}}$ -- функция Гаусса
+\end{definition}
+
+Числовые характеристики:
+\begin{enumerate}
+    \item $E\xi = 0$
+    \item $E\xi^2 = 1$
+    \item $D\xi = 1$
+\end{enumerate}
+
+Связь между нормальным и стандартным нормальным распределениями
+\begin{enumerate}
+    \item $\sqsupset \xi\in N(a,\sigma^2)$ Тогда $F_\xi(x) = F_0\left( \frac{x-a}{\sigma} \right) $
+    \item $\sqsupset \xi\in N(a, \sigma^2)$ Тогда $\nu = \frac{\xi - a}{\sigma}\in N(0,1)$ 
+    \item $\sqsupset \xi\in N(a,\sigma^2$ Тогда $E\xi = a\quad D_\xi = \sigma^2$
+    \item Вероятность попадания в заданый интервал.
+        \[
+            P\left( \alpha < \xi < \beta \right) = \phi\left( \frac{\beta -a}{\sigma} \right)  - \phi\left( \frac{\alpha -a}{\sigma} \right) 
+        .\] 
+    \item Вероятность отклонения случайной величины от её среднего значения (попадание в интервал симметричный относительно $a$ )
+        \[
+            P\left( |\xi - a|<t \right)  = 2\phi\left( \frac{t}{\sigma} \right) 
+        .\] 
+\end{enumerate}
+
+Правило трёх сигм:
+\[
+    P\left( |\xi - a| < 3\sigma \right)  \approx 0.9973
+.\] 
+Свойство линейности: Если $\xi\in N\left( a, \sigma^2 \right) $. Тогда $\xi = \gamma\nu + b\in N\left( \gamma a + b, \gamma^2\simga^2 \right) $
+Устойчивость относительно суммирования: Если $\delta_1, \delta_2$ -- назвисимы, то $\delta_1 + \delta_2\in N\left( a_1+a_2, \sigma_1^2 + \sigma_2^2 \right) $ 
+Коэффициенты ассиметрии и эксцесаа:
+\begin{itemize}
+    \item Ассиметрией распределения называется число $As = E\left( \frac{\xi - a}{\sigma} \right) = \frac{M_3}{\sigma^3}$ 
+
+        Если $As > 0$, то график плотности имеет более крутой спуск слева. При  $As < 0$ наоборот.
+    \item Эксцессом распределения называется число  $E_k = E\left( \frac{\xi - a}{\sigma} \right) ^{4} - 3 = \frac{M^4}{\sigma^4} - 3$ 
+
+        $E_k >0$ -- более острая вершина, чем у нормального распределения. При  $E_k < 0$ наоборот.
+\end{itemize}

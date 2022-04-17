@@ -1,0 +1,232 @@
+\begin{definition}
+    Случайная величина $\xi$ имеет сингулярное распределение, если  $\exists $ борелевское множество $B\in \mathscr B_\R$ с нулевой мерой лебега $\lambda(B) = 0$, такое что 
+     \[
+         P\left( \xi \in B \right)  = 1 \text{ и } P\left( \xi = x \right)  = 0\,\forall x\in B
+    .\] 
+\end{definition}
+\begin{property}
+    \begin{enumerate}
+        \item $B$ -- несчётное множество, т.к. в противном случае $P\left( \xi = x \right)  = 0\implies P\left( \xi\in B \right)  = 0$ по свойству счётнй аддитивности
+        \item $F_\xi (x)$ -- непрерывная функция, т.к.  $P\left( \xi = x \right)  = 0\,\forall x\in \R$
+    \end{enumerate}
+\end{property}
+
+\begin{example}
+    $F_\xi(x)$ -- лестница Кантора
+\end{example}
+
+\begin{theorem}
+    [Лебега]
+
+    Пусть $F_\xi(x)$ --  функция распределения некоторой случайной величины. Тогда:
+    \[
+        F_\xi (x) = p_1F_1(x) + p_2F(x) + p_3F_3(x)\quad p_1+p_2+p_3 = 1
+    .\] , где $\begin{cases}
+    F_1(x) & \text{ функция дискретного распределения}\\
+    F_2(x) & \text{функция абсолютно непрерывного распределения}\\
+    F_3(x) & \text{ функция сингулярного распределения}\\
+    \end{cases}$
+\end{theorem}
+
+\section{Преобразование случайной величины}
+
+$\sqsupset \xi$ -- случайная величина на вероятностном пространстве $(\Omega, \mathscr F, p)$ 
+
+Рассмотрим функцию $g(\xi)$, где  $g(x):\R\to \R$. Будет ли $g(\xi)$ случайной величиной на этом вероятностом пространстве? Не всегда.
+
+\begin{definition}
+    Функция $g(x):\R\to \R$ Называется борелевской (измеримой по Борелю), если $\forall B\in \mathscr B\quad g^{-1}(B)\in \mathscr B$
+\end{definition}
+
+\begin{theorem}
+    Если $g(x)$ борелевская,  $\xi$ -- случайная величины на вероятностям пространстве  $\left( \Omega, \mathscr F, p \right) $, то $g\left( \xi \right) $ -- тоже такая.
+\end{theorem}
+
+\begin{note}
+    Так как ``обычно'' все функции борелевские, то в дальнейшем акцентировать на этом внимание не будем.
+\end{note}
+
+\begin{note}
+    Если $\xi$ -- дискретная случайная величина, то  $g(\xi)$ устроена просто. Ограничимся случаем, когда  $\xi$ абсолютно непрерывная случайная величины
+\end{note}
+
+\subsection{Линейное преобразование}
+
+\begin{theorem}
+    Пусть случайная величина $\xi$ имеет плотность  $f_\xi(x)$. Тогда случайная величина  $\eta = a\xi + b$ имеет плотность 
+     \[
+         f_\eta(x)  = \frac{1}{|a|}f_\xi\left( \frac{x-b}{a} \right)  
+    .\] 
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item $\sqsupset a > 0$
+            \begin{align*}
+                F_\eta(x) &= P\left( a\xi + b < x \right)  \\
+                          &= P\left( \xi<\frac{x-b}{a} \right) \\
+                          &= F_\xi\left( \frac{x-b}{a} \right) \\
+                          &= \int_{-\infty }^{\frac{x-b}{a}} f_\xi(t)dt \\
+                          &= \int_{-\infty }^x f_\xi\left( \frac{y-b}{a} \right) \cdot \frac{1}{a}dy\\
+                          &\implies f_\eta(x) = \frac{1}{a} f_\xi\left( \frac{x-b}{a} \right)  \\
+            .\end{align*}
+        \item $\sqsupset a < 0$
+            Там то же самое, только знак меняется при делении на $a$
+    \end{enumerate}
+\end{proof}
+
+\begin{note}
+    Не все типы распределений устойчивы относительно линейного преобразования
+
+    \begin{enumerate}
+        \item Если $\xi\in N\left( a, \sigma^2 \right) $, то $\eta = \gamma \xi + b \in N\left( a\gamma + b, \sigma^2\gamma^2 \right) $
+
+            следует из теоремы
+        \item Если $\xi\in N\left( 0,1 \right) $, то $\eta = \sigma \xi + a\in N\left( a, \sigma^2 \right) $ 
+        \item Если $\xi\in U\left( 0,1 \right) $, то $\eta = a\xi + b\in I\left( b, a+b \right) $
+        \item Если $\xi\in E_{\alpha}$, то  $\eta = \alpha\xi\in E_1$
+    \end{enumerate}.
+\end{note}
+
+\subsection{Стандартизация случайной величины}
+
+\begin{definition}
+    Пусть имеется случайная величины $\xi$. Соответствующей ей стандартной случайной величиной называется случайная величина $\eta$
+     \[
+    \eta = \frac{\xi - E\xi}{\sigma_\xi}
+    .\] 
+\end{definition}
+
+\begin{property}
+    \begin{enumerate}
+        \item $E_\eta = 0\quad D_\eta = 1$
+    \end{enumerate}
+\end{property}
+
+\begin{note}
+    Важно, что стандартизованная случайная величина уже не зависит от единиц измерения.
+\end{note}
+
+\subsection{Формула Смирнова}
+
+\begin{theorem}
+    Пусть $f_\xi(x)$ -- плотность случайной величины  $\xi$ и функция  $g(x)$ -- строго монотонная. Тогда случайная величины  $\eta = g(\xi)$ имеет плотность распределения:
+     \[
+         f_\eta(x) = \frac{1}{|\p h(x)|}\cdot f_\xi(h(x))
+     .\] , где $h = g^{-1}$ 
+\end{theorem}
+\begin{proof}
+    Доказательство аналогично свойству линейности
+\end{proof}
+
+\subsection{Квантильное преобразование}
+
+\begin{theorem}
+    $\sqsupset F(x)$ -- непрерывная функция распределения случайной величины $\xi$. Тогда случайная величина $\eta = F\left( \xi \right) \in U\left( 0,1 \right) $
+\end{theorem}
+\begin{proof}
+    Ясно, что $\eta\in [0,1]$
+
+    \begin{enumerate}
+        \item $F$ -- строго возрастающая
+        $F_\eta(x) = \begin{cases}
+            0&,x < 0\\
+            P\left(\eta<x \right) = P\left( F(\xi) <x \right) =P\left( \xi< F^{-1}(x) \right) =F\left( F^{-1}(x) \right) =x  &, 0\leqslant x\leqslant 1\\
+            1&, x > 1\\
+        \end{cases}$
+    \item $F$ не является строго возрастающей. То есть есть интервалы постоянства. В этом случае за  $F^{-1}(x)$ будем брать левый конец интервала постоянства.  $F^{-1}(x) = \min_t\left\{ t: F(t) = x \right\} $ 
+
+        Далее рассуждения аналогичны.
+        $F_\eta(x) = \begin{cases}
+            0&,x < 0\\
+            F\left( F^{-1}(x) \right) =x  &, 0\leqslant x\leqslant 1\\
+            1&, x > 1\\
+        \end{cases}$
+    \end{enumerate}
+\end{proof}
+
+
+\begin{theorem}
+    $\sqsupset \eta\in U\left( 0,1 \right) \quad F(x)$ -- функция распределения случайной величины $\xi$. Тогда  $F^{-1}(\eta)$ имеет функцию распределения  $F(x)$. 
+    \[
+        F^{-1}(x) = \inf_t\left( t\mid F(t) \geqslant x \right) 
+    .\] 
+\end{theorem}
+
+\begin{definition}
+    Функция $F^{-1}\left( \eta \right) $ называется квантильным преобразованием над $\xi$
+\end{definition}
+
+\begin{note}
+    Датчики случайных числел обычно имеют стандартное распределение $I\left( 0,1 \right) $. Таким образом зная функцию распределения мы можем с помощью датчиков случайных числе и квантильного преобразования мы можем смоделировать любое распределение
+\end{note}
+
+\begin{example}
+    \begin{enumerate}
+        \item Показательное распределение с параметром $\alpha$.
+
+            При $x\geqslant 0\quad \eta = 1-e^{-\alpha x} \implies x = -\frac{1}{\alpha}\ln \left( 1-\eta \right) \in E_\alpha$, при $\eta\in U\left( 0,1 \right) $ 
+        \item $\xi\in N\left( 0,1 \right) \quad F_0(x) = \frac{1}{\sqrt{2\pi } }\int_{-\infty }^{\infty }e^{-\frac{t^2}{2}}dt$
+    \end{enumerate}
+\end{example}
+
+\subsection{Математическое ожидание преобразованной случайной величины}
+
+\begin{theorem}
+    [Без доказательства]
+
+    Для произвольной Борелевской функции $g(x)$
+     \begin{itemize}
+         \item $E_g(\xi) = \sum_{k=1}^{\infty }g(x_k)P\left( \xi = x_k \right) $, если $\xi$ -- дискретная величина (и если этот ряд сходится абсолютно)
+         \item  $E_g(\xi) = \int_{-\infty }^{\infty }g(x)f_\xi(x)dx$
+    \end{itemize}
+\end{theorem}
+
+\subsection{Свойство моментов}
+
+\begin{property}
+    \begin{enumerate}
+        \item Если  $\xi\geqslant 0$, то $E_\xi\geqslant 0$
+        \item Если $\xi \geqslant \eta$ для всех $\omega\in \Omega$, то $E_\xi \geqslant E\eta$
+        \item Если $|\xi| \geqslant |\eta|$, то $E|\xi|^k \geqslant  E|\eta|^k$
+        \item Если существует момент $E_{\xi^t} = m_t$ случайной величины  $\xi$, то существуеют моменты  $m_s\, s<t$
+             \begin{proof}
+                 $\sqsupset s<t$ Тогда $|x|^s \leqslant \min\left( |x|^t, 1 \right) \,\forall x\in \R$ (при $|x| \geqslant 1$, $|x|^s \leqslant |x|^t$, а при $|x|<1\quad |x|^s \geqslant  |x|^t$)
+
+                 Поэтому $|\xi|^s \leqslant |\xi|^t + 1\quad \forall \omega\in\Omega \implies E|\xi|^s \leqslant E|\xi|^t + 1$ и
+            \end{proof}
+    \end{enumerate}
+\end{property}
+
+\begin{theorem}
+    [неравенство Йенсена]
+
+    $\sqsupset $ функция $g(x)$ -- выпукла вниз. Тогда для любой случайной величины  $\xi$ выполнено неравеснтво
+     \[
+         E\left( g\left( \xi \right)  \right) \geqslant g\left( E\xi \right) 
+    .\] 
+\end{theorem}
+\begin{proof}
+    $\forall x_0\quad Ek\left( x_0 \right) $, такое что  $g(x) \geqslant g(x_0) + k\left( x_0 \right) \cdot \left( x-x_0 \right) $
+
+    Возьмём $x = \xi\quad x_0 = E_\xi$. Тогда 
+     \begin{align*}
+         g\left( \xi \right) \geqslant g\left( E\xi \right) +k \left( E\left( \xi \right)  \right) \\
+         E\left( g\left( \xi \right)  \right) \geqslant E\left( g\left( E\left( \delta \right)  \right)  \right) +k\left( E_\xi \right) \left( E_\xi - E_\xi \right) \\
+         E\left( g\left( \xi \right)  \right) \geqslant g\left( E\left( \xi \right)  \right) 
+    .\end{align*}
+\end{proof}
+
+\begin{example}
+    $E e^\xi \geqslant e^{E_\xi}\quad E\xi^2 \geqslant \left( E\xi \right) ^2\quad E|\xi| \geqslant |E\xi|$
+
+    $E\ln \xi \leqslant \ln E\xi\quad E \frac{1}{\xi}\geqslant \frac{1}{E\xi}$
+\end{example}
+\begin{note}
+    Для вогнутых функция знак неравенства меняется
+\end{note}
+
+
+% .....
+
+
+
