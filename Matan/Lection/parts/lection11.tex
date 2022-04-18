@@ -1,0 +1,175 @@
+$\mathrm{Hol} (O) = \{ f ~:~ \forall z \in O ~\exists \p f (z) \}$
+
+\begin{theorem}[Коши]
+    $f \in \mathrm{Hol} (\overline{O})$, $O$ --- кусочно--гладкая область (граница $O$  --- кочкчный набор кусночно  гладких непересекающихся простых замкнутых контуров).
+
+    $\partial O$ --- стандартно ориентированная граница.
+\end{theorem}
+
+\begin{theorem}
+    [``Теорема Коши о вычетах'', Теорема 2]
+
+    $f\in \mathrm{Hol}(\ov O \setminus A)\quad A$ -- конечное множество. $O$ -- кусочно-гладкая область (как в предыдущей теореме). $A \subseteq O$
+
+    \[
+    \int_{\partial O} f(z) dz = \sum_{a\in A} \oint_{|z-a| = r} f(z)dz
+    .\]
+
+    $r:$ замкнутые круги $\{\ov B(a)\}$ попарно не пересекающиеся и содержащиеся в $O$
+\end{theorem}
+
+
+\begin{statement}    [Интегральная формула Коши]
+Пусть $f (z) \in \mathrm{Hol} (\overline{O}),~ O$ --- кусочно--гладкая форму в $\C$, ~ $a \in O$.
+
+\[
+f(a) = \frac{1}{2\pi i} \int_{\partial O} \frac{f(z)}{z-a}dz
+.\]
+\end{statement}
+\begin{proof}
+    $\frac{f(z)}{z-a}\in \mathrm{Hol}\left( \ov O \setminus \{a\} \right) $
+
+    $A = \{a\} \implies \int_{\partial O} \frac{f(z)}{z-a} = \int_{|z-a| = \rho} \frac{f(z)}{z-a}$, где $\rho\in \left( 0, \rho_0 \right) $
+
+    $f$  дифференцируема в точке $a$, $f(z) = f (a) + \p f(a) (z - a) + \alpha (z) (z - a)$, где $\alpha (z) \to 0, ~ z \to a$.
+
+    \[ = \int_{|z - a | = \rho } \dfrac{f(a))}{z - a} dz + \int_{|z - a | = \rho} \p f (a) + \alpha (z) dz. \] % NO. why two \]? ??
+
+    Т.к. $\alpha(z) \to 0\quad \exists M : \left| \p f\left( \alpha\right) + \alpha (z)|  \right| \leqslant M$, $\forall z \in B_{\rho_0}(a)$.
+    \begin{align*}
+        r(t) = a + \rho e^{it}\\
+        \p r(t) = i\rho = i\rho e^{it}\\
+        \left| \p \rho(t) \right|  = \rho\\
+    .\end{align*}
+
+\[
+f(a) \cdot  \int_{|z-a| = 0}\frac{dz}{z-a} = 1\pi i
+.\]
+\end{proof}
+
+\begin{theorem}
+    [О разложении в ряд Тейлора]
+
+    $\sqsupset a\in \C, R > 0, f\in \mathrm{Hol}\left( B_R(a) \right) $
+
+    Тогда существует единственный набор $\left( C_k \right) _{k=0}^{+\infty }$:
+
+    $\forall z\in B_R(a)\quad f(z) = \sum_{k=0}^{\infty }C_k(z-a)^k$
+
+    $\sqsupset z\in B_R(a)\quad r = |z-a|\qquad \sqsupset \rho\in \left( r, R \right) $
+
+    \[
+    f(z) = \frac{1}{2\pi i} \oint_{|z-a| = \rho} \frac{f(\zeta)}{\zeta - z}d\zeta
+    .\]
+
+    \begin{align*}
+        \frac{1}{\zeta - z} &= \frac{1}{\left( \zeta - a \right)  - \left( z - a \right) } \\
+        &= \frac{1}{\zeta - a} \cdot \frac{1}{1 - \frac{z - a}{\zeta - a}} \\
+        \begin{vmatrix}
+            W = \frac{z-a}{\zeta - a}&\quad |W| = \frac{r}{q} < 1\\
+            \frac{1}{1  - W} = \sum_{k=0}^{\infty }W^k &\\
+        \end{vmatrix}\\
+        \frac{f(\zeta)}{\zeta - z} = \underbrace{\frac{f(\zeta)}{???}}_{\text{огр}} \underbrace{{\zeta - a}\sum_{k=0}^{\infty }W^k}_{\text{сх. равн. на}\xi: |\zeta - a| = \rho} \text{ -- сходится равномерно}\\
+        \oint_{\zeta - z}d\zeta &= \sum_{k=0}^{\infty } \int s
+    .\end{align*}
+
+    \begin{corollary}
+        Голоморфность $=$ комплексная аналитичность.
+    \end{corollary}
+
+    \begin{corollary}
+        Неравенства Коши для тейлоровских коэффициентов.
+
+        Пусть $f\in \mathrm{Hol} (B_R(a)),~ a\in \C, ~R>0.$
+
+        Для $r\in (0, R)$ ~~~ $M_r = \underset{\{ z ~:~ |z - a| = r\} }{\sup} | f (z ) | \forall k \in \Z_+, ~~ |c_k| \leqslant \dfrac{M_r}{r^k} \cdot 2\pi$.
+
+        Было показано, что $c_k = \int_{|\zeta - a| =\rho = r} \dfrac{f(S)}{(\zeta - a)^{k + 1}} d\zeta \implies$
+
+        $|c_k| = \dfrac{1}{2\pi}\left| \int_{-\pi}^\pi \dfrac{f (a + \rho e ^{it})}{\rho^{k + 1} e^{i(k + 1) t}} i \rho e ^{it} dt \right| \leqslant \dfrac{1}{1\pi} \int_{-\pi}^\pi \dfrac{M_\rho}{\rho^{k + 1}} dt = \dfrac{M_\rho}{\rho^{k}}$.
+    \end{corollary}
+
+
+\end{theorem}
+
+\begin{definition}
+    Функция, аналитическая во всей коплексной плоскости, называется целой.
+\end{definition}
+
+\begin{example}
+    $e^z,\,P(z),\, \sin z, \cos z, \ch z, \sh z$
+\end{example}
+
+\begin{theorem}[Лиувили]
+    Любая целая ограниченная функция является константной
+\end{theorem}
+\begin{proof}
+    $f(z) = \sum_{k = 0}^{\infty }C_k z^k$ -- сходится всюду, где функция голоморфна, т.е. в $\C$
+
+    По неравенству Коши $|C_k| \leqslant \frac{M_{r}}{r^k}$, где $M_r = \max_{|t| = r}|f(t)| \leqslant C$, если $C$ ограничивает $|f|$
+
+    Получается, что $\forall k\in \Z _+, \forall r>0\quad C_k \leqslant \frac{C}{r^k}$
+
+    Устемляя $r$ к бесконечности для $k\in \N $, получаем, что $|C_k| = 0$
+
+    А тогда $f(z) = C_0$
+\end{proof}
+
+\begin{corollary}
+    Синус целая функции, не константа. Следовательно неограничен.
+
+    $\sin z = \frac{e^{iz} - e^{-iz}}{2i}$
+
+    $\sh it = \frac{e^{-t} - e^t}{2i}$
+
+    $|\sin z| = |\sh it|$
+\end{corollary}
+
+\begin{definition}
+    [Ряд Лорана]
+
+    \[
+    \sum_{k\in \Z} C_k (z - a)^k := \sum_{k=0}^{\infty }C_k(z-a)^k + \sum_{k=1}^{\infty } C_{-k}(z-a)^{-k}
+    .\]
+\end{definition}
+
+\begin{theorem}
+    [О сумме ряда Лорана]
+
+    $\sqsupset R = \frac{1}{\ov ]lim_{k \to \infty }\sqrt[k]{|C_k|} }\quad r = \ov\lim_{k\to \infty}\sqrt[k]{|C_{-k}|} $
+
+    Тогда ряд Лорана $\sum_{k\in \Z} C_k(z-a)^k$ сходится в кольце $R_{r,R}(a) = \left\{ z: r<|z-a|<R \right\}$
+\end{theorem}
+\begin{proof}
+    Ряд с неторицательными коэффициенами сходится в круге $B_R(a)$
+
+    $\sum_{k=1}^{\infty }C_{-k}(z-a)^k  = \sum_{k=1}^{\infty }C_{-k}w^k$ сходится относительно $w$ в $B_{\frac{1}{r}}(0)\quad w = \frac{1}{z-a}$
+
+    $|w| < \frac{1}{r} \iff \frac{1}{|z-a|}< r \iff |z-a|  > r$
+\end{proof}
+
+\begin{statement}
+    Пусть $a \in \C$, $0 \leqslant r < R \leqslant +\infty$.
+    $f \in \mathrm{Hol} \left( \mathcal {R}_{r, R} (a) \right)$. Тогда $\exists$ единственный $(C_k)_{k\in \Z}$, $\forall z \in \mathcal{R}_{r, R (a)}$ верно $f(z) = \sum_{k\in \Z} C_k (z - a)^k$.
+
+
+    Пусть $z \in \mathcal{R} _{r, R} (a)$, пусть $r_1, R_1 ~:~
+    r < r_1 < |z - a| < R_1 < R$.
+
+    \begin{align*}
+        f(z) &= \frac{1}{2\pi i} \int_{\partial R(u)} \frac{f(\zeta)}{\zeta - z} d\zeta\\
+        &= \frac{1}{2\pi i} \left( \oint_{|z-a| = R_1} -||- + \oint_{|z-a| = r_1} -||- \right) \\
+        \frac{f(\zeta)}{\zeta - z} &= \frac{f(\zeta)}{(\zeta - a) - (z-a)} = \frac{f(\zeta)}{-(z-a)} \frac{1}{1 - \frac{\zeta - a }{z - a}}.
+\end{align*}
+
+    Для любого $k\in \Z \quad C_k = \frac{1}{2\pi i} \int_{|z-a| = \rho} \frac{f(z)}{(z-a)^{k+1}}dz$
+\end{statement}
+
+\begin{example}
+    $f(z) = \frac{1}{2}(z + \frac{1}{z})\quad \C\setminus \{0\} = R_{0, +\infty }\}(0)$ -- функция Жуковского
+
+    $\ctg z = \frac{\cos z}{\sin z} = \frac{1}{z} \left( \cos z \cdot \frac{z}{\sin z} \right) $
+
+    $\frac{\sin z}{z} = 1 - \frac{z^2}{3!} + \frac{z^4}{5!} - \ldots$ -- аналитическая. Значит обратная к ней аналитическая, значит $\cos z \cdot \frac{z}{\sin z}$ -- аналитическая.
+\end{example}
+%%% aboba aboba aboba aboba aboba
