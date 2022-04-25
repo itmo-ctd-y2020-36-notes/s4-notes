@@ -83,6 +83,7 @@ $c_k = \dfrac{1}{2\pi} \cdot \oint_{|z -a | \rho } \dfrac{f(z)}{(z - a) ^{k + 1}
 \begin{example}
     $f(z) = \frac{sin z}{z} \in \mathrm{Hol}\left( \R \setminus \O  \right) $
 
+
     $f(z) = \frac{1}{z}\cdot \left( z - \frac{z^3}{3!}  + \frac{z^5}{5!} - \ldots \right) = 1 - \frac{z^2}{3!} + \frac{z^4}{5!} - \ldots$ -- сходится всюду в $\C$.
     Значит это продолжение функции $\frac{sin z}{z}$
 \end{example}
@@ -187,6 +188,7 @@ $\res_af = c_{-1} = \frac{1}{2\pi i} \oint _{|z-a| = \rho}f(z)dz$
 \begin{theorem}
     [о полной сумме вычетов]
 
+
     $\sqsupset A\ni \infty , A\subseteq \tl \C, A$ -- конечно
 
     $\sqsupset f\in \mathrm{Hol}\left( \C \setminus A \right) $ Тогда:
@@ -257,8 +259,62 @@ $\res_af = c_{-1} = \frac{1}{2\pi i} \oint _{|z-a| = \rho}f(z)dz$
 
 Приложение теоремы о вычетах к вычислению определённых и несобственных интегралов.
 \begin{enumerate}
-    \item $\int_{-\pi}^{\pi} R(\cos\varphi, \sin\varphi)d\varphi = \oint_{|z| = 1} R\left( \frac{z + \frac{1}{2}}{2}, \frac{z - \frac{1}{2}}{2} \right) \frac{dz}{iz} $
+    \item $\int_{-\pi}^{\pi} R(\cos\varphi, \sin\varphi)d\varphi = \oint_{|z| = 1} R\left( \frac{z + \frac{1}{z}}{2}, \frac{z - \frac{1}{z}}{2} \right) \frac{dz}{iz} $
 
-    $z = e$
+    \begin{align*}
+        z = e^{i\varphi}\\
+        \frac{z + \frac{1}{2}}{2} = \frac{e^{iz} + e^{-iz}}{2} = \cos z\\
+        dz = de^{i\varphi} = i e^{i\varphi} d \varphi = i z d \varphi.
+    \end{align*}
+    \begin{example}
+
+        $z^2+6z+1 = 0$
+
+        $z_{12} = -2\pm \sqrt{9-1} = -3\pm 2\sqrt{2}  $
+
+        $z_1z_2 = 1$ (по теореме Виета, о которой полезно помнить)
+
+        $|z_1| = \frac{1}{|z_2|}$
+
+        $z_1 $ -- полюс второго порядка
+
+
+        \begin{align*}
+            \int_{-\pi}^{\pi}\frac{\cos \varphi + 2}{\left( \cos \varphi +3 \right) ^2} d\varphi = \oint_{|z| = 1}\frac{\frac{z + \frac{1}{z}}{2} + 2}{\left(  \frac{z + \frac{1}{z}}{2} + 3 \right) ^3}\\
+            &= \frac{2}{i}\int_{|z| = 1} \frac{z^4 + 4z + 1}{\left( z^2 + 6z + 1 \right)^2 }dz \\
+            &= \frac{2}{i}2\pi i \cdot \res_{z_1}f(z) \\
+            \res_{z_1} f &= \frac{1}{(N-1)!} (f(z)(z-a)^N)^{(N-1)}_{z=a} \\
+            &= \p{(f(z)(z-1)^2)}\mid_{z=z_1} \\
+            &= \frac{z^2+4z+1}{(z-z_2)^2}\mid_{z=z_1}\\
+            &= \left( \frac{2z+4}{(z-z_2)^2} - 2 \frac{z^2 + 4z+1}{(z-z_2)^3} \right)\mid_{z = z_1} = \ldots.\end{align*}
+    \end{example}
+    \item Несобтсвенный интеграл $\int_{-\infty }^{\infty } f\left( x \right) dx$
+    $f(x)$ допускает аналитическое продолжение в $\C \setminus A, A$ -- конечное множество особыз точек, $A \cap \R = \O $
+
+    $\sup_{|z| = R} |f(z)| = o(\frac{1}{R})\quad R\to +\infty $
+
+    Тогда:
+    \[
+        \int_{-\infty }^{\infty }f\left( x \right) dx = 2\pi i \sum_{z:\Im z >0}\res_z f
+    .\]
+
+    Мы можем рассмотреть семейство полукругов и брать интегралы по их контурам.
+
+    $\int_{C_R}f(z)dz = 2\pi i \sum_{\substack{z:\Im z> 0\\ |z|< R}} \res_z f 2\pi i \sum_{z: \Im z > 0}\res_zf$
+
+    $ = \int_{-R}^R f(z) dz + \int_{\substack{|z| = R\\ \Im z \geqslant 0}} f(z)dz \to \int_{-\infty }^{\infty }d(x)dx + 0$
+
+    \begin{example}
+
+        особые точки: $z^1 + 1=0;z^4 + 4 = 4\qquad z = \pm i\;z = \pm 2i\quad |z| = R$
+
+        $|f(z)| = \frac{1}{|z^1 + 1| |z^2 + 4|}$
+        \begin{align*}
+            \int_0^{\infty } \frac{dx}{(x^2 + 1)(x^2 + 4)} = \frac{1}{2}\int_{-\infty }^{\infty } \frac{dx}{(x^2 + 1) (x^4 +4)}
+        .\end{align*}
+    \end{example}
 \end{enumerate}
+
+$M(R) = \sup_{|z| = R}\sup |f(z)| = o\left(\dfrac 1 R \right), R\to +\infty$ --- условие на применение формулы для несобственного интеграла
+
 %% строчка
