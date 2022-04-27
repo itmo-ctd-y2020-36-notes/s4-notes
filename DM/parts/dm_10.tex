@@ -1,0 +1,151 @@
+\subsection{А обязательно ли разрешать компьютеру зависать?}
+
+\begin{definition}
+    Язык программирования называется \textbf{полным} для $A$, если для любого перечислимого языка из $A$ можно задать его описание на этом языке.
+
+    Иными словами, любую вычислимую функцию можно задать при помощи этого языка программирования.
+\end{definition}
+
+\begin{definition}
+    Язык называется \textbf{вычислимым} (компилируемым), если по описанию и словы мы можем сказать подходит или нет.
+\end{definition}
+
+\begin{definition}
+    Язык программирования \textbf{независающий}, если $\forall$ программы и $\forall$ слова он не зависнет.
+\end{definition}
+
+\begin{theorem}
+    Не существует полного для разрешимых языков вычислимого, не зависающего метаязыка описания.
+
+
+    То есть, не существует вычилимой нумерации всех всюду определенных вычислимых функций.
+\end{theorem}
+
+\begin{proof}
+    Предположим, что она (нумирация) существует. Вот эта нумерация $f_1, f_2, f_3, \dots$.
+    \begin{tabular}{c|c c c c}
+         & $x_1$ & $x_2$ & $x_3$ & $x_4$  \\\hline
+        $f_1$ &&&&\\
+        $f_2$ &&&&\\
+        $f_3$ &&&&\\
+        $f_4$ &&&&
+    \end{tabular}
+
+    $g(i) = f_i(x_i) + 1$, ~~~ $g$~--- всюдуопределенная, вычислимая.\\
+    $g(i)  = ! f_i(x_i)$
+\end{proof}
+
+\begin{corollary}
+    На конечном автомате нельзя интерпретировать конечный автомат.
+\end{corollary}
+
+
+\subsection{Разрешимость}
+У нас есть пример неразрешимого языка. Это язык $U = \{ \langle p, x \rangle \mid p(x) = 1\}$.
+А если мы хоти проверить еще какой-то язык? Можно ли куда-то замести под ковер рассужения?
+
+\begin{definition}
+    $m$~--- сведение (исторически many to one reduction, но в реальности это оказалось не удачным, поэтому называют mappng сведение).
+
+    Говорят язык $A \leqslant_m B$, если существует всюдуопределенная вычислимая функция $f$, такая, что $x \in A \iff f(x) \in B$.
+\end{definition}
+
+\begin{theorem}
+    Если $A$ не разрешимый, $A \leqslant_m B \implies B$~--- не разрешимый.
+\end{theorem}
+
+\begin{proof}
+    Предположим $B$ разрешимый, то есть есть $\mathrm{in} B(x)$.
+    Тогда $A$ разрешается программой
+\begin{lstlisting}[mathescape=true]
+inA(x):
+    return inB(f(x))
+\end{lstlisting}
+\end{proof}
+
+\begin{example}
+    [Задача останова]
+
+    Пусть $HALT = \{ p\mid p(\epsilon) \text{ не зависает } \}$.
+
+    Сведем $U$ к $HALT$.
+\begin{lstlisting}[mathescape=true]
+f ($\langle p, x \rangle$):
+    return "q(y):
+        def p = ...
+        if p(x) != 1:
+            while True:
+                pass
+    "
+\end{lstlisting}
+
+Заметим, что $f$ всюду определнная и вычислимая.
+
+$f$ является $m$ сведением U к HALT.
+
+$q \in HALT \iff \langle p, x \rangle \in U$.
+\end{example}
+
+Разминка перед Т. У-Р.
+Пусть мы хотим проанализировать поведение программы.
+
+$A = \{ p \mid p \text{ чему-то удовлетворяет, но не зависает}\}$.
+Тогда $A$ не зазрешим.
+
+\begin{proof}
+    Также напишим
+\begin{lstlisting}[mathescape=true]
+f($\langle p, x\rangle$):
+    return "q(y):
+        if p(x) = 1:
+            сделай то, что удовлетворяет $A$
+        else: while True: pass
+    "
+\end{lstlisting}
+\end{proof}
+
+\subsection{Теорема Успенского-Райса}
+$E = $ множества перечислимых языков.
+
+c: $\Sigma \equiv $ char,~ s: $\Sigma^* \equiv $ string,~
+L $\subset \Sigma^* \equiv $ set<string> = lang,~
+$2^{\Sigma^*} \equiv $ set<lang>,~
+$E \subset 2^{\Sigma^*} \equiv $ set<lang>.
+
+Свойство перечислимых языков:\\
+$A \subset E \equiv $ set<lang>\\
+$L \in A \to L $ удовлетворяет $A$\\
+$L \not\in A \to L$ не удовлетворяет $A$.\\
+$L(A) = \{ p \mid L(p) \in A\}$\\
+$L(p) = \{ x \mid p(x) =1 \}$.
+
+\begin{theorem}[Успенского-Райса]
+    Язык любого нетривиального свойства перечислимых языков не разрешим.
+
+    $A = \O~~~~L(A) = \O$, ~~~~~ $A = E ~~~~ L(A) = \Sigma^{*}$.
+    Есть $A\neq \O$, $A \neq E \implies L(A) $ не разрешим.
+\end{theorem}
+
+\begin{proof}
+    Пусть $\O \not\in A$.
+    Пусть какой-то язык $X \in A$.
+
+    $L(A)$~--- разрешим $in A(p)$. Напишем следующий код, разрешающий $U$.
+\begin{lstlisting}[mathescape=true]
+in U($\langle p, x \rangle$):
+    q = "q(y):
+            if p(x) = 1:
+                return inX(y)
+            else:
+                return 0
+        "
+    return inA(q)
+\end{lstlisting}
+Утверждается, что получился разрешитель для $U$.
+Если $p(x) = 1$, то $L(q) = X \in A$.
+А если $p(x) = 0$ или $p(x)$ зависает, то $L(q) \O$.
+
+Таким образом, $\langle p, x \rangle \in U \iff q \in L(A)$.
+
+То есть $f$ $m$--сводит $U$ к $L(A)$.
+\end{proof}
