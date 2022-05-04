@@ -1,0 +1,157 @@
+\subsection{Теорема о рекурсии}
+
+Бывают программы, что
+\begin{lstlisting}[mathescape=true]
+q - разрещитель
+    f(x): $\dots$
+    if q(f):
+        while True: pass
+    else:
+        return 1
+\end{lstlisting}
+
+\begin{example}[игрушечный] Что выведет эта инструкция?
+\begin{verbatim}
+    Написать 2 раза, второй раз в ковычках:
+    "Написать 2 раза, второй раз в ковычках:"
+\end{verbatim}
+
+Действительно, получится:
+\begin{verbatim}
+    Написать 2 раза, второй раз в ковычках:
+    "Написать 2 раза, второй раз в ковычках:"
+\end{verbatim}
+\end{example}
+
+То есть в каком-то месте программы мы можем вывести исходный код программы.
+
+\begin{lstlisting}[mathescape=true]
+f(...):
+.
+.   getSource()
+.
+.
+\end{lstlisting}
+Программа выведет:
+\begin{verbatim}
+.
+getSource():
+.
+.
+.
+.
+\end{verbatim}
+
+Наиболее интересное применение --- quine~--- программа, которая выводит свой исходный код.
+
+Как же это делать?
+\begin{lstlisting}[mathescape=true]
+f(...):
+.
+.
+.   getSource()
+.
+
+getSource():
+    s $\longleftarrow$ getAuxSource()
+    return s + "getAuxSource():" +
+    "   return \"" + s + "\""
+
+getAuxSource():
+    return "f(...):
+            ...
+            getSource():
+                s $\longleftarrow$ getAuxSource()
+                return s + \"getAuxSource():\" +
+                    \"   return \\\"\" + s + \"\\\"\"
+            "
+\end{lstlisting}
+\begin{note}
+Заметим, что весь код программы состоит из того, что выведет getAuxSource, плюс определение getSource.
+\end{note}
+
+
+\begin{theorem}[О рекурсии]
+    Пусть $V(x, y)$~-- вычислимая функция $\implies \exists $ вычислимая  функция $f$ :  $f(y) =  V (f, y)$.
+\end{theorem}
+
+Благодаря этой теореме можно проще доказывать неразрешимость некоторых языков.
+
+\begin{example}
+    $\mathrm{HALT} = \{ p \mid p(\varepsilon) \neq \bot \}$ неразрешим
+
+    \begin{proof}
+        Пусть $h$~--- разрещитель $\mathrm{HALT}$.
+
+\begin{lstlisting}[mathescape=true]
+p():
+    if h(p) == 1 :
+        while True: pass
+    else:
+        return 1
+\end{lstlisting}
+    \end{proof}
+\end{example}
+
+
+\begin{example}[Теорема Успенского--Райса]
+    $A \subseteq RE, ~~~A \neq \O,~~~ A \neq RE$.
+
+    $L(A )  = \{ p \mid L(p) \in A \}$~--- неразрешим.
+
+    \begin{proof}
+        Пусть $inL_A$~--- разрешитель.
+
+Пусть $\underbrace{M}_{inM(x)}\in A,~~~ \underbrace{N}_{inN(x)} \not\in A$.
+
+\begin{lstlisting}[mathescape=true]
+f(x):
+    if ($\mathrm{inL}_A$(getSource())):
+        return inN(x)
+    else:
+        return inM(x)
+
+\end{lstlisting}
+    \end{proof}
+\begin{note}
+    Такая подростковая программа: послушаем родителей и сделаем наоборот.
+\end{note}
+\end{example}
+
+\subsubsection*{Еще примеры невычислимых функций}
+
+\begin{example}
+    $K(x)$~--- Колмогоровская сложность\\
+    $K(x) = \min$ длинна программы $p$, что $p() = x$.
+
+    К сожалению, нельзя написать программу, которая бы оптимально кодировалоа строку.
+\end{example}
+
+\begin{statement}
+    $K(x)$~--- невычислима
+\end{statement}
+\begin{proof}
+    Пусть $K(x)$ вычислима, напишем код.
+\begin{lstlisting}[mathescape=true]
+p():
+    for x \in $\Sigma^{*}$:
+        if k(x) > |getSource()|:
+            return x
+\end{lstlisting}
+Мы нашли программу, у котороой колмогоровская сложность больше, чем сложность программы $p$, которая без проблем вывродит эту строчку.
+\end{proof}
+
+\begin{example}
+    [Busy Beaver (BB(n))]
+    Эта функция принимает число n и возвращает максимальное число шагов, которое делает программы длинны $n$ (из $n$ строчек или символов).
+\end{example}
+
+\begin{statement}
+    $BB(n)$ невычилима. Напишем программу, которая будет работать дольше.
+\begin{lstlisting}[mathescape=true]
+f():
+    for i = 0 .. BB(|getSource()|):
+        pass
+    return
+\end{lstlisting}
+\end{statement}
