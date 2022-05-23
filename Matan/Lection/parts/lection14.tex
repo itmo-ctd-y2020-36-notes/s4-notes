@@ -1,0 +1,340 @@
+$\int_{-\pi}^\pi \cos k t \cos jt dt = \begin{cases}
+    0, & k\neq j\\
+    \pi, & k = j \neq 0\\
+    2\pi, & k =j = 0
+\end{cases}$; $\int_{-\pi}^\pi \sin k t a\sin j t dt = \begin{cases}
+    0, & k\neq j\\
+    \pi, & k = j
+\end{cases}$, где $k, j \in \N$.
+
+Ортагональная Нормальная система: $\left\{ \dfrac{1}{\sqrt{2}\pi}, \dfrac{1}{\sqrt{\pi}}\cos t, \dfrac{1}{\sqrt{\pi}}\sin t,
+\dfrac{1}{\sqrt{\pi}} \cos 2t, \dots
+\right\}$.
+\begin{definition}
+    Многочлены Чебышёва 1-го рода
+    \[T_n(t) = \cos(n \arccos t)\quad t\in [-\pi, \pi]\;\; n\in \Z_+\]
+
+    $L^2([-1,1], \frac{1}{\sqrt{1}{1 - t^2}})$
+\end{definition}
+
+\begin{note}
+    $L^p, (X, \mu)$ -- полно, $\forall p \in [1, +\infty ]$
+
+    $C[-\pi, \pi]$ -- плотно в $L^p[-\pi, \pi]$
+
+    $\forall \varepsilon >0 \forall f\in L^p[-\pi, \pi]\; \exists g\in [-\pi, \pi]: \|f - g\|_p <\varepsilon$
+\end{note}
+
+\begin{note}
+    $\sqsupset \{f_k\}_{k=1}^{\infty } \subseteq L^p[a,b]\quad f_k \to f$ в $L^p$
+
+    Иначе: $\|f_k - f\|_p \to 0, k\to \infty$. $\implies f_k \to f, k\to \infty $ почти везде на $[a,b]$
+\end{note}
+
+\begin{note}
+    $L^2\left( [a,b], \mu \right) $
+
+    $\left<f, g \right> = \int_{[a,b]}f \cdot \ov g d\mu$ -- скалярное пространство в $L^2([a,b], \mu)$
+\end{note}
+
+\begin{definition}
+    Полное линейное пространство со скалярным произведением называется Гильбертовым.
+\end{definition}
+
+\begin{example}
+    $L^2(X, \mu)\quad l^2$
+
+    $x = (x_k)_{k=1}^{\infty }\quad y = (y_k)_{k=1}^{\infty }\quad \left<x,y \right> = \sum_{k=1}^{\infty }x_k \ov y_k$
+\end{example}
+
+\begin{note}
+    $\forall y \in H$\\
+    $\varphi(x) = \left< x, \ov y \right>$~--- непрерывно из $H$ в $\R$ (в $\C$)
+
+    $| \varphi(x_1) - \varphi(x_2)| = |\left< x_1 - x_2 , y \right> \leqslant \| x_1 - x_2\| \|y\|$~--- липшицево с константой $\|y\|$.
+\end{note}
+
+\begin{note}
+    $\sqsupset \sum_{k=1}^{\infty } x_k $ -- сходящийся ряд в Гитбертоом пространстве $\mathcal H$. Тогда $\forall y\in H$
+    \[ \left< \sum_{k=1}^{\infty } x_k, y \right> = \sum_{k=1}^{\infty }\left<x_k, y \right> \]
+\end{note}
+
+\begin{note}
+    $\varphi(x) = \left<x,y \right>$
+
+    $\varphi\left(\underbrace{\sum_{k=1}^{\infty } x_k }_{\lim S_n } \right) = \lim_{n \to \infty} \varphi(S_n) = \lim_{n \to \infty} \sum_{k=1}^{n } \left<x_k, y \right> = \sum_{k=1}^{\infty } \left<x_k, y \right> $
+
+    $S_n = \sum_{k=1}^{n} x_k$
+\end{note}
+
+\begin{theorem}
+    [<<Пифагора>>]
+
+    Пусть $\{ x_k\}_{k=1}^\infty$~--- о.с. в Гильбертовым пространстве $\mathcal{H}$. Тогда
+
+    \begin{enumerate}
+        \item $\forall n \in \N$
+        \[ \left\|\sum_{k=1}^n x_k \right\|^2 = \sum_{k =1}^n \|x_k\|^2. \]
+        \item $\sum_{k=1}^\infty x_k$ сходится в $\mathcal{H} \iff \sum_{k =1 }^\infty \|x_k\|^2$ сходится
+        случае сходимости $\left\| \sum_{k=1}^\infty x_k \right\|^2 = \sum_{k=1}^\infty \|x_k\|^2$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item $\left\| \sum_{k=1}^n x_k \right\| = \left< \sum_{k=1}^n x_k, \sum_{k=1}^n x_k \right> = \sum_{k=1}^n \left< x_k, \sum_{j=1}^n x_j\right> = \sum_{k=1}^n \| x_k\|^2$.
+        \item $S_n = \sum_{k=1}^n x_k$, $\tl{S}_n = \sum_{k=1}^n \|x_k \| ^2$.
+
+        \[ \|S_n - S_m\|_{n > m}^2 = \left\| \sum_{k = m + 1}^n x_k  \right\|^2 = \sum_{k = m + 1}^n \| x_k\|^2 = \tl S_n - \tl S_m = | \tl S _m - \tl S_n| \implies  \]
+        $(S_n)$~--- сходится  $\iff$ $ S _n$~--- фундамнтальная $\iff$ $\tl S _n$~--- фундамнтальная $\iff$ $\tl S_n$~--- сходится
+
+        Если $\sum x_k$ сходится
+        \[ \left\| \sum_{k=1}^\infty x_k  \right\|^2 = \lim_{n\to\infty} \left\| \sum_{k=1}^n x_k \right\| = \lim_{n \to \infty } \sum_{k=1}^n \| x_k \| ^2 =\sum_{k=1}^\infty \|x_k\|^2 \]
+    \end{enumerate}
+\end{proof}
+
+Пусть  $x \in \mathcal{H}$, $\{ e_k\} _{k=1}^\infty$~--- ортагональная система в $\mathcal{H}$.
+
+Пусть $x = \sum_{k = 1}^\infty c_k e_k$, $c_k$~--- скаляр. Тогда
+\[c_k = \dfrac{\left< x, e_k \right>}{\|e_k\| ^2}~~~~ \forall k \in \N
+    \]
+
+Пусть $k \in \N$~~~$\left< x, e_k \right> = \left< \sum_{y = 1}^\infty e_k e_j, e_n \right>  =$
+
+\begin{example}
+    \begin{enumerate}
+        \item $l^2 = \left\{ \left( x_1, x_2, \ldots, x_k, \ldots \right) ) : \sum_{k=1}^{\infty } |x_k|^2  \right\}$
+
+        $e_1 = (1,  0, \ldots)\quad e_2 = (0, 1, , \ldots), \ldots$
+
+        $\left<e_j, e_k \right> = \delta_{jk}$
+
+        $c_k = \left<x, e_k \right> = x_k$
+
+        $x = \sum_{k=1}^{\infty } x_ke_K\quad \sum_{k=1}^{\infty } x_k^2 <\infty  $
+
+        $\{e_k\}_{k\geqslant k_0}$ -- ортонормированная система
+    \end{enumerate}
+\end{example}
+
+\begin{theorem}
+    [О свойствах конечных сумм рядов Фурье]
+
+    $\sqsupset \mathcal{H}$ -- Гильбертово пространство. $x\in H\quad \{e_k\}$ -- ортонормированны в $\mathcal{H}$. $S_n = \sum_{k=1}^{\infty } c_k e_k$
+
+    $\forall  n\in \N $
+    \begin{enumerate}
+        \item $x = s_n + z_n]\quad z_n \perp \mathcal L_{in} \{e_1, e_2,\ldots e_n\} = \mathcal L_n$
+
+        Т.е. $S_n$ -- ортогональная проекция $x$ на $L_n$
+        \item $AA y\in \mathcal L_n$ \[ \|x-y\| \geqslant \|x - \delta_n\|\]
+        Пишем равенство только в условии, что $y = S_n$
+
+        Т.е. $S_n$ -- единственный элемент наилучшего приближения к $x$
+        \item $\|S_n\| \leqslant  \|x\| \iff \sum_{k=1}^{n} |C_k|^2 \|e_k\|^2 \leqslant \|x_k\|^2$ -- неравенство Бесселя
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    $z_n = x - S_n$
+
+    $\sqsupset j\in \{1, \ldots, n$
+
+    \begin{align*}
+        \left<z_n, e_j \right> &= \left<x, e_j \right> - \left<S_n, e_j \right>\\
+        &= \left<x, e_j \right> - e_j \left<e_j, e_j \right> = 0  \\
+        \implies & z_n \perp e_j \implies z_n \perp \mathcal L_n\end{align*}
+
+    \begin{align*}
+        \|x - y\|^2 &=  \|S_n + z_n - y\|^2 \\
+        &= \|\underbrace{\left( S_n - y \right)}_{\in \mathcal L_n}  + \underbrace{z_n}_{\perp z\mathcal L_n}\|^2 \\
+        &= \|S_n - y\|^2 + \|z_n\|^2 \\
+        &\geqslant \|z_n\|^2 = \|x - S_n\|^2\\
+    .\end{align*}
+
+    \begin{align*}
+        \|x\|^2 &= \|S_n + z_n\|^2 = \|S_n\|^2 + \|z_n\|^2\\
+        &\geqslant \|S_n\|^2 \\
+    .\end{align*}
+
+    Неравенство Бесселя -- результат применения теоремы Пифагора.
+\end{proof}
+
+\begin{theorem}
+    [Рисса-Фишера]
+
+    $\sqsupset \mathcal{H}$ -- г.п., $\{e_k\}$ -- ОС в $\mathcal{H}, x\in \mathcal{H}$
+
+    \begin{enumerate}
+        \item Ряд Фурье \[\sum_{k=1}^{\infty } C_ke_k:\quad c_k \text{ коэффициент Фурье }\]
+        сходится
+        \item $x = \sum_{k=1}^{\infty } C_K e_k + z\quad z\perp e_j \forall j $
+        \item $x = \sum_{k=1}^{\infty } C_k e_k \iff \sum_{k=1}^{\infty } |C_k|^2 \|e_k\|^2 = \|x\|^2 $\\--- Тождество Бесселя (Равенство Парсеваля, уравнение замкнутост)
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    По теореме Пифагора сходимость ряда Фурье равеносильно
+    \[ \sum_{k=1}^{\infty } \|C_k e_k\|^2 = \sum_{k=1}^{\infty } |C_k|^2 \|e_k\|^2 \leqslant \|x\|^2. \]
+
+    Здесь в конце предельный переход по неравенству Бесселя. Раз частичные суммы ограничены, то ряд сходится.
+
+    $z = x - \sum_{k=1}^{\infty }c_ke_k $
+
+    \begin{align*}
+        \left<z, e_j \right> = \left<x, e_j \right> - \left<\sum_{k=1}^{\infty } C_ke_k, e_j  \right>\\
+        &\left<x, e_j \right> - \sum_{k=1}^{\infty } C_k\left<e_k, e_j  \right> = 0 \\
+    .\end{align*}
+
+    $x = \underbrace{\sum_{k=1}^{\infty }C_ke_k}_S \iff z = 0 $
+
+    $x = S + z\quad S\perp z$
+
+    $\|x\|^2 = \|S\|^2 + \|z\|^2 \implies \left( \|x\|^2 = \|S\|^2 \iff x = S \right) $
+\end{proof}
+
+\begin{definition}
+    ЛНЗ система $\{x_k\}_k$ -- базис в нормированном пространстве $X$, если
+    \[\forall x\in X \exists \{x_k\}_{k=1}^{\infty } \subseteq \R(\C); x = \sum_{k=1}^{\infty } x_j x_j \]
+\end{definition}
+
+\begin{definition}
+    ОС $\{e_k\}_{k=1}^{\infty }$  в Гильбертовом пространстве $H$ называется замкнутой, если $\forall x\in H$ верно уравнение замкнутости.
+    \[\|x\|^2 = \sum_{k=1}^{\infty } |c_k|^2 \|e_k\|^2 \]
+\end{definition}
+
+\begin{definition}
+    $\sqsupset \{e_k\}$ -- ОС в $H$. Она называется полной, если $\nexists z\in H \setminus \{0\}:\quad z\perp e_i \forall \in \N $
+\end{definition}
+
+\begin{theorem}
+    $\sqsupset \{e_k\}$ -- ОС в г.п. $H$. Следующие утверждения равносильны:
+    \begin{enumerate}
+        \item $\{e_k\}$ -- базис
+        \item $\forall x, y\in H$
+        \[ \left<x, y \right> = \sum_{k=1}^{\infty } c_k(x) \cdot \ov c_k(y)\cdot \|e_k\|^2 \]
+
+        $c_k(t)$ -- коэффициент Фурье по системе $e_k$
+        \item $\{e_k\}$ -- замкнута
+        \item $\{e_k\}$ -- полная
+        \item $\{\sum_{j=1}^{n} c_je_j: c_j\in \R(\C)\}_{n\in \N }$ -- плотно в $H$
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item $1\implies 2$.
+
+        $x = \sum_{k=1}^{\infty } C_k(x)e_k\quad y = \sum_{k=1}^{\infty }c_k(y)e_k$
+
+        \begin{align*}
+            \left<x,y \right> &= \left( \sum, \sum \right) \\
+            &= \sum \left<c_k(x)e_k, \sum \right> \\
+            &= \ldots \\
+        .\end{align*}
+        \item $2\implies 3$. Очевидно
+        \item $3 \implies 4$. $\sqsupset \forall j\in \N \; z\perp e_j \implies c_k(z) = 0$
+
+        $\|z\|^2 = \sum_{k=1}^{\infty }|c_k(z)|^2 \|e_k\|^2 = \sum 0 = 0 \implies \|z = 0\| \implies z = 0 $
+        \item $4 \implies 1 $ $ \sphericalangle x = \sum_{k=1}^{\infty }c_k(x) \cdot e_k  + z$ -- по теореме Риса Фишера.
+        $z \perp e_j$. В предположении $e_k$ полные, значит $z = 0 \implies e_k$ -- базис
+        \item $1 \implies  5$
+
+        $\forall \varepsilon>0 \forall x\in H\exists N\in \N \exists c_1, \ldots, c_N: \quad \|x - \sum_{k=1}^{N} c_ke_j\|<\varepsilon$
+
+        По 1 $\sum_{k=1}^{\infty } c_ke_j \to x$ -- сходится, а значит разность с $x$ стремится к 0 и можно для $\forall \varepsilon$ подобрать нужное $N$
+        \item $5 \implies 1$ $\sqsupset \varepsilon>0$
+        $\|x - \sum_{k=1}^{n} \tl c_ke_k\ < \varepsilon$
+
+        $\|x - \overbrace{S_N}^{\text{сумма Фурье}}\| \leqslant  \|x - \sum_{k=1}^{N} \tl c_k e_k\| < \varepsilon$
+
+        $x - s_n = z_n\quad z_n\perp S_N$
+
+        $x = s_N + z_n = s_N + \underbrace{(s_n - s_N)}_{\in \mathcal L\{e_{N+1}, \ldots, e_n\}} + z_n$
+
+        $\|x - S-N\|^2 = \|S_n - S_N\|^2 + \|z_n\|^2$
+
+        $\|x - S_n\|^2 = \|z_n\|^2$
+
+        $\|x - S-N\|^2 \leqslant \|x - S_n\|^2$
+
+        $\implies S_n \to x \implies \{e_k\} $ -- базис
+    \end{enumerate}
+\end{proof}
+
+\section{Тригонометрические ряды Фурье}
+
+$f \in L^1(-\pi, \pi]$
+
+$|\left<f, g \right>| \leqslant \|f\|_1 \cdot \|g\|_{\infty } = \|f\|_1$
+
+$f\in L^1\quad g = \cos kt, \sin kt, e^{ikt}$
+
+$|\left<f, g \right>| = \int_{-\pi}^{\pi} f(t)\ov g(t)dt$
+
+\begin{definition}
+    \[\frac{a_0}{2} + \sum_{k=1}^{\infty } \left( a_k\cos kt + b_k\sin kt \right)  \]
+
+    $a_k = \frac{1}{\pi}\int_{-\pi}^{\pi}f(t)\cos kt dt\quad k\in \Z_+$
+
+    $b_k = \frac{1}{\pi} \int_{-\pi}^{\pi}f(t)\sin kt dt\quad k\in \N $
+
+    $C_k(x) = \cos k x\quad S_k(t) = \sin kt$
+
+    $k \geqslant 1\quad \|C_k\| = \|S_k\| = \pi$
+
+    $a_k = \frac{\left<f, C_k(t) \right>}{\|C_k(t)\|}$
+
+    $C_0 (t) = 1, ~~~c_0 \dfrac{\left< f, C_0(t) \right> }{\| C_0\|^2} = \dfrac{\left< \dots, \dots \right>}{2\pi} = \dfrac{a_0}{2}$.
+
+    Ряд Фурье $ = c_0(f) + \sum_{k=1}^{\infty } c_k(f)\cos(kt) + b_k(f)\sin k t $
+\end{definition}
+
+\begin{note}
+    [Факт]
+
+    $\{\cos kt, \sin kt\}_{k\in \N } \cup \{1\}$ -- базис $L^2\left( [-\pi, \pi] \right) $
+
+    $\forall f\in L62\quad f(x) = \frac{a_0(f)}{2} + \sum_{k=1}^{\infty } \left( a_k \cos kt + b_k\sin kt \right) $ -- почти везде равенство\ldots
+
+    $\|f\|^2 = \frac{|a_0|}{2} + \left(\sum_{k=1}^{\infty } |a_k|^2 + |b_k|^2\right)^2 \pi \iff \frac{\|f\|}{\pi} = a_0^2 + \sum_{k=1}^{\infty }\left( |a_k|^2 + |b_k|^2 \right)  $
+\end{note}
+
+\begin{note}
+    [Факт 2] Следствие признака Дини
+
+    $\sqsupset  f\in L^1([-\pi, \pi])\quad f$ -- $2\pi$-периодическая
+
+    $\sqsupset x\in \R$
+
+    $\exists f(x+\pm 0)\in \R$ И $\lim_{t \to 0+} \frac{f(x+t) - f(x+0)}{t} \in \R $ и $\lim_{t \to 0-} \frac{f(x+t)- f(x-0)}{t}\in \R$
+
+    Тогда в тех $x$, что тригонометрический ряд Фурье сходится.
+
+    $S(x) = \frac{f(x+0) + f(x-0)}{2}$
+\end{note}
+
+\begin{example}
+    $\sphericalangle 2\pi$-периодическое продолжение  $\mathrm{sign} x\quad f(\pi k) = 0 \implies f(x) \equiv S(x)$
+\end{example}
+
+\begin{note}
+    Если $f\in L^1$ и $f$ нечётная, то $a_k = 0\quad b_k = \frac{2}{\pi}\int_0^\pi f(t)\sin kt\quad j\in \N $ и ряд Фурье будет содержать только синусы
+
+    Если наоборот, то $b_k = 0\quad a_k = \frac{2}{\pi} \int_0^\pi f(t)\cos kt dt$
+\end{note}
+
+\begin{example}
+    $a_k = 0$
+
+    \begin{align*}
+        b_k &= \frac{2}{\pi} \int_0^\pi \mathrm{sign}(t)\sin kt \\
+        &= \frac{2}{\pi} \frac{\cos kt }{k}\mid _{\pi}^0 \\
+        &= \frac{2}{\pi k} \\
+    .\end{align*}
+\end{example}
+
+
+
+
+%%% NO
+% oh well минус пол лекции потамушта интернет. Ладно там только примеры были
+%пофиг) :checkmark: :thumbup:
