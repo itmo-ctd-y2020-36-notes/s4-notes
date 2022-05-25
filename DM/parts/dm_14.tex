@@ -1,0 +1,102 @@
+\subsubsection{Вычислимые свойства множеств}
+Свойства языков:
+
+по теореме Успенского--Райска, если $A$~--- нетривиальное свойство, то язык $A$~--- не разрешим
+
+Какой свойство программ является перечислимым?
+
+\begin{itemize}
+    \item Например, множество программ, таких, что они принимают пустой вход.
+\[ A = \{  L | \varepsilon \in  L\},~~~~ L(A) = \{ p\mid L(p) \in A \} = \{ p \mid \varepsilon \in L(p) \} = \{ p \mid p(\varepsilon) = 1\} \]
+\end{itemize}
+
+
+Какие еще свойства будут перечислимыми?
+\begin{itemize}
+    \item $A = \{ L \mid x_1 \in L \vee x_2 \in L \vee \dots \vee x_k \in L \}$,
+    \item $A = \{ L \mid 0^n \in L $ для какого-то $n\}$
+    \item $A = \{ L \bigvee_{j}\bigwedge_{i=1}^{k_j} X_{ji} \in L  \}$
+\end{itemize}
+
+
+\begin{lemma}
+    $A$~--- перечислимое свойство, $L \in A$, $L \subset M$, то $M \in A$.
+\end{lemma}
+
+\begin{proof}
+    Пусть $A$~--- перечислимое свойство, $L \subset M, L \in A, M \neq A\}$.
+    $K$~--- перечислимое, но не разрешимое множество.
+
+    Рассмотрим такую функцию:
+    $V(n, x) = \begin{cases}
+         1, &x \in M, n \in K,\\
+         1, &x \in L, n \not\in K,\\
+         \bot, &\text{иначе}
+    \end{cases}$
+
+    Утверждается, что $V(n, x)$~--- вычислима.
+
+    Запустим в трех тредах:
+    \begin{enumerate}
+        \item $n \in K$?
+        \item $x \in L$?~~~~~~ $1 \to $ return $1$, значит и остальные треды вернут $1$.
+        \item $x \in M$?
+    \end{enumerate}
+
+    Получим полуразрешитель $\overline{K}$.
+
+\begin{lstlisting}[mathescape=true]
+def check$\overline{K}$(n):
+    p = p(x):
+        return V(n, x)
+    return p
+\end{lstlisting}
+
+$n \in K \implies p$ возвращает 1, если $x \in M \implies L(p) \not\in A$.
+
+$n \not\in K \implies p$ распознает $L \implies L(p ) \in A$
+
+Получили два полуразешителя $\implies$ есть разрешитель, что противоречит предположению.
+\end{proof}
+
+\begin{lemma}
+    $A$~--- преечислимое свойство, $L in A \implies \exists M \subset L $, $M$~--- конечный, $M \in A$.
+\end{lemma}
+
+\begin{proof}
+    Пусть $A$~--- перечислимое свойство языка, $L \in A, \forall$  конченого $M \subset L, M\neq A$.
+
+    Пусть $K$~--- перечслимое не разрешимое.
+
+    Определим $V(n, x) = \begin{cases}
+        1, &x \in L, \text{ за } x \text{ шагов перечисения } K  \text{ число } n  \text{ не появилось }\\
+        \bot,& \text{ иначе}.
+    \end{cases}$.
+
+
+\textit{Очевидно}, $V$ рашрешима.
+
+Плучим полуразрешитель для $\overline{K}$.
+
+Аналогично доказательству леммы 1 приходим к противоречию.
+
+\end{proof}
+
+\begin{theorem}[Райса--Шапира]
+    $A$~--- перечислим $\iff \, \exists$ перечислимое множество образцов, то есть $\forall L \in A \iff \, \exists$ образец, который уодовлетворяет $L$.
+\end{theorem}
+
+\begin{proof}[Доказательство теоремы]
+    $\Leftarrow $~--- Очевидно
+
+    $\Rightarrow $~--- A перечислимо, тогда рассмотрим конечные языки в $A$, напишем разрешитель для некоторого конечного вектора $[X_1 \dots X_k]$.
+\end{proof}
+
+Литература для самостоятельног изучения:
+\begin{itemize}
+    \item Если больше интересны абстрактные вычествители:\\
+    Хопкрофт, Джон Э., Мотвани Раджив --- Введение в теорию автоматов, языков и вычислений.
+    \item Если больше интересна математическая составляющая:\\
+     Н. К. Верещагин, А.Шень --- Вычислимые функции
+     \url{https://www.mccme.ru/free-books/shen/shen-logic-part3-2.pdf}
+\end{itemize}
