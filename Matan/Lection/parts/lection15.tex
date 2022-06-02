@@ -1,0 +1,298 @@
+\begin{theorem}
+ [Римана--Лебега]
+
+\begin{enumerate}
+    \item $E \in \ mathfrak{A} , f \in \mathcal L (E) \implies $
+  при  $\lambda \to \infty $
+    \[ \int_E f(x) e ^{-i\lambda x} dx \to 0 \]
+
+    \[\int_E f(x)\cos x(\lambda x)dx\]
+
+    \[\int_E f(x)\sin (\lambda x)dx \to 0\]
+    \item $f\in L^1_{2\pi}\quad a_k(f), b_k(f), c_k(f) \to 0;\quad f$ -- $2\pi$-периодические продолжения функций из $L^1_{2\pi}$
+
+    $a_k = \frac{1}{\pi} \int_{-\pi}^{\pi}f(x)\cos kx dx, \quad k = 0,1,\ldots$
+
+    $b_k = \frac{1}{\pi}\int_{-\pi}^{\pi} f(x) \sin kxdx, \quad k = 1, 2, \ldots$
+
+    $c_k = \frac{1}{2\pi} \int_{-\pi}^{\pi}f(x)e^{-ikx}dx = \frac{1}{2}\left( a_k - ib_k \right), k\in \Z_+ $
+
+    $c_{-k} = \frac{1}{2}\left( a_k + i b_k \right) $
+
+    $k\in \N  \implies a_k = c_k + c_{-k}\qquad b_k = \frac{c_{-k} - c_k}{i} = i(c_k - c_{-k})$
+\end{enumerate}
+\end{theorem}
+
+\begin{note}
+    $f$ -- $2\pi$-периодическая
+
+    $f\in L^1\left( \left[ -\pi, \pi \right] ] \right) \implies \forall a\in \R\quad \int_{a - \pi}^{a + \pi}f(x)dx = \int_{-pi}^{\pi}f(x)dx $
+\end{note}
+
+\begin{theorem}
+    [О непрерывности сдвига]
+
+    $f\in \mathcal L(E)\quad h\in \R, E\in \mathcal A \implies \|f - f_h\| \to 0, h\to 0$
+
+    $f_h(x) = f(x + h)$
+\end{theorem}
+\begin{proof}
+    Идея доказательства:
+
+    $C_0^{\infty } = \left\{ g\in C^{\infty }(\R): \exists \text{ компакт } K\subseteq \R: g|_{\R\setminus K} = 0 \right\}$ -- плотно в $L^p$
+
+    $\sphericalangle \varepsilon>0$ для $f\in L_1\quad \exists g\in _0^{\infty }:\quad \|f - g\|<\frac{\varepsilon}{3}$
+
+    $\|g_h - g_h\| = \|f - g\|< \frac{\varepsilon}{3}$
+
+    \begin{align*}
+        \|f - f_h\| &= \|(f - g) + (g - g_h) + (g_h - f_h)\|   \\
+        &= \|f - g\| + \| g - g_h\| + \|g_h - f_h\| \\
+        &\leqslant \frac{\varepsilon}{3} + \frac{\varepsilon}{3} + \frac{\varepsilon}{3} <\varepsilon\text{При достаточно малых } h\\
+        \|g - g_h\| &\leqslant \int_\R |g(x) - g(x+h)|dx \leqslant \omega(h)\cdot \left( \lambda_1(k) + 2 \varepsilon \right)   \\
+    .\end{align*}
+\end{proof}
+
+\begin{proof}
+    [Римана-Лебега]
+
+    \begin{align*}
+        C(\lambda) = \int_E f(x) e^{-i\lambda x} dx &= \int_\R f(x)e^{-i\lambda x} dx\\
+        &= \int_\R f(t + \frac{\pi}{\lambda})e^{-i\lambda t}\underbrace{e^{-i\pi}}_{-1} dt   \\
+        &= \frac{1}{2} \int_\R (f(x) - f(x + \frac{\pi}{\lambda})) e^{-i\lambda x}dx \\
+        \left| C(\lambda) \right|
+            &\leqslant \frac{1}{2} \int \left|f(x) - f\left( x + \frac{\pi}{\lambda}\right) f\left( x + \frac{\pi}{\lambda}\right) \right| \cdot \underbrace{\left| e^{-i\lambda x} \right|}_{-1}  dx \to 0, |\lambda | \to 0.\end{align*}
+
+    $e(\lambda x) = \begin{cases}
+        e^{i\lambda x}\\
+        \cos \lambda x\\
+        \sin \lambda x\\
+    \end{cases}$
+
+    $int_{-\pi}^{\pi} f(x)e(\lambda x) dx = -\int_{\pi - \frac{\pi}{\lambda}}^{\pi + \frac{\pi}{\lambda}} (t + \frac{\pi}{\lambda}e(\lambda t)dt) = -\int_{-\pi}^{\pi} -||-$
+\end{proof}
+
+\begin{note}
+    Наблюдение:
+
+    $c_k = \frac{1}{2} \int_{-\pi}^{\pi} \left( f(x) - f(x+ \frac{\pi}{\lambda}) \right)e^{-ikx}dx $
+
+    $a_k = \frac{1}{2} \int_{-\pi}^{\pi} \left( f(x) - f(x+ \frac{\pi}{\lambda}) \right)\cos kx dx $
+
+    $b_k = \frac{1}{2} \int_{-\pi}^{\pi} \left( f(x) - f(x+ \frac{\pi}{\lambda}) \right)\sin kx dx $
+\end{note}
+
+\begin{note}
+    Если $f\in \mathrm{Lip}_M^{\alpha}\quad \left| f(x_1) - f(x_2) \right| \leqslant M \cdot \left| x_1 - x_2 \right| ^{\alpha}$
+
+    $a_k, b_k, c_k = O\left( \frac{1}{k^\alpha} \right) $
+
+    $\left| f(x) - f(x + \frac{\pi}{k})\right| \leqslant \left( \frac{\pi}{k} \right)^\alpha \cdot M
+    \implies |C_k| \leqslant \frac{1}{2} \int_{-\pi}^\pi \left( \frac{\pi}{k} \right)^\alpha |e^{-ikx}|dx
+    \leqslant \frac{\pi^{\alpha + 1}}{k^\alpha} = O\left( \frac{1}{k^\alpha} \right) $
+\end{note}
+
+\begin{statement}
+    $f\subseteq C_{2\pi}^{m}\left( \left[ -\pi, \pi \right]    \right) $
+
+    $c_k(f^{(j)}) = (ik)^jc_k(f)$
+\end{statement}
+\begin{proof}
+    \begin{align*}
+        c_k(\p f) &= \frac{1}{2\pi} \int_{-\pi}^{\pi}\p f(x)e^{-ikx }dx \\
+        &= ik c_k(f)  \\
+    .\end{align*}
+\end{proof}
+
+\begin{corollary}
+    $f\in C_{2\pi}^m \left( [-\pi, \pi] \right),~~ f^{(k)} \in
+    \mathrm{Lip}_M^\alpha \implies c_k, a_k, b_k = O\left(\dfrac{1}{k^{\alpha + m}}\right)$.
+\end{corollary}
+\begin{proof}
+    Если $f \in C_{2\pi}^{\infty } \implies c_k, a_k, b_k = O\left( \frac{1}{k^p} \right) \forall p\in \N  i$
+\end{proof}
+
+\begin{note}
+    Если $f\in C_{2\pi}^2$, то ряд Фурье абсолютно сходится на $\left[ -\pi, \pi \right] $ поточечно.
+\end{note}
+
+\begin{definition}
+    $D_n(t) = \frac{1}{2} \sum_{k=-n}^{n} e^{-ikt} = \frac{1}{2}\left(1 + \sum_{k=1}^{n} e^{ikt} + e^{-ikt}\right) = \frac{1}{2} + \sum_{k=1}^{n} \cos kt$
+
+    \begin{align*}
+        \frac{1}{2\pi} e^{-int} \sum_{i=0}^{2n} e^{ijt} = \frac{1}{2\pi}e^{-int} \frac{e^{i(2n+1)t} - 1}{e^{it} - 1}\\
+        &= \frac{1}{2\pi}e^{-int} \frac{e^{\frac{i(2n+1)t}{2}}}{e^{\frac{it}{2}}} \cdot \frac{e^{\frac{i(2n+1)t}{2}} - e^{-\frac{i(2n+1)t}{2}}}{e^{\frac{it}{2}} - e^{-\frac{it}{2}}} \\
+        &= \frac{1}{2\pi} \frac{\sin \frac{(2n+1)t}{2}}{\sin \frac{t}{2}} \\
+    .\end{align*}
+    -- Ядро Дирихле
+\end{definition}
+
+\begin{property}
+    $2\pi$ -- периодическая, чётная, $\in C^{\infty }(\R)$
+
+    $\int_{-\pi}^{\pi} D_n(t) = \frac{1}{2\pi} \int_{-\pi}^{\pi}1 dt = 1$
+\end{property}
+
+\begin{definition}
+    $S_n(x)$ -- частичная сумма ряда Фурье по экспонентам
+
+    \begin{align*}
+        S_n(x) &= \sum_{k=-n}^{n} C_k e^{ikx} = \sum_{k=-n}^{n} \frac{1}{2\pi} \int_{-\pi}^{\pi} f(t)e^{-ikt}dt e^{ikx} \\
+        &=int_{\pi}^\pi f(x) \dfrac{1}{2\pi}\sum_{-n}^n e ^{-ik t} dt e ^{ik x}\\
+        &= \int_{-\pi}^{\pi} f9t) \underbrace{\frac{1}{2\pi} \sum_{k=-n}^{n} e^{i(x-t)k}}_{D_n(x - t)}dt \\
+        &= \int_{-\pi}^{\pi} f9t)D_n(x-t)dt \\
+    .\end{align*}
+
+    $S_n = f\ast D_n$
+\end{definition}
+
+\begin{note}
+    $f(x) = \int{E\times E} g(y)\mathcal K(x,y)dy$
+
+    $L: g\to f$ -- интегральный оператор с ядром $\mathcal K(x,y)$
+\end{note}
+
+\begin{definition}
+    [Свёртка фукций $f, g\in L^1_{2\pi}$]
+
+    $f \ast g (x) = \int_{-\pi}^{\pi} f(t)g(x-t)dt$
+
+    $f, g\in K^2(\R)$
+
+    $f\ast g(x) = \int_{\R^n} f(t)g(x-t) d\lambda_n(t)$
+\end{definition}
+
+\begin{property}
+    \begin{enumerate}
+        \item $f, g\in L^1_{2\pi} \implies f\ast g\in L^1_{2\pi}$
+
+        $F(x,t) = f(t) g(x-t)$ -- измеримая, т.к. $f$ -- измеримая $g(x-t)$ -- композиция измеримых
+
+        $\int_{\left[ -\pi, \pi \right]^2 } \left| FR(x,t) \right|dxdt = \underbrace{\int_{-\pi}^{\pi}|f(t)|}_{\leqslant \|f\|_1} \underbrace{\int_{-\pi}^{\pi} |g(x - t)|}_{\leqslant \|g\|_{L_1}} <+\infty  $
+
+    $F(x,t)$ -- суммируема на $\left[ -\pi, \pi \right] ^2 \implies $ По теореме Фубини $F(x,t)$ конечная для п.в. $x$
+    \[\|f\ast g\|_{L^1([-\pi, \pi])} = \int_{-\pi}^{\pi} |F(x,t)|dxdt \leqslant \|f\|_1 \cdot \|g\|_1\]
+    \item $f\ast g = g\ast f$
+
+    \item $C_k(f \ast g) = 2\pi C_k (f) C_k(g)$.
+    \begin{proof}
+        \[ C_k(f \ast g) = \dfrac{1}{2\pi}\int_{-\pi}^\pi \int_{-\pi}^\pi f(s) g(t - s) ds e^{-ikt} dt = \dfrac{1}{2\pi} \int_{-\pi}^\pi f(s) e^{-iks} \left( \int_{-\pi}^\pi g(t - s) e^{-ik (t -s) } dt \right) ds = C_k(f) \cdot 2\pi \cdot C_k(g) \]
+    \end{proof}
+\end{enumerate}
+
+\begin{theorem}
+    [признак локализации Римана]
+
+    $\sqsupset f, g\in L^1_{2\pi}\quad x\in \R$ И $\exists $ окретсность $V(x):$
+    \[f\mid_{V(x)} = g\mid_{V(x)} \implies \]
+
+    Ряд Фурье $f$ и $g$ ``ведут себя'' в таких $x$ одинаково (Если сходится один, схоится другой и в случае сходимости суммы ряда -- совпадают)
+
+    Эквивалентно $h\in L^1_{2\pi}\quad h\mid_{V(x)}\equiv 0 \implies S(x_0) = 0\quad S$ -- сумма ряда Фурье
+\end{theorem}
+\begin{proof}
+    $S_n(x_0)= h \ast D_n= \ldots = \int_{[-\pi, \pi]\setminus [-\delta, \delta]}\frac{h(t)}{2\pi\sin \frac{t}{2}} \sin \frac{(2n+1)t}{2}$
+
+    Тогда по теореме Римана-леюега $S_n(x_0) \to 0, n\to \infty $ (теорема применима, потому что  $\frac{h(t)}{2\pi \sin \frac{t}{2}}$ ограничена $C_\delta\cdot h(t)$, а потому суммируема)
+\end{proof}
+
+\end{property}
+
+%%%.,,,,,,, %ъуъ
+
+\begin{statement}
+    [Признак Дини]
+
+    Пусть $f \in L_{2\pi}^1,~~~ x\in\R, ~~~s \in \C$.
+
+    Если $\int_{-\pi}^\pi \dfrac{| f(x +t ) + f(x - t) - 2S |}{z} < +\infty$, то в т.к. ряде Фурье (по эксп. системе или по тригонаметрической) сходится к $S$, то есть $S(x) = S$.
+\end{statement}
+
+\begin{proof}
+    \begin{align*}
+        S_n(x) - S &= \int_{-\pi}^\pi f(x -t) \mathcal(D)_n (t) dt - s \cdot \int_{-\pi}^\pi \mathcal{D}_n (t) dt = \int_{-\pi}^\pi  \left( f(x -t) - S \right) \mathcal{D}_n (t) dt = \\
+        &= S_n(x) - S = \int_{-\pi}^\pi \left(\dfrac{f(x + t) + f(x - t) - 2 S}{2} \right) \mathcal{D}_n(t) dt = \int_{-\pi}^\pi \phi(t) \sin \dfrac{2n + 1}{2} dt
+        .
+    \end{align*}
+
+    \[ |\phi | = \left| \dfrac{f(x + t) f(x - t) - 2S}{ }\right| \cdot \left| \dfrac{1}{2 \pi \sin \dfrac{t}{2}} \right|\leqslant \pi \cdot \dfrac{|\phi (t)|}{t}\in L^1 ([-\pi, \pi]) \implies\]
+    по теореме Римана-Лебега
+\end{proof}
+
+
+\begin{corollary}
+    $f\in L^1_{2\pi}\quad x\in \R$ и существуют 4 конечных предела $f(x\pm 0)$ и $\lim_{t\to 0\pm} \frac{f(x+t) - f(x\pm 0)}{t}$
+
+    Тогда ряд фурье в таких $x$ сходится к $S(x) = \frac{f(x+0) + f(x - 0)}{2}$
+\end{corollary}
+
+\begin{corollary}
+    Если $f$ дифферецнируема в $x$, то в таких $x$ ряд Фурье сходится к $f(x)$
+\end{corollary}
+\begin{corollary}
+    $f\in C_{2\pi}^1 \implies S(x)\equiv f(x)$
+\end{corollary}
+
+\begin{example}
+    $f(x) = \frac{\pi - x}{2}\quad x\in (0, 2\pi)$
+
+    Требуется разлжить в ряд Фурье (по тригонметрической системе), найти сумму ряда $S(x)\quad \forall x\in \R$
+
+    $s_{2\pi}$ -- $2\pi$-периодическое продолжение с отрезка $[0, 2\pi]$. Оно нечётная
+
+    \begin{align*}
+        b_k &= \frac{2}{\pi}\int_0^\pi f(x) \cdot d(x)\sin kx dx \\
+        &= \frac{2}{\pi}\int_0^\pi \frac{\pi - x}{2}\sin kx dx \\
+        &= \frac{2}{\pi} \left( \frac{-1}{k} \right)\cdot \left( \frac{\pi - x}{2}\cos kx \mid_0^\pi + \frac{1}{2}\int_0^\pi \cos kx dx \right)\\
+        &= -\frac{2}{\pi k} \left( - \frac{\pi}{2} \right) = \frac{1}{k}  \\
+        S(x) &= \sum_{k=1}^{\infty }b_k\sin kx = \sum_{k=1}^{\infty } \frac{\sin kx}{k}  \\
+        f(x) &= S(x)\quad x\in \left( 2\pi k, 2\pi k + \pi \right)  \\
+        S(0) &= S(2\pi k) = \frac{f(0+0) + f(0 - 0)}{2} = 0 \\
+    .\end{align*}
+
+    $\sum C_ke^{ikx} = \sum C_k z^k$
+\end{example}
+
+\begin{theorem}
+    [Суммирование с помощью средних (по Фейеру)]
+
+    \[\sigma(n) = \frac{1}{n+1} \sum_{k=0}^{n} S_k(x)\]
+
+    где $S_k(x)$ -- $k$-ая частичная сумма ряда Фурье по экпонентам.
+\end{theorem}
+\begin{note}
+    [теорема Коши]
+
+    Если $S_n((x) \to S$, то $\sigma(n) \to S$
+
+    (Теорема Штольца: $\lim_{n \to \infty} \frac{x_n}{y_n} = \lim_{n \to \infty} \frac{x_n - x_{n-1}}{y_n - y_{n-1}} \impliedby y_n\uparrow, y_n>0$)
+
+    $y_n = n+1\quad a_n z^nx_n = \sum_{k=0}^{n} S_k$
+\end{note}
+
+\begin{theorem}
+    \begin{enumerate}
+        \item $f\in C_{2\pi} \implies \sigma(n)(x) \rightrightarrows f(x)$ на $[-\pi, \pi]$
+        \item $f\in L^1_{2\pi} \implies \sigma(n)(x)\to f$ по норме $\|\cdot \|_1$
+    \end{enumerate}
+\end{theorem}
+\begin{corollary}
+    [Тригонометрические многочлены]
+
+    Плотны в $L^1(\left[ -\pi, \pi \right] )$
+
+    $\mathcal Lin \left\{ e^{-ikx} \right\} _{k\in \Z }$ плотно в $L^1\left( \left[ -\pi, \pi \right]  \right) $ (и в $L^2$)
+\end{corollary}
+
+\begin{corollary}
+    $\left\{ e^{ikx} \right\}_{k\in \Z }, \left\{ \cos kx \right\} _{k\in \Z_+} \cup \left\{ \sin kx \right\} _{k\in \N }$ -- базисы в $L^2$
+\end{corollary}
+
+\begin{statement}
+    \begin{enumerate}
+        \item Тригонометрические и экспоненциальные ряды Фурье (даже расходящиеся) допускают почленное интегрирование.
+        \item Если $\int_{-\pi}^\pi f(x)dx = 0\quad f\in L^1\quad F(x) = \int_0^x d(t)dt$
+
+            Тогда ряд Фурье для $f(x)$ равен формальной произодной ряда Фурье функции $F(x)$
+    \end{enumerate}
+\end{statement}
