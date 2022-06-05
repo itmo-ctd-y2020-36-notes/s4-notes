@@ -193,16 +193,18 @@ $\int_{-\pi}^\pi \cos k t \cos jt dt = \begin{cases}
 
 \begin{definition}
     ЛНЗ система $\{x_k\}_k$ -- базис в нормированном пространстве $X$, если
-    \[\forall x\in X \exists \{x_k\}_{k=1}^{\infty } \subseteq \R(\C); x = \sum_{k=1}^{\infty } x_j x_j \]
+    \[\forall x\in X \exists \{x_k\}_{k=1}^{\infty } \subseteq \R(\C); x = \sum_{k=1}^{\infty } c_k x_k \]
 \end{definition}
 
 \begin{definition}
-    ОС $\{e_k\}_{k=1}^{\infty }$  в Гильбертовом пространстве $H$ называется замкнутой, если $\forall x\in H$ верно уравнение замкнутости.
-    \[\|x\|^2 = \sum_{k=1}^{\infty } |c_k|^2 \|e_k\|^2 \]
+    ОС $\{e_k\}_{k=1}^{\infty }$  в Гильбертовом пространстве $H$ называется замкнутой, если $\forall x\in H$ верно уравнение замкнутости:
+    \[\|x\|^2 = \sum_{k=1}^{\infty } |c_k|^2 \|e_k\|^2, \]
+
+    где $c_k$~--- коэффициент Фурье по системе из $\{ e_k \}$.
 \end{definition}
 
 \begin{definition}
-    $\sqsupset \{e_k\}$ -- ОС в $H$. Она называется полной, если $\nexists z\in H \setminus \{0\}:\quad z\perp e_i \forall \in \N $
+    $\sqsupset \{e_k\}$ -- ОС в $H$. Она называется полной, если $\nexists z\in H \setminus \{0\}:\quad z\perp e_i \forall \in \N $.
 \end{definition}
 
 \begin{theorem}
@@ -210,12 +212,12 @@ $\int_{-\pi}^\pi \cos k t \cos jt dt = \begin{cases}
     \begin{enumerate}
         \item $\{e_k\}$ -- базис
         \item $\forall x, y\in H$
-        \[ \left<x, y \right> = \sum_{k=1}^{\infty } c_k(x) \cdot \ov c_k(y)\cdot \|e_k\|^2 \]
+        \[ \left<x, y \right> = \sum_{k=1}^{\infty } c_k(x) \cdot \ov {c_k (y)}\cdot \|e_k\|^2 \]
 
         $c_k(t)$ -- коэффициент Фурье по системе $e_k$
         \item $\{e_k\}$ -- замкнута
         \item $\{e_k\}$ -- полная
-        \item $\{\sum_{j=1}^{n} c_je_j: c_j\in \R(\C)\}_{n\in \N }$ -- плотно в $H$
+        \item $\left\{\sum_{j=1}^{n} c_j e_j: c_j\in \R(\C)\right\}_{n\in \N }$ -- плотно в $H$
     \end{enumerate}
 \end{theorem}
 
