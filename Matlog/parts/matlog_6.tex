@@ -283,4 +283,86 @@ $W$ & (M.P.)
 \end{itemize}
 \end{proof}
 
-to be done
+\subsubsection{Построение $M \text{Б}$}
+\begin{definition}
+    $M^* = \bigcup_k M_k$
+\end{definition}
+
+
+\begin{theorem}
+    $M^*$ непротиворечиво.
+\end{theorem}
+\begin{proof} От противного: доказательство противоречия конечной длины, гипотезы лежат в максимальном $M_k$, тогда $M_k$ противоречив.
+\end{proof}
+
+\begin{definition}
+    $M^\text{Б}$ --- множество всех бескванторных формул из $M^*$.\end{definition}
+
+По непротиворечивому множеству $M$ можем построить $M^\text{Б}$ и для него построить модель $\mathcal{M}$.
+Покажем, что эта модель годится для $M^*$ (и для $M$, так как $M \subset M^*$).
+
+\subsubsection{Постоение модели для M*}
+\begin{definition}
+    $\mathcal{M}$ есть модель для $M^*$.
+\end{definition}
+\begin{proof}
+    Покажем, что при $\varphi\in M^*$ выполнено $\mathcal{M}\models\varphi$. Докажем индукцией по количеству кванторов в $\varphi$.
+    \begin{itemize}
+    \item База: $\varphi$ без кванторов. Тогда $\varphi\in M^\text{Б}$, отсюда $\mathcal{M}\models\varphi$ по построению $\mathcal{M}$
+    \item Переход: пусть утверждение выполнено для всех формул с $n$ кванторами. Покажем, что это выполнено и для $n+1$ кванторов.
+    \begin{itemize}
+    \item Рассмотрим $\varphi = \exists x.\psi$, случай квантор всеобщности --- аналогично.
+
+    \item Раз $\exists x.\psi \in M^*$, то существует $k$, что $\exists x.\psi \in M_k$.
+    \item Значит, $\psi[x := d^{k+1}_i] \in M_{k+1}$.
+    \item По индукционному предположению, $\mathcal{M}\models\psi[x := d^{k+1}_i]$ --- в формуле $n$ кванторов.
+    \item Но тогда $\llbracket \psi \rrbracket^{x := \llbracket d^{k+1}_i\rrbracket} = \true$
+    \item Отсюда $\mathcal{M}\models\exists x.\psi$.
+    \end{itemize}
+    \end{itemize}
+\end{proof}
+
+\begin{theorem}
+    [Гёделя о полноте исчисления предикатов]
+Если $M$ --- замкнутое непротиворечивое множество формул, то оно имеет модель.
+\end{theorem}
+
+\begin{proof}
+    \begin{itemize}
+    \item Построим по $M$ множество формул с поверхностными кванторами $M'$.
+    \item По $M'$ построим непротиворечивое множество замкнутых бескванторных формул $M^\text{Б}$ ($M^\text{Б}\subseteq M^*$, теорема о непротиворечивости $M^*$).
+    \item Дополним его до полного, построим для него модель $\mathcal{M}$ (теорема о существовании модели).
+    \item $\mathcal{M}$ будет моделью и для $M'$ ($M'\subseteq M^*$, лемма о модели для $M^*$), и, очевидно, для $M$.
+    \end{itemize}
+\end{proof}
+
+\begin{corollary}[из теоремы Гёделя о полноте]
+    Исчисление предикатов полно.
+\end{corollary}
+\begin{proof}
+    \begin{itemize}
+        \item Пусть это не так, и существует формула $\varphi$, что $\models\varphi$, но $\not\vdash\varphi$.
+        \item Тогда рассмотрим $M = \{\neg\varphi\}$.
+        \item $M$ непротиворечиво: если $\neg\varphi \vdash A\&\neg A$, то $\vdash \varphi$ (упражнение).
+        \item Значит, у $M$ есть модель $\mathcal{M}$, и $\mathcal{M}\models\neg\varphi$.
+        \item Значит, $\llbracket \neg\varphi \rrbracket = \true$, поэтому $\llbracket \varphi \rrbracket = \false$,
+        поэтому $\not\models\varphi$. Противоречие.
+        \end{itemize}
+\end{proof}
+
+\begin{theorem}
+    Если у множества формул $M$ есть модель $\mathcal{M}$, оно непротиворечиво.
+\end{theorem}
+
+\begin{proof}
+Пусть противоречиво: $M\vdash A\&\neg A$, в доказательстве использованы гипотезы
+$\delta_1, \delta_2,\dots,\delta_n$.   Тогда $\vdash \delta_1\to\delta_2\to\dots\to\delta_n\to A\&\neg A$,
+то есть $\llbracket\delta_1\to\delta_2\to\dots\to\delta_n\to A\&\neg A\rrbracket = \true$ (корректность).
+  Поскольку все $\llbracket \delta_i \rrbracket_\mathcal{M} = \true$, то
+и $\llbracket A\&\neg A\rrbracket_\mathcal{M} = \true$ (анализ таблицы истинности импликации).
+Однако, $\llbracket A \&\neg A \rrbracket = \false$. Противоречие.
+\end{proof}
+
+\begin{corollary}
+    Исчисление предикатов непротиворечиво
+\end{corollary}
