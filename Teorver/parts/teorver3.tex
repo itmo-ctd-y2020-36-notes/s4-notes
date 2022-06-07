@@ -1,4 +1,4 @@
-\section{Стандартные <> непрерывные распределения}
+\section{Стандартные непрерывные распределения}
 
 \begin{definition}
     Случайная величина $\xi$ равномерно распределена на отрезке $[a,b]$, если $\xi\in U(a,b)$, если её плотность на этом отрезке постоянна.
@@ -30,7 +30,6 @@
    \begin{align*}
        E\xi &= \int_{-\infty }^{\infty}xb_{\delta}(x)dx = \int_a^b x \frac{1}{b-q}dx\\
             &=  \frac{1}{b-a}\cdot \frac{x^2}{2} \mid_a^b = \frac{b^2-a^2}{2(b-a)} = \frac{a+b}{2}\\
-
          E\xi^2 &= \int_a^b x^2 \cdot \frac{1}{b-a}dx = \frac{1}{b-a}\cdot \frac{x^3}{3} \\
                 &= \frac{b^3 - a^3}{3(b-a)} = \frac{b^3+ab+a^3}{3} \\
          D\xi &= E\xi^2 - \left( E\xi \right) ^2 = \ldots = \frac{(b-a)^2}{12}\\
@@ -69,7 +68,6 @@
         D\xi = \frac{1}{\alpha^2}\\
         \sigma = \frac{1}{\alpha}\\
         P\left( a < \xi < b \right)  = e^{-a\alpha} - e^{-b\alpha}
-
     .\end{align*}
 \end{enumerate}
 
@@ -144,7 +142,7 @@
 \[
     P\left( |\xi - a| < 3\sigma \right)  \approx 0.9973
 .\] 
-Свойство линейности: Если $\xi\in N\left( a, \sigma^2 \right) $. Тогда $\xi = \gamma\nu + b\in N\left( \gamma a + b, \gamma^2\simga^2 \right) $
+Свойство линейности: Если $\xi\in N\left( a, \sigma^2 \right) $. Тогда $\xi = \gamma\nu + b\in N\left( \gamma a + b, \gamma^2\sigma^2 \right) $
 Устойчивость относительно суммирования: Если $\delta_1, \delta_2$ -- назвисимы, то $\delta_1 + \delta_2\in N\left( a_1+a_2, \sigma_1^2 + \sigma_2^2 \right) $ 
 Коэффициенты ассиметрии и эксцесаа:
 \begin{itemize}
