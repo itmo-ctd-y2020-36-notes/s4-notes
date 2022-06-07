@@ -95,17 +95,25 @@
 
 Определим следующие 10 схем аксиом для того исчисления высказываний, которое мы рассматриваем. 
 \begin{enumerate}
-    \item $\alpha \to \beta \to \alpha$ --- добавляет импликацию
-    \item $(\alpha \to \beta) \to (\alpha \to \beta \to \gamma) \to (\alpha \to \gamma)$ --- удаляет импликацию
-    \item $\alpha \land \beta \to \alpha$
-    \item $\alpha \land \beta \to \beta$
-    \item $\alpha \to \beta \to \alpha \land \beta$
-    \item $\alpha \to \alpha \lor \beta$
-    \item $\beta \to \alpha \lor \beta$
+    \item $\alpha \to \beta \to \alpha$~--- добавляет импликацию
+    \item $(\alpha \to \beta) \to (\alpha \to \beta \to \gamma) \to (\alpha \to \gamma)$~--- удаляет импликацию
+    \item $\alpha \land \beta \to \alpha$~--- удаление конъюнкции
+    \item $\alpha \land \beta \to \beta$~--- удаление конъюнкции
+    \item $\alpha \to \beta \to \alpha \land \beta$~--- внесение конъюнкции
+    \item $\alpha \to \alpha \lor \beta$~--- внесение дизъюнкции
+    \item $\beta \to \alpha \lor \beta$~--- внесение дизъюнкции
     \item $(\alpha \to \gamma) \to (\beta \to \gamma) \to (\alpha \lor \beta \to \gamma)$
     \item $(\alpha \to \beta) \to (\alpha \to \neg \beta) \to (\neg \alpha)$
     \item $\neg \neg \alpha \to \alpha$ --- очень спорная штука.
 \end{enumerate}
 
-<вывод $A\to A$>
-
+\begin{example} Доказательство
+    $\vdash A \to A $.
+    \begin{enumerate}
+        \item $A \to (A \to A) \to A$ (схема 1)
+        \item $A \to A \to A$  (схема 1)
+        \item $(\underbrace{A}_\alpha \to \underbrace{A \to A}_\beta) \to (\underbrace{A}_\alpha \to \underbrace{(A \to A)}_\beta \to \underbrace{A}_\gamma) \to (\underbrace{A}_\alpha \to \underbrace{A}_\gamma)$  (схема 2)
+        \item $(A \to (A \to A) \to A) \to (A \to A)$ (m.p 2, 3)
+        \item $A \to A$ (m.p 1, 4)
+    \end{enumerate}
+\end{example}

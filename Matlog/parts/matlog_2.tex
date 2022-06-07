@@ -1,24 +1,27 @@
-\section{Теорема о дедукции}
+\subsection{Теорема о дедукции}
 
 \begin{definition}
     (Метаметаопределение).
-    Будем большими греческими буквами $\Gamma, \Delta, \Sigma\ldots$ --- списки формул, неупорядоченные. 
+    Будем большими греческими буквами $\Gamma, \Delta, \Sigma\ldots$ --- списки формул, неупорядоченные.
 \end{definition}
 
 \begin{definition}
-    Вывод из гипотез: $\Gamma \vdash \alpha$ (см. лекцию 1) 
+    Вывод из гипотез: $\Gamma \vdash \alpha$.
+
+    То есть существует $\delta_1,\dots, \delta_n$,~$\delta_n \equiv \alpha$, где $delta_i$ или схема аксиом, или m.p. из $j$ и $k$ и $j, k < i$.
 \end{definition}
 
 \begin{theorem}
-    $ \Gamma, \alpha \vdash \beta$ тогда и только тогда, когда $\Gamma \vdash \alpha \to \gamma$. 
+    $ \Gamma, \alpha \vdash \beta$ тогда и только тогда, когда $\Gamma \vdash \alpha \to \gamma$.
 \end{theorem}
 
 \begin{proof}
     \begin{itemize}
-        \item [$\Leftarrow $] 
-        Пусть $\delta_1, \delta_2\ldots \delta_n \equiv \alpha \to \beta$ выводит $\alpha \to \beta$. 
-        Дополним этот вывод двумя новыми высказываниями: $\delta_{n+1} \equiv \alpha$ (дано нам в гипотезе), $\gamma_{n+2} \equiv \beta$ (MP шагов $n$, $n+1$) --- это и требовалось.
-        \item Напишем программу, которая трансформирует один вывод в другой.
+        \item [$\Leftarrow $]
+        Пусть $\delta_1, \delta_2\ldots \delta_n \equiv \alpha \to \beta$ выводит $\alpha \to \beta$.
+        Дополним этот вывод двумя до доказательства новыми высказываниями: $\delta_{n+1} \equiv \alpha$ (дано нам в гипотезе), $\gamma_{n+2} \equiv \beta$ (MP шагов $n$, $n+1$) --- это и требовалось.
+        \item [$\Rightarrow $]  Пусть $\Gamma, \alpha \vdash \beta$. Напишем программу, которая построит $\Gamma \vdash \alpha \to \beta$.
+
         Инвариант, который мы будем поддерживать: всё до $\alpha \to \delta_i $ --- док-во.
         Доказательство индукцией по $n$.
         \begin{enumerate}
@@ -29,15 +32,18 @@
                 \item $\delta_i$ --- аксиома или гипотиза из $\Gamma$. \\
                 ($i - 0.6$) $\delta_{i}$ \\
                 ($i - 0.3$) $\delta_i \to \alpha \to \delta_i$\\
-                ($i$) $\alpha \to \delta_i$
-                \item $\alpha_i \to \delta$\\
+                ($i$) $\alpha \to \delta_i$ (m.p из $i-0.6$ и $i - 0.3$)
+                \item $\delta_i = \alpha$, то есть надо построить $\alpha \to \alpha$\\
                 ($i - 0.8, i-0.6, i-0.4, i-0.2$) (доказательство $\alpha \to \alpha$) \\
                 $(i)$ $\alpha\to\alpha$
-                \item $\delta_i$ получено из $\delta_j$ и $\delta_k$\\
-                ($j$) $\alpha \to $
-                \dots
+                \item $\delta_i$ получено из $\delta_j$ и $\delta_k$ ($\delta_k \equiv \delta_j \to \delta_i$)\\
+                по индукционному предположению, уже есть строчки вида $\alpha \to \delta_j, \alpha \to \delta_k$\\
+                ($j$) $\alpha \to \delta_j$\\
+                ($k$) $\alpha \to (\delta_j \to \delta_i)$\\
+                ($i - 0.6$) $(\alpha \to \delta_j) \to (\alpha \to \delta_j \to \delta_i) \to (\alpha \to \delta_i)$ (схема 2)\\
+                ($i - 0.3$) $(\alpha \to \delta_j \to \delta_i) \to (\alpha \to \delta_i)$ (m.p.)\\
+                ($i$) $(\alpha \to \delta_i)$ (m.p.)
             \end{enumerate}
-            ДОПОЛНИТЬ
         \end{enumerate}
     \end{itemize}
 \end{proof}
@@ -58,7 +64,7 @@
 \begin{definition}
     Для задания оценки необходимо задать оценку пропозициональных переменных.
     \[\llbracket \cdot \rrbracket : P\to \mathbb{V} \quad f_P\]
-    Тогда: 
+    Тогда:
     \[ \llbracket x \rrbracket = f_p(x)\]
 \end{definition}
 
@@ -71,7 +77,7 @@
     $\alpha$ --- общезначна (истинна), если $\llbracket \alpha \rrbracket = T$ при любой оценке $P$.
 
     $\alpha$ --- невыполнима (ложна), если $\llbracket \alpha \rrbracket = F$ при любой оценке $P$.
-    
+
     $\alpha$ --- выполнима, если $\llbracket \alpha \rrbracket = T$ при некоторой $f_P$.
 
     $\alpha$ --- опровержима, если $\llbracket \alpha \rrbracket = F$ при некоторой $f_P$.
@@ -84,20 +90,21 @@
 \end{definition}
 
 \begin{definition}
-    $\Gamma \vDash \alpha$ означает, что $\alpha$ следует из $\Gamma = \{ \gamma_1, \ldots, \gamma_n\}$, если $\llbracket \alpha \rrbracket = T$ всегда при $\llbracket \gamma_i \rrbracket = T$ при любых $i$.  
+    $\Gamma \vDash \alpha$ означает, что $\alpha$ следует из $\Gamma = \{ \gamma_1, \ldots, \gamma_n\}$, если $\llbracket \alpha \rrbracket = T$ всегда при $\llbracket \gamma_i \rrbracket = T$ при всех $i$.
 \end{definition}
 
+\subsection{Корректность исчисления высказываний}
 \begin{theorem}
-    Исчисление высказываний корректно
-    \[ \vdash \alpha\ \text{влечёт}\ \vDash \alpha. \]
+    Исчисление высказываний корректно.
+    $\vdash \alpha$ влечёт $\vDash \alpha$.
 \end{theorem}
 \begin{proof}
-    Индукция по длине доказательства. 
-    
+    Индукция по длине доказательства $\delta_1, \dots, \delta_n$.
+
     Разбор случаев:
     \begin{enumerate}
-        \item $\gamma_n$ аксиома $\implies$ построить таблицу истинности
-        \item $\gamma_n$ --- м.п. $\gamma_j$, $\gamma_k$
+        \item $\delta_i$ аксиома $\implies$ построить таблицу истинности, проверить, что все верно.
+        \item $\delta_i$ --- м.п. $\delta_j$, $\delta_k \equiv \delta_j \to \delta_i \implies$ также рассмотрим таблицу истинности.
     \end{enumerate}
 \end{proof}
 
@@ -107,13 +114,13 @@
 В матлогике бесмысленно формализовывать русский язык.
 Она нужна, чтобы дать ответы на сложные вопросы в математике, где здравого смысла недостаточно и нужна формализация.
 
-\section{Полнота исчисления высказываний}
+\subsection{Полнота исчисления высказываний}
 \begin{theorem}
     Исчисление высказываний полно.
 \end{theorem}
 
 \begin{definition}
-    $_{[\beta]}\alpha = 
+    $_{[\beta]}\alpha =
     \begin{cases}
         \alpha, & \llbracket \beta \rrbracket = T\\
         \neg \alpha,&  \llbracket \beta \rrbracket = F\\
@@ -121,36 +128,55 @@
 \end{definition}
 
 \begin{lemma}
-    $_{[\alpha]}\alpha,\ _{[\beta]}\beta \vdash _{[\alpha \star \beta]} \alpha \star \beta$ 
-
+    $_{[\alpha]}\alpha$, \\ $_{[\beta]}\beta \vdash _{[\alpha \star \beta]} \alpha \star \beta$, \\
     $_{[\alpha]} \alpha \vdash _{[\neg \alpha]}\neg\alpha $
 \end{lemma}
+\begin{example}
+    $\llbracket \alpha \rrbracket = T, \llbracket \beta \rrbracket = F \implies  \alpha \wedge \neg \beta \vdash \neg (\alpha \wedge \beta) $.
+\end{example}
 
 \begin{lemma}
 Если $\Gamma \vdash \alpha$, то $\Gamma, \Delta \vdash \alpha$.
 \end{lemma}
 
-\begin{lemma} 
-Пусть дана $\alpha$, $X_1,\ldots, X_n$ --- её переменные.   
+\begin{lemma}
+Пусть дана $\alpha$, $X_1,\ldots, X_n$ --- её переменные.
 
 \[ _{[X_1]}X_1,\ldots _{[X_n]}X_n\ \vdash _{[\alpha]}\alpha  \]
 \end{lemma}
 \begin{proof}
-    Индукция по структуре. ДОПОЛНИТЬ
+    Пусть $\tl X = _{[X_1]} X_i \dots _{[X_n]} X_n$.
+
+    Индукция по длинне формулы $\alpha$.\\
+    База: $\alpha = X_i$.\\
+    Переход: есть $\alpha, \beta$. По предположению $\tl X \vdash _{[\alpha]} \alpha ~~~ \tl X \vdash _{[\beta]} \beta$.
+
+    По леме 1 тогда  $\tl X \vdash _{[\alpha \star \beta]} \alpha \star \beta$.
 \end{proof}
 
-Сократим запись и вместо этой кучи $X$ будем писать $X^\prime$.
 \begin{lemma}
-    Если $\vDash \alpha$, то $X^\prime \vdash \alpha$.
+    Если $\vDash \alpha$, то $\tl X \vdash \alpha$.
+    То есть при любых подстановках значнией $\alpha $ будет истинна.
 \end{lemma}
 
 \begin{lemma}
     \[ \Gamma, Y \vdash \alpha, \quad \Gamma, \neg Y \vdash, \text{ то } \Gamma \vdash \alpha \]
 \end{lemma}
+\begin{proof}[Доказательство было в дз]
+\end{proof}
 
+\begin{lemma}
+    Если $\tl X \vdash \alpha$ при всех оценках $X_1, \dots, X_n$, то $\vdash \alpha$.
+\end{lemma}
+\begin{proof}
+    [Доказательство индукцией по $n$]
+\end{proof}
 \begin{theorem}
     Если $\vDash \alpha$, то $\vdash \alpha$.
 \end{theorem}
+\begin{proof}
+    По лемме 4 и лемме 6.
+\end{proof}
 
 \section{Интуиционистская логика}
 Мы не хотим дурацких коснтрукций вроде парадокса брадобрея.
@@ -164,21 +190,37 @@
     \item $\alpha \lor \beta$, если мы умеем строить $\alpha, \beta$ и знаем, что именно.
     \item $\alpha \to \beta$, если мы умеем перестроить $\alpha$ в $\beta$.
     \item $\bot $ --- не имеет построения
-    \item $\neg \alpha \equiv \alpha \to \bot$   
+    \item $\neg \alpha \equiv \alpha \to \bot$
 \end{itemize}
 
 ''Теория доказательств''.
-Рассмотрим классическое исчисление высказываний и заменим схему аксиом 10 на следующую 
-\[ \alpha \to \neg \alpha \to \beta \] 
+Рассмотрим классическое исчисление высказываний и заменим схему аксиом 10 на следующую
+\[ \alpha \to \neg \alpha \to \beta \]
 
 В этой формализации мы следуем не сути интуиционисткой логики, а традиции.
 В интуиционисткой логике формализм это не источник логики.
 
 Примеры моделей.
 \begin{enumerate}
-    \item Модели КИВ подходят: корректны, но не полны.
+    \item Модели КИВ подходят: корректны, но не полны ($\llbracket A \lor \neg A \rrbracket = \true$, но $\not\vdash_{\text{И}} A \lor \neg A$).
     \item Пусть $X$ топологическое пространство.
-\end{enumerate}
 
+    Пусть истоинностные значения~--- все открыте пространства в классической топологии.
+    \begin{itemize}
+        \item $\llbracket \alpha \& \beta \rrbracket = \llbracket \alpha \rrbracket \cap \llbracket \beta \rrbracket$.
+        \item $\llbracket \alpha \lor \beta \rrbracket = \llbracket \alpha \rrbracket \cup \llbracket \beta \rrbracket$.
+        \item $\llbracket \alpha \to \beta \rrbracket = \left( X \setminus \llbracket \alpha \rrbracket \cup \llbracket \beta \rrbracket \right)^{o}$.
+        \item $\llbracket \neg \alpha\rrbracket = \left(X \setminus \llbracket \alpha \rrbracket \right)^{o}$.
+    \end{itemize}
+\end{enumerate}
+\begin{theorem}
+    Топологические модели~--- корректные модели ИИВ.
+\end{theorem}
+\begin{statement}
+    $\not\vdash_{\text{И}} A \lor \neg A $.
+\end{statement}
+\begin{proof}
+    Пусть $A = (0, +\infty)$, $\neg A = (-\infty, 0)$, $A \lor \neg A = \R \setminus \{0\} \neq \R$.
+\end{proof}
 
 \endinput

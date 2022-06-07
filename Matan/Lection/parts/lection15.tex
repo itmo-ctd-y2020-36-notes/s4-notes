@@ -54,7 +54,7 @@
 \end{proof}
 
 \begin{proof}
-    [Римана-Лебега]
+    [Доказательство теоремы Римана-Лебега]
 
     \begin{align*}
         C(\lambda) = \int_E f(x) e^{-i\lambda x} dx &= \int_\R f(x)e^{-i\lambda x} dx\\
@@ -120,17 +120,18 @@
     $D_n(t) = \frac{1}{2} \sum_{k=-n}^{n} e^{-ikt} = \frac{1}{2}\left(1 + \sum_{k=1}^{n} e^{ikt} + e^{-ikt}\right) = \frac{1}{2} + \sum_{k=1}^{n} \cos kt$
 
     \begin{align*}
-        \frac{1}{2\pi} e^{-int} \sum_{i=0}^{2n} e^{ijt} = \frac{1}{2\pi}e^{-int} \frac{e^{i(2n+1)t} - 1}{e^{it} - 1}\\
-        &= \frac{1}{2\pi}e^{-int} \frac{e^{\frac{i(2n+1)t}{2}}}{e^{\frac{it}{2}}} \cdot \frac{e^{\frac{i(2n+1)t}{2}} - e^{-\frac{i(2n+1)t}{2}}}{e^{\frac{it}{2}} - e^{-\frac{it}{2}}} \\
-        &= \frac{1}{2\pi} \frac{\sin \frac{(2n+1)t}{2}}{\sin \frac{t}{2}} \\
-    .\end{align*}
-    -- Ядро Дирихле
+        \frac{1}{2\pi} e^{-int} \sum_{i=0}^{2n} e^{ijt} &= \frac{1}{2\pi}e^{-int} \frac{e^{i(2n+1)t} - 1}{e^{it} - 1}\\
+        &= \frac{1}{2\pi}e^{-int} \frac{e^{\frac{i(2n+1)t}{2}}}{e^{\frac{it}{2}}} \cdot \frac{e^{\frac{i(2n+1)t}{2}} - e^{-\frac{i(2n+1)t}{2}}}{e^{\frac{it}{2}} - e^{-\frac{it}{2}}} = \frac{1}{2\pi} \frac{\sin \frac{(2n+1)t}{2}}{\sin \frac{t}{2}}\end{align*}
+    -- Ядро Дирихле.
 \end{definition}
 
-\begin{property}
-    $2\pi$ -- периодическая, чётная, $\in C^{\infty }(\R)$
-
-    $\int_{-\pi}^{\pi} D_n(t) = \frac{1}{2\pi} \int_{-\pi}^{\pi}1 dt = 1$
+\begin{property} Функция $D_n(t)$
+    \begin{enumerate}
+        \item $2\pi$ -- периодическая,
+        \item чётная,
+        \item $\in C^{\infty }(\R)$,
+        \item $\int_{-\pi}^{\pi} D_n(t) = \frac{1}{2\pi} \int_{-\pi}^{\pi}1 dt = 1$.
+    \end{enumerate}
 \end{property}
 
 \begin{definition}
@@ -138,10 +139,9 @@
 
     \begin{align*}
         S_n(x) &= \sum_{k=-n}^{n} C_k e^{ikx} = \sum_{k=-n}^{n} \frac{1}{2\pi} \int_{-\pi}^{\pi} f(t)e^{-ikt}dt e^{ikx} \\
-        &=int_{\pi}^\pi f(x) \dfrac{1}{2\pi}\sum_{-n}^n e ^{-ik t} dt e ^{ik x}\\
-        &= \int_{-\pi}^{\pi} f9t) \underbrace{\frac{1}{2\pi} \sum_{k=-n}^{n} e^{i(x-t)k}}_{D_n(x - t)}dt \\
-        &= \int_{-\pi}^{\pi} f9t)D_n(x-t)dt \\
-    .\end{align*}
+        &=\int_{\pi}^\pi f(x) \dfrac{1}{2\pi}\sum_{-n}^n e ^{-ik t} dt e ^{ik x}\\
+        &= \int_{-\pi}^{\pi} f(t) \underbrace{\frac{1}{2\pi} \sum_{k=-n}^{n} e^{i(x-t)k}}_{D_n(x - t)}dt \\
+        &= \int_{-\pi}^{\pi} f(t)D_n(x-t)dt.\end{align*}
 
     $S_n = f\ast D_n$
 \end{definition}

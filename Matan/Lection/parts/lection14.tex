@@ -291,11 +291,11 @@ $|\left<f, g \right>| = \int_{-\pi}^{\pi} f(t)\ov g(t)dt$
 \end{definition}
 
 \begin{note}
-    [Факт]
+    [Факт 1]
 
     $\{\cos kt, \sin kt\}_{k\in \N } \cup \{1\}$ -- базис $L^2\left( [-\pi, \pi] \right) $
 
-    $\forall f\in L62\quad f(x) = \frac{a_0(f)}{2} + \sum_{k=1}^{\infty } \left( a_k \cos kt + b_k\sin kt \right) $ -- почти везде равенство\ldots
+    $\forall f\in L^2\quad f(x) = \frac{a_0(f)}{2} + \sum_{k=1}^{\infty } \left( a_k \cos kt + b_k\sin kt \right) $ -- почти везде равенство\ldots
 
     $\|f\|^2 = \frac{|a_0|}{2} + \left(\sum_{k=1}^{\infty } |a_k|^2 + |b_k|^2\right)^2 \pi \iff \frac{\|f\|}{\pi} = a_0^2 + \sum_{k=1}^{\infty }\left( |a_k|^2 + |b_k|^2 \right)  $
 \end{note}
@@ -311,7 +311,7 @@ $|\left<f, g \right>| = \int_{-\pi}^{\pi} f(t)\ov g(t)dt$
 
     Тогда в тех $x$, что тригонометрический ряд Фурье сходится.
 
-    $S(x) = \frac{f(x+0) + f(x-0)}{2}$
+    \[ S(x) = \frac{f(x+0) + f(x-0)}{2}. \]
 \end{note}
 
 \begin{example}
@@ -325,6 +325,12 @@ $|\left<f, g \right>| = \int_{-\pi}^{\pi} f(t)\ov g(t)dt$
 \end{note}
 
 \begin{example}
+    $\mathrm{sign}^* (x) = \begin{cases}
+        -1, & x \in (-1 + 2\pi k, 2\pi k)\\
+        0, & x = \pi k\\
+        1, & x \in (2\pi k, 1 + 2\pi k)
+    \end{cases}.$
+
     $a_k = 0$
 
     \begin{align*}
