@@ -1,9 +1,10 @@
 \begin{definition}
     Алгебра Гейтинга~--- импликативная решетка с 0.
-
-    Введем операцию $\sim a \equiv a \to 0$~--- дополнение до 0.
 \end{definition}
 
+\begin{definition}
+    Введем операцию $\sim a \equiv a \to 0$~--- дополнение до 0.
+\end{definition}
 \begin{definition}
     Булева алегбра~--- Алгебра Гейтинга, где $a + \sim a = 1$.
 \end{definition}
@@ -12,7 +13,7 @@
     Булева Алгебра
 
     \includegraphics[scale=0.8]{img/bool_algebra}
-    
+
     \begin{itemize}
         \item $\cdot$ соответствует $\&$,
         \item $+$ соответствует $\vee$,
@@ -33,7 +34,7 @@
 
 \begin{definition}
     Пусть $\xi$~--- множество всех высказываний ИИВ.
-    
+
     Тогда $[ \xi ]$~--- называется алгеброй Линденбаума $\mathcal{L}$.
 \end{definition}
 
@@ -62,7 +63,7 @@
     $\vDash \alpha$, то есть $[\alpha] = 1$.
 
     $1 = [A \to A]$, то есть $[\alpha] =1$, то есть $\beta \leqslant [\alpha]$ при всех $\beta$.
-    
+
     Возьмем $\beta = A \to A$, $A \to A \vdash \alpha$, то есть $A \to A$, $(A \to A) \to \alpha$.
 
 \end{theorem}
@@ -80,7 +81,7 @@
 \end{theorem}
 
 \begin{definition}
-    Пусть существует $f: A \to B, \quad A, B$ -- алгебры Гейтинга.    
+    Пусть существует $f: A \to B, \quad A, B$ -- алгебры Гейтинга.
 
     $f$ -- гомоморфизм, если $f(0_A) = 0_B\quad f(1_A) = 1_B$ и $f(\alpha \star_A \beta) = f(\alpha) \star_B f(\beta)$
 \end{definition}
@@ -90,7 +91,7 @@
 \end{definition}
 
 \begin{definition}
-    [$\Gamma (A)$]    
+    [$\Gamma (A)$]
     Пусть $A$~--- алгебра Гейтинга.
 
     Определим $\gamma: A \to \Gamma(A)$ так:
@@ -98,10 +99,10 @@
         \omega, &x = 1_A\\
         x, & x < 1_A\\
     \end{cases}$
-    и добавим $1_{\Gamma(A)}$: $t \leqslant 1_\Gamma(A)$, если $t \in \Gamma(A)$.    
+    и добавим $1_{\Gamma(A)}$: $t \leqslant 1_\Gamma(A)$, если $t \in \Gamma(A)$.
 
     \begin{center}
-        \includegraphics[scale=0.5]{img/gedelerisation.png}    
+        \includegraphics[scale=0.5]{img/gedelerisation.png}
     \end{center}
 \end{definition}
 
@@ -110,7 +111,7 @@
 \end{remark}
 
 \begin{theorem}
-  $\Gamma(A)$ -- Гёделева алгебра.  
+  $\Gamma(A)$ -- Гёделева алгебра.
 \end{theorem}
 \begin{proof}
     Пусть $a+b = 1_{\Gamma(A)}$, посмотрим на картинку.
@@ -120,7 +121,7 @@
     $\Gamma(\mathcal L)$~--- Гёделева алгебра.
 \end{statement}
 \begin{proof}
-    Определим каноническое отображение $g(x): \Gamma(\mathcal L) \to \mathcal L$\\ 
+    Определим каноническое отображение $g(x): \Gamma(\mathcal L) \to \mathcal L$\\
     $g(x) = \begin{cases}
         1&, x = 1 \text{ или } \omega\\
         x&, \text{ иначе}\\
@@ -128,7 +129,7 @@
     \begin{statement}
         $g(x)$ -- гомоморфизм
     \end{statement}
-    
+
 \end{proof}
 
 \begin{theorem}
@@ -146,8 +147,8 @@
     Рассмотрим $\vdash \alpha \vee \beta$.
 
     $\Gamma (\mathcal L)$~--- Геделва алгеба, то есть алгебра Гейтинга.
-    
-    $\llbracket \alpha \lor \beta \rrbracket_{\Gamma(\mathcal L)} = 1_{\Gamma(\mathcal L)}$, 
+
+    $\llbracket \alpha \lor \beta \rrbracket_{\Gamma(\mathcal L)} = 1_{\Gamma(\mathcal L)}$,
     т.е. либо $\llbracket \alpha \rrbracket =1_\gamma{\mathcal L}$ либо $\llbracket \beta \rrbracket _{\Gamma(\mathcal L)} = 1_{\Gamma(\mathcal L)}$
 
     Рассмотрим $g : \Gamma(\mathcal{L}) \to \mathcal{L}$
@@ -166,10 +167,10 @@
 \end{definition}
     \begin{definition}[Модель Крипки]
         Некоторые факты, появившиеся на оси времени в истинном или ложном виде и больше не меняется
-        
+
         \includegraphics[scale=0.7]{img/kripke_model_greate_ferma_theorem}
     \end{definition}
-    
+
     \begin{note}
         $W$ -- частично упорядоченное множество миров.
     \end{note}
@@ -180,28 +181,38 @@
 \includegraphics[]{img/forced_variable_worlds}
 
         \begin{enumerate}
-            \item Вынужденность переменной A определяется моделью. При этом, если $W_x \leqslant W_y$, $ W_x\Vdash A$, то $W_y \vDash A$. 
+            \item Вынужденность переменной A определяется моделью. При этом, если $W_x \leqslant W_y$, $ W_x\Vdash A$, то $W_y \vDash A$.
             \item Доопределим $\Vdash$ на все выражения:
             \begin{enumerate}
                 \item $W \Vdash A\land B$, если $W \Vdash A$ и $W \Vdash B$
                 \item $W \Vdash A\lor B$, если $W \Vdash A$ или $W \Vdash B$
-                \item $W \Vdash \neg A$, если нет $W \leqslant W_x$, что $W \Vdash A$
+                \item $W \Vdash \neg A$, если нет $W \leqslant W_x$, что $W_x \Vdash A$
                 \item $W \Vdash A \to B$, если во всех $W \leqslant W_x $ из $W_x \Vdash A$ следует $W_x \Vdash B$
             \end{enumerate}
         \end{enumerate}
+    \end{definition}
+
+    \begin{definition}
+        $\vDash \alpha$ если $W \vdash \alpha$.
     \end{definition}
 
     \begin{theorem}
         У ИИВ нет полной конечной табличной модели.
     \end{theorem}
     \begin{proof}
-        $\varphi(u)\bigvee\limits_{i\neq j}^n A_i \to A_{j}$ 
+        $\varphi(u) = \bigvee\limits_{i = 1, j = 1, i \neq j}^{n, n} A_i \to A_{j}$ .
 
         Пусть $T$~--- модель, $|\mathbb{V}| = n$.
 
         Рассмотрим $\varphi(n+1)$.  По принципу Дирихле. Есть $A_j$ и $A_i$: $\llbracket A_j \rrbracket = \llbracket A_i \rrbracket$.
 
-        Несложно показать $\llbracket A_i \to A_j = \true$. $\llbracket \varphi(n + 1) \rrbracket = \true$. 
+        Несложно показать $\llbracket A_i \to A_j\rrbracket = \true \implies$ $\llbracket \varphi(n + 1) \rrbracket = \true$.
+
+        Рассмотрим модель, где $\varphi(n)$ не доказуемо ни при каком $n$.
+
+        \includegraphics[scale=0.5]{img/iiv_table_model.PNG}
+
+        $\llbracket A_3 \to A_k \rrbracket = \false$.
     \end{proof}
 
 \begin{theorem}
@@ -211,8 +222,8 @@
 \subsection{Изоморфизм Кари--Ховарда}
 
 \begin{statement}
-    $\tau, \sigma$~-- типы. 
-    
+    $\tau, \sigma$~-- типы.
+
     $\tau \to \sigma$
     \begin{lstlisting}[mathescape=true]
     f(x : $\tau$): $\sigma$ {
