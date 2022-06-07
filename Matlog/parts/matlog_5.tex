@@ -6,15 +6,15 @@
 
 
 \begin{example}
-    $\frac{\text{Каждый человек смертен}\quad  \text{Сократ человк}}{\text{Сократ смертен}}$    
+    $\frac{\text{Каждый человек смертен}\quad  \text{Сократ человк}}{\text{Сократ смертен}}$
 
-    $\frac{\text{Каждый объект, если он -- человек, то он -- смертен}\quad  \text{Сократ -- человк}}{\text{Сократ -- смертен}}$    
+    $\frac{\text{Каждый объект, если он -- человек, то он -- смертен}\quad  \text{Сократ -- человк}}{\text{Сократ -- смертен}}$
 
     Цель: {\color{blue} кванторы} и {\color{red}предикаты}.
 
     \[
     \frac{\forall x.H(x) \to S(x)\quad H(\text{Сократ})}{S(\text{Сократ})}
-    .\] 
+    .\]
 \end{example}
 
 Идея: нам нужно построить некоторый язык и затем поверх него построить теорию моделей и теорию доказательств.
@@ -27,7 +27,7 @@
         \begin{itemize}
             \item Предметные переменные ${\color{red}x}$.
             \item Одно-- и двуместные функциональные символы <<синусы>>, <<возведение в квадрат>> и <<сложение>>.
-            \item Нульместные <...>
+            \item  Нульместные функциональные символы <<ноль>> ($\color{red}0$) и <<один>> ($\color{red}1$).
         \end{itemize}
         \item Логическе выражения
         \begin{itemize}
@@ -36,19 +36,23 @@
     \end{itemize}
 \end{example}
 
-Язык исчисления предикатов:
+\subsection{Язык исчисления предикатов}
 \begin{enumerate}
     \item Два типа: предметные и логические выражения
-    \item Предметные выражения: матепеременная $\Theta$
+    \item Предметные выражения: метапеременная {\color{blue}$\theta$}
     \begin{itemize}
-        \item Предметные переменные: ${\color{blue} a}, {\color{blue} b}, {\color{blue} c}$, \ldots, метапеременне {\color{blue} x}, {\color{blue} y}.
-        \item Функциональные выражения: ${\color{blue} f(\Theta_1, \ldots, \Theta_n)}$, метапеременные ${\color{blue} f, g, \ldots}$
+        \item Предметные переменные: {\color{blue}$a$}, {\color{blue}$b$}, {\color{blue}$c$}, ..., метапеременные {\color{blue}$x$}, {\color{blue}$y$}.
+        \item Функциональные выражения: {\color{blue}$f(\theta_1,\dots,\theta_n)$}, метапеременные {\color{blue}$f$}, {\color{blue}$g$}, \ldots
+        \item Примеры: {\color{blue}$r$},
+        {\color{blue}$q(p(x,s),r)$}
     \end{itemize}
-    \item Логические выражения: метапеременные ${\color{blue}\alpha}, {\color{blue}\beta}, {\color{blue}\gamma}, \ldots$.
+    \item Логические выражения: метапеременные {\color{blue}$\alpha$}, {\color{blue}$\beta$}, {\color{blue}$\gamma$}, \ldots
     \begin{itemize}
-        \item Предикатные выражения: метампеременная, имена
-        \item Связки
-        \item Кванторы
+        \item Предикатные выражения: {\color{blue}$P(\theta_1,\dots,\theta_n)$}, метапеременная {\color{blue}$P$}.\\
+        Имена: {\color{blue}$A$}, {\color{blue}$B$}, {\color{blue}$C$}, \ldots,
+        \item Связки: {\color{blue}$(\varphi\vee\psi)$}, {\color{blue}$(\varphi\to\psi)$}, {\color{blue}$(\varphi\rightarrow\psi)$},
+        {\color{blue}$(\neg\varphi)$}
+        \item Кванторы: {\color{blue}$(\forall x.\varphi)$} и {\color{blue}$(\exists x.\varphi)$}.
     \end{itemize}
 \end{enumerate}
 
@@ -56,116 +60,217 @@
 \begin{enumerate}
     \item Метепаременные:
     \begin{itemize}
-        \item $\psi, \phi, \pi$ -- формулы
-        \item $P, Q$ -- предикатные символы
-        \item $\Theta$ -- функциональные символы
-        \item <...>
-    \end{itemize}
+        \item $\color{blue}\psi$, $\color{blue}\phi$, $\color{blue}\pi$, ... --- формулы
+        \item $\color{blue}P$, $\color{blue}Q$, ... --- предикатные символы
+        \item $\color{blue}\theta$, ... --- термы
+        \item $\color{blue}f$, $\color{blue}g$, ... --- функциональные символы
+        \item $\color{blue}x$, $\color{blue}y$, ... --- предметные переменные
+        \end{itemize}
 
-    \item Скобки -- как в И.В.; квантор -- жадный:
-     \[ {\color{blue}(\forall a. \underbrace{A \lor B \lor C \to \exists b. \underbrace{D \& \neg E}}) \& F} \]
+    \item Скобки --- как в И.В.; квантор --- жадный:
+    \[ {\color{blue}(\forall a.} \underbrace{{\color{blue}A \vee B \vee C \rightarrow \exists b.}
+                        \underbrace{\color{blue}D \& \neg E}_{\exists b.\dots}}_{\forall a.\dots} \color{blue}) \& F \]
 
     \item Дополнительные обозначения при необходимости:
     \begin{itemize}
-        \item ${\color{blue} (\Theta_1 = \Theta_2)} $ вместо ${\color{blue} E(\Theta_1, \Theta_2)}$.
-        \item ${\color{blue} (\Theta_1 + \Theta_2)} $ вместо ${\color{blue} p(\Theta_1, \Theta_2)}$.
+        \item ${\color{blue} (\theta_1 = \theta_2)} $ вместо ${\color{blue} E(\theta_1, \theta_2)}$.
+        \item ${\color{blue} (\theta_1 + \theta_2)} $ вместо ${\color{blue} p(\theta_1, \theta_2)}$.
         \item ${\color{blue} 0} $ вместо ${\color{blue} z}$.
     \end{itemize}
 \end{enumerate}
 
+Напомним формулу:\vspace{-0.3cm}
 
+$$\forall x.\sin x = 0 \vee (\sin x)^2+1 > 1$$
 
-Оценка формулы\ldots
+Без синтаксического сахара:\vspace{-0.3cm}
 
-< todo >
+\[ {\color{blue}\forall} {\color{red}x}.{\color{blue}E}({\color{red}f} ({\color{red}x}),{\color{red}z}) {\color{blue}~\vee~} {\color{blue}G}
+   ({\color{red}p}({\color{red}q}({\color{red}s} ({\color{red}x})),{\color{red}o}), {\color{red}o}) \]
+
+\subsection{Два вида значений}
+\begin{enumerate}
+\item {\color{blue}Истинностные (логические) значения: }
+\begin{enumerate}
+\item предикаты (в том числе пропозициональные переменные = нульместные предикаты);
+\item логические связки и кванторы.
+\end{enumerate}
+
+\item{\color{red}Предметные значения:}
+\begin{enumerate}
+\item предметные переменные;
+\item функциональные символы (в том числе константы = нульместные функциональные символы)
+\end{enumerate}
+\end{enumerate}
+
+\subsection{Оценка исчисления предикатов}
+
+\begin{definition}
+    Оценка --- упорядоченная четвёрка $\langle D, F, T, E \rangle$, где:
+    \begin{enumerate}
+        \item $D$ --- предметное множество;
+        \item $F$ --- оценка для функциональных символов. Пусть $f_n$ --- $n$-местный функциональный символ:
+        \[ F_{f_n}: D^n \rightarrow D \]
+
+        \item $T$ --- оценка для предикатных символов. Пусть $P_n$ --- $n$-местный предикатный символ:
+        \[ T_{P_n}: D^n \rightarrow V~~~~ V = \{\true, \false\} \]
+
+        \item $E$ --- оценка для свободных предметных переменных.
+         $$E(x) \in D$$
+        \end{enumerate}
+\end{definition}
+
+Запись и сокращения записи подобны исчислению высказываний:
+\[ \llbracket \phi \rrbracket \in V,\quad
+      \llbracket E(x,f(x))\vee R\rrbracket^{x := 1, f(t) := t^2, R := \true} = \true \]
+
+\begin{enumerate}
+\item Правила для связок $\vee$, $\&$, $\neg$, $\rightarrow$ остаются прежние;
+\item $\llbracket f_n (\theta_1, \theta_2, \dots, \theta_n) \rrbracket = F_{f_n} (\llbracket\theta_1\rrbracket,
+          \llbracket\theta_2\rrbracket, \dots, \llbracket\theta_n\rrbracket)$
+\item $\llbracket P_n (\theta_1, \theta_2, \dots, \theta_n) \rrbracket = T_{P_n} (\llbracket\theta_1\rrbracket,
+          \llbracket\theta_2\rrbracket, \dots, \llbracket\theta_n\rrbracket)$
+\item $\llbracket \forall x.\phi \rrbracket = \left\{\begin{array}{ll}
+   \true, & \text{если } \llbracket\phi\rrbracket^{x := t} = \true\text{ при всех } t \in D\\
+   \false, & \text{если найдётся } t \in D, \text{ что } \llbracket\phi\rrbracket^{x := t} = \false
+  \end{array}\right.$
+\item $\llbracket \exists x.\phi \rrbracket = \left\{\begin{array}{ll}
+   \true, & \text{если найдётся } t \in D, \text{ что } \llbracket\phi\rrbracket^{x := t} = \true\\
+   \false, & \text{если } \llbracket\phi\rrbracket^{x := t} = \false\text{ при всех } t \in D
+  \end{array}\right.$
+\end{enumerate}
 
 \begin{example}
     $\llbracket \forall x.\exists y.\neg x+1=y \rrbracket $
 
     Зададим оценку:
     \begin{itemize}
-        \item $D:=\N $
-        \item $F_1:=1, F_{+}$ -- сложение в $\N $
-        \item 
+    \item $D := \N$;
+    \item $F_{1} := 1$, $F_{(+)}$ --- сложение в $\N$;
+    \item $P_{(=)}$ -- равенство в $\N$.
     \end{itemize}
 
-    Фиксируем $x\in \N $ Тогда:
-    \[
-    \llbracket x + 1 = y \rrbracket ^{y:=x} = \false
-    .\] 
-    Поэтому при любом $x\in \N $:
-    \[
-...
-    .\] 
-    Итого:
-    \[ \llbracket \forall x. \exists y. \neg x + 1 = y \rrbracket = \true \]
+    Фиксируем $x\in\N$.
+    Тогда $\llbracket x+1 = y \rrbracket^{y := x} = \false$
+    поэтому при любом $x \in \N$:
+    \[ \llbracket \exists y.\neg x+1 = y \rrbracket = \true. \]
+
+    Итого: $\llbracket \forall x.\exists y.\neg x+1 = y \rrbracket = \true$
 \end{example}
 
 \begin{example}
     Странная интерпретация
-
-   \[ \llbracket \forall x. \exists y. \neg x + 1 = y \rrbracket \]
+    $ \llbracket \forall x. \exists y. \neg (x + 1 = y) \rrbracket$.
 
     Зададим интерпретацию:
     \begin{itemize}
-        \item $D := \{ \square \}$;
-        \item $F_{(1)} := \{ \square \}, ~ F_{(+)} (x, y) = \square$;
-        \item $P_{(=)} (x, y) = \true$
-    \end{itemize}
+    \item $D := \{\square\}$;
+    \item $F_{(1)} := \square$, $F_{(+)} (x,y) := \square$;
+    \item $P_{(=)} (x,y) := \true$.
+    \end{itemize}\vspace{0.5cm}
 
-    Тогда $\llbracket  x + 1 = y \rrbracket^{x\in D, y\in D} = \true$.
-   x
-    Итого $\llbracket \forall x. \exists y.  \neg x + 1 = y \rrbracket^{x\in D, y\in D} = \false$.
+    Тогда:
+    $\llbracket x+1 = y \rrbracket^{x \in D, y \in D} = \true$.
 
-    Поэтому формулам оценки предикатов верить нельзя. Никакой интуиции за ними может и не стоять
+    Итого:
+    $\llbracket \forall x.\exists y.\neg x+1 = y \rrbracket = \false$.
+
+    Поэтому формулам оценки предикатов верить нельзя. Никакой интуиции за ними может и не стоять.
 \end{example}
 
 \begin{definition}
-    Формула общезначима, если истинна при любой оценке
+    Формула общезначима, если истинна при любой оценке.
 \end{definition}
 
-\begin{theorem}
-    \[
-    \llbracket \forall x.Q(f(x))\lor \neg Q(f(x)) \rrbracket 
-    .\] 
-\end{theorem}
+\begin{statement}
+    $\llbracket \forall x.Q(f(x))\lor \neg Q(f(x)) \rrbracket = \true$.
+\end{statement}
 \begin{proof}
-    Перебор случаев
-\end{proof}
+    Фиксируем $D$, $F$, $P$, $E$.  Пусть $x \in D$.
+    Обозначим $P_{Q}(F_{f}(E_x))$ за $t$.
+    Ясно, что $t \in V$. Разберём случаи.
+    \begin{itemize}
+    \item Если $t = \true$, то $\llbracket P(f(x))\rrbracket^{P(f(x)):=t} = \true$,
+      потому $\llbracket P(f(x))\vee\neg P(f(x))\rrbracket^{P(f(x)):=t} = \true$.
+    \item Если $t = \false$, то $\neg P(f(x))\rrbracket^{P(f(x)):=t} = \true$ потому
+      всё равно $\llbracket P(f(x))\vee\neg P(f(x))\rrbracket^{P(f(x)):=t} = \true$.
+    \end{itemize}\end{proof}
 
+\subsection{Подстановки, свобода и связность}
 \begin{definition}
-    Рассмотрим формулу $\forall x.\psi$ (или $\exists x.\psi$). Здесь переменная $x$ связзана в $\psi$ Все вхождения переменой $x$ в $\psi$ -- связанные
+    Рассмотрим формулу $\forall x.\psi$ (или $\exists x.\psi$). Здесь переменная $x$ связзана в $\psi$. Все вхождения переменой $x$ в $\psi$ -- \textbf{связанные}.
 \end{definition}
 \begin{definition}
-    Переменная $x$ входит свободно в $\psi$ <..аа>
+    Переменная $x$ входит свободно в $\psi$, если не находится в области действия никакого квантора по $x$.
+Все её вхождения в $\psi$ --- \textbf{свободные}.
+\end{definition}
+\begin{example}
+    $\exists y.(\forall x.P(x))\vee P({\color{blue}x}) \vee Q(y)$.
+
+    Единственное свободное вхождение прееменной $x$ помеченно синим цветом.
+\end{example}
+
+\begin{definition} Подстановка~--- это \ldots
+    \[ \psi[x := \theta] := \left\{\begin{array}{ll}\psi, & \psi\equiv y, y \not\equiv x\\
+    \psi, & \psi\equiv\forall x.\pi \textrm{ или } \psi\equiv\exists x.\pi\\
+    \pi[x := \theta] \star \rho [x := \theta], & \psi\equiv \pi\star\rho\\
+    \theta, & \psi\equiv x\\
+    \forall y.\pi[x := \theta], & \psi \equiv \forall y.\pi \textrm{ и } y \not\equiv x\\
+    \exists y.\pi[x := \theta], & \psi \equiv \exists y.\pi \textrm{ и } y \not\equiv x
+\end{array}\right. \]
 \end{definition}
 
 
 \begin{definition}
-    Терм $\Theta$ свободен для подстановки вместо $x$ в $\psi$ ($\psi [x:=\Theta]$), если ни одно свободное вхождение переменной в $\Theta$ не станет связным после подстановки.
-\end{definition}
-Свобода есть: $(\forall x. P(y)) [y:=z]$ или $(\forall x. \forall y. P(x))$.
-
-Cвободы нет: $(\forall x.P(y))[y:=x]$ и $(\forall y.\forall x.P(t))[t:=y]$   .
-
-\section{Теория доказательств}
-
-11. $(\forall x . \phi) \to \phi [x := \Theta]$
-
-12 $(\exists x . \phi) \to $ fix me
-
-Добавим еще два правила вывода (здесь везде $x$ не входит свободно в $\varphi$):
-\begin{itemize}
-    \item Введение $\forall$. $\dfrac{2}{2}$.
-\end{itemize}
-
-\begin{definition}
-    Доказыуемость, выводисость, полнота, корректность --- аналогично исчислению высказыаваний.
+    Терм $\theta$ свободен для подстановки вместо $x$ в $\psi$ ($\psi [x:=\Theta]$), если ни одно свободное вхождение переменной в $\Theta$ не станет связным после подстановки.
 \end{definition}
 
+Свобода есть: $(\forall x. P(y)) [y:=z]$ или $(\forall x. \forall y. P(x)) [y:=z]$.
 
-\section{Теорема о едукции для исчисления предикатов}
+Cвободы нет: $(\forall x.P(y))[y:=x]$ и $(\forall y.\forall x.P(t))[t:=y]$.
 
+\subsection{Теория доказательств}
+Рассмотрим язык исчисления предикатов. АксиомыЁ--- все схемы аксиом для классического исчисления высказываний
+в данном языке.
+
+\begin{tabular}{ p{7cm} p{7cm} }
+    \begin{enumerate}
+        \item $\alpha \to \beta \to \alpha$
+        \item $(\alpha \to \beta) \to (\alpha \to \beta \to \gamma) \to (\alpha \to \gamma)$
+        \item $\alpha \land \beta \to \alpha$
+        \item $\alpha \land \beta \to \beta$
+        \item $\alpha \to \beta \to \alpha \land \beta$
+    \end{enumerate} &
+    \begin{enumerate}
+        \addtocounter{enumi}{5}
+        \item $\alpha \to \alpha \lor \beta$
+        \item $\beta \to \alpha \lor \beta$
+        \item $(\alpha \to \gamma) \to (\beta \to \gamma) \to (\alpha \lor \beta \to \gamma)$
+        \item $(\alpha \to \beta) \to (\alpha \to \neg \beta) \to (\neg \alpha)$
+        \item $\neg \neg \alpha \to \alpha$
+    \end{enumerate}
+\end{tabular}
+
+Добавим ещё две схемы аксиом (здесь везде $\theta$ свободен для подстановки вместо $x$ в $\varphi$):
+
+\begin{enumerate}
+\addtocounter{enumi}{10}
+\item $(\forall x.\varphi) \rightarrow \varphi[x:=\theta]$
+\item $\varphi[x:=\theta] \rightarrow \exists x.\varphi$
+\end{enumerate}
+
+Добавим ещё два правила вывода (здесь везде $x$ не входит свободно в $\varphi$):
+\begin{enumerate}
+    \item Введение $\forall$: $\dfrac{\varphi\rightarrow\forall x.\psi}{\varphi\rightarrow\psi}$,
+    \item Введение $\exists$: $\dfrac{(\exists x.\psi)\rightarrow\varphi}{\psi\rightarrow\varphi}$.
+\end{enumerate}
+
+\begin{statement}
+    Доказыуемость, выводимость, полнота, корректность --- аналогично исчислению высказыаваний.
+\end{statement}
+
+
+\subsection{Теорема о дедукции для исчисления предикатов}
 \begin{theorem}
     Если    $\Gamma \vdash \alpha \to \beta$, то $\Gamma, \alpha \vdash \beta$.
     Если $\Gamma, \alpha\vdash \beta$ и в доказательстве не применяются правила для кванторов по свободным переменным из $\alpha$, то $\gamma\vdash \alpha \to \beta$
@@ -174,44 +279,67 @@ Cвободы нет: $(\forall x.P(y))[y:=x]$ и $(\forall y.\forall x.P(t))[t:
     \begin{itemize}
         \item []
         \item [$\implies $] также как в К.И.В
-        \item [$\impliedby $] та же схема, два новых случая.аксиомы те же, но нужно обработать два новых правила вывода.
+        \item [$\impliedby $] та же схема. У нас появились два новых случая аксиом. Ничего страшного, с ним проблем не возникнет.
+
+Однако таже слоедует обработать два новых правила вывода.
+
+Перестроим: $\delta_1, \delta_2, \dots, \delta_n \equiv \beta$ в $\alpha\rightarrow\delta_1, \alpha\rightarrow\delta_2, \dots, \alpha\rightarrow\delta_n$.
+
+Дополним: обоснуем $\alpha\rightarrow\delta_n$, если предыдущие уже обоснованы (по индукции).
+
+Два новых похожих случая: правила для $\forall$ и $\exists$. Рассмотрим $\forall$. Для квантора существования аналогично.
+
+Доказываем переходи к $(n)$. $\alpha\rightarrow\psi\rightarrow\forall x.\varphi$ (правило для $\forall$), значит, доказано
+на шаге $k$, что $\alpha\rightarrow\psi\rightarrow\varphi$.
+
+\begin{tabular}{lll}
+$(n-0.9) \dots (n-0.8)$ &
+$(\alpha\rightarrow\psi\rightarrow\varphi)\rightarrow(\alpha\&\psi)\rightarrow\varphi$ &
+Т. о полноте КИВ\\
+$(n-0.6)$ & $(\alpha\to\psi)\rightarrow\varphi$ & M.P. $k$,$n-0.8$\\
+$(n-0.4)$ & $(\alpha\to\psi)\rightarrow\forall x.\varphi$ & Правило для $\forall$, $n-0.6$\\
+$(n-0.3) \dots (n-0.2)$ & $((\alpha\to\psi)\rightarrow\forall x.\varphi)\rightarrow(\alpha\rightarrow\psi\rightarrow\forall x.\varphi)$ & Т. о полноте КИВ\\
+$(n)$ & $\alpha\rightarrow\psi\rightarrow\forall x.\varphi$ & M.P. $n-0.4$, $n-0.2$
+\end{tabular}
     \end{itemize}
 \end{proof}
 
-валмлдоыауова лдоваы оафлдов флва пло щзвдфыфа ф
-спасите 
-
-хехехе модус понос
-
-короче все докажется
-
-\paragraph{Следование}
+\subsection{Отношение следования}
 
 \begin{definition}[Следование]
-    $\gamma_1, \gamma_2, \dots, \gamma_n \vDash \alpha$, если выполнено два условия:
-    \begin{enumerate}
-        \item $\alpha$ выполнено всегда, когда выполнено
-    \end{enumerate}
-    ...
+    $\gamma_1,\gamma_2,\dots,\gamma_n\models\alpha$, если выполнено два условия:
+\begin{enumerate}
+\item $\alpha$ выполнено всегда, когда выполнено $\gamma_1,\gamma_2,\dots,\gamma_n$;
+\item $\alpha$ не использует кванторов по переменным, входящим свободно в $\gamma_1,\gamma_2,\dots,\gamma_n$.
+\end{enumerate}
 \end{definition}
 
-Влажность второго условия. 
+\begin{theorem}
+    Если $\Gamma\vdash\alpha$ и в доказательстве не используется кванторов по свободным
+переменным из $\Gamma$, то $\Gamma\models\alpha$.
+\end{theorem}
 
+Влажность второго условия.
+\begin{example}
+    Покажем, что $\Gamma\models\alpha$ ведёт себя неестественно, если
+в $\alpha$ используются кванторы по переменным, входящим свободно в $\Gamma$.
+
+Легко показать, что $P(x)\vdash \forall x.P(x)$.
+
+\begin{tabular}{lll}
+(1) & $P(x)$ & Гипотеза \\
+(2) & $P(x)\rightarrow (A\rightarrow A \rightarrow A) \rightarrow P(x)$ & Сх. акс. 1\\
+(3) & $(A\rightarrow A \rightarrow A) \rightarrow P(x)$ & M.P. 1, 2\\
+(4) & $(A\rightarrow A \rightarrow A) \rightarrow \forall x.P(x)$ & Правило для $\forall$, 3\\
+(5) & $(A\rightarrow A \rightarrow A)$ & Сх. акс. 1\\
+(6) & $\forall x.P(x)$ & M.P. 5, 4
+\end{tabular}
+
+Пусть $D = \mathbb{Z}$ и $P(x) = x > 0$. Тогда не будет выполнено $P(x)\models \forall x.P(x)$.
+\end{example}
 
 Зачем нам это потребовалось?  Мы будем пользоваться, но не злоупотреблять.
 
-
-Мы не хотим заранее сильно ограничивать язык. ПОэтому мы выбираем такой вариант, чтобы он разрешал некоторые.
-
-
-\begin{example}
-    $\vdash \exists x. P(x) \to P(x)$\ldots
-
-    (1) $A \to (A \to A) \to A \implies P()$
-\end{example}
-
-\begin{example}
-    $\vdash x. P(x) \to P(x)$
-\end{example}
+Мы не хотим заранее сильно ограничивать язык. Поэтому мы выбираем такой вариант, чтобы он разрешал некоторые.
 
 % строка переноса
