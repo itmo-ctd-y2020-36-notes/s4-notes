@@ -12,7 +12,7 @@
 \newcommand{\tl}[1]{\widetilde{#1}}
 \newcommand{\tll}[1]{\widetilde{\widetilde{#1}}}
 \newcommand{\ov}[1]{\overline{#1}}
-% limits, sum with under and over text 
+% limits, sum with under and over text
 \let\svlim\lim\def\lim{\svlim\limits}
 \let\svsum\sum\def\sum{\svsum\limits}
 \let\svprod\prod\def\prod{\svprod\limits}
@@ -28,7 +28,7 @@
 \newcommand{\declare}[1]{
     \expandafter\DeclareMathOperator\csname #1\endcsname{#1}
 }
-% text 
+% text
 \declare{Int}
 \declare{rang}
 \declare{Cl}
@@ -48,3 +48,7 @@
 \declare{rot}
 \declare{Arg}
 \declare{res}
+
+\DeclareRobustCommand{\divisible}{%
+  \mathrel{\text{\vbox{\baselineskip.65ex\lineskiplimit0pt\hbox{.}\hbox{.}\hbox{.}}}}%
+}
