@@ -1,0 +1,209 @@
+\section{Теорема о корректности формальной арифметики}
+
+
+\paragraph{Два вида индукции}
+\begin{definition}[Принцип математической индукции]
+Какое бы ни было $\varphi(x)$, если $\varphi(0)$ и при всех $x$ выполнено $\varphi(x)\rightarrow \varphi(x')$, то
+при всех $x$ выполнено и само $\varphi(x)$.
+\end{definition}
+
+\begin{definition}[ Принцип полной математической индукции]
+Какое бы ни было $\psi(x)$, если $\psi(0)$ и при всех $x$ выполнено $(\forall t.x < t \rightarrow \psi(x))\rightarrow \psi(x')$, то
+при всех $x$ выполнено и само $\psi(x)$.
+\end{definition}
+
+\begin{theorem}
+  Принципы математической индукции эквивалентны
+\end{theorem}
+\begin{proof}
+$(\Rightarrow)$ взяв $\varphi := \psi$, имеем выполненность $\varphi(x)\rightarrow\varphi(x')$, значит, $\forall x.\psi(x)$.
+
+$(\Leftarrow)$ возьмём $\psi(x) := \forall t.t\le x\rightarrow\varphi(t)$
+\end{proof}
+
+
+\paragraph{Трансфинитная индукция}
+\begin{theorem}Принцип трансфинитной индукции. Если для $\varphi(x)$ --- некоторого утверждения
+теории множеств --- выполнено:
+\begin{enumerate}
+\item $\varphi(\varnothing)$
+\item Если $\forall u.u \in \upsilon \rightarrow \varphi(u)$, то $\varphi(\upsilon)$ (где $\upsilon$ - это ординал)
+\end{enumerate}
+то $\forall u.\varphi(u)$.
+\end{theorem}
+
+
+\paragraph{Индукция для натуральных чисел}
+\begin{lemma}Свойство индукции выполнено для натуральных чисел:
+если $\varphi(0)$ и $\forall x\in\mathbb{N}_0.f(x) \rightarrow f(x')$, то $\forall x\in\mathbb{N}_0.f(x)$.
+\end{lemma}
+
+\begin{proof}
+Пусть $\varphi(\varnothing)$ и $\forall u.(u \in \omega) \rightarrow \varphi(u) \rightarrow \varphi(u')$.
+Рассмотрим $\tau(n) = \forall u.u \in n \rightarrow \varphi(u)$. Очевидно,
+что если $m \in n$, то $\tau(n) \rightarrow \tau(m)$. Значит, выполнены условия принципа
+трансфинитной индукции для $\omega$, отсюда $\tau(\omega)$, отсюда $\forall u.(u \in \omega) \rightarrow \varphi(u)$.
+\end{proof}
+
+
+\paragraph{Исчисление $S_\infty$}
+\begin{enumerate}
+\item Язык: связки $\neg$, $\vee$, $\forall$; нелогические символы: $(+)$,$(\cdot)$,$(')$,$0$,$(=)$.
+\item Аксиомы: все истинные формулы вида $\theta_1=\theta_2$; все истинные отрицания формул вида $\neg\theta_1=\theta_2$
+($\theta_i$ --- термы без переменных).
+\item Структурные (слабые) правила:
+\[ \dfrac{\zeta\vee\alpha\vee\beta\vee\delta}{\zeta\vee\beta\vee\alpha\vee\delta}, ~~~~~~~~~~~
+\dfrac{\alpha\vee\alpha\vee\delta}{\alpha\vee\delta}. \]
+
+\item Сильные правила
+\[\dfrac{\delta}{\alpha\vee\delta}~~~~~~
+\dfrac{\neg\alpha\vee\delta\quad\neg\beta\vee\delta}{\neg(\alpha\vee\beta)\vee\delta}~~~~~~
+\dfrac{\alpha\vee\delta}{\neg\neg\alpha\vee\delta}~~~~~~
+\dfrac{\neg\alpha[x := \theta]\vee\delta}{(\neg\forall x.\alpha)\vee\delta}.\]
+
+\item Бесконечная индукция
+\[ \dfrac{\alpha[x:=\overline{0}]\vee\delta~~~
+\alpha[x:=\overline{1}]\vee\delta~~~
+\alpha[x:=\overline{2}]\vee\delta\quad\dots}{(\forall x.\alpha)\vee\delta}.\]
+
+\item Сечение
+\[ \dfrac{\zeta\vee\alpha  \quad\quad \neg\alpha\vee\delta}
+{\zeta\vee\delta}. \]
+Здесь: \\
+$\alpha$ --- секущая формула \\
+Число связок в $\neg\alpha$ --- степень сечения.
+\end{enumerate}
+
+{Дерево доказательства}
+\begin{enumerate}
+\item Доказательства образуют деревья.
+\item Каждой формуле в дереве сопоставим порядковое число (ординал).
+\item Порядковое число заключения любого неструктурного правила строго больше порядкового числа его посылок
+(больше или равно в случае структурного правила).
+
+\[ \dfrac{
+   \dfrac{}{0 = 0}\quad
+   \dfrac{\dfrac{\dfrac{}{0= 0}}{\dots}}{0'= 0'}\quad
+   \dfrac{\dfrac{\dfrac{\dfrac{\dfrac{}{0 = 0}}{\dots}}{0'= 0'}}{\dots}}{0''= 0''}\quad\dots
+}{(\forall a.a = a)_\omega}~~~~~~
+\dfrac{
+   \dfrac{}{0 = 0}\quad
+   \dfrac{}{0'= 0'}\quad
+   \dfrac{}{0''= 0''}\quad\dots
+}{(\forall a.a = a)_1}. \]
+
+\item Существует конечная максимальная степень сечения в дереве (назовём её степенью вывода).
+\end{enumerate}
+
+
+\begin{theorem}
+  Если $\vdash_\text{фа}\alpha$, то $\vdash_\infty|\alpha|_\infty$.
+\end{theorem}
+\begin{theorem}
+  Если Ф.А. противоречива, то противоречива и $S_\infty$.
+\end{theorem}
+\begin{example}
+  Обратное неверно: \[ \dfrac
+{\neg\omega(\overline{0},\overline{\ulcorner\sigma\urcorner})\quad\quad
+ \neg\omega(\overline{1},\overline{\ulcorner\sigma\urcorner})\quad\quad
+ \neg\omega(\overline{2},\overline{\ulcorner\sigma\urcorner})\quad\quad\dots}{\forall x.\neg\omega(x,\overline{\ulcorner\sigma\urcorner})}.\]
+\end{example}
+
+
+% {Обратимость правил}
+\begin{theorem}
+Если формула $\alpha$ доказана и имеет вид, похожий на заключение правил де Моргана,
+отрицания и бесконечной индукции --- то посылки соответствующих правил могут быть получены из самой
+формулы $\alpha$ доказательством, причём доказательством с не большей степенью и не большим порядком.
+\end{theorem}
+\begin{proof}
+Например, формула вида $\neg\neg \alpha\vee\delta$.
+
+Проследим историю $\alpha$; она получена:
+\begin{enumerate}
+\item ослаблением --- заменим $\neg\neg\alpha$ на $\alpha$ в этом узле и последующих.
+\item отрицанием --- выбросим правило, заменим $\neg\neg\alpha$ на $\alpha$ в последующих.
+\end{enumerate}
+Изменённый вывод --- доказательство требуемого.
+\end{proof}
+
+
+{Устранение сечений}
+\begin{theorem}Если $\alpha$ имеет вывод степени $m>0$ порядка $t$, то
+можно найти вывод степени строго меньшей $m$ с порядком $2^t$.
+\end{theorem}
+
+\begin{proof}Трансфинитная индукция по порядку $t$.\begin{enumerate}
+\item База. Если $t=0$, то неструктурных правил нет, отсюда $m = 0$.
+\item Переход. Рассмотрим заключительное правило.
+\begin{enumerate}
+\item Не сечение.
+\item Сечение, секущая формула --- элементарная.
+\item Сечение, секущая формула --- $\neg\alpha$.
+\item Сечение, секущая формула --- $\alpha\vee\beta$.
+\item Сечение, секущая формула --- $\forall x.\alpha$.
+\end{enumerate}
+\end{enumerate}
+\end{proof}
+
+
+{Случай 1. Не сечение}
+\[\dfrac{\pi_{t_0}\quad\pi_{t_1}\quad\pi_{t_2}\quad\dots}{\alpha}.\]
+Заменим доказательства посылок $\pi_i$ по индукционному предположению.
+
+\begin{enumerate}
+\item Если $m'_i < m_i$, то $\max m'_i < \max m_i$
+\item Если $t_i \le t$, то $2^{t_i} \le 2^t$.
+\end{enumerate}
+
+
+{Случай 2.4. Сечение с формулой вида $\forall x.\alpha$}
+\[ \dfrac{\zeta\vee\forall x.\alpha\quad\quad\neg(\forall x.\alpha)\vee\delta}{\zeta\vee\delta}.\]
+Причём степень и порядок выводов компонент, соответственно, $(m_1,t_1)$ и $(m_2,t_2)$.
+\begin{enumerate}
+\item По индукции, вывод $\zeta\vee\forall x.\alpha$ можно упростить до $(m_1',2^{t_1})$.
+\item По обратимости, для постоянного $\theta$ можно построить вывод $\zeta\vee\alpha[x := \theta]$ за $(m_1',2^{t_1})$.
+\item В формуле $(\neg \forall x. \alpha)\vee\delta$ формула $\neg\forall x.\alpha$ получена
+либо ослаблением, либо квантификацией из $\neg\alpha[x := \theta_k]\vee\delta_k$.
+\begin{enumerate}
+\item Каждое правило квантификации заменим на:
+\[ \dfrac{\zeta\vee\alpha[x := \theta_k]\quad\quad(\neg\alpha[x := \theta_k])\vee\delta_k}{\zeta\vee\delta_k}.\]
+\item Остальные вхождения $\neg\forall x.\alpha$ заменим на $\zeta$ (в правилах ослабления).
+\end{enumerate}
+\item В получившемся дереве меньше степень --- так как в $\neg\alpha[x := \theta]$ меньше связок, чем в $\neg\forall x.\alpha$.
+\item Нумерацию можно также перестроить.
+\end{enumerate}
+
+
+{Теорема об устранении сечений}
+\begin{definition}Итерационная экспонента
+\[ (a\uparrow)^m(t) =
+  \left\{
+    \begin{array}{ll}     t,&m=0\\
+ a^{(a\uparrow)^{m-1}(t)},&m > 0
+    \end{array}
+  \right. .\]
+\end{definition}
+\begin{theorem}Если $\vdash_\infty\sigma$ степени $m$ порядка $t$, то найдётся доказательство без сечений
+порядка $(2\uparrow)^m(t)$
+\end{theorem}
+\begin{proof}
+В силу конечности $m$ воспользуемся индукцией по $m$ и теоремой об уменьшении степени.
+\end{proof}
+
+
+{Непротиворечивость формальной арифметики}
+\begin{theorem}Система $S_\infty$ непротиворечива\end{theorem}
+\begin{proof}
+Рассмотрим формулу $\neg 0=0$.
+Если эта формула выводима в $S_\infty$, то она выводима и в $S_\infty$ без сечений.
+Тогда какое заключительное правило?
+\begin{enumerate}
+\item Правило Де-Моргана?  Нет отрицаний дизъюнкции ($\neg(\alpha\vee\beta)\vee\delta$).
+\item Отрицание?  Нет двойного отрицания ($\neg\neg\alpha\vee\delta$).
+\item Бесконечная индукция или квантификация?  Нет квантора.
+\item Ослабление?  Нет дизъюнкции ($\alpha \vee \delta$).
+\end{enumerate}
+
+То есть, неизбежно, $\neg 0=0$ --- аксиома, что также неверно.
+\end{proof}
