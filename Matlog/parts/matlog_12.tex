@@ -1,0 +1,112 @@
+\subsection{Теорема Лёвенгейма--Сколема}
+
+Как пересчитать вещественные числа (неформально)?
+\begin{enumerate}
+    \item Пусть номер вещественного числа~--- первое упоминание в литературе, т.е. $\langle j, y, n, p, r, c\rangle$:
+    \begin{itemize}
+        \item $j$~--- гёделев номер названия журнала,
+        \item $y$~--- год издания,
+        \item $n$~--- номер,
+        \item $p$~--- страница,
+        \item $r$~--- строка,
+        \item $c$~--- позиция.
+    \end{itemize}
+    \item Попробуйте предъявить $x$, не имеющий номер? Это рассуждение сразу же даст номер.
+\end{enumerate}
+
+\begin{definition}
+    Пусть задана модель $\langle D, F_n, P_n \rangle$ для некоторой теории первого порядка. Ее мощностью будем считать мощность $D$.
+\end{definition}
+
+\begin{definition}
+    Пусть задана формальная теория с аксиомами $\alpha_n$. Ее мощность~--- мощность множества $\{ \alpha_n \}$.
+\end{definition}
+
+\begin{example}
+    Формальная Арифметика, исчисление предикатов, исчисление высказываний~--- счетно--ак\-си\-о\-ма\-ти\-зи\-ру\-емые.
+\end{example}
+
+\begin{definition}
+    $\p {\mathcal{M}} = \langle \p D, \p F_n, \p P_n \rangle$~--- элементарная подмодель $\mathcal{M} = \langle D, F_n, P_n \rangle$, если
+    \begin{enumerate}
+        \item $\p D \subseteq D$, $\p F_n, \p P_n$~--- сужение $F_n, P_n$ (замкнутое на $\p D$).
+        \item $\p{\mathcal M} \vDash \varphi(x_1, \dots, x_n)$ тогда и только тогда, когда $\mathcal{M} \vDash \varphi(x_1, \dots, x_n)$ при $x_i \in \p D$.
+    \end{enumerate}
+\end{definition}
+
+\begin{example}
+    Когда сущение $\mathcal{M}$ не является элементарной подмоделью?
+
+    $\forall x.\exists y.x \neq y$. Истинно в $\N$.
+
+    Но пусть $\p D = \{ \square \}$, тогда наше сужение не является элементарной подмоделью ()нарушается второе свойство.
+\end{example}
+\subsubsection{Теорема Лёвенгейма--Сколема}
+\begin{theorem}
+    Пусть $T$~--- множество всех формул теории первого порядка. Пусть теория имеет некоторую модель $\mathcal M$. Тогда найдется элементарная подмодель $\p{\mathcal{M}}$, причем $\left| \p{\mathcal M} \right| = \max(\aleph_0,|T|)$.
+\end{theorem}
+
+\begin{corollary}
+    [Более слабая версия теоремы]
+    Пусть теория счетно--аксиоматизируема, тогда найдется элементарная подмодель счетной мощности.
+\end{corollary}
+\begin{proof}
+    План доказательства:
+    \begin{enumerate}
+        \item Построим $D_0$~--- множество всех значений, которые упомянуты в языке теории.
+        \item Будем последовательно пополнять $D_i$: $D_0 \subseteq D_1 \subseteq D_2 \dots$, следя за мощностью $\p D = \bigcup D_i$.
+        \item Покажем, что $\langle \p D, F_n, P_n \rangle$~-- требуемая подмодель.
+    \end{enumerate}
+
+    \textbf{Начальный $D$}
+
+    Пусть $\{ f_k^0 \}$~--- все 0--местные функцииональные символы теории.
+    \begin{enumerate}
+        \item $D_0 = \left\{ \llbracket f_k^0 \rrbracket\right\}$, если есть хотя бы один $f_k^0$.
+
+        Например, для формальной арифметики множеством $D_0$ будет $\{0\}$. А для теории множест $D_0 = \{ \O, N\}$ ($N$~--- то бесконечное множество, существование которого гарантируется).
+
+        \item Если таких $f_k^0$ нет, возьмем какое-нибудь значение из $D$.
+    \end{enumerate}
+    Очевидно, $|D_0| \leqslant |T|$.
+
+    \textbf{Пополнение $D$}
+
+    Фиксируем некоторый $D_k$. Напомним, $T$~--- множество всех формул теории. Рассмотрим $\varphi \in T$.
+    \begin{enumerate}
+        \item Если $\varphi$ не имеет свободных переменных~--- пропустим.
+        \item Если $\varphi$ имеет хотя бы одну свободную переменную $y$.
+        \begin{enumerate}
+            \item $\varphi(y, x_1, \dots, x_n)$ при $y, x_i \in D_k$ бывает истинным и ложным~--- ничего не  меняем.
+            \item $\varphi(y, x_1, \dots, x_n)$ при $y \in D, x_i \in D_k$ всегда истинный или ложный~--- ничего не  меняем.
+            \item $\varphi(y, x_1, \dots, x_n)$ при $y \in D, x_i \in D_k$ всегда истинный или ложный, но при $\p y \in D \setminus D_k$ отличается~--- добавим $\p y$ к $D_{k + 1}$.
+
+            Добавляя $\p y$, добавим все возможные $\left\llbracket \theta \left( \p y \right) \right\rrbracket$ (формулы, которые используют $\p y$).
+        \end{enumerate}
+    \end{enumerate}
+    Заметим, что мы добавили не больше $|T|\cdot |D_k|$ формул.
+
+    Заметим, что $\left| \bigcup D_i \right| \leqslant |T| \cdot |D_k| \cdot \aleph_0 = \max\left( |T|,  \aleph_0 \right)$.
+
+    Почему то, что мы построили элементарная подмодель? Пройдемся индукцией по структуре формул $\tau\in T$ и покажем, что все формулы можно вычислить, и что $\llbracket \varphi\rrbracket_{\p{\mathcal{M}}} = \llbracket \varphi\rrbracket_{\mathcal{M}}$.
+    \begin{enumerate}
+        \item База, 0 связок. $\tau\equiv P(f_1(x_1, \dots,x_n), \dots, f_n(x_1, \dots, x_n))$.
+        \item Переход. Пусть формула из $k$ связок сохраняют значения. Рассмотрим $\tau$ с $k + 1$ связкой.
+        \begin{enumerate}
+            \item $\tau \equiv \rho \star \sigma$~--- очевидно.
+            \item $\tau \equiv \forall y.\varphi(y, x_1, \dots, x_n)$. Каждый из $x_i$ добавен на каком-то шаге~--- максимум $t$.
+
+            Если $\varphi(y, x_1, \dots, x_n)$ бывает истинен и ложен при $y_t, y_f \in D$, то $y_t, y_f \in D_{t+1}$ (по построению). Поэтому если $\mathcal{M} \not\vDash \forall y. \varphi(y, x_1, \dots, x_n)$, то и $\p{\mathcal{M}} \not\vDash \forall y. \varphi(y, x_1, \dots, x_n)$.
+
+            Если же $\varphi(y, x_1, dots, x_n)$ не меняется от $y$, то тем более $\llbracket \varphi\rrbracket_{\p{\mathcal M}} = \llbracket \varphi\rrbracket_{\mathcal M}$.
+
+            \item $\tau\equiv \exists y. \varphi(y, x_1, dots, x_n)$~--- аналогично.
+        \end{enumerate}
+    \end{enumerate}
+\end{proof}
+
+\subsubsection{<<Парадокс>> Сколема}
+Как известно, $|\R| = |\mathcal P (\N)| < |\N| = \aleph_0$. Однако, ZFC~--- счетно--аксиоматизируемая теория. Значит, существует счтеная модель ZFC, то есть $|\R| = \aleph_0$. В чем ошибка?
+
+На самом деле, у равенств выше разный смысл. Первое равенство~--- в предметном языке, а второе~--- в метаязыке.
+То есть, второе равенство не возможно формализовать в ZFC, значит и парадокса здесь нет.
