@@ -1,0 +1,320 @@
+\section{Теория множеств}
+Теория множеств была создана, что наконец положить нормальный фундамент в основание математики.
+
+Основной принцип, лежащий в основе теории множеств~---
+\textit{неограниченный принцип абстракции} $\{ x\ |\ P(x)\}$.
+
+Тут сразу же возникает пародокс:
+$X = \{ x\ |\ x \notin x \}$. Выполнено ли $X \in X$?
+
+Давайте попробуем решить этот парадокс. Варианты решения:
+\begin{enumerate}
+\item Запретить все <<опасные>> ситуации
+\item Запретить вообще все, кроме некоторого количества разрешенных вещей. Аксиоматика Цермело --- 1908 год, оставим только то, что используют математики.
+\end{enumerate}
+Что такое множество? Не будем отвечать, поступим иначе.
+
+\subsection{Аксиоматика ZF}
+\textit{Цермело, Френкель (совсем немного).}
+
+\begin{definition}
+   Теория множеств --- теория первого порядка,
+с дополнительным нелогическим двуместным функциональным  символом $\in$, и следующими дополнительными нелогическими аксиомами и схемами аксиом.
+\end{definition}
+
+\begin{definition}
+   [Равенство <<по Лейбницу>>] Объекты равны, если неразличимы.
+\end{definition}
+
+Если нечто ходит как утка, выглядит как утка и крякает как утка, то это утка.
+\begin{definition}
+   [Равенство по принципу объёмности]
+   Объекты равны, если состоят из одинаковых частей
+\end{definition}
+
+Мы бы хотели, чтобы эти определения совпадали. В качестве основного возьмем принцип объемности, а первый признак докажем.
+
+\begin{definition}
+   $A \subseteq B \equiv \forall x.x \in A \rightarrow x \in B$.
+
+   $A = B \equiv A \subseteq B \& B \subseteq A$.
+\end{definition}
+\subsubsection{Аксиомы теории множеств}
+\begin{definition}
+   [Аксиома равенства] Равные множества содержатся в одних и тех же множествах.
+
+   $\forall x. \forall y. \forall z. x = y \& x \in z \rightarrow y \in z$.
+\end{definition}
+
+
+\begin{definition} [Аксиома пустого] Существует пустое множество $\varnothing$.
+   \[\exists s.\forall t.\neg t \in s.\]
+\end{definition}
+
+\begin{definition}
+   [Аксиома пары] Существует $\{a,b\}$.
+Каковы бы ни были два множества $a$ и $b$, существует множество, состоящее в точности из них.
+
+\[ \forall a.\forall b.\exists s.a \in s \& b \in s \& \forall c.c \in s \rightarrow c = a \vee c = b.\]
+\end{definition}
+
+\begin{definition} [Аксиома объединения]
+   Существует $\cup x$.
+
+   Для любого непустого множества $x$ найдется такое множество, которое состоит в точности из тех элементов, из которых состоят элементы $x$.
+\[ \forall x.(\exists y.y \in x) \rightarrow \exists p.\forall y.y \in p \leftrightarrow \exists s.y \in s \& s \in x.\]
+\end{definition}
+\begin{note}
+   $\leftrightarrow$ здесь также, как и раньше, означает импликацию в обе стороны.
+\end{note}
+
+\begin{definition} [Аксиома степени]
+   Существует $\mathcal{P}(x)$ (булеан).
+
+   Каково бы ни было множество $x$, существует множество, содержащее в точности все возможные подмножества множества $x$.
+\[ \forall x.\exists p.\forall y.y \in p \leftrightarrow y \subseteq x.\]
+\end{definition}
+
+\begin{definition} [Схема аксиом выделения]
+   Существует $\{ t \in x\ |\ \varphi(t)\}$.
+
+   Для любого множества $x$ и любой формулы от одного аргумента $\varphi(y)$
+($b$ не входит свободно в $\varphi$), найдется $b$, в которое
+входят те и только те элементы из множества $x$, что $\phi(y)$ истинно.
+
+\[ \forall x.\exists b.\forall y.y \in b \leftrightarrow (y \in x \& \varphi(y)).\]
+\end{definition}
+
+\begin{theorem}
+   Для любого множества $X$ существует множество $\{X\}$, содержащее в точности $X$.
+\end{theorem}
+\begin{proof}Воспользуемся аксиомой пары: $\{X,X\}$\end{proof}
+
+\begin{theorem}Пустое множество единственно.\end{theorem}
+\begin{proof}Пусть $\forall p.\neg p \in s$ и $\forall p.\neg p \in t$.
+Тогда $s \subseteq t$ и $t \subseteq s$.\end{proof}
+
+\begin{theorem}Для двух множеств $s$ и $t$ существует множество, являющееся их пересечением.\end{theorem}
+\begin{proof}$s \cap t = \{ x\in s\ |\ x \in t\}$\end{proof}
+
+
+\begin{definition}[Упорядоченная пара]
+   Упорядоченной парой двух множеств $a$ и $b$ назовём
+$\{\{a\},\{a,b\}\}$, или $\langle{}a,b\rangle$.
+\end{definition}
+
+\begin{theorem}
+Упорядоченную пару можно построить для любых множеств.
+\end{theorem}
+\begin{proof}
+   Применить аксиому пары, теорему о существовании $\{X\}$, аксиому пары.
+\end{proof}
+
+\begin{theorem}
+$\langle a,b \rangle = \langle c, d\rangle$ тогда и только тогда,
+когда $a = c$ и $b = d$.
+\end{theorem}
+
+\begin{definition}
+   Инкремент: $x' \equiv x \cup \{x\}$.
+\end{definition}
+\begin{definition}
+   [Аксиома бесконечности]
+
+   Существует $N: \varnothing \in N \& \forall x.x \in N\rightarrow x' \in N$\end{definition}
+
+   В $N$ есть всевозможные множества вида $\varnothing$, $\{\varnothing\}$, $\{\varnothing,\{\varnothing\}\}$,
+$\{\varnothing,\{\varnothing\},\{\varnothing,\{\varnothing\}\}\}$, \dots
+
+(неформально) $\omega = \{\varnothing, \varnothing', \varnothing'', \dots\}$.
+Тогда $N_1 = \omega\cup\{\omega,\omega',\omega'',\dots\}$ подходит.
+
+
+\paragraph{Полный порядок (вполне упорядоченные множества)}
+\begin{enumerate}
+\item Частичный: рефлексивность ($a \preceq a$), антисимметричность ($a \preceq b \rightarrow b \preceq a\rightarrow a=b$),
+транзитивность ($a \preceq b \rightarrow b \preceq c \rightarrow a \preceq c$).
+\item Линейный: частичный + $\forall a.\forall b.a \preceq b \vee b \preceq a$.
+\item Полный: линейный + в любом непустом подмножестве есть наименьший элемент.
+\end{enumerate}
+
+\begin{example} $\mathbb{Z}$ не вполне упорядочено: в $\mathbb{Z}$ нет наименьшего. \end{example}
+\begin{example} Отрезок $[0,1]$ не вполне упорядочен: $(0,1)$ не имеет наименьшего. \end{example}
+\begin{example} $\mathbb{N}$ вполне упорядочено. \end{example}
+
+
+\subsubsection{Ординалы}
+\begin{definition}
+   Транзитивное множество $X$: $\forall x.\forall y.x \in y \& y \in X \rightarrow x \in X$.
+\end{definition}
+\begin{definition}
+   Ординал --- вполне упорядоченное отношением $(\in)$ транзитивное множество.
+\end{definition}
+\begin{example} Ординалы: $\varnothing$,  $\varnothing'$,  $\varnothing''$, \dots \end{example}
+
+\begin{definition}
+   Предельный ординал: такой $x$, что $x \ne \varnothing$ и нет $y: y' = x$.
+\end{definition}
+\begin{definition}
+   Ординал $x$ конечный, если он меньше любого предельного.
+\end{definition}
+\begin{theorem}
+   Если $x,y$ --- ординалы, то $x\in y$ или $y \in x$.
+\end{theorem}
+
+\begin{definition}
+   $\omega$ --- наименьший предельный ординал.
+\end{definition}
+\begin{theorem}
+   $\omega$ существует.
+\end{theorem}
+\begin{proof}
+   Пусть $\omega = \{ x \in N\ |\ x\text{ конечен}\}$.
+
+   Пусть $\theta$ таков, что $\theta \in \omega$. Тогда $\theta$ конечен.
+Пусть $\theta$ таков, что $\theta' = \omega$. Тогда $\theta \in \omega$.
+\end{proof}
+\begin{example}
+   $\omega'$ --- тоже ординал.
+\end{example}
+
+\begin{definition}
+   $\sup x$ --- наименьший ординал, содержащий $x$: $x \subseteq \sup x$.
+\end{definition}
+\begin{example}
+   $\sup \{ \varnothing', \varnothing'', \varnothing'''' \} = \{ {\color{blue}\varnothing},
+   \varnothing', \varnothing'', {\color{blue} \varnothing '''}, \varnothing'''' \} =  \varnothing'''''$\end{example}
+
+\begin{definition}
+   Определим сложение так:
+   \[ a + b \equiv \left\{ \begin{array}{rl}
+      a, & b \equiv \varnothing\\
+      (a + c)', & b \equiv c'\\
+      \sup \{ a+c \mid c \prec b \}, &\mbox{$b$ --- предельный ординал }\end{array}\right.. \]
+\end{definition}
+
+\begin{example}
+   $\omega + 1 = \omega \cup \{\omega\}$.
+
+   $1 + \omega = \sup\{ 1+\varnothing, 1+1, 1+2, \dots \}  = \omega$.
+\end{example}
+
+
+\begin{definition}
+   Определим умножение так:
+\[ a \cdot b \equiv \left\{ \begin{array}{rl}
+   0, & b \equiv \varnothing\\
+   (a \cdot c) + a, & b \equiv c'\\
+   \sup \{ a \cdot c \mid c \prec b \}, &\mbox{$b$ --- предельный ординал }\end{array}\right..\]
+\end{definition}
+\begin{definition}
+   Определим возведение в степень так:
+\[ a ^ b \equiv \left\{ \begin{array}{rl}
+   1, & b \equiv \varnothing\\
+   (a ^ c) \cdot a, & b \equiv c'\\
+   \sup \{ a^c \mid c \prec b \}, &\mbox{$b$ --- предельный ординал }\end{array}\right.. \]
+\end{definition}
+
+\begin{example}
+   $\omega \cdot \omega = \sup\{\omega,\omega\cdot 2, \omega\cdot 3, \dots\}
+   $.
+\end{example}
+
+\begin{example}
+   Гостиница с $\omega$ номерами, въезжает постоялец.  $1 + \omega = \omega$.
+
+   Добавить элемент перед бесконечностью.
+\end{example}
+\begin{example}
+   Ввести особое значение $+\infty$.
+   $\omega + 1 \ne \omega$.
+
+   Добавить элемент после бесконечности.\end{example}
+\begin{example}
+   Упорядочивание алгебраических типов.
+
+\texttt{Neg of nat | Pos of nat}
+
+$\omega + \omega$ --- в самом деле, $\texttt{Neg 5} \prec \texttt{Pos 5}$. $\texttt{Neg 5}$ в данном упорядочении
+соответствует $5$, а $\texttt{Pos 5}$ соответствует $\omega + 5$.
+
+\end{example}
+
+\begin{definition}
+   Дизъюнктное (разделённое) множество --- множество, элементы которого не пересекаются.
+\[ Dj(x) \equiv \forall y.\forall z.(y \in x \& z \in x \& \neg y=z) \rightarrow \neg \exists t.t \in y \& t \in z.\]
+\end{definition}
+
+\begin{example}Д
+   изъюнктное: $\{\{1,2\},\{\rightarrow\},\{\alpha,\beta,\gamma\}\}$.\\
+   Не дизъюнктное: $\{\{1,2\},\{\rightarrow\},\{\alpha,\beta,\gamma,1\}\}$.
+\end{example}
+
+
+\begin{definition}
+   Прямое произведение дизъюнктного множества $a$ --- множество $\times a$ всех таких множеств $b$, что:
+
+   \begin{itemize}
+\item $b$ пересекается с каждым из элементов множества $a$ в точности в одном элементе
+\item $b$ содержит элементы только из $\cup a$.
+\end{itemize}
+
+\[ \forall b .b \in \times a \leftrightarrow (b \subseteq \cup a \& \forall y .y \in a \rightarrow \exists ! x .x \in y \& x \in b). \]
+\end{definition}
+
+\begin{example}
+$\times\{\{\triangle,\square\},\{1,2,3\}\} = \{\{\triangle,1\},\{\triangle,2\},\{\triangle,3\},\{\square,1\},\{\square,2\},\{\square,3\}\}$
+\end{example}
+
+\subsubsection{Аксиома выбора}
+\begin{definition}
+Прямое произведение непустого дизъюнктного множества,
+не содержащего пустых элементов, непусто.
+
+$$\forall t.Dj (t) \rightarrow
+(\forall x.x \in t \rightarrow \exists p.p \in x) \rightarrow
+(\exists p.p \in \times t)$$
+\end{definition}
+
+Альтернативные варианты: любое множество можно вполне упорядочить,  любая сюръективная функция имеет частичную обратную, и т.п.
+
+\begin{definition}
+   Аксиоматика ZF + аксиома выбора = ZFC.
+\end{definition}
+
+\begin{example}
+   Парадокс Банаха-Тарского: трёхмерный шар равносоставен двум своим копиям.
+\end{example}
+\begin{theorem}
+   Теорема (Гёдель, 1938): аксиома выбора не добавляет противоречий в ZF.
+\end{theorem}
+\begin{theorem}
+   Теорема (Коэн, 1963): аксиома выбора не следует из других аксиом ZF.
+\end{theorem}
+\begin{example}
+   Односторонние функции: Sha256 и т.п. У Sha256 есть обратная.
+\end{example}
+
+\begin{theorem}
+   Теорема Диаконеску: ZFC поверх интуиционистского исчисления предикатов содержит правило исключённого третьего.
+\end{theorem}
+
+\begin{definition}
+   [Аксиома фундирования]
+
+   В каждом непустом множестве найдется элемент, не пересекающийся с исходным множеством.
+\[ \forall x .x = \varnothing \vee \exists y .y \in x \& y \cap x = \varnothing. \]
+\end{definition}
+
+Аксиома фундирования исключает множества, которые могут принадлежать сами себе (возможно, через цепочку принадлежностей):
+$X \in Y \in Z \in X$.
+
+\begin{definition}
+   [Схема аксиом подстановки]
+Если задана некоторая функция f, представимая в исчислении предикатов
+(то есть задана некоторая формула $\phi$, такая, что $f(x) = y$
+тогда и только тогда, когда $\phi(x,y) \& \exists ! z \phi(x,z)$),
+то для любого множества S существует множество f(S) --- образ
+множества S при отображении f.
+\[\forall s .(\forall x .\forall y_1 .\forall y_2 .x \in s \& \phi (x,y_1) \& \phi (x,y_2) \rightarrow y_1=y_2) \rightarrow (\exists t .\forall y .y \in t \leftrightarrow \exists x . x \in s \& \phi (x,y)). \]
+\end{definition}
