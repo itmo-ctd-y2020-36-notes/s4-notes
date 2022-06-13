@@ -1,0 +1,190 @@
+\subsection{Теоремы Гёделя о неполноте арифметики}
+
+
+\begin{theorem}{Первая теорема Гёделя о неполноте арифметики}
+    \begin{itemize}
+    \item Если формальная арифметика непротиворечива, то $\not\vdash\sigma(\overline{\ulcorner\sigma\urcorner})$.
+    \item Если формальная арифметика $\omega$-непротиворечива, то $\not\vdash\neg\sigma(\overline{\ulcorner\sigma\urcorner})$.
+    \end{itemize}
+\end{theorem}
+
+
+\begin{note}
+    $\sigma(x_1) := \forall p.\neg\omega_1(x_1,p)$. $W_1(\ulcorner\xi\urcorner,p)$ --- $p$ есть доказательство самоприменения $\xi$.
+\end{note}
+
+\begin{proof}[Доказательство теоремы Гёделя].
+\begin{itemize}
+\item Пусть $\vdash\sigma(\overline{\ulcorner\sigma\urcorner})$. Значит, $p$ --- номер доказательства.  Тогда
+$\langle\ulcorner\sigma\urcorner,p\rangle \in W_1$.  Тогда $\vdash\omega_1(\overline{\ulcorner\sigma\urcorner},\overline{p})$.
+Тогда $\vdash\exists p.\omega_1(\overline{\ulcorner\sigma\urcorner},p)$.  То есть
+$\vdash\neg\forall p.\neg\omega_1(\overline{\ulcorner\sigma\urcorner},p)$.  То есть $\vdash\neg\sigma(\overline{\ulcorner\sigma\urcorner})$. Противоречие.
+
+\item Пусть $\vdash\neg\sigma(\overline{\ulcorner\sigma\urcorner})$.  То есть $\vdash\exists p.\omega_1(\overline{\ulcorner\sigma\urcorner},p)$.
+\begin{itemize}
+\item
+ Но найдётся ли натуральное число $p$, что $\vdash\omega_1(\overline{\ulcorner\sigma\urcorner},\overline{p})$?
+
+\item Пусть нет. То есть $\vdash\neg\omega_1(\overline{\ulcorner\sigma\urcorner},\overline{0})$, $\vdash\neg\omega_1(\overline{\ulcorner\sigma\urcorner},\overline{1})$, \dots
+
+\item По $\omega$-непротиворечивости $\not\vdash\exists p.\neg\neg\omega_1(\overline{\ulcorner\sigma\urcorner},p)$.
+\end{itemize}
+       Значит, найдётся натуральное $p$, что $\vdash\omega_1(\overline{\ulcorner\sigma\urcorner},\overline{p})$.
+То есть, $\langle\ulcorner\sigma\urcorner, p\rangle\in W_1$.
+То есть, $p$ --- доказательство самоприменения $W_1$: $\vdash\sigma(\overline{\ulcorner\sigma\urcorner})$.  Противоречие.
+\end{itemize}
+\end{proof}
+
+
+\begin{theorem}
+    Формальная арифметика с классической моделью~--- неполна.
+\end{theorem}
+\begin{proof}
+Полная теория --- теория, в которой любая общезначимая формула доказуема.
+
+Рассмотрим Ф.А. с классической моделью.
+Из теоремы Гёделя имеем $\not\vdash\sigma(\overline{\ulcorner\sigma\urcorner})$.
+
+Рассмотрим $\sigma(\overline{\ulcorner\sigma\urcorner}) \equiv \forall p.\neg\omega_1(\overline{\ulcorner\sigma\urcorner}),p$:
+нет числа $p$, что $p$ --- номер доказательства $\sigma(\overline{\ulcorner\sigma\urcorner})$.
+
+То есть, $\llbracket \forall p.\neg\omega_1(\overline{\ulcorner\sigma\urcorner}),p) \rrbracket = \text{И}$.
+То есть, $\models \sigma(\overline{\ulcorner\sigma\urcorner})$.
+\end{proof}
+
+Почему мы должны требовать от нашей теории $w$--непротиворечивости? Неужели наша формальная ариметика недостаточно содержательна в том, чтобы сформулировать, какие  натуральные числа можно использовать? Этот вопрос занимал математиков и вскоре было предложено решение
+
+\paragraph{Первая теорема Гёделя о неполноте в форме Россера}
+\begin{definition}
+    $\theta_1\le\theta_2 \equiv \exists p.p+\theta_1=\theta_2\quad\quad\theta_1<\theta_2\equiv\theta_1\le\theta_2\&\neg\theta_1=\theta_2$.
+\end{definition}
+\begin{definition}
+    Пусть $\langle \ulcorner\xi\urcorner,p\rangle \in W_2$, если $\vdash\neg\xi(\overline{\ulcorner\xi\urcorner})$.
+Пусть $\omega_2$ выражает $W_2$ в формальной арифметике.
+\end{definition}
+\begin{theorem}
+    Рассмотрим $\rho(x_1) = \forall p.\omega_1(x_1,p)\rightarrow\exists q.q \le p \& \omega_2 (x_1, q)$.
+
+    Тогда $\not\vdash\rho(\overline{\ulcorner\rho\urcorner})$ и $\not\vdash\neg\rho(\overline{\ulcorner\rho\urcorner})$.
+\end{theorem}
+\begin{note}
+    Смысл $\rho(\overline{\ulcorner\rho\urcorner})$ примерно такой: <<Меня легче опровергнуть, чем доказать>>.
+\end{note}
+
+\textbf{А есть ли более формальное доказательство?}
+
+Неполнота варианта теории, изложенной выше, формально доказана на Coq, Russell O'Connor, 2005:\\
+``My proof, excluding standard libraries and the library for Pocklington’s criterion,
+consists of 46 source files, 7 036 lines of specifications, 37 906 lines of proof,
+and 1 267 747 total characters. The size of the gzipped tarball (gzip -9) of all
+the source files is 146 008 bytes, which is an estimate of the information content of my proof.''
+
+Утрмерждение теоремы, записанное на языке Coq.
+\begin{verbatim}
+    Theorem Incompleteness : forall T : System,
+        Included Formula NN T ->
+        RepresentsInSelf T ->
+        DecidableSet Formula T ->
+        exists f : Formula,
+        Sentence f/\(SysPrf T f \/ SysPrf T (notH f) -> Inconsistent LNN T).
+\end{verbatim}
+
+\paragraph{А что мы можем сказать про противоречивать Ф.А.?}
+
+\begin{definition}
+Обозначим за $\psi(x,p)$ формулу, выражающую в формальной арифметике рекурсивное
+отношение Proof: $\langle \ulcorner\xi\urcorner,p\rangle \in \text{Proof}$, если $p$ --- гёделев номер
+доказательства $\xi$.
+
+Обозначим $\pi(x)\equiv\exists p.\psi(x,p)$.
+\end{definition}
+\begin{definition}
+    Формулой Consis назовём формулу $\neg \pi(\overline{\ulcorner 1=0 \urcorner})$.
+\end{definition}
+\begin{note}
+    Неформальный смысл Consis: <<формальная арифметика непротиворечива>>.
+\end{note}
+
+\begin{theorem}
+    [Вторая теорема Гёделя о неполноте арифметики]
+    Если Consis доказуем, то формальная арифметика противоречива.
+\end{theorem}
+\begin{proof}[Неформальное доказательство]
+
+    Формулировка 1 теоремы Гёделя о неполноте арифметики:
+<<если Ф.А. непротиворечива, то недоказуемо $\sigma(\overline{\ulcorner\sigma\urcorner})$>>.
+
+То есть, $\forall p.\neg\omega_1(\overline{\ulcorner\sigma\urcorner},p)$.
+
+То есть,
+если $\text{Consis}$, то $\sigma(\overline{\ulcorner\sigma\urcorner})$.
+
+То есть, если $\text{Consis}$, то $\sigma(\overline{\ulcorner\sigma\urcorner})$, --- и это можно доказать,
+то есть $\vdash\text{Consis}\rightarrow\sigma(\overline{\ulcorner\sigma\urcorner})$.
+
+Однако, если формальная арифметика непротиворечива, то $\not\vdash\sigma(\overline{\ulcorner\sigma\urcorner})$.
+\end{proof}
+
+\begin{definition}
+Будем говорить, что формула $\psi$, выражающая отношение Proof,
+формула $\pi$ и формула Consis соответствуют
+условиям Гильберта-Бернайса-Лёфа, если следующие условия выполнены для любой формулы $\alpha$:
+
+\begin{enumerate}
+\item $\vdash \alpha$ влечет $\vdash \pi(\overline{\ulcorner\alpha\urcorner})$
+\item $\vdash \pi (\overline{\ulcorner\alpha\urcorner}) \rightarrow \pi(\overline{\ulcorner\pi(\overline{\ulcorner\alpha\urcorner})\urcorner})$
+\item $\vdash \pi (\overline{\ulcorner\alpha\rightarrow \beta\urcorner}) \rightarrow \pi(\overline{\ulcorner\alpha\urcorner}) \rightarrow \pi(\overline{\ulcorner\beta\urcorner})$
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}
+    Лемма об автоссылках. Для любой формулы $\phi(x_1)$ можно построить такую замкнутую формулу $\alpha$ (не использующую неаксиоматических предикатных и функциональных символов), что $\vdash \phi(\overline{\ulcorner\alpha\urcorner}) \leftrightarrow \alpha$.
+\end{lemma}
+
+\begin{note}
+    $\leftrightarrow$ означает, что это можно доказать и слева направо, и справо налево.
+\end{note}
+
+\begin{theorem}
+    Существует такая замкнутая формула $\gamma$, что если Ф.А. непротиворечива, то
+$\not\vdash \gamma$, а если Ф.А. $\omega$-непротиворечива, то и $\not\vdash\neg\gamma$.
+\end{theorem}
+\begin{proof}
+Рассмотрим $\phi(x_1) \equiv \neg\pi(x_1)$. Тогда по лемме об автоссылках существует
+$\gamma$, что $\vdash \gamma \leftrightarrow \neg\pi(\overline{\ulcorner\gamma\urcorner})$.
+
+\begin{itemize}
+\item Предположим, что $\vdash \gamma$. Тогда $\vdash \gamma \rightarrow \neg\pi(\overline{\ulcorner\gamma\urcorner})$, то есть $\not\vdash\gamma$
+\item Предположим, что $\vdash \neg\gamma$. Тогда $\vdash \pi(\overline{\ulcorner\gamma\urcorner})$,
+то есть $\vdash \exists p.\psi(\overline{\ulcorner\gamma\urcorner},p)$. Тогда по $\omega$-непротиворечивости
+найдётся $p$, что $\vdash \psi(\overline{\ulcorner\gamma\urcorner},\overline{p})$, то есть $\vdash \gamma$.
+\end{itemize}
+\end{proof}
+
+\begin{proof}
+[Доказательство второй теоремы Гёделя]
+
+\begin{enumerate}
+\item Пусть $\gamma$ таково, что $\vdash \gamma \leftrightarrow \neg\pi(\overline{\ulcorner\gamma\urcorner})$.
+\item Покажем $\pi(\overline{\ulcorner\gamma\urcorner})\vdash \pi(\overline{\ulcorner 1=0\urcorner})$.
+
+\begin{enumerate}
+\item По условию 2, $\vdash \pi(\overline{\ulcorner\gamma\urcorner}) \rightarrow \pi(\overline{\ulcorner\pi(\overline{\ulcorner\gamma\urcorner})\urcorner})$.
+По теореме о дедукции $\pi(\overline{\ulcorner\gamma\urcorner})\vdash \pi(\overline{\ulcorner\pi(\overline{\ulcorner\gamma\urcorner})\urcorner})$;
+
+\item Так как $\vdash \pi(\overline{\ulcorner\gamma\urcorner})\rightarrow\neg\gamma$, то
+по условию 1 $\vdash \pi(\overline{\ulcorner\pi(\overline{\ulcorner\gamma\urcorner})\rightarrow\neg\gamma\urcorner})$;
+
+\item По условию 3, $\pi(\overline{\ulcorner\gamma\urcorner})\vdash \pi(\overline{\ulcorner\pi(\overline{\ulcorner\gamma\urcorner})\urcorner})
+\rightarrow \pi(\overline{\ulcorner\pi(\overline{\ulcorner\gamma\urcorner})\rightarrow\neg\gamma\urcorner})\rightarrow
+\pi(\overline{\ulcorner\neg\gamma\urcorner})$;
+
+\item Таким образом, $\pi(\overline{\ulcorner\gamma\urcorner})\vdash\pi(\overline{\ulcorner\neg\gamma\urcorner})$;
+
+\item Однако, $\vdash \gamma\rightarrow\neg\gamma\rightarrow 1=0$. Условие 3 (применить два раза) даст $\pi(\overline{\ulcorner\gamma\urcorner})\vdash \pi(\overline{\ulcorner 1=0 \urcorner})$.
+\end{enumerate}
+
+\item $\neg\pi(\overline{\ulcorner 1=0 \urcorner})\rightarrow\neg\pi(\overline{\ulcorner\gamma\urcorner})$ (т. о дедукции, контрапозиция).
+\item $\vdash \neg\pi(\overline{\ulcorner 1=0 \urcorner})\rightarrow\gamma$ (определение $\gamma$).
+\end{enumerate}
+\end{proof}

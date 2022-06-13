@@ -458,7 +458,9 @@ $W_1(x,p)=0$, если это не так.
 \end{proof}
 
 \begin{definition}
-    Определим формулу $\sigma(x) := \forall p.\neg\omega(x,p)$
+    Определим формулу $\sigma(x) := \forall p.\neg\omega(x,p)$.
+
+    Это означает, что самоприменение $x$ не доказуемо.
 \end{definition}
 
 
@@ -474,11 +476,3 @@ $\vdash\phi(\overline{2})$, ... выполнено $\not\vdash\exists x.\neg\phi
     Пусть $\phi(x) \equiv (x=x)\rightarrow(x=x)\rightarrow(x=x)$. Тогда $\vdash\phi(x)$ при всех $x$.
 Тогда $\not\vdash\exists x.\neg\phi(x)$ --- то есть существует недоказуемая формула, т.е. теория непротиворечива.
 \end{proof}
-
-
-\begin{theorem}{Первая теорема Гёделя о неполноте арифметики}
-\begin{itemize}
-\item Если формальная арифметика непротиворечива, то $\not\vdash\sigma(\overline{\ulcorner\sigma\urcorner})$.
-\item Если формальная арифметика $\omega$-непротиворечива, то $\not\vdash\neg\sigma(\overline{\ulcorner\sigma\urcorner})$.
-\end{itemize}
-\end{theorem}
