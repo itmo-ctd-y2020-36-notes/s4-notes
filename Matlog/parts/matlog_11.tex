@@ -1,0 +1,260 @@
+\subsection{Координальные числа}
+\textit{Ординальные числа --- порядковые, а координальные~--- количественные.}
+\begin{definition}
+    $\langle D$ (обл. определения, domain)$, C$ (обл. значения, codomain)$, G$ (график)$\rangle$~--- это функция.
+\end{definition}
+
+\begin{definition}
+    Биективная функция~--- сюрективная и инъективная функция.
+\end{definition}
+
+\begin{definition}
+    $|X| = |Y|$ (множество $X$ равномощно множеству $Y$), если существует биективная функция $f: X \to Y$.
+\end{definition}
+
+\begin{definition}
+    $|X| \leqslant |Y|$ ($X$ имеет мощность не больше $Y$), если существует инъектиная функция $f: X\to Y$.
+\end{definition}
+
+\begin{definition}
+    $|X| < |Y|$ ($X$ имеет мощность строго меньше $Y$), если $|X| \leqslant |Y|$ и $|X| \neq |Y|$.
+\end{definition}
+
+\begin{definition}
+    Координальное число~--- ординальное число $a$, у которого нет меньшего его, равномощного ему, для которого не существует числа $b$ меньшего, но равномощного ему.
+
+    То есть, нет $b$: $|a| = |b|$, но $b \in a$.
+\end{definition}
+
+\begin{example}
+    Примеры: $0, 1, 2, 3, 4, \dots, 178$.
+\end{example}
+
+\begin{statement}
+    $\omega$~--- это $0, 1, 2, 3, \dots$.
+\end{statement}
+\begin{proof}
+    Действительно, если $b \in \omega$, то $b$~--- конечен (по определеню $\omega$).
+    Очевидно, $b$ не равномощен $\omega$.
+\end{proof}
+
+\begin{definition}
+    На самом деле $|\omega| = \aleph_0$.
+\end{definition}
+
+Что такое $\aleph_1$?
+\begin{definition}
+    $\aleph_1$~--- такой $c$, что $\aleph_0 < |c|$.
+\end{definition}
+
+\begin{note}
+    Координальные числа так же имеют нумерацию (потому что они ординальные числа и имеют полный порядок).
+
+    \[ 0 < 1 < 2 < \dots < \aleph_0 < \aleph_1. \]
+\end{note}
+
+\begin{definition}
+    [Альтернативное определение]
+
+    Координальные числа~--- множество всех равномощных ориднальных чисел.
+\end{definition}
+
+Что такое $\aleph_1$? Какие есть мощности, большие $\aleph_0$ (больше счетной мощности).
+
+\begin{example}
+    \begin{enumerate}
+        \item $|\omega + 1| = \aleph_0$.
+
+        Определим $f(x) = \begin{cases}
+            \omega,& x = 0\\
+            x - 1, & x > 0
+        \end{cases}$. $f$ очевидно биекция, следовательно имеет место быть равномощность.
+        \item $|\omega \cdot \omega| = \aleph_0$.
+
+        $\omega \cdot $~--- множество упорядоченных пар $\langle k, l\rangle$, их можно пересчитать как рациональные числа.
+        \item $|\omega^\omega| = \aleph_0$.
+
+        Доказательство в домашнем задании.
+    \end{enumerate}
+\end{example}
+
+\subsubsection{Теорема Кантора}
+\begin{theorem}
+    Если $X$~--- некоторое множество, то $|X| < \left|\mathcal{P} (X) \right|$.
+\end{theorem}
+\begin{note}
+    $\mathcal{P}(X)$ здесь также, как и раньше означает булеан, то есть семейство всех подмножеств $X$.
+\end{note}
+\begin{proof}
+    Используем диагональный метод.
+
+    Пусть не так. Пусть существует $f: X \to \mathcal{P}(X)$ и $f$~--- биекиця.
+
+    Пусть, например  $X$~--- $\omega$. $f(3) = \left\{3, 1, 2 \right\}$, $f(2) = \left\{ 1, 4\right\}$, $f(0) = \{ \omega\}$.
+    $X = \{ x_0, x_1, x_2, \dots \}$.
+
+    Будем писать табличку.
+    \begin{tabular}{|l|c|c|c|c|c|}
+    \hline
+    & $x_0$ & $x_1$ & $x_2$ & $x_3$ & $x_4$\\
+    \hline
+    $x_0$ & $\times$ & $\times$ & $\times$ & $\times$ & $\times$\\
+    \hline
+    $x_1$ & & & & & \\
+    \hline
+    $x_2$ & & $\times$ & & & $\times$\\
+    \hline
+    $x_3$ &  & $\times$ & $\times$ & $\times$ & \\
+    \hline
+    \end{tabular}
+    \vspace{0.2cm}
+
+    Биективная ли эта функция? В инъективность мы готовы поверить, а вот что с сюрьективностью?
+
+    Пусть она сюрьективна, построим $T$, не имеющий прообраз.
+
+    Рассмотрим $f(x_0)$. Верно ли, что $x_0 \in f(x_0)$? Если да, то $T\not\ni x_0$. Если нет, то $x_0 \in T$.
+
+    То есть $T = \left\{ x \in \mathcal{P}(X) \mid x \notin f(x) \right\}$ (просто аксиома выделения).
+
+    Каков $t$, что $f(t) = T$? Ни $x_0$, ни $x_1$, ни \ldots не может быть $t$.
+
+    Значит $f$ не сюрьективна, то есть $|X| \neq \left| \mathcal{P}(X)\right|$.
+
+    Однако, $|X| \leqslant \left|\mathcal{P}(X)\right|$. Просто потому что можно рассмотреть функцию $f(x) = \{ x\}$. $f$~--- инъективна.
+
+    Значит $|X| < \left| \mathcal P (X)\right|$.
+\end{proof}
+
+\subsubsection{Можности, большие алеф 0, континум гипотеза}
+Как тогда получить $\aleph_1$?
+
+Действительно, можно взять $\mathcal{P} (\omega)$. Но равно ли $\left| \mathcal P (\omega) \right| = \aleph_1$?
+
+На самом деле не известно.
+
+\begin{definition}
+    $\left| \mathcal{P}(\omega) \right|$~--- мощность континум, то есть мощность вещественных чисел.
+\end{definition}
+
+\begin{statement}
+    Континум гипотеза: существуют ли промежуточные между $\aleph_0$ И $\left| \mathcal{P}(\omega) \right|$?
+\end{statement}
+
+\begin{theorem}
+    [Коэн, 1962--1963]
+    Континум--гипотеза не зависит от аксиоматики Цермело--Френкеля.
+
+    Мы можем согласиться с ней, а можем отвергнуть.
+\end{theorem}
+
+\subsubsection{Теорема Кантора--Бернштейна}
+\begin{theorem}
+    Если $|X| \leqslant |Y|$ и $|Y| \leqslant |X|$, то $|X| = |Y|$.
+\end{theorem}
+\begin{proof}
+    У нас есть функции $f: X \to Y$ и $g:Y \to X$, они обе инъективны.
+
+    \begin{center}
+        \tikz{
+	\node (X) at (0,5.5) {$X$};
+	\node (Y) at (7,5.5) {$Y$};
+    \draw[dashed] (0,1) -- (0,5);
+    \draw[dashed] (7,1) -- (7,5);
+    \draw[->] (0,5) -- (7,4.5);
+	\draw[->] (0,1) -- (7,1.5);
+    \draw[-] (7.5,4.5) -- (7.5,1.5);
+
+    \draw[->] (7,5) -- (0,3.75);
+	\draw[->] (7,1) -- (0,2.25);
+    \draw[-] (-0.5,3.75) -- (-0.5,2.25);
+    \node (M1) at (-1,3) {$g(Y)$};
+    \node (M2) at (8,3) {$f(X)$};
+    \draw[->] (7,4.5) -- (0,3.25);
+	\draw[->] (7,1.5) -- (0,2.75);
+    \draw[-] (1,3.25) -- (1,2.75);
+    \node (M3) at (2,3) {$g(f(X))$};
+    }
+    \end{center}
+
+    $|X| = |f(X)|$, $|Y| = |g(Y)|$ (так как функции инъективны), значит $|g(f(X))|: X \to X$~--- инъектиная функция. Хотим показать, что ее образ равномощен исходному образу.
+
+    Занумеруем множества.
+
+    \begin{tabular}{r l}
+$X = A_0$ & \\
+$g(Y) = A_1$ & $A_1 \subseteq A_0$, так как $g: Y \to X$\\
+$g(f(X)) = A_2$ & $A_2\subseteq A_1$, так как $f(X) \subseteq Y$\\
+$g(f(g(Y))) = A_3$ & $A_3 \subseteq A_2$\\
+$g(f(g(f(X)))) = A_4$ & $A_4 \subseteq A_3$\\
+$\dots = A_5$ & \\
+$\dots$ & $A_{n+1}\subseteq A_n$
+    \end{tabular}
+
+Давайте пересечем все $A_i$: $A_0 \cap A_1 \cap A_2 \cap \dots = A$.
+
+Опреедлим $C_n = A_n \setminus A_{n+1}$. Тогда $X = C_0 \cup C_1 \cup C_2 \cup \dots \cup A $. $g(f(X)) = C_1 \cup C_2 \cup \dots \cup A$. Действительно, в $g(f(X))$ входит все, что входит в $X$, кроме $C_0$.
+
+Построим биекцию между $X$ и $g(Y)$ так:
+
+\begin{center}
+    \tikz{
+\node (X) at (-1,3) {$X$};
+\node (XC0) at (-0.5,3) {$=$};
+\node (C0) at (0,3) {$C_0$};
+\node (C01) at (0.5,3) {$\cup$};
+\node (C1) at (1,3) {$C_1$};
+\node (C12) at (1.5,3) {$\cup$};
+\node (C2) at (2,3) {$C_2$};
+\node (C23) at (2.5,3) {$\cup$};
+\node (C3) at (3,3) {$C_3$};
+\node (C34) at (3.5,3) {$\cup$};
+\node (C4) at (4,3) {$C_4$};
+\node (C4dots) at (4.5,3) {$\cup$};
+\node (CAdots) at (7.5,3) {$\cup$};
+\node (CA) at (8,3) {$A$};
+
+
+\node (gY) at (-1,1) {$g(Y)\,\,\,$};
+\node (YC0) at (-0.5,1) {$=$};
+\node (YC1) at (1,1) {$C_1$};
+\node (YC12) at (1.5,1) {$\cup$};
+\node (YC2) at (2,1) {$C_2$};
+\node (YC23) at (2.5,1) {$\cup$};
+\node (YC3) at (3,1) {$C_3$};
+\node (YC34) at (3.5,1) {$\cup$};
+\node (YC4) at (4,1) {$C_4$};
+\node (YC4dots) at (4.5,1) {$\cup$};
+\node (YCAdots) at (7.5,1) {$\cup$};
+\node (YCA) at (8,1) {$A$};
+
+
+\draw[<->] (C0) -- (YC2);
+\draw[<->] (C1) -- (YC1);
+\draw[<->] (C2) -- (YC4);
+\draw[<->] (C3) -- (YC3);
+\draw[<->] (C4) -- (6,1);
+\draw[<->] (CA) -- (YCA);
+
+\node (2gY) at (-1,0) {$Y$};
+\node (2YC0) at (-0.5,0) {$=$};
+\node (2g) at (3,0) {под действием $g^{-1}$};
+}
+\end{center}
+
+Обозначим построенное отображение $p: X \to g(Y)$~--- биекиця. Тогда $q(x) = g^{-1}(p(X)): X\to Y$~--- биекция. То есть $|X| = |Y|$.
+\end{proof}
+
+\subsubsection{Мощность вещественных чисел}
+\begin{theorem}
+    Мощность вещественных чисел~--- $\mathcal{P}(\omega)$.
+\end{theorem}
+\begin{proof}
+    Рассмотрим все двоичные дроби: $10,101 = 1 \cdot 2^1 + 0 \cdot 2^0 + 1 \cdot 2^{-1} + 0 \cdot 2^{-2} + 1 \cdot 2^{-3}$.
+    \begin{itemize}
+        \item Для каждой двоичной дроби есть вещественное число
+        \item Почти все записи двоичных дробей не равны (тех, которые равны~-- конечное число).
+    \end{itemize}
+
+    Все двоичные дроби~--- это множество всех подмножеств натуральных чисел.
+\end{proof}
