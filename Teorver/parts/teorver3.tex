@@ -7,7 +7,7 @@
     f_\delta = \begin{cases}
         0&x<a\\ \frac{1}{b-a}&, a\leqslant x\leqslant b\\ 0&,x>b
     \end{cases}
-    .\] 
+    .\]
 \end{definition}
 
 \begin{note}
@@ -17,7 +17,7 @@
 
    При $x<a\quad F(x) = 0$
 
-   При  $a\leqslant x\leqslant b\quad F_\xi(x) = \int_a^x \frac{1}{b-a} = \frac{x-a}{b-a}$ 
+   При  $a\leqslant x\leqslant b\quad F_\xi(x) = \int_a^x \frac{1}{b-a} = \frac{x-a}{b-a}$
 
    При $x>b\quad F_\xi(x) = 1$
 
@@ -25,7 +25,7 @@
         F_\xi(x) = \begin{cases}
             0&,x<a\\ \frac{x-a}{b-a}&, a \leqslant x\leqslant b\\ 1&, x>b
         \end{cases}
-   .\] 
+   .\]
 
    \begin{align*}
        E\xi &= \int_{-\infty }^{\infty}xb_{\delta}(x)dx = \int_a^b x \frac{1}{b-q}dx\\
@@ -47,7 +47,7 @@
             0&,x<0\\
             \alpha e^{-\alpha x}&, x\geqslant 0\\
         \end{cases}
-    .\] 
+    .\]
 
 \begin{figure}[!ht]
     \centering
@@ -97,8 +97,8 @@
     [Нормальное (Гауссовское распределение)]
     Случайная величина $\xi$ имеет нормальное распределение с параметрами  $a$ и  $\sigma^2$, обозначается  $\xi\in N_{a, \sigma^2}$ или $g\in N(a, \sigma^2)$, если её плотность имеет вид:
      \[
-         f(x) = \frac{1}{\sigma \sqrt{2\pi } }e^{- \frac{\left( x-a \right) ^2}{2\sigma^2}}\quad x\in \left( -\infty , \infty  \right) 
-    .\] 
+         f(x) = \frac{1}{\sigma \sqrt{2\pi } }e^{- \frac{\left( x-a \right) ^2}{2\sigma^2}}\quad x\in \left( -\infty , \infty  \right)
+    .\]
 
 \begin{figure}[!ht]
     \centering
@@ -126,30 +126,30 @@
 Связь между нормальным и стандартным нормальным распределениями
 \begin{enumerate}
     \item $\sqsupset \xi\in N(a,\sigma^2)$ Тогда $F_\xi(x) = F_0\left( \frac{x-a}{\sigma} \right) $
-    \item $\sqsupset \xi\in N(a, \sigma^2)$ Тогда $\nu = \frac{\xi - a}{\sigma}\in N(0,1)$ 
+    \item $\sqsupset \xi\in N(a, \sigma^2)$ Тогда $\nu = \frac{\xi - a}{\sigma}\in N(0,1)$
     \item $\sqsupset \xi\in N(a,\sigma^2$ Тогда $E\xi = a\quad D_\xi = \sigma^2$
     \item Вероятность попадания в заданый интервал.
         \[
-            P\left( \alpha < \xi < \beta \right) = \phi\left( \frac{\beta -a}{\sigma} \right)  - \phi\left( \frac{\alpha -a}{\sigma} \right) 
-        .\] 
+            P\left( \alpha < \xi < \beta \right) = \phi\left( \frac{\beta -a}{\sigma} \right)  - \phi\left( \frac{\alpha -a}{\sigma} \right)
+        .\]
     \item Вероятность отклонения случайной величины от её среднего значения (попадание в интервал симметричный относительно $a$ )
         \[
-            P\left( |\xi - a|<t \right)  = 2\phi\left( \frac{t}{\sigma} \right) 
-        .\] 
+            P\left( |\xi - a|<t \right)  = 2\phi\left( \frac{t}{\sigma} \right)
+        .\]
 \end{enumerate}
 
 Правило трёх сигм:
 \[
     P\left( |\xi - a| < 3\sigma \right)  \approx 0.9973
-.\] 
+.\]
 Свойство линейности: Если $\xi\in N\left( a, \sigma^2 \right) $. Тогда $\xi = \gamma\nu + b\in N\left( \gamma a + b, \gamma^2\sigma^2 \right) $
-Устойчивость относительно суммирования: Если $\delta_1, \delta_2$ -- назвисимы, то $\delta_1 + \delta_2\in N\left( a_1+a_2, \sigma_1^2 + \sigma_2^2 \right) $ 
+Устойчивость относительно суммирования: Если $\delta_1, \delta_2$ -- назвисимы, то $\delta_1 + \delta_2\in N\left( a_1+a_2, \sigma_1^2 + \sigma_2^2 \right) $
 Коэффициенты ассиметрии и эксцесаа:
 \begin{itemize}
-    \item Ассиметрией распределения называется число $As = E\left( \frac{\xi - a}{\sigma} \right) = \frac{M_3}{\sigma^3}$ 
+    \item Ассиметрией распределения называется число $As = E\left( \frac{\xi - a}{\sigma} \right) = \frac{M_3}{\sigma^3}$
 
         Если $As > 0$, то график плотности имеет более крутой спуск слева. При  $As < 0$ наоборот.
-    \item Эксцессом распределения называется число  $E_k = E\left( \frac{\xi - a}{\sigma} \right) ^{4} - 3 = \frac{M^4}{\sigma^4} - 3$ 
+    \item Эксцессом распределения называется число  $E_k = E\left( \frac{\xi - a}{\sigma} \right) ^{4} - 3 = \frac{M^4}{\sigma^4} - 3$
 
         $E_k >0$ -- более острая вершина, чем у нормального распределения. При  $E_k < 0$ наоборот.
 \end{itemize}
