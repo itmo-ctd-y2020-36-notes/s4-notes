@@ -8,7 +8,7 @@
 \begin{definition}
     Вывод из гипотез: $\Gamma \vdash \alpha$.
 
-    То есть существует $\delta_1,\dots, \delta_n$,~$\delta_n \equiv \alpha$, где $delta_i$ или схема аксиом, или m.p. из $j$ и $k$ и $j, k < i$.
+    То есть существует $\delta_1,\dots, \delta_n$,~$\delta_n \equiv \alpha$, где $\delta_i$ или схема аксиом, или m.p. из $j$ и $k$ и $j, k < i$.
 \end{definition}
 
 \begin{theorem}
@@ -48,9 +48,10 @@
     \end{itemize}
 \end{proof}
 
-\section{Теория моделей}
+\subsection{Теория моделей}
 Мы можем докаывать модели или оценивать их.
-''Мы можем доказать, что мост не развалится или можем выйти и попрыгать на нём.''
+
+<<Мы можем доказать, что мост не развалится или можем выйти и попрыгать на нём.>>
 
 \begin{definition}
     $\mathbb{V}$~--- истинностное множество.
@@ -122,17 +123,20 @@
 \begin{definition}
     $_{[\beta]}\alpha =
     \begin{cases}
-        \alpha, & \llbracket \beta \rrbracket = T\\
-        \neg \alpha,&  \llbracket \beta \rrbracket = F\\
+        \alpha, & \llbracket \beta \rrbracket = \true\\
+        \neg \alpha,&  \llbracket \beta \rrbracket = \false\\
     \end{cases}$
 \end{definition}
 
 \begin{lemma}
-    $_{[\alpha]}\alpha$, \\ $_{[\beta]}\beta \vdash _{[\alpha \star \beta]} \alpha \star \beta$, \\
+    $_{[\alpha]}\alpha$, $_{[\beta]}\beta \vdash _{[\alpha \star \beta]} \alpha \star \beta$, \\
     $_{[\alpha]} \alpha \vdash _{[\neg \alpha]}\neg\alpha $
 \end{lemma}
+\begin{proof}
+    [Доказательство было в дз]
+\end{proof}
 \begin{example}
-    $\llbracket \alpha \rrbracket = T, \llbracket \beta \rrbracket = F \implies  \alpha \wedge \neg \beta \vdash \neg (\alpha \wedge \beta) $.
+    $\llbracket \alpha \rrbracket = \true, \llbracket \beta \rrbracket = \false \implies  \alpha \wedge \neg \beta \vdash \neg (\alpha \wedge \beta) $.
 \end{example}
 
 \begin{lemma}
