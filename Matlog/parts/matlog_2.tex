@@ -12,7 +12,7 @@
 \end{definition}
 
 \begin{theorem}
-    $ \Gamma, \alpha \vdash \beta$ тогда и только тогда, когда $\Gamma \vdash \alpha \to \gamma$.
+    $ \Gamma, \alpha \vdash \beta$ тогда и только тогда, когда $\Gamma \vdash \alpha \to \beta$.
 \end{theorem}
 
 \begin{proof}
@@ -70,18 +70,18 @@
 \end{definition}
 
 \begin{remark}
-    Обозначение: значения пропозициональных переменных будем определять в верхнем индексе: $\llbracket \alpha \rrbracket ^{A = T, B = F \ldots}$
+    Обозначение: значения пропозициональных переменных будем определять в верхнем индексе: $\llbracket \alpha \rrbracket ^{A = \true, B = \false \ldots}$
 \end{remark}
 
 
 \begin{definition}
-    $\alpha$ --- общезначна (истинна), если $\llbracket \alpha \rrbracket = T$ при любой оценке $P$.
+    $\alpha$ --- общезначна (истинна), если $\llbracket \alpha \rrbracket = \true$ при любой оценке $P$.
 
-    $\alpha$ --- невыполнима (ложна), если $\llbracket \alpha \rrbracket = F$ при любой оценке $P$.
+    $\alpha$ --- невыполнима (ложна), если $\llbracket \alpha \rrbracket = \false$ при любой оценке $P$.
 
-    $\alpha$ --- выполнима, если $\llbracket \alpha \rrbracket = T$ при некоторой $f_P$.
+    $\alpha$ --- выполнима, если $\llbracket \alpha \rrbracket = \true$ при некоторой $f_P$.
 
-    $\alpha$ --- опровержима, если $\llbracket \alpha \rrbracket = F$ при некоторой $f_P$.
+    $\alpha$ --- опровержима, если $\llbracket \alpha \rrbracket = \false$ при некоторой $f_P$.
 \end{definition}
 
 \begin{definition}
@@ -91,7 +91,7 @@
 \end{definition}
 
 \begin{definition}
-    $\Gamma \vDash \alpha$ означает, что $\alpha$ следует из $\Gamma = \{ \gamma_1, \ldots, \gamma_n\}$, если $\llbracket \alpha \rrbracket = T$ всегда при $\llbracket \gamma_i \rrbracket = T$ при всех $i$.
+    $\Gamma \vDash \alpha$ означает, что $\alpha$ следует из $\Gamma = \{ \gamma_1, \ldots, \gamma_n\}$, если $\llbracket \alpha \rrbracket = \true$ всегда при $\llbracket \gamma_i \rrbracket = \true$ при всех $i$.
 \end{definition}
 
 \subsection{Корректность исчисления высказываний}
@@ -159,7 +159,7 @@
 \end{proof}
 
 \begin{lemma}
-    Если $\vDash \alpha$, то $\tl X \vdash \alpha$.
+    Если $\vDash \alpha$, то при любой оценке $\tl X \vdash \alpha$.
     То есть при любых подстановках значнией $\alpha $ будет истинна.
 \end{lemma}
 
