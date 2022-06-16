@@ -1,5 +1,5 @@
 \begin{definition}
-    Алгебра Гейтинга~--- импликативная решетка с 0.
+    Алгебра Гейтинга (псевдобулева алгебра)~--- импликативная решетка с 0.
 \end{definition}
 
 \begin{definition}
@@ -28,48 +28,58 @@
     $\alpha \leqslant \beta$, если $\alpha \vdash \beta$
 \end{definition}
 
-\begin{definition}
+\begin{definition}[Равносильность высказываний]
     $\alpha \approx \beta$, если $\alpha \leqslant \beta$ и $\beta \leqslant \alpha$
 \end{definition}
 
-\begin{definition}
+\begin{definition}[Алгебра Линденбаума]
     Пусть $\xi$~--- множество всех высказываний ИИВ.
 
-    Тогда $[ \xi ]$~--- называется алгеброй Линденбаума $\mathcal{L}$.
+    $[ \xi ]$ (множество классов эквивалентности высказываний по отношению $\approx$) называется алгеброй Линденбаума $\mathcal{L}$.
 \end{definition}
 
 \begin{theorem}
-    $\mathcal{L}$ --- Алгебра Гейтинга.
+    $\mathcal{L}$ (алгебра Линденбаума) --- Алгебра Гейтинга.
 \end{theorem}
+
+Введем оценку высказывания в алгебре Линденбаума. Отобразим $\llbracket\alpha\rrbracket = [\alpha]$ (то есть оценка $\alpha$ есть ее класс эквивалентности).
 
 \begin{lemma}
     $\mathds{1} = [A \to A]$
 \end{lemma}
 
 \begin{proof}
-    $\alpha \vdash A \to A$, верно (очевидно), то есть $[\alpha] \leqslant [A \to A]$, то есть $[A \to A] = 1$.
+    $\alpha \vdash A \to A$, верно (очевидно), то есть $[\alpha] \leqslant [A \to A]$, то есть $[A \to A] = \mathds{1}$.
 \end{proof}
 
 \begin{theorem}
     $\mathcal{L}$~--- корректная модель ИИВ.
 \end{theorem}
 
+\begin{proof}
+    Действительно, каждая формула имеет оценку, оценки представляются в виде решетки по отношению доказуемости. Если $[\alpha] = [A \to A]$, то и $\llbracket \alpha \rrbracket = [A \to A]= \mathds{1}$.
+\end{proof}
+
 \begin{theorem}
     $\mathcal{L}$~--- полная модель ИИВ.
 
 \end{theorem}
 
+\begin{proof}
+    $\vDash \alpha$, то есть $[\alpha] = \mathds{1}$.
+
+    $\llbracket\alpha\rrbracket = \mathds{1}$, значит $\llbracket\alpha\rrbracket = [A \to A]$, это есть что $\alpha$ эффективна $\mathds{1}$, то есть $\beta \leqslant [\alpha]$ при всех $\beta$.
+
+    Возьмем $\beta = A \to A$. Докажем, что $\vdash \alpha$.
+    \begin{itemize}
+        \item[1-5)] $A \to A$
+        \item[6)] $A \to A \to \alpha$ (теорема о дедукции)
+        \item[7)] $\alpha$
+    \end{itemize}
+\end{proof}
+
 \begin{theorem}
-    $\vDash \alpha$, то есть $[\alpha] = 1$.
-
-    $1 = [A \to A]$, то есть $[\alpha] =1$, то есть $\beta \leqslant [\alpha]$ при всех $\beta$.
-
-    Возьмем $\beta = A \to A$, $A \to A \vdash \alpha$, то есть $A \to A$, $(A \to A) \to \alpha$.
-
-\end{theorem}
-
-\begin{theorem}
-    Алгебра Гейтинга --- полная и корректная модель ИИВ.
+    Алгебра Гейтинга (все возможные ее модели)~--- полная и корректная модель ИИВ.
 \end{theorem}
 
 \begin{definition}
@@ -86,7 +96,7 @@
     $f$ -- гомоморфизм, если $f(0_A) = 0_B\quad f(1_A) = 1_B$ и $f(\alpha \star_A \beta) = f(\alpha) \star_B f(\beta)$
 \end{definition}
 
-\begin{definition}   [Геделева Алгебра]
+\begin{definition}[Геделева Алгебра]
     Это такая алгебра, где $a + b = 1$ влечет $a = 1$ или $b = 1$.
 \end{definition}
 
@@ -117,20 +127,20 @@
     Пусть $a+b = 1_{\Gamma(A)}$, посмотрим на картинку.
 \end{proof}
 
+\begin{definition}
+    Каноническое отображение $g(x): \Gamma(\mathcal L) \to \mathcal L$\\
+    $g(x) = \begin{cases}
+        1,& x = 1 \text{ или } \omega\\
+        x,& \text{ иначе}\\
+    \end{cases} $.
+\end{definition}
+\begin{statement}
+        $g(x)$ -- гомоморфизм
+\end{statement}
+
 \begin{statement}
     $\Gamma(\mathcal L)$~--- Гёделева алгебра.
 \end{statement}
-\begin{proof}
-    Определим каноническое отображение $g(x): \Gamma(\mathcal L) \to \mathcal L$\\
-    $g(x) = \begin{cases}
-        1&, x = 1 \text{ или } \omega\\
-        x&, \text{ иначе}\\
-    \end{cases} $
-    \begin{statement}
-        $g(x)$ -- гомоморфизм
-    \end{statement}
-
-\end{proof}
 
 \begin{theorem}
     Рассмотрим ИИВ и алгебры Гейтинга $\mathcal L, \Gamma (\mathcal{L})$
@@ -160,47 +170,75 @@
 
 \begin{definition}
     Модель ИИВ называется табличной, если\begin{itemize}
-        \item $\mathbb{V} = \mathcal{S}$;
+        \item $\mathbb{V}$~--- множество истинностгых значений;
         \item $\llbracket \alpha \star \beta \rrbracket = f_\star \left( \llbracket \alpha \rrbracket, \llbracket \alpha, \beta \rrbracket \right)$,
-        \item  Существует $\true \in \mathcal{S}$ -- выделенная истина $\llbracket \alpha \rrbracket = \true$ тогда и только тогда, когда $\vDash \alpha$
+        \item  Существует $\true \in \mathcal{S}$ -- выделенная истина $\llbracket \alpha \rrbracket = \true$ тогда и только тогда, когда $\vDash \alpha$.
     \end{itemize}
+
 \end{definition}
-    \begin{definition}[Модель Крипки]
-        Некоторые факты, появившиеся на оси времени в истинном или ложном виде и больше не меняется
 
-        \includegraphics[scale=0.7]{img/kripke_model_greate_ferma_theorem}
-    \end{definition}
+\begin{definition}
+    Конечная табличная модель~--- модель, где $\mathbb V$~--- конечная.
+\end{definition}
 
-    \begin{note}
-        $W$ -- частично упорядоченное множество миров.
-    \end{note}
+\begin{note}
+    Оцентка работает так:
+    $\llbracket P_i \rrbracket = f_\rho (P_i)$,
+    $\llbracket \alpha\star\beta\rrbracket=f_\star\left(\llbracket \alpha, \rrbracket, \llbracket \beta\rrbracket\right)$,
+    $\llbracket \neg\alpha\rrbracket=f_neg\left(\llbracket \alpha, \rrbracket\right)$.
+    Если $\vdash\alpha$, то $\llbracket\alpha\rrbracket = \true$ при любой оценке.
+\end{note}
 
-    \begin{definition}
-        $\Vdash$
 
-\includegraphics[]{img/forced_variable_worlds}
+Представим не один мир, а много миров, в которых высказывания могут принимать разные значения.
 
-        \begin{enumerate}
-            \item Вынужденность переменной A определяется моделью. При этом, если $W_x \leqslant W_y$, $ W_x\Vdash A$, то $W_y \vDash A$.
-            \item Доопределим $\Vdash$ на все выражения:
-            \begin{enumerate}
-                \item $W \Vdash A\land B$, если $W \Vdash A$ и $W \Vdash B$
-                \item $W \Vdash A\lor B$, если $W \Vdash A$ или $W \Vdash B$
-                \item $W \Vdash \neg A$, если нет $W \leqslant W_x$, что $W_x \Vdash A$
-                \item $W \Vdash A \to B$, если во всех $W \leqslant W_x $ из $W_x \Vdash A$ следует $W_x \Vdash B$
-            \end{enumerate}
-        \end{enumerate}
-    \end{definition}
+\includegraphics[scale=0.6]{img/kripke_model_greate_ferma_theorem}
 
-    \begin{definition}
-        $\vDash \alpha$ если $W \vdash \alpha$.
-    \end{definition}
+\begin{definition}[Модель Крипки]
+    Рассмотрим $W_i$ множество миров, имеющие частичный порядок ($\leqslant$).
+
+    Зададим отношение вынужденности $W_i \Vdash P_i$ ($\Vdash \subseteq W_i \times P_i$).
+
+    При этом если $W_j\Vdash P_i$ и $W_j \leqslant W_k$, то $W_k \Vdash P_i$.
+\end{definition}
+
+\begin{definition}
+Доопределим связки  $\Vdash$ на все выражения:
+\begin{enumerate}
+    \item $W_i \Vdash \alpha\& \beta$, если $W_i \Vdash \alpha$ и $W_i \Vdash \beta$
+    \item $W_i \Vdash \alpha\lor \beta$, если $W_i \Vdash v$ или $W_i \Vdash \beta$
+    \item $W_i \Vdash \neg \alpha$, если нет $W_j \geqslant W_i$, что $W_j \Vdash \alpha$
+    \item Пусть во всех $W_j \leqslant W_i$ всегда, когда $W_j \Vdash \alpha$, имеет место $W_j \Vdash \beta$, тогда в мире $W_i$ вынуждена импликация.
+\end{enumerate}
+\end{definition}
+
+\includegraphics[scale=0.7]{img/forced_variable_worlds}
+
+\begin{definition}
+    Если $W_i \Vdash \alpha$ при всех $W_i \in W$, то $\vDash \alpha$ ($\alpha$ общезначима).
+\end{definition}
+
+
+\begin{theorem}
+    Модель Крипке~--- корректная модель ИИВ.
+\end{theorem}
+\begin{proof}
+    Пусть $\langle W, \Omega\rangle$~--- топология, $\Omega = \{\tl W \subseteq W \mid$ если  $ W_i\in \tl W, W_i \leqslant W_j$, то $W_j \in \tl W \}$ (множество всех подлесов, где каждый узел присутствует всместе со своим поддеревом).\\
+    Пусть $\{W_k \mid W_k \Vdash P_j\}$~--- открытое множество.\\
+    Примем $\llbracket P_j \rrbracket = \{ W_k \mid W_k \Vdash P_j\}$, тогда $\llbracket \alpha \rrbracket = \{ W_k \mid W_k \Vdash \alpha\}$.
+
+    Поскольку любая топологическая модель~--- корректная модель ИИВ, то и модель Крипке~--- корректная.
+\end{proof}
+
+\begin{definition}
+    $\vDash \alpha$ если $W \vdash \alpha$.
+\end{definition}
 
     \begin{theorem}
         У ИИВ нет полной конечной табличной модели.
     \end{theorem}
     \begin{proof}
-        $\varphi(u) = \bigvee\limits_{i = 1, j = 1, i \neq j}^{n, n} A_i \to A_{j}$ .
+        $\varphi(n) = \bigvee\limits_{i = 1, j = 1, i \neq j}^{n, n} A_i \to A_{j}$ .
 
         Пусть $T$~--- модель, $|\mathbb{V}| = n$.
 
@@ -214,10 +252,6 @@
 
         $\llbracket A_3 \to A_k \rrbracket = \false$.
     \end{proof}
-
-\begin{theorem}
-    Модель Крипке~--- корректная модель ИИВ.
-\end{theorem}
 
 \subsection{Изоморфизм Кари--Ховарда}
 
