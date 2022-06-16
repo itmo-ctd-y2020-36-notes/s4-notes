@@ -6,7 +6,7 @@
     Введем операцию $\sim a \equiv a \to 0$~--- дополнение до 0.
 \end{definition}
 \begin{definition}
-    Булева алегбра~--- Алгебра Гейтинга, где $a + \sim a = 1$.
+    Булева алгебра~--- Алгебра Гейтинга, где $a + \sim a = 1$.
 \end{definition}
 
 \begin{example}
@@ -22,7 +22,7 @@
     \end{itemize}
 \end{example}
 
-Далее $\alpha, \beta$~--- выссказывания в ИИВ.
+Далее $\alpha, \beta$~--- высказывания в ИИВ.
 
 \begin{definition}
     $\alpha \leqslant \beta$, если $\alpha \vdash \beta$
@@ -156,7 +156,7 @@
 
     Рассмотрим $\vdash \alpha \vee \beta$.
 
-    $\Gamma (\mathcal L)$~--- Геделва алгеба, то есть алгебра Гейтинга.
+    $\Gamma (\mathcal L)$~--- Гёделева алгебра, то есть алгебра Гейтинга.
 
     $\llbracket \alpha \lor \beta \rrbracket_{\Gamma(\mathcal L)} = 1_{\Gamma(\mathcal L)}$,
     т.е. либо $\llbracket \alpha \rrbracket =1_\gamma{\mathcal L}$ либо $\llbracket \beta \rrbracket _{\Gamma(\mathcal L)} = 1_{\Gamma(\mathcal L)}$
@@ -170,7 +170,7 @@
 
 \begin{definition}
     Модель ИИВ называется табличной, если\begin{itemize}
-        \item $\mathbb{V}$~--- множество истинностгых значений;
+        \item $\mathbb{V}$~--- множество истинностных значений;
         \item $\llbracket \alpha \star \beta \rrbracket = f_\star \left( \llbracket \alpha \rrbracket, \llbracket \alpha, \beta \rrbracket \right)$,
         \item  Существует $\true \in \mathcal{S}$ -- выделенная истина $\llbracket \alpha \rrbracket = \true$ тогда и только тогда, когда $\vDash \alpha$.
     \end{itemize}
@@ -182,7 +182,7 @@
 \end{definition}
 
 \begin{note}
-    Оцентка работает так:
+    Оценка работает так:
     $\llbracket P_i \rrbracket = f_\rho (P_i)$,
     $\llbracket \alpha\star\beta\rrbracket=f_\star\left(\llbracket \alpha, \rrbracket, \llbracket \beta\rrbracket\right)$,
     $\llbracket \neg\alpha\rrbracket=f_neg\left(\llbracket \alpha, \rrbracket\right)$.
@@ -223,7 +223,7 @@
     Модель Крипке~--- корректная модель ИИВ.
 \end{theorem}
 \begin{proof}
-    Пусть $\langle W, \Omega\rangle$~--- топология, $\Omega = \{\tl W \subseteq W \mid$ если  $ W_i\in \tl W, W_i \leqslant W_j$, то $W_j \in \tl W \}$ (множество всех подлесов, где каждый узел присутствует всместе со своим поддеревом).\\
+    Пусть $\langle W, \Omega\rangle$~--- топология, $\Omega = \{\tl W \subseteq W \mid$ если  $ W_i\in \tl W, W_i \leqslant W_j$, то $W_j \in \tl W \}$ (множество всех подлесов, где каждый узел присутствует вместе со своим поддеревом).\\
     Пусть $\{W_k \mid W_k \Vdash P_j\}$~--- открытое множество.\\
     Примем $\llbracket P_j \rrbracket = \{ W_k \mid W_k \Vdash P_j\}$, тогда $\llbracket \alpha \rrbracket = \{ W_k \mid W_k \Vdash \alpha\}$.
 
@@ -276,10 +276,9 @@
 
 \begin{definition}
     [Изоморфизм Кари--Ховарда]
-
-    Программа соответствует доказательству. Тип соответствует утверждению. ...
-
-    (всё в интуиционисткой логике)
+    Программа соответствует доказательству.
+    Тип соответствует утверждению. ...
+    (всё в интуиционистской логике)
 \end{definition}
 
 \begin{note}
