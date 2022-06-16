@@ -10,7 +10,7 @@
 $\Omega \subseteq \mathcal{P}(X)$. $\Omega$ --- топология, если это множество открытых множеств и выполнены следующие условия:
 \begin{enumerate}
     \item $\varnothing, X \in \Omega$;
-    \item $\bigcup\limits_i \in \Omega$, если все $A_i \in \Omega$;
+    \item $\bigcup\limits_i A_i \in \Omega$, если все $A_i \in \Omega$;
     \item $\bigcap\limits_{i = 1} ^ n A_i \in \Omega$, если $A_1, \dots, A_n \in \Omega$.
 \end{enumerate}
 
@@ -54,8 +54,8 @@ $B \in \Omega$, \underline{если} $a \in B$, $x \leqslant a$ влечет $x 
     $X$~--- частично упорядоченное множество отношением $\leqslant$.\\
     Множество верхних граней $a, b$ $a \sqcap b$ --- множество $\{ x \in X ~|~ a \leqslant x, b \leqslant x\}$.\\
     Множество нижних граней $a, b$: $a \sqcup b$ --- множество $\{ x \in X ~|~ a \geqslant x, b \geqslant x\}$.\\
-    $a$~--- наименьший элемент $A \iff$ $a \in A$ и не существует $b \in A$, $b \leqslant a$.\\
-    $a$~--- наибольший элемент $A \iff$ $a \in A$ и не существует $b \in A$, $b \geqslant a$.\\
+    $a$~--- наименьший элемент $A \iff$ $a \in A$ и любой $b \in A$, $b \geqslant a$.\\
+    $a$~--- наибольший элемент $A \iff$ $a \in A$ и любой $b \in A$, $b \leqslant a$.\\
     $a+b$ = наименьший элемент множества верхних граний.\\
     $a \cdot b$ = наибольший элемент множества нижних граний.
 
