@@ -259,11 +259,16 @@ Cвободы нет: $(\forall x.P(y))[y:=x]$ и $(\forall y.\forall x.P(t))[t:
 \item $\varphi[x:=\theta] \rightarrow \exists x.\varphi$
 \end{enumerate}
 
-Добавим ещё два правила вывода (здесь везде $x$ не входит свободно в $\varphi$):
+Добавим ещё два правила вывода (до этого был только Modus Ponens):
 \begin{enumerate}
-    \item Введение $\forall$: $\dfrac{\varphi\rightarrow\forall x.\psi}{\varphi\rightarrow\psi}$,
-    \item Введение $\exists$: $\dfrac{(\exists x.\psi)\rightarrow\varphi}{\psi\rightarrow\varphi}$.
+    \item Введение $\forall$: $\dfrac{\varphi\rightarrow\psi}{\varphi\rightarrow\forall x.\psi}$,
+    \item Введение $\exists$: $\dfrac{\psi\rightarrow\varphi}{(\exists x.\psi)\rightarrow\varphi}$.
 \end{enumerate}
+В обоих правилах $x$ не входит свободно в $\varphi$  не входит свободно в.
+
+\begin{example}
+$\dfrac{x = 5 \implies x^2 = 25}{x = 5 \implies \forall x. x^2 = 25}$. Между $x$ и $x^2$ была связь, которую мы нарушили ограничение.
+\end{example}
 
 \begin{statement}
     Доказыуемость, выводимость, полнота, корректность --- аналогично исчислению высказыаваний.
@@ -296,9 +301,9 @@ Cвободы нет: $(\forall x.P(y))[y:=x]$ и $(\forall y.\forall x.P(t))[t:
 $(n-0.9) \dots (n-0.8)$ &
 $(\alpha\rightarrow\psi\rightarrow\varphi)\rightarrow(\alpha\&\psi)\rightarrow\varphi$ &
 Т. о полноте КИВ\\
-$(n-0.6)$ & $(\alpha\to\psi)\rightarrow\varphi$ & M.P. $k$,$n-0.8$\\
-$(n-0.4)$ & $(\alpha\to\psi)\rightarrow\forall x.\varphi$ & Правило для $\forall$, $n-0.6$\\
-$(n-0.3) \dots (n-0.2)$ & $((\alpha\to\psi)\rightarrow\forall x.\varphi)\rightarrow(\alpha\rightarrow\psi\rightarrow\forall x.\varphi)$ & Т. о полноте КИВ\\
+$(n-0.6)$ & $(\alpha \& \psi)\rightarrow\varphi$ & M.P. $k$,$n-0.8$\\
+$(n-0.4)$ & $(\alpha \& \psi)\rightarrow\forall x.\varphi$ & Правило для $\forall$, $n-0.6$\\
+$(n-0.3) \dots (n-0.2)$ & $((\alpha\&\psi)\rightarrow\forall x.\varphi)\rightarrow(\alpha\rightarrow\psi\rightarrow\forall x.\varphi)$ & Т. о полноте КИВ\\
 $(n)$ & $\alpha\rightarrow\psi\rightarrow\forall x.\varphi$ & M.P. $n-0.4$, $n-0.2$
 \end{tabular}
     \end{itemize}
