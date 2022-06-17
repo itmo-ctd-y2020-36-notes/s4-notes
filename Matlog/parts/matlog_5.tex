@@ -278,7 +278,7 @@ $\dfrac{x = 5 \to x^2 = 25}{x = 5 \to \forall x. x^2 = 25}$. Между $x$ и $
 \subsection{Теорема о дедукции для исчисления предикатов}
 \begin{theorem}
     Если    $\Gamma \vdash \alpha \to \beta$, то $\Gamma, \alpha \vdash \beta$.
-    Если $\Gamma, \alpha\vdash \beta$ и в доказательстве не применяются правила для кванторов по свободным переменным из $\alpha$, то $\gamma\vdash \alpha \to \beta$
+    Если $\Gamma, \alpha\vdash \beta$ и в доказательстве не применяются правила для кванторов по свободным переменным из $\alpha$, то $\Gamma\vdash \alpha \to \beta$
 \end{theorem}
 \begin{proof}
     \begin{itemize}
@@ -297,13 +297,12 @@ $\dfrac{x = 5 \to x^2 = 25}{x = 5 \to \forall x. x^2 = 25}$. Между $x$ и $
 Доказываем переходи к $(n)$. $\alpha\rightarrow\psi\rightarrow\forall x.\varphi$ (правило для $\forall$), значит, доказано
 на шаге $k$, что $\alpha\rightarrow\psi\rightarrow\varphi$.
 
-\begin{tabular}{lll}
-$(n-0.9) \dots (n-0.8)$ &
-$(\alpha\rightarrow\psi\rightarrow\varphi)\rightarrow(\alpha\&\psi)\rightarrow\varphi$ &
-Т. о полноте КИВ\\
+\begin{tabular}[t]{p{2.8cm} p{4.6cm} p{7cm}}
+$(n-0.9)-(n-0.8)$ &
+$(\alpha\rightarrow\psi\rightarrow\varphi)\rightarrow(\alpha\&\psi)\rightarrow\varphi$ & Т. о полноте КИВ (формула общезначима)\\
 $(n-0.6)$ & $(\alpha \& \psi)\rightarrow\varphi$ & M.P. $k$,$n-0.8$\\
 $(n-0.4)$ & $(\alpha \& \psi)\rightarrow\forall x.\varphi$ & Правило для $\forall$, $n-0.6$\\
-$(n-0.3) \dots (n-0.2)$ & $((\alpha\&\psi)\rightarrow\forall x.\varphi)\rightarrow(\alpha\rightarrow\psi\rightarrow\forall x.\varphi)$ & Т. о полноте КИВ\\
+\parbox{2.8cm}{$(n-0.3)-(n-0.2)$\\} & \parbox{4.6cm}{$((\alpha\&\psi)\rightarrow\forall x.\varphi)\rightarrow$\\$(\alpha\rightarrow\psi\rightarrow\forall x.\varphi)$} & \parbox{7cm}{Т. о полноте КИВ \\($((\alpha\&\psi)\rightarrow\beta)\rightarrow(\alpha\rightarrow\psi\rightarrow\beta)$)}\\
 $(n)$ & $\alpha\rightarrow\psi\rightarrow\forall x.\varphi$ & M.P. $n-0.4$, $n-0.2$
 \end{tabular}
     \end{itemize}
