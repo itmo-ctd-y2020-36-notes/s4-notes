@@ -18,7 +18,11 @@
 
 \subsubsection{Непротиворечивое множество формул}
 \begin{definition}
-    $\Gamma$ --- \emph{непротиворечивое множество формул}, если $\Gamma\not\vdash\alpha\&\neg\alpha$ при некотором $\alpha$.
+    У множества есть модель, если любая его формула истинна в данной модели.
+\end{definition}
+
+\begin{definition}
+    $\Gamma$ --- \emph{непротиворечивое множество формул}, если $\Gamma\not\vdash\alpha\&\neg\alpha$ для любого $\alpha$.
 \end{definition}
 
 \begin{example}
@@ -164,7 +168,37 @@ $\delta_1, \delta_2,\dots,\delta_n$. \\Тогда $\vdash \delta_1\to\delta_2\to
     \item если $\mathcal{M}\not\models\alpha\star\beta$, то $\alpha\star\beta \not\in M$.
     \end{enumerate}
     \end{enumerate}
+
+    \textbf{Пример доказательсвта для импликации}.
+
+    Если $\varphi = \alpha\to\beta$ и для любой формулы $\zeta$, более короткой, чем $\varphi$, выполнено
+    $\mathcal{M}\models\zeta$ тогда и только тогда, когда $\zeta\in M$, тогда:
+    \begin{enumerate}
+    \item если $\mathcal{M}\models\alpha\to\beta$, то $\alpha\to\beta\in M$;
+    \item если $\mathcal{M}\not\models\alpha\to\beta$, то $\alpha\to\beta\notin M$.
+    \end{enumerate}
+
+    Доказательство (разбором случаев).
+    \begin{enumerate}
+    \item $\mathcal{M}\models\alpha\to\beta$: $\llbracket\alpha\rrbracket = \text{Л}$.
+    Тогда по предположению $\alpha\notin M$, потому по полноте
+    $\neg\alpha\in M$.  И, поскольку в ИВ $\neg\alpha\vdash\alpha\to\beta$, то $M \vdash \alpha\to\beta$.
+    Значит, $\alpha\to\beta \in M$, иначе по полноте $\neg(\alpha\to\beta) \in M$, что делает $M$ противоречивым.
+    \item $\mathcal{M}\models\alpha\to\beta$: $\llbracket\alpha\rrbracket = \text{И}$ и $\llbracket\beta\rrbracket = \text{И}$. Рассуждая аналогично,
+    используя $\alpha,\beta\vdash\alpha\to\beta$, приходим к $\alpha\to\beta \in M$.
+    \item $\mathcal{M}\not\models\alpha\to\beta$. Тогда $\llbracket\alpha\rrbracket=\text{И}$,
+    $\llbracket\beta\rrbracket=\text{Л}$,  то есть $\alpha\in M$ и $\neg\beta\in M$.
+    Также, $\alpha,\neg\beta\vdash\neg(\alpha\to\beta)$, отсюда $M\vdash\neg(\alpha\to\beta)$.
+    Предположим, что $\alpha\to\beta\in M$, то $M\vdash\alpha\to\beta$ --- отсюда
+    $\alpha\to\beta\notin M$.
+    \end{enumerate}
 \end{proof}
+
+\addtocounter{theorem}{-1}
+
+\begin{theorem}
+    Любое непротиворечивое множество замкнутых бескванторных формул имеет модель.
+\end{theorem}
 
 \begin{proof}[Доказательство теоремы о существовании модели]
 Пусть $M$ --- непротиворечивое множество\\ замкнутых бескванторных формул.
@@ -243,7 +277,7 @@ $M_k, \gamma_1, \gamma_2, \dots,\gamma_n\vdash A\&\neg A$
 \end{itemize}
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}(Устранение посылки)
     Если $M_k\vdash\gamma\to W$, и $\gamma\in M_{k+1}\setminus M_k$, то $M_k\vdash W$.
 \end{lemma}
 
@@ -262,9 +296,8 @@ $(\forall x.\varphi)\to(\varphi[x:=\theta])$ & (сх. акс. 11)\\
 $\gamma$  & (M.P.) \\
 $W$ & (M.P.)
 \end{tabular}
-\end{itemize}
 
-Отдельно случай квантора существования.
+\item Cлучай квантора существования.
 
 \begin{itemize}\item $\gamma = \varphi[x := d^{k+1}_i]$
 
@@ -284,9 +317,11 @@ $W$ & (M.P.)
     $W$
     \end{tabular}
 \end{itemize}
+\end{itemize}
+
 \end{proof}
 
-\subsubsection{Построение $M$ Б}
+\subsubsection{Построение M Б}
 \begin{definition}
     $M^* = \bigcup_k M_k$
 \end{definition}

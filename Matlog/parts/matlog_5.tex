@@ -264,7 +264,7 @@ Cвободы нет: $(\forall x.P(y))[y:=x]$ и $(\forall y.\forall x.P(t))[t:
     \item Введение $\forall$: $\dfrac{\varphi\rightarrow\psi}{\varphi\rightarrow\forall x.\psi}$,
     \item Введение $\exists$: $\dfrac{\psi\rightarrow\varphi}{(\exists x.\psi)\rightarrow\varphi}$.
 \end{enumerate}
-В обоих правилах $x$ не входит свободно в $\varphi$  не входит свободно в.
+В обоих правилах $x$ не входит свободно в $\varphi$.
 
 \begin{example}
 $\dfrac{x = 5 \to x^2 = 25}{x = 5 \to \forall x. x^2 = 25}$. Между $x$ и $x^2$ была связь, которую мы нарушили ограничение.
@@ -318,7 +318,7 @@ $(n)$ & $\alpha\rightarrow\psi\rightarrow\forall x.\varphi$ & M.P. $n-0.4$, $n-0
 \end{enumerate}
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}[Корректность исчисления предикатов]
     Если $\Gamma\vdash\alpha$ и в доказательстве не используется кванторов по свободным
 переменным из $\Gamma$, то $\Gamma\models\alpha$.
 \end{theorem}
