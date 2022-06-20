@@ -9,8 +9,8 @@
 
 
 \subsubsection{Примитивно-рекурсивные функции}
-\begin{definition}[Примитивы Z, N, U, S]
-    Примитив <<Ноль>> ($Z$)
+\begin{definition}
+Примитив <<Ноль>> ($Z$)
 \[ Z: \mathbb{N}_0\to\mathbb{N}_0,\ \ \ \ \ Z(x_1) = 0.\]
 \end{definition}
 \begin{definition}
@@ -217,9 +217,7 @@ $R = \{ \langle x,x \rangle\ |\ x \in \mathbb{N}_0 \}$
 
 \subsubsection{Соответствие рекурсивных и представимых функций}
 \begin{theorem}Любая рекурсивная функция представима в Ф.А.\end{theorem}
-
-\begin{theorem}Любая представимая в Ф.А. функция рекурсивна.\end{theorem}
-
+\textit{Доказательство} проведем в несколько этапов.
 
 \begin{theorem}
 Примитивы $Z$, $N$ и $U^k_n$ представимы в Ф.А.
@@ -327,6 +325,8 @@ $\beta (b,c,i) = a_i$ для $0 \le i \le y$.
 
 \subsubsection{Рекурсивность представимых в Ф.А. функций}
 
+\begin{theorem}Любая представимая в Ф.А. функция рекурсивна.\end{theorem}
+
 Фиксируем $f$ и $x_1, x_2, \dots, x_n$. Обозначим $y = f(x_1,x_2,\dots,x_n)$.
 По представимости нам известна $\varphi$, что $\vdash \varphi(\overline{x_1},\overline{x_2},\dots,\overline{x_n},\overline{y})$.
 Давайте просто переберём все результаты и доказательства!
@@ -339,7 +339,8 @@ $\beta (b,c,i) = a_i$ для $0 \le i \le y$.
 \end{enumerate}
 
 
-Гёделева нумерация
+\textbf{Гёделева нумерация}\\
+Введем функцию, которая по формуле возвращает ее гёделев номер: $\ulcorner\varphi \urcorner$.
 \begin{enumerate}
 \item Отдельный символ.
 
