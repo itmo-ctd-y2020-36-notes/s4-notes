@@ -82,6 +82,10 @@
     Алгебра Гейтинга (все возможные ее модели)~--- полная и корректная модель ИИВ.
 \end{theorem}
 
+\begin{proof}
+    \textbf{Полнота.} Если формула $\alpha$ истинна в любой алгебре Гейтинга, значит она истинна и в алгебра Линденбаума, а она является полной моделью ИИВ.
+\end{proof}
+
 \begin{definition}
     Исчисление дизъюнктно, если для любых $\alpha, \beta\quad \vdash \alpha \lor \beta$ влечёт $\vdash \alpha$ или $\vdash \beta$.
 \end{definition}
@@ -152,14 +156,14 @@
 \end{statement}
 
 
-\begin{proof}[Доказательство теоремы]
+\begin{proof}[Доказательство теоремы о дизъюнктности ИИВ]
 
     Рассмотрим $\vdash \alpha \vee \beta$.
 
     $\Gamma (\mathcal L)$~--- Гёделева алгебра, то есть алгебра Гейтинга.
 
     $\llbracket \alpha \lor \beta \rrbracket_{\Gamma(\mathcal L)} = 1_{\Gamma(\mathcal L)}$,
-    т.е. либо $\llbracket \alpha \rrbracket =1_\gamma{\mathcal L}$ либо $\llbracket \beta \rrbracket _{\Gamma(\mathcal L)} = 1_{\Gamma(\mathcal L)}$
+    т.е. либо $\llbracket \alpha \rrbracket =1_{\Gamma({\mathcal L})}$, либо $\llbracket \beta \rrbracket _{\Gamma(\mathcal L)} = 1_{\Gamma(\mathcal L)}$.
 
     Рассмотрим $g : \Gamma(\mathcal{L}) \to \mathcal{L}$
 
@@ -170,7 +174,7 @@
 
 \begin{definition}
     Модель ИИВ называется табличной, если\begin{itemize}
-        \item $\mathbb{V}$~--- множество истинностных значений;
+        \item $\mathbb{V} = \mathcal S$~--- множество истинностных значений;
         \item $\llbracket \alpha \star \beta \rrbracket = f_\star \left( \llbracket \alpha \rrbracket, \llbracket \alpha, \beta \rrbracket \right)$,
         \item  Существует $\true \in \mathcal{S}$ -- выделенная истина $\llbracket \alpha \rrbracket = \true$ тогда и только тогда, когда $\vDash \alpha$.
     \end{itemize}
@@ -206,9 +210,9 @@
 Доопределим связки  $\Vdash$ на все выражения:
 \begin{enumerate}
     \item $W_i \Vdash \alpha\& \beta$, если $W_i \Vdash \alpha$ и $W_i \Vdash \beta$
-    \item $W_i \Vdash \alpha\lor \beta$, если $W_i \Vdash v$ или $W_i \Vdash \beta$
+    \item $W_i \Vdash \alpha\lor \beta$, если $W_i \Vdash \alpha$ или $W_i \Vdash \beta$
     \item $W_i \Vdash \neg \alpha$, если нет $W_j \geqslant W_i$, что $W_j \Vdash \alpha$
-    \item Пусть во всех $W_j \geqslant W_i$ всегда, когда $W_j \Vdash \alpha$, имеет место $W_j \Vdash \beta$, тогда в мире $W_i$ вынуждена импликация.
+    \item Пусть во всех $W_j \geqslant W_i$ всегда, когда $W_j \Vdash \alpha$, имеет место $W_j \Vdash \beta$, тогда в мире $W_i$ вынуждена импликация $\alpha \to \beta$.
 \end{enumerate}
 \end{definition}
 
