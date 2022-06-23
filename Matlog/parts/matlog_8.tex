@@ -366,9 +366,9 @@ $\beta (b,c,i) = a_i$ для $0 \le i \le y$.
 \begin{theorem}
     Следующая функция рекурсивна:
 $$\text{proof}(f,x_1,x_2,\dots,x_n,y,p) = \left\{\begin{array}{ll}
-1, & \mbox{если} \vdash\phi(\overline{x_1},\overline{x_2},\dots,\overline{x_n},\overline{y}),\\
+0, & \mbox{если} \vdash\phi(\overline{x_1},\overline{x_2},\dots,\overline{x_n},\overline{y}),\\
    & p \mbox{ --- гёделев номер вывода}, f = \ulcorner\phi\urcorner \\
-0, & \mbox{иначе}
+1, & \mbox{иначе}
 \end{array}\right.$$\vspace{-0.1cm}
 \end{theorem}
 \begin{proof}[Идея доказательства]
